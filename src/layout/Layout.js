@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Navbar from "./navbar/Navbar";
-const Layout = ({ chidren }) => {
+const Layout = ({ children }) => {
   return (
     <div>
       <Head>
@@ -9,7 +9,7 @@ const Layout = ({ chidren }) => {
       <header id="site-header" className="site-header header-v1">
         <Navbar />
       </header>
-      <main className="site-main">{chidren}</main>
+      <main className="site-main">{children}</main>
       <footer>Footer</footer>
     </div>
   );

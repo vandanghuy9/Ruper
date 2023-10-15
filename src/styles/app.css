@@ -3276,8 +3276,8 @@ ul.slick-dots li.slick-active button {
 .block-sliders .item-content .item-info {
   position: absolute;
   width: 100%;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
   margin-top: -100px;

@@ -572,7 +572,10 @@ const NavBarDesktop = () => {
                                       value={signIn.rememberme}
                                       onChange={handleSignInFormChange}
                                     />
-                                    <label for="rememberme" className="inline">
+                                    <label
+                                      htmlFor="rememberme"
+                                      className="inline"
+                                    >
                                       Remember me
                                     </label>
                                   </div>
@@ -653,25 +656,118 @@ const NavBarDesktop = () => {
                     </div>
                   </div>
                   {/* Search */}
-                  <div class="search-box">
-                    <div class="search-toggle">
+                  <div className="search-box">
+                    <div className="search-toggle">
                       <AiOutlineSearch />
                     </div>
                   </div>
                   {/* Wishlist */}
-                  <div class="wishlist-box">
+                  <div className="wishlist-box">
                     <a href="shop-wishlist.html">
-                      <AiOutlineHeart />
+                      <AiOutlineHeart color="black" size={30} />
                     </a>
-                    <span class="count-wishlist">1</span>
+                    <span className="count-wishlist">1</span>
                   </div>
                   {/* cart */}
                   <div className="ruper-topcart dropdown light">
                     <div className=" mini-cart top-cart dropdown">
                       <div className="remove-cart-shadow"></div>
                       <div className="dropdown-toggle cart-icon">
-                        <AiOutlineShopping size={30} />
+                        <AiOutlineShopping size={30} color="black" />
                         <span className="cart-count">0</span>
+                      </div>
+                      <div className="dropdown-menu cart-popup">
+                        <div className="cart-empty-wrap">
+                          <ul className="cart-list">
+                            <li className="empty">
+                              <span>No products in the cart.</span>
+                              <a className="go-shop" href="/">
+                                GO TO SHOP
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="cart-list-wrap">
+                          <ul className="cart-list ">
+                            <li className="mini-cart-item">
+                              <div className="remove" title="Remove this item">
+                                <i className="icon_close"></i>
+                              </div>
+                              <a
+                                href="shop-details.html"
+                                className="product-image"
+                              >
+                                <Image
+                                  src={"/product/3.jpg"}
+                                  width={600}
+                                  height={600}
+                                ></Image>
+                              </a>
+                              <a
+                                href="shop-details.html"
+                                className="product-name"
+                              >
+                                Chair Oak Matt Lacquered
+                              </a>
+                              <div className="quantity">Qty: 1</div>
+                              <div className="price">$150.00</div>
+                            </li>
+                            <li className="mini-cart-item">
+                              <Link
+                                href="#"
+                                className="remove"
+                                title="Remove this item"
+                              >
+                                <i className="icon_close"></i>
+                              </Link>
+                              <Link href="/" className="product-image">
+                                <Image
+                                  src={"/product/1.jpg"}
+                                  width={600}
+                                  height={600}
+                                ></Image>
+                              </Link>
+
+                              <a href="/" className="product-name">
+                                Zunkel Schwarz
+                              </a>
+                              <div className="quantity">Qty: 1</div>
+                              <div className="price">$100.00</div>
+                            </li>
+                          </ul>
+                          <div className="total-cart">
+                            <div className="title-total">Total: </div>
+                            <div className="total-price">
+                              <span>$100.00</span>
+                            </div>
+                          </div>
+                          <div className="free-ship">
+                            <div className="title-ship">
+                              Buy <strong>$400</strong> more to enjoy{" "}
+                              <strong>FREE Shipping</strong>
+                            </div>
+                            <div className="total-percent">
+                              <div
+                                className="percent"
+                                style={{ width: "20%" }}
+                              ></div>
+                            </div>
+                          </div>
+                          <div className="buttons">
+                            <Link
+                              href="/"
+                              className="button btn view-cart btn-primary"
+                            >
+                              View cart
+                            </Link>
+                            <Link
+                              href="/"
+                              className="button btn checkout btn-default"
+                            >
+                              Check out
+                            </Link>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
