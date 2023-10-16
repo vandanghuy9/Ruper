@@ -1,5 +1,7 @@
 import React from "react";
 import Slider from "../component/slider/Slider";
+import BannerSection from "../component/banner/BannerSection";
+import { firstBanner } from "@utils/data";
 const HomePage = () => {
   return (
     <div id="site-main" className="site-main">
@@ -11,6 +13,11 @@ const HomePage = () => {
                 <div className="slick-sliders">
                   <Slider />
                 </div>
+              </div>
+            </section>
+            <section className="section section-padding m-b-60">
+              <div className="section-container">
+                <BannerSection data={firstBanner} />
               </div>
             </section>
           </div>

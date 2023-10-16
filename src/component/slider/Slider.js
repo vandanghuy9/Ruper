@@ -4,6 +4,7 @@ import Image from "next/image";
 import { slides } from "../../utils/data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import WhiteButton from "../button/WhiteButton";
 import "swiper/css";
 import "swiper/css/bundle";
 const Slider = () => {
@@ -49,12 +50,10 @@ const Slider = () => {
                       <div className="description-slider">
                         {slide.description}
                       </div>
-                      <Link
-                        className="button-slider button-white"
-                        href={slide.button.url}
-                      >
-                        {slide.button.text}
-                      </Link>
+                      <WhiteButton
+                        link={slide.button.url}
+                        buttonText={slide.button.text}
+                      />
                     </div>
                   </div>
                 </div>

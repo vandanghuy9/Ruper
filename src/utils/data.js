@@ -31,4 +31,27 @@ const slides = [
   },
 ];
 
-export {slides};
+const firstBanner = [
+  {
+    imageSrc: "/banner/product-cat-1.jpg",
+    link: "/shop-grid-left.html",
+    buttonText: "Furniture",
+  },
+  {
+    imageSrc: "/banner/product-cat-2.jpg",
+    link: "/shop-grid-left.html",
+    buttonText: "Lighting",
+  },
+  {
+    imageSrc: "/banner/product-cat-3.jpg",
+    link: "/shop-grid-left.html",
+    buttonText: "Modern",
+  },
+  {
+    imageSrc: "/banner/product-cat-4.jpg",
+    link: "/shop-grid-left.html",
+    buttonText: "Accessories",
+  },
+];
+
+export { slides, firstBanner };
