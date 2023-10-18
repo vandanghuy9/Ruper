@@ -31,35 +31,41 @@ const Slider = () => {
         className="mySwiper"
       >
         {slides.map((slide, index) => (
-          <SwiperSlide>
-            <div className="item-content">
-              <div className="content-image">
-                <Image
-                  width={1920}
-                  height={1080}
-                  src={slide.image}
-                  alt="Image Slider"
-                ></Image>
-              </div>
-              <div className="section-padding">
-                <div className="section-container">
-                  <div className="item-info horizontal-start vertical-middle">
-                    <div className="content">
-                      <div className="subtitle-slider">{slide.subtitle}</div>
-                      <h2 className="title-slider">{slide.title}</h2>
-                      <div className="description-slider">
-                        {slide.description}
+          <div className="item-product slick-slide">
+            <div className="items">
+              <SwiperSlide>
+                <div className="item-content">
+                  <div className="content-image">
+                    <Image
+                      width={1920}
+                      height={1080}
+                      src={slide.image}
+                      alt="Image Slider"
+                    ></Image>
+                  </div>
+                  <div className="section-padding">
+                    <div className="section-container">
+                      <div className="item-info horizontal-start vertical-middle">
+                        <div className="content">
+                          <div className="subtitle-slider">
+                            {slide.subtitle}
+                          </div>
+                          <h2 className="title-slider">{slide.title}</h2>
+                          <div className="description-slider">
+                            {slide.description}
+                          </div>
+                          <WhiteButton
+                            href={slide.button.url}
+                            buttonText={slide.button.text}
+                          />
+                        </div>
                       </div>
-                      <WhiteButton
-                        link={slide.button.url}
-                        buttonText={slide.button.text}
-                      />
                     </div>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
             </div>
-          </SwiperSlide>
+          </div>
         ))}
       </Swiper>
     </>

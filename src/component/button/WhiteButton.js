@@ -1,7 +1,7 @@
 import Link from "next/link";
-const WhiteButton = ({ link, buttonText }) => {
+const WhiteButton = ({ href, buttonText }) => {
   return (
-    <Link href={link} className="button button-white">
+    <Link href={href} className="button button-white">
       {buttonText}
     </Link>
   );
