@@ -22,13 +22,7 @@ const VideoBanner = () => {
                   <div className="video">
                     <AiFillPlayCircle />
                   </div>
-                  <div
-                    className="content-video modal fade"
-                    id="video-popup"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-hidden="true"
-                  >
+                  <div className="content-video modal fade" id="video-popup">
                     <div
                       className="modal-dialog modal-dialog-centered"
                       role="document"

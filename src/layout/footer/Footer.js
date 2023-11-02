@@ -38,7 +38,7 @@ const Footer = () => {
                       <div className="block-content">
                         <ul>
                           {item.content.map((content, index) => (
-                            <li>
+                            <li key={index}>
                               <Link href={content.href}>{content.desc}</Link>
                             </li>
                           ))}
