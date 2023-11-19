@@ -1,12 +1,13 @@
 import React from "react";
 import Slider from "../component/slider/Slider";
 import FirstBannerSection from "../component/banner/FirstBannerSection";
-import { products, firstBanner, secondBanner } from "../utils/data";
+import { firstBanner, secondBanner } from "../utils/data";
 import ProductCarousel from "../component/slider/ProductCarousel";
 import SecondBannerSection from "../component/banner/SecondBannerSection";
 import VideoBanner from "../component/banner/VideoBanner";
 import FeatureSection from "../component/feature/FeatureSection";
-const HomePage = () => {
+import ProductServices from "../services/productService";
+const HomePage = ({ products }) => {
   return (
     <div id="site-main" className="site-main">
       <div id="main-content" className="main-content">
@@ -68,3 +69,10 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+export const getStaticProps = async () => {
+  const products = await ProductServices.getShowProduct();
+  return {
+    props: { products: products },
+  };
+};

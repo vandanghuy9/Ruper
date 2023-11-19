@@ -1,20 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-const ProductCard = ({ id, images, productTitle, price }) => {
+const ProductCard = ({ product }) => {
+  const { id, imageUrl, name, price } = product;
   const [index, setIndex] = useState(0);
   return (
     <div className="products-entry clearfix product-wapper">
       <div className="products-thumb">
         <div className="product-lable">
-          <div className="hot">Hot</div>
+          <div className="hot">{product?.productClass}</div>
         </div>
         <div>
           <Link href={`/a/${id}`}>
             <Image
               width={600}
               height={600}
-              src={index === 0 ? images[0] : images[1]}
+              src={index === 0 ? imageUrl[0] : imageUrl[1]}
               className="post-image"
               alt="product image"
               onMouseEnter={() => setIndex(1)}
@@ -48,7 +49,7 @@ const ProductCard = ({ id, images, productTitle, price }) => {
       <div className="products-content">
         <div className="contents text-center">
           <h3 className="product-title">
-            <Link href={`/a/${id}`}>{productTitle}</Link>
+            <Link href={`/a/${id}`}>{name}</Link>
           </h3>
           <span className="price">${price}</span>
         </div>

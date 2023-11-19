@@ -21,12 +21,7 @@ const ProductCarousel = ({ productSet }) => {
           <SwiperSlide key={index}>
             <div className="item-product slick-slide">
               <div className="items">
-                <ProductCard
-                  id={product.id}
-                  images={product.imageSrcs}
-                  productTitle={product.productTitle}
-                  price={product.price}
-                />
+                <ProductCard key={index} product={product} />
               </div>
             </div>
           </SwiperSlide>
