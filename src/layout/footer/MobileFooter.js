@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { BsShopWindow } from "react-icons/bs";
 import { AiOutlineUser, AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";

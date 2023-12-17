@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 const ProductCard = ({ product }) => {
-  const { id, imageUrl, name, price } = product;
+  const { _id, imageUrl, name, price } = product;
   const [index, setIndex] = useState(0);
   return (
     <div className="products-entry clearfix product-wapper">
@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
           <div className="hot">{product?.productClass}</div>
         </div>
         <div>
-          <Link href={`/a/${id}`}>
+          <Link href={`/product/${_id}`}>
             <Image
               width={600}
               height={600}
@@ -49,7 +49,7 @@ const ProductCard = ({ product }) => {
       <div className="products-content">
         <div className="contents text-center">
           <h3 className="product-title">
-            <Link href={`/a/${id}`}>{name}</Link>
+            <Link href={`/product/${_id}`}>{name}</Link>
           </h3>
           <span className="price">${price}</span>
         </div>

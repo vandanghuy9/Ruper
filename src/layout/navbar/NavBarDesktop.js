@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 import { Popover } from "@headlessui/react";
 import Image from "next/image";

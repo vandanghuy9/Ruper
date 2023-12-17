@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { socialLinks } from "../../utils/data";
 const FooterBottom = () => {

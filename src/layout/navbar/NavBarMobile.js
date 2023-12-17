@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineShopping } from "react-icons/ai";

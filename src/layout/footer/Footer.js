@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import { footer } from "../../utils/data";
 import Link from "next/link";

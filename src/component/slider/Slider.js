@@ -4,9 +4,9 @@ import Image from "next/image";
 import { slides } from "../../utils/data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-import WhiteButton from "../button/WhiteButton";
 import "swiper/css";
 import "swiper/css/bundle";
+import WhiteButton from "../button/WhiteButton";
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -33,7 +33,7 @@ const Slider = () => {
         {slides.map((slide, index) => (
           <div className="item-product slick-slide">
             <div className="items">
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <div className="item-content">
                   <div className="content-image">
                     <Image

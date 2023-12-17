@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+"use client";
 import NavBarDesktop from "./NavBarDesktop";
 import NavBarMobile from "./NavBarMobile";
 
@@ -6,7 +6,6 @@ const Navbar = () => {
   return (
     <>
       <NavBarMobile />
-
       <NavBarDesktop />
     </>
   );
