@@ -1,14 +1,16 @@
 import { AiFillStar } from "react-icons/ai";
-const ProductInfo = () => {
+const ProductInfo = ({ price, discount, stocks, description }) => {
   return (
     <>
       <h1 className="title"></h1>
       <span className="price">
-        <del aria-hidden="true">
-          <span>$100.00</span>
-        </del>
+        {discount > 0 && (
+          <del aria-hidden="true">
+            <span>${price}</span>
+          </del>
+        )}
         <ins>
-          <span>$90.00</span>
+          <span>${discount > 0 ? price * discount : price}</span>
         </ins>
       </span>
       <div className="rating">
@@ -21,14 +23,7 @@ const ProductInfo = () => {
         </div>
       </div>
       <div className="description">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
+        <p>{description}</p>
       </div>
       <div className="variations">
         <table cellSpacing={0}>
@@ -37,15 +32,11 @@ const ProductInfo = () => {
               <td className="label">Size</td>
               <td className="attributes">
                 <ul className="text">
-                  <li>
-                    <span>L</span>
-                  </li>
-                  <li>
-                    <span>M</span>
-                  </li>
-                  <li>
-                    <span>S</span>
-                  </li>
+                  {stocks[0].size.map((size, i) => (
+                    <li key={i}>
+                      <span>{size}</span>
+                    </li>
+                  ))}
                 </ul>
               </td>
             </tr>
