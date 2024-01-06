@@ -1,14 +1,10 @@
-'use client'
+"use client";
 import Link from "next/link";
 import { Popover } from "@headlessui/react";
 import Image from "next/image";
 import { useState } from "react";
-import {
-  AiOutlineSearch,
-  AiOutlineHeart,
-  AiOutlineShopping,
-} from "react-icons/ai";
-
+import { AiOutlineSearch, AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
+import Cart from "../../component/cart/Cart";
 const NavBarDesktop = () => {
   const [isLoginActive, setIsLoginActive] = useState(false);
   const [isRegisterActive, setIsRegisterActive] = useState(false);
@@ -22,6 +18,7 @@ const NavBarDesktop = () => {
     email: "",
     password: "",
   });
+  const [showCart, setShowCart] = useState(false);
   const handleFormActive = (e) => {
     e.preventDefault();
     setIsFormActive(!isFormActive);
@@ -87,58 +84,42 @@ const NavBarDesktop = () => {
                                 <ul className="menu-list">
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Categories
-                                      </span>
+                                      <span className="menu-item-text">Home Categories</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Clean
-                                      </span>
+                                      <span className="menu-item-text">Home Clean</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Collection
-                                      </span>
+                                      <span className="menu-item-text">Home Collection</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Grid
-                                      </span>
+                                      <span className="menu-item-text">Home Grid</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Minimal
-                                      </span>
+                                      <span className="menu-item-text">Home Minimal</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Modern
-                                      </span>
+                                      <span className="menu-item-text">Home Modern</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Stylish
-                                      </span>
+                                      <span className="menu-item-text">Home Stylish</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Unique
-                                      </span>
+                                      <span className="menu-item-text">Home Unique</span>
                                     </Link>
                                   </li>
                                 </ul>
@@ -150,51 +131,37 @@ const NavBarDesktop = () => {
                                 <ul className="menu-list">
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Split
-                                      </span>
+                                      <span className="menu-item-text">Home Split</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Gothic
-                                      </span>
+                                      <span className="menu-item-text">Home Gothic</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Luxury
-                                      </span>
+                                      <span className="menu-item-text">Home Luxury</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Scandinavian
-                                      </span>
+                                      <span className="menu-item-text">Home Scandinavian</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Mid-Century
-                                      </span>
+                                      <span className="menu-item-text">Home Mid-Century</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Retro
-                                      </span>
+                                      <span className="menu-item-text">Home Retro</span>
                                     </Link>
                                   </li>
                                   <li>
                                     <Link href={"/"}>
-                                      <span className="menu-item-text">
-                                        Home Color Block
-                                      </span>
+                                      <span className="menu-item-text">Home Color Block</span>
                                     </Link>
                                   </li>
                                 </ul>
@@ -210,44 +177,32 @@ const NavBarDesktop = () => {
                         <ul className="sub-menu">
                           <li className="level-1 menu-item menu-item-has-children">
                             <Link href={"/"}>
-                              <span className="menu-item-text">
-                                Shop - Products
-                              </span>
+                              <span className="menu-item-text">Shop - Products</span>
                             </Link>
                             <ul className="sub-menu">
                               <li>
                                 <Link href={"/"}>
-                                  <span className="menu-item-text">
-                                    Shop Grid - Left Sidebar
-                                  </span>
+                                  <span className="menu-item-text">Shop Grid - Left Sidebar</span>
                                 </Link>
                               </li>
                               <li>
                                 <Link href={"/"}>
-                                  <span className="menu-item-text">
-                                    Shop List - Left Sidebar
-                                  </span>
+                                  <span className="menu-item-text">Shop List - Left Sidebar</span>
                                 </Link>
                               </li>
                               <li>
                                 <Link href={"/"}>
-                                  <span className="menu-item-text">
-                                    Shop Grid - Right Sidebar
-                                  </span>
+                                  <span className="menu-item-text">Shop Grid - Right Sidebar</span>
                                 </Link>
                               </li>
                               <li>
                                 <Link href={"/"}>
-                                  <span className="menu-item-text">
-                                    Shop List - Right Sidebar
-                                  </span>
+                                  <span className="menu-item-text">Shop List - Right Sidebar</span>
                                 </Link>
                               </li>
                               <li>
                                 <Link href={"/"}>
-                                  <span className="menu-item-text">
-                                    Shop Grid - No Sidebar
-                                  </span>
+                                  <span className="menu-item-text">Shop Grid - No Sidebar</span>
                                 </Link>
                               </li>
                             </ul>
@@ -255,30 +210,22 @@ const NavBarDesktop = () => {
                           {/*1 */}
                           <li>
                             <Link href={"/"}>
-                              <span className="menu-item-text">
-                                Shop Details
-                              </span>
+                              <span className="menu-item-text">Shop Details</span>
                             </Link>
                           </li>
                           <li>
                             <Link href={"/"}>
-                              <span className="menu-item-text">
-                                Shop - Cart
-                              </span>
+                              <span className="menu-item-text">Shop - Cart</span>
                             </Link>
                           </li>
                           <li>
                             <Link href={"/"}>
-                              <span className="menu-item-text">
-                                Shop - Checkout
-                              </span>
+                              <span className="menu-item-text">Shop - Checkout</span>
                             </Link>
                           </li>
                           <li>
                             <Link href={"/"}>
-                              <span className="menu-item-text">
-                                Shop - Wishlist
-                              </span>
+                              <span className="menu-item-text">Shop - Wishlist</span>
                             </Link>
                           </li>
                         </ul>
@@ -291,9 +238,7 @@ const NavBarDesktop = () => {
                           <div className="row">
                             <div className="col-md-5">
                               <div className="menu-section">
-                                <h2 className="sub-menu-title">
-                                  Blog Category
-                                </h2>
+                                <h2 className="sub-menu-title">Blog Category</h2>
                                 <ul className="menu-list">
                                   <li>
                                     <Link href="blog-grid-left.html">
@@ -325,9 +270,7 @@ const NavBarDesktop = () => {
                                   </li>
                                   <li>
                                     <Link href="blog-grid-fullwidth.html">
-                                      <span className="menu-item-text">
-                                        Blog Grid - No Sidebar
-                                      </span>
+                                      <span className="menu-item-text">Blog Grid - No Sidebar</span>
                                     </Link>
                                   </li>
                                 </ul>
@@ -365,10 +308,7 @@ const NavBarDesktop = () => {
                                 <div className="block block-posts recent-posts p-t-5">
                                   <ul className="posts-list">
                                     <li className="post-item">
-                                      <Link
-                                        href="blog-details-right.html"
-                                        className="post-image"
-                                      >
+                                      <Link href="blog-details-right.html" className="post-image">
                                         <Image
                                           src="/blog/1.jpg"
                                           width={560}
@@ -383,20 +323,13 @@ const NavBarDesktop = () => {
                                           </Link>
                                         </h2>
                                         <div className="post-time">
-                                          <span className="post-date">
-                                            May 30, 2022
-                                          </span>
-                                          <span className="post-comment">
-                                            4 Comments
-                                          </span>
+                                          <span className="post-date">May 30, 2022</span>
+                                          <span className="post-comment">4 Comments</span>
                                         </div>
                                       </div>
                                     </li>
                                     <li className="post-item">
-                                      <Link
-                                        href="blog-details-right.html"
-                                        className="post-image"
-                                      >
+                                      <Link href="blog-details-right.html" className="post-image">
                                         <Image
                                           src="/blog/2.jpg"
                                           width={560}
@@ -411,20 +344,13 @@ const NavBarDesktop = () => {
                                           </Link>
                                         </h2>
                                         <div className="post-time">
-                                          <span className="post-date">
-                                            Aug 24, 2022
-                                          </span>
-                                          <span className="post-comment">
-                                            2 Comments
-                                          </span>
+                                          <span className="post-date">Aug 24, 2022</span>
+                                          <span className="post-comment">2 Comments</span>
                                         </div>
                                       </div>
                                     </li>
                                     <li className="post-item">
-                                      <Link
-                                        href="blog-details-right.html"
-                                        className="post-image"
-                                      >
+                                      <Link href="blog-details-right.html" className="post-image">
                                         <Image
                                           src="/blog/3.jpg"
                                           width={560}
@@ -435,17 +361,12 @@ const NavBarDesktop = () => {
                                       <div className="post-content">
                                         <h2 className="post-title">
                                           <Link href="blog-details-right.html">
-                                            Stunning Furniture With Aesthetic
-                                            Appeal
+                                            Stunning Furniture With Aesthetic Appeal
                                           </Link>
                                         </h2>
                                         <div className="post-time">
-                                          <span className="post-date">
-                                            Dec 06, 2022
-                                          </span>
-                                          <span className="post-comment">
-                                            1 Comment
-                                          </span>
+                                          <span className="post-date">Dec 06, 2022</span>
+                                          <span className="post-comment">1 Comment</span>
                                         </div>
                                       </div>
                                     </li>
@@ -463,16 +384,12 @@ const NavBarDesktop = () => {
                         <ul className="sub-menu">
                           <li>
                             <Link href="page-login.html">
-                              <span className="menu-item-text">
-                                Login / Register
-                              </span>
+                              <span className="menu-item-text">Login / Register</span>
                             </Link>
                           </li>
                           <li>
                             <Link href="page-forgot-password.html">
-                              <span className="menu-item-text">
-                                Forgot Password
-                              </span>
+                              <span className="menu-item-text">Forgot Password</span>
                             </Link>
                           </li>
                           <li>
@@ -519,24 +436,12 @@ const NavBarDesktop = () => {
                     </button>
                     <div
                       className={
-                        isFormActive
-                          ? "form-login-register active"
-                          : "form-login-register"
-                      }
-                    >
+                        isFormActive ? "form-login-register active" : "form-login-register"
+                      }>
                       <div className="box-form-login">
-                        <div
-                          className="active-login"
-                          onClick={handleFormActive}
-                        ></div>
+                        <div className="active-login" onClick={handleFormActive}></div>
                         <div className="box-content">
-                          <div
-                            className={
-                              !isRegisterActive
-                                ? "form-login active"
-                                : "form-login"
-                            }
-                          >
+                          <div className={!isRegisterActive ? "form-login active" : "form-login"}>
                             <form action="submit">
                               <h2>Sign in</h2>
                               <div className="content">
@@ -573,17 +478,12 @@ const NavBarDesktop = () => {
                                       value={signIn.rememberme}
                                       onChange={handleSignInFormChange}
                                     />
-                                    <label
-                                      htmlFor="rememberme"
-                                      className="inline"
-                                    >
+                                    <label htmlFor="rememberme" className="inline">
                                       Remember me
                                     </label>
                                   </div>
                                   <div className="lost_password">
-                                    <Link href="forgot-password.html">
-                                      Lost your password?
-                                    </Link>
+                                    <Link href="forgot-password.html">Lost your password?</Link>
                                   </div>
                                 </div>
                                 <div className="button-login">
@@ -596,20 +496,14 @@ const NavBarDesktop = () => {
                                 </div>
                                 <div
                                   className="button-next-reregister"
-                                  onClick={handleRegisterActive}
-                                >
+                                  onClick={handleRegisterActive}>
                                   Create An Account
                                 </div>
                               </div>
                             </form>
                           </div>
                           <div
-                            className={
-                              isRegisterActive
-                                ? "form-register active"
-                                : "form-register"
-                            }
-                          >
+                            className={isRegisterActive ? "form-register active" : "form-register"}>
                             <form action="submit" className="register">
                               <h2>REGISTER</h2>
                               <div className="content">
@@ -643,10 +537,7 @@ const NavBarDesktop = () => {
                                     value="Register"
                                   />
                                 </div>
-                                <div
-                                  className="button-next-login"
-                                  onClick={handleLoginActive}
-                                >
+                                <div className="button-next-login" onClick={handleLoginActive}>
                                   Already has an account
                                 </div>
                               </div>
@@ -664,112 +555,22 @@ const NavBarDesktop = () => {
                   </div>
                   {/* Wishlist */}
                   <div className="wishlist-box">
-                    <a href="shop-wishlist.html">
+                    <Link href={"/"}>
                       <AiOutlineHeart color="black" size={30} />
-                    </a>
-                    <span className="count-wishlist">1</span>
+                      <span className="count-wishlist">1</span>
+                    </Link>
                   </div>
                   {/* cart */}
                   <div className="ruper-topcart dropdown light">
-                    <div className=" mini-cart top-cart dropdown">
-                      <div className="remove-cart-shadow"></div>
-                      <div className="dropdown-toggle cart-icon">
+                    <div className="dropdown mini-cart top-cart show">
+                      <button
+                        className="dropdown-toggle cart-icon"
+                        type="button"
+                        onClick={(e) => setShowCart((prev) => !prev)}>
                         <AiOutlineShopping size={30} color="black" />
                         <span className="cart-count">0</span>
-                      </div>
-                      <div className="dropdown-menu cart-popup">
-                        <div className="cart-empty-wrap">
-                          <ul className="cart-list">
-                            <li className="empty">
-                              <span>No products in the cart.</span>
-                              <a className="go-shop" href="/">
-                                GO TO SHOP
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="cart-list-wrap">
-                          <ul className="cart-list ">
-                            <li className="mini-cart-item">
-                              <div className="remove" title="Remove this item">
-                                <i className="icon_close"></i>
-                              </div>
-                              <a
-                                href="shop-details.html"
-                                className="product-image"
-                              >
-                                <Image
-                                  src={"/product/3.jpg"}
-                                  width={600}
-                                  height={600}
-                                ></Image>
-                              </a>
-                              <a
-                                href="shop-details.html"
-                                className="product-name"
-                              >
-                                Chair Oak Matt Lacquered
-                              </a>
-                              <div className="quantity">Qty: 1</div>
-                              <div className="price">$150.00</div>
-                            </li>
-                            <li className="mini-cart-item">
-                              <Link
-                                href="#"
-                                className="remove"
-                                title="Remove this item"
-                              >
-                                <i className="icon_close"></i>
-                              </Link>
-                              <Link href="/" className="product-image">
-                                <Image
-                                  src={"/product/1.jpg"}
-                                  width={600}
-                                  height={600}
-                                ></Image>
-                              </Link>
-
-                              <a href="/" className="product-name">
-                                Zunkel Schwarz
-                              </a>
-                              <div className="quantity">Qty: 1</div>
-                              <div className="price">$100.00</div>
-                            </li>
-                          </ul>
-                          <div className="total-cart">
-                            <div className="title-total">Total: </div>
-                            <div className="total-price">
-                              <span>$100.00</span>
-                            </div>
-                          </div>
-                          <div className="free-ship">
-                            <div className="title-ship">
-                              Buy <strong>$400</strong> more to enjoy{" "}
-                              <strong>FREE Shipping</strong>
-                            </div>
-                            <div className="total-percent">
-                              <div
-                                className="percent"
-                                style={{ width: "20%" }}
-                              ></div>
-                            </div>
-                          </div>
-                          <div className="buttons">
-                            <Link
-                              href="/"
-                              className="button btn view-cart btn-primary"
-                            >
-                              View cart
-                            </Link>
-                            <Link
-                              href="/"
-                              className="button btn checkout btn-default"
-                            >
-                              Check out
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
+                      </button>
+                      {showCart && <Cart />}
                     </div>
                   </div>
                 </div>
