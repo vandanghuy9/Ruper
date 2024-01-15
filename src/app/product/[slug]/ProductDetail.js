@@ -2,11 +2,27 @@
 import ProductImage from "../../../component/product/ProductImage";
 import Link from "next/link";
 import ProductInfo from "../../../component/product/ProductInfo";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { FaFacebook, FaPinterest, FaTwitter } from "react-icons/fa";
 import ProductTab from "../../../component/product-tab/ProductTab";
 import ProductCarousel from "@component/slider/ProductCarousel";
+import { useState } from "react";
+import useHandleCart from "../../../hooks/useHandleCart";
 const ProductDetail = ({ product, relatedProducts }) => {
+  const { handleAddToCart } = useHandleCart();
+  const [quantity, setQuantity] = useState(1);
+  const handleQuantity = (action) => {
+    if (action === "INC") {
+      setQuantity((prev) => prev + 1);
+    } else if (action === "DEC") {
+      if (quantity > 1) {
+        setQuantity((prev) => prev - 1);
+      }
+    }
+  };
+  const addToCart = (e) => {
+    handleAddToCart(product, quantity);
+    setQuantity(1);
+  };
   return (
     <div id="site-main" className="site-main">
       <div id="main-content" className="main-content">
@@ -14,14 +30,14 @@ const ProductDetail = ({ product, relatedProducts }) => {
           <div id="title" className="page-title">
             <div className="section-container">
               <div className="content-title-heading">
-                <h1 className="text-title-heading">Bora Armchair</h1>
+                <h1 className="text-title-heading">{product.name}</h1>
               </div>
               <div className="breadcrumbs">
                 <Link href="/">Home</Link>
                 <span className="delimiter"></span>
                 <Link href="/">Shop</Link>
                 <span className="delimiter"></span>
-                Bora Armchair
+                {product.name}
               </div>
             </div>
           </div>
@@ -44,15 +60,30 @@ const ProductDetail = ({ product, relatedProducts }) => {
                         <div className="buttons">
                           <div className="add-to-cart-wrap">
                             <div className="quantity">
-                              <span type="button" className="px-3">
-                                <AiOutlineMinus />
-                              </span>
-                              <span className="qty">0</span>
-                              <span type="button" className="px-3">
-                                <AiOutlinePlus />
-                              </span>
+                              <button
+                                type="button"
+                                className="plus fs-2 fw-bold"
+                                onClick={(e) => {
+                                  handleQuantity("INC");
+                                }}>
+                                +
+                              </button>
+                              <span className="ps-5 pe-5 my-3 fs-2 fw-normal">{quantity}</span>
+                              <button
+                                type="button"
+                                className="minus fs-2 fw-bold"
+                                onClick={(e) => {
+                                  handleQuantity("DEC");
+                                }}>
+                                -
+                              </button>
                             </div>
-                            <div className="btn-add-to-cart button">Add to cart</div>
+                            <button
+                              className="btn-add-to-cart button"
+                              type="button"
+                              onClick={addToCart}>
+                              Add to cart
+                            </button>
                           </div>
                           <div className="btn-quick-buy" data-title="Wishlist">
                             <button className="product-btn">Buy It Now</button>

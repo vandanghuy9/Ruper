@@ -10,7 +10,7 @@ const ProductInfo = ({ price, discount, stocks, description }) => {
           </del>
         )}
         <ins>
-          <span>${discount > 0 ? price * discount : price}</span>
+          <span>${discount > 0 ? (price * discount) / 100 : price}</span>
         </ins>
       </span>
       <div className="rating">

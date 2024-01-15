@@ -8167,7 +8167,7 @@ ul.slick-dots li.slick-active button {
   cursor: pointer;
   background: #000;
 }
-.products-list.list .product-wapper .products-content .btn-wishlist .product-btn:before {
+/* .products-list.list .product-wapper .products-content .btn-wishlist .product-btn:before {
   content: "\f08a";
   position: absolute;
   left: 0;
@@ -8175,7 +8175,7 @@ ul.slick-dots li.slick-active button {
   color: #000;
   font-family: FontAwesome;
   font-size: 17px;
-}
+} */
 .products-list.list .product-wapper .products-content .btn-wishlist .product-btn:hover:before {
   color: #fff;
 }
@@ -8231,7 +8231,7 @@ ul.slick-dots li.slick-active button {
   cursor: pointer;
   border: 1px solid #000;
 }
-.products-list.list .product-wapper .products-content .btn-compare .product-btn:before {
+/* .products-list.list .product-wapper .products-content .btn-compare .product-btn:before {
   font-size: 16px;
   color: #000;
   line-height: 38px;
@@ -8240,7 +8240,7 @@ ul.slick-dots li.slick-active button {
   content: "\e90f";
   font-family: icomoon;
   margin: 0;
-}
+} */
 .products-list.list .product-wapper .products-content .btn-compare .product-btn:hover {
   background: #000;
   border-color: #000;
@@ -8534,11 +8534,11 @@ ul.slick-dots li.slick-active button {
   width: 38px;
   height: 46px;
 }
-.shop-details .buttons .add-to-cart-wrap .quantity button.plus:before {
+/* .shop-details .buttons .add-to-cart-wrap .quantity button.plus:before {
   content: "\4c";
   position: relative;
   top: 4px;
-}
+} */
 .shop-details .buttons .add-to-cart-wrap .quantity button.minus {
   position: absolute;
   left: 0;
@@ -8548,11 +8548,11 @@ ul.slick-dots li.slick-active button {
   height: 46px;
   background: transparent;
 }
-.shop-details .buttons .add-to-cart-wrap .quantity button.minus:before {
+/* .shop-details .buttons .add-to-cart-wrap .quantity button.minus:before {
   content: "\4b";
   position: relative;
   top: 4px;
-}
+} */
 .shop-details .buttons .add-to-cart-wrap .quantity input {
   width: 125px;
   border: 0;

@@ -1,9 +1,8 @@
 "use client";
 import Link from "next/link";
-import { Popover } from "@headlessui/react";
 import Image from "next/image";
 import { useState } from "react";
-import { AiOutlineSearch, AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import Cart from "../../component/cart/Cart";
 const NavBarDesktop = () => {
   const [isLoginActive, setIsLoginActive] = useState(false);
@@ -18,7 +17,6 @@ const NavBarDesktop = () => {
     email: "",
     password: "",
   });
-  const [showCart, setShowCart] = useState(false);
   const handleFormActive = (e) => {
     e.preventDefault();
     setIsFormActive(!isFormActive);
@@ -562,16 +560,7 @@ const NavBarDesktop = () => {
                   </div>
                   {/* cart */}
                   <div className="ruper-topcart dropdown light">
-                    <div className="dropdown mini-cart top-cart show">
-                      <button
-                        className="dropdown-toggle cart-icon"
-                        type="button"
-                        onClick={(e) => setShowCart((prev) => !prev)}>
-                        <AiOutlineShopping size={30} color="black" />
-                        <span className="cart-count">0</span>
-                      </button>
-                      {showCart && <Cart />}
-                    </div>
+                    <Cart />
                   </div>
                 </div>
               </div>
