@@ -8429,7 +8429,14 @@ ul.slick-dots li.slick-active button {
   display: inline-block;
   margin-right: 10px;
 }
-.shop-details .variations .attributes ul.text li span {
+.shop-details .variations .attributes ul.text li input[type='radio']{
+  display: none;
+}
+.shop-details .variations .attributes ul.text li input[type='radio']:checked + label {
+  border: 1px solid #000;
+  color: #000;
+}
+.shop-details .variations .attributes ul.text li label {
   width: 28px;
   height: 28px;
   line-height: 26px;
@@ -8444,11 +8451,11 @@ ul.slick-dots li.slick-active button {
   border: 1px solid #d5d5d5;
   cursor: pointer;
 }
-.shop-details .variations .attributes ul.text li span:hover {
+.shop-details .variations .attributes ul.text li label:hover {
   border: 1px solid #000;
   color: #000;
 }
-.shop-details .variations .attributes ul.colors li span {
+.shop-details .variations .attributes ul.colors li label {
   width: 28px;
   height: 28px;
   display: inline-block;
@@ -8461,13 +8468,13 @@ ul.slick-dots li.slick-active button {
   cursor: pointer;
   position: relative;
 }
-.shop-details .variations .attributes ul.colors li span.color-2 {
+.shop-details .variations .attributes ul.colors li label.blue {
   background: #5173a6;
 }
-.shop-details .variations .attributes ul.colors li span.color-3 {
+.shop-details .variations .attributes ul.colors li label.white {
   background: #20b2aa;
 }
-.shop-details .variations .attributes ul.colors li span:before {
+.shop-details .variations .attributes ul.colors li label:before {
   content: "";
   position: absolute;
   top: calc(50% - 18px);
@@ -8486,9 +8493,17 @@ ul.slick-dots li.slick-active button {
   opacity: 0;
   visibility: hidden;
 }
-.shop-details .variations .attributes ul.colors li span:hover:before {
+.shop-details .variations .attributes ul.colors li label:hover:before {
   opacity: 1;
   visibility: visible;
+}
+.shop-details .variations .attributes ul.colors li input[type='radio'] {
+  display: none;
+}
+
+.shop-details .variations .attributes ul.colors li input[type='radio']:checked+label:before {
+    opacity: 1;
+      visibility: visible;
 }
 .shop-details .buttons {
   display: flex;
@@ -8673,9 +8688,8 @@ ul.slick-dots li.slick-active button {
   border: 0;
   padding: 0;
 }
-.shop-details .buttons .btn-wishlist .product-btn:before,
-.shop-details .buttons .btn-compare .product-btn:before {
-  content: "\e900";
+.shop-details .buttons .btn-wishlist .product-btn .icon,
+.shop-details .buttons .btn-compare .product-btn .icon {
   font-family: icomoon;
   font-size: 16px;
   width: 40px;
@@ -8690,12 +8704,12 @@ ul.slick-dots li.slick-active button {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
-.shop-details .buttons .btn-wishlist .product-btn.added:before {
+/* .shop-details .buttons .btn-wishlist .product-btn.added:before {
   content: "\e90";
 }
 .shop-details .buttons .btn-compare .product-btn:before {
   content: "\e90f";
-}
+} */
 .shop-details .buttons .btn-wishlist .product-btn:hover:before,
 .shop-details .buttons .btn-compare .product-btn:hover:before {
   color: #fff;
@@ -10517,4 +10531,16 @@ ul.slick-dots li.slick-active button {
   -ms-flex: 0 0 32.5%;
   flex: 0 0 32.5%;
   max-width: 32.5%;
+}
+
+.attributes{
+  display: flex;
+  gap:10px;
+}
+.color, .size{
+  display: inline-block;
+  font-weight: 500;
+  color: #868686;
+  margin: 0 ;
+  margin-top: 0;
 }

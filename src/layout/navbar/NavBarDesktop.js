@@ -3,7 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
-import Cart from "../../component/cart/Cart";
+import dynamic from "next/dynamic";
+const Cart = dynamic(() => import("../../component/cart/Cart"), { ssr: false });
+
 const NavBarDesktop = () => {
   const [isLoginActive, setIsLoginActive] = useState(false);
   const [isRegisterActive, setIsRegisterActive] = useState(false);

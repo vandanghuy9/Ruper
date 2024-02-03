@@ -1,8 +1,10 @@
 import CartItem from "./CartItem";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineShopping } from "react-icons/ai";
 import { useCart } from "react-use-cart";
+import useHandleCart from "../../hooks/useHandleCart";
+
 const Cart = () => {
   const [showCart, setShowCart] = useState(false);
   const { items, cartTotal, totalUniqueItems } = useCart();

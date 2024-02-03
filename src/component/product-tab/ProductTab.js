@@ -2,6 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { AiFillStar } from "react-icons/ai";
+import { useForm } from "react-hook-form";
 const tabs = [
   {
     id: 0,
@@ -19,16 +21,29 @@ const tabs = [
     content: "Reviews",
   },
 ];
-const ProductTab = () => {
+const ProductTab = ({ product }) => {
   const [onActive, setOnActive] = useState(1);
+  const { stocks } = product;
+  let sizes = stocks.map((item) => item.size);
+  sizes = sizes.filter((item, index) => sizes.indexOf(item) === index);
+  let colors = stocks.map((item) => item.color);
+  colors = colors.filter((item, index) => colors.indexOf(item) === index);
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      author: null,
+      email: null,
+      comment: null,
+    },
+  });
+  const onSubmit = (data) => console.log(data);
   return (
     <div className="product-tabs">
       <div className="section-padding">
         <div className="section-container p-l-r">
           <div className="product-tabs-wrap">
             <ul className="nav nav-tabs" role="tablist">
-              {tabs.map(({ id, href, content }) => (
-                <li className="nav-item">
+              {tabs.map(({ id, href, content }, i) => (
+                <li key={i} className="nav-item">
                   <Link
                     className={onActive === id ? "nav-link active" : "nav-link"}
                     href={"#" + href}
@@ -70,7 +85,11 @@ const ProductTab = () => {
                   <tbody>
                     <tr className="attribute-item">
                       <th className="attribute-label">Color</th>
-                      <td className="attribute-value">Black, Blue, Green</td>
+                      <td className="attribute-value">{colors.map((i) => i + " ")}</td>
+                    </tr>
+                    <tr className="attribute-item">
+                      <th className="attribute-label">Size</th>
+                      <td className="attribute-value">{sizes.map((i) => i + " ")}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -93,10 +112,14 @@ const ProductTab = () => {
                               className="avatar"
                               height="60"
                               width="60"
-                              alt=""></Image>
+                              alt="avatar"></Image>
                             <div className="comment-text">
                               <div className="rating small">
-                                <div className="star star-5"></div>
+                                <AiFillStar size={20} color="feda00" />
+                                <AiFillStar size={20} color="feda00" />
+                                <AiFillStar size={20} color="feda00" />
+                                <AiFillStar size={20} color="feda00" />
+                                <AiFillStar size={20} color="feda00" />
                               </div>
                               <div className="review-author">Peter Capidal</div>
                               <div className="review-time">January 12, 2022</div>
@@ -114,13 +137,16 @@ const ProductTab = () => {
                       <span id="reply-title" className="comment-reply-title">
                         Add a review
                       </span>
-                      <form action="" method="post" id="comment-form" className="comment-form">
+                      <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        id="comment-form"
+                        className="comment-form">
                         <p className="comment-notes">
                           <span id="email-notes">Your email address will not be published.</span>{" "}
                           Required fields are marked <span className="required">*</span>
                         </p>
                         <div className="comment-form-rating">
-                          <label for="rating">Your rating</label>
+                          <label htmlFor="rating">Your rating</label>
                           <p className="stars">
                             <span>
                               <Link className="star-1" href="#">
@@ -143,37 +169,24 @@ const ProductTab = () => {
                         </div>
                         <p className="comment-form-comment">
                           <textarea
-                            id="comment"
-                            name="comment"
+                            {...register("comment", { required: true })}
                             placeholder="Your Reviews *"
                             cols="45"
-                            rows="8"
-                            aria-required="true"
-                            required=""></textarea>
+                            rows="8"></textarea>
                         </p>
                         <div className="content-info-reviews">
                           <p className="comment-form-author">
                             <input
-                              id="author"
-                              name="author"
+                              {...register("author", { required: true })}
                               placeholder="Name *"
-                              type="text"
-                              value=""
                               size="30"
-                              aria-required="true"
-                              required=""
                             />
                           </p>
                           <p className="comment-form-email">
                             <input
-                              id="email"
-                              name="email"
                               placeholder="Email *"
-                              type="email"
-                              value=""
                               size="30"
-                              aria-required="true"
-                              required=""
+                              {...register("email", { required: true })}
                             />
                           </p>
                           <p className="form-submit">

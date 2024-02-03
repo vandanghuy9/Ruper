@@ -220,12 +220,4 @@ const socialLinks = [
     icon: <FaBehance />,
   },
 ];
-export {
-  slides,
-  firstBanner,
-  products,
-  secondBanner,
-  featureCardData,
-  footer,
-  socialLinks,
-};
+export { slides, firstBanner, products, secondBanner, featureCardData, footer, socialLinks };
