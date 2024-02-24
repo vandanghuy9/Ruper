@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlineShopping } from "react-icons/ai";
 import { useCart } from "react-use-cart";
-import useHandleCart from "../../hooks/useHandleCart";
+import useHandleCart from "@hooks/useHandleCart";
 
 const Cart = () => {
   const [showCart, setShowCart] = useState(false);
@@ -64,7 +64,7 @@ const Cart = () => {
                     <Link href="/" className="button btn view-cart btn-primary">
                       View cart
                     </Link>
-                    <Link href="/" className="button btn checkout btn-default">
+                    <Link href="/checkout" className="button btn checkout btn-default">
                       Check out
                     </Link>
                   </div>

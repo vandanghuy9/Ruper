@@ -9,6 +9,9 @@ const ProductServices = {
   getRelatedProducts(id) {
     return sendGetRequest(`/products/related/${id}`);
   },
+  getProductsByCategory(category) {
+    return sendGetRequest(`/products/filter?category=${category}`);
+  },
 };
 
 export default ProductServices;

@@ -1,8 +1,9 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 const ProductCard = ({ product }) => {
-  const { _id, imageUrl, name, price } = product;
+  const { _id, imageUrl, name, price, discount } = product;
   const [index, setIndex] = useState(0);
   return (
     <div className="products-entry clearfix product-wapper">
@@ -51,7 +52,20 @@ const ProductCard = ({ product }) => {
           <h3 className="product-title">
             <Link href={`/product/${_id}`}>{name}</Link>
           </h3>
-          <span className="price">${price}</span>
+          <span className="price">
+            {discount ? (
+              <>
+                <del>
+                  <span>${price}</span>
+                </del>
+                <ins>
+                  <span>${(price * discount) / 100}</span>
+                </ins>
+              </>
+            ) : (
+              <>${price}</>
+            )}
+          </span>
         </div>
       </div>
     </div>

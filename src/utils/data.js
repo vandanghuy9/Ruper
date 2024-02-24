@@ -11,7 +11,7 @@ const slides = [
     description: "Save up to $500 on outdoor packages",
     button: {
       text: "SHOP NOW",
-      url: "/shop-grid-left.html",
+      url: "/shop",
     },
   },
   {
@@ -21,7 +21,7 @@ const slides = [
     description: "Save up to $500 on outdoor packages",
     button: {
       text: "SHOP NOW",
-      url: "/shop-grid-left.html",
+      url: "/shop",
     },
   },
   {
@@ -31,7 +31,7 @@ const slides = [
     description: "Save up to $500 on outdoor packages",
     button: {
       text: "SHOP NOW",
-      url: "/shop-grid-left.html",
+      url: "/shop",
     },
   },
 ];
@@ -39,28 +39,28 @@ const slides = [
 const firstBanner = [
   {
     imageSrc: "/banner/product-cat-1.jpg",
-    link: "/shop-grid-left.html",
+    link: "/shop",
     buttonText: "Furniture",
     imgWidth: 571,
     imgHeight: 622,
   },
   {
     imageSrc: "/banner/product-cat-2.jpg",
-    link: "/shop-grid-left.html",
+    link: "/shop",
     buttonText: "Lighting",
     imgWidth: 406,
     imgHeight: 304,
   },
   {
     imageSrc: "/banner/product-cat-3.jpg",
-    link: "/shop-grid-left.html",
+    link: "/shop",
     buttonText: "Modern",
     imgWidth: 406,
     imgHeight: 304,
   },
   {
     imageSrc: "/banner/product-cat-4.jpg",
-    link: "/shop-grid-left.html",
+    link: "/shop",
     buttonText: "Accessories",
     imgWidth: 406,
     imgHeight: 304,
@@ -220,4 +220,31 @@ const socialLinks = [
     icon: <FaBehance />,
   },
 ];
-export { slides, firstBanner, products, secondBanner, featureCardData, footer, socialLinks };
+const brand = [
+  { src: "/brand/1.jpg", title: "Blast" },
+  { src: "/brand/2.jpg", title: "Minimal" },
+  { src: "/brand/3.jpg", title: "Money" },
+  { src: "/brand/4.jpg", title: "Beat Sound" },
+  { src: "/brand/5.jpg", title: "Red box" },
+];
+const menu = [
+  { category: "Bed & Bath", count: 9 },
+  { category: "Furniture", count: 9 },
+  { category: "Home Décor", count: 9 },
+  { category: "Lighting", count: 9 },
+  { category: "Office", count: 9 },
+  { category: "Outdoor", count: 9 },
+];
+const size = ["L", "M", "S"];
+export {
+  slides,
+  firstBanner,
+  products,
+  secondBanner,
+  featureCardData,
+  footer,
+  socialLinks,
+  brand,
+  menu,
+  size,
+};
