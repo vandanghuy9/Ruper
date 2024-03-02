@@ -228,12 +228,12 @@ const brand = [
   { src: "/brand/5.jpg", title: "Red box" },
 ];
 const menu = [
-  { category: "Bed & Bath", count: 9 },
-  { category: "Furniture", count: 9 },
-  { category: "Home Décor", count: 9 },
-  { category: "Lighting", count: 9 },
-  { category: "Office", count: 9 },
-  { category: "Outdoor", count: 9 },
+  { category: "Bed & Bath", count: 0, key: "BED_BATH" },
+  { category: "Furniture", count: 0, key: "FURNITURE" },
+  { category: "Home Décor", count: 0, key: "HOME_DECOR" },
+  { category: "Lighting", count: 0, key: "LIGHTING" },
+  { category: "Office", count: 0, key: "OFFICE" },
+  { category: "Outdoor", count: 0, key: "OUTDOOR" },
 ];
 const size = ["L", "M", "S"];
 export {

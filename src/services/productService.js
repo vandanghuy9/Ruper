@@ -1,3 +1,4 @@
+import "server-only";
 import { sendGetRequest } from "./requestService";
 const ProductServices = {
   getShowProduct() {
@@ -9,8 +10,12 @@ const ProductServices = {
   getRelatedProducts(id) {
     return sendGetRequest(`/products/related/${id}`);
   },
-  getProductsByCategory(category) {
-    return sendGetRequest(`/products/filter?category=${category}`);
+  getProductsByCategory(query) {
+    return sendGetRequest(`/products/filter?${query}`);
+  },
+
+  getFeatureProducts() {
+    return sendGetRequest(`/products/feature`);
   },
 };
 
