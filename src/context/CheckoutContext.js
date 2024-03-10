@@ -1,6 +1,8 @@
+"use client";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-const useCheckoutSubmit = () => {
+import { useState, createContext, useContext } from "react";
+const Context = createContext(null);
+export const CheckoutContext = ({ children }) => {
   const {
     register,
     handleSubmit,
@@ -37,16 +39,21 @@ const useCheckoutSubmit = () => {
   const setPaymentMethod = (value) => {
     setValue("payment_method", value);
   };
-  return {
-    register,
-    handleSubmit,
-    getValues,
-    getPaymentMethod,
-    handlePaymentMethod,
-    errors,
-    setPaymentMethod,
-    control,
-  };
+  return (
+    <Context.Provider
+      value={{
+        register,
+        handleSubmit,
+        getValues,
+        getPaymentMethod,
+        handlePaymentMethod,
+        errors,
+        setPaymentMethod,
+        control,
+      }}>
+      {children}
+    </Context.Provider>
+  );
 };
 
-export default useCheckoutSubmit;
+export const useCheckoutSubmit = () => useContext(Context);

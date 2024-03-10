@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import CartContext from "../context/CartContext";
 import { Barlow_Semi_Condensed } from "next/font/google";
 import { CategoryContext } from "@context/CategoryContext";
+import { CheckoutContext } from "@context/CheckoutContext";
 export const metadata = {
   title: "Ruper store",
   description: "Welcome to Next.js",
@@ -35,9 +36,11 @@ const RootLayout = ({ children }) => {
           theme="light"
         />
         <CategoryContext>
-          <CartContext>
-            <Layout>{children}</Layout>
-          </CartContext>
+          <CheckoutContext>
+            <CartContext>
+              <Layout>{children}</Layout>
+            </CartContext>
+          </CheckoutContext>
         </CategoryContext>
       </body>
     </html>

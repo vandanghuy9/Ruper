@@ -9094,27 +9094,26 @@ ul.slick-dots li.slick-active button {
   border-left: 0;
   width: 30px;
 }
-.shop-cart .cart-items tbody tr td.product-remove a {
-  font-size: 0;
+.shop-cart .cart-items tbody tr td.product-remove .remove {
+  font-size: 13px;
   text-align: center;
-}
-.shop-cart .cart-items tbody tr td.product-remove a:before {
   display: inline-block;
-  content: "\ea02";
   font-family: feather;
-  font-size: 10px;
   color: #000 !important;
-  width: 16px;
-  height: 16px;
-  border: 1px solid #000;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #000; 
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   line-height: 15px;
+  background-color: #fff;
+  padding: 0;
 }
-.shop-cart .cart-items tbody tr td.product-remove a:hover:before {
+
+.shop-cart .cart-items tbody tr td.product-remove .remove:hover {
   color: #fff !important;
   background: #000;
   border-color: #000;
@@ -9284,21 +9283,21 @@ ul.slick-dots li.slick-active button {
   line-height: 34px;
   background: #000;
   color: #fff;
-  padding: 0 20px;
+  padding: 4px 20px;
   display: inline-block;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
   height: 40px;
 }
-.shop-cart-empty .return-to-shop .button:before {
+/* .shop-cart-empty .return-to-shop .button:before {
   content: "\23";
   font-size: 18px;
   font-family: ElegantIcons;
   margin: 0 5px 0 0;
   position: relative;
   top: 3px;
-}
+} */
 .shop-cart-empty .return-to-shop .button:hover {
   background: rgba(0,0,0,.75);
 }

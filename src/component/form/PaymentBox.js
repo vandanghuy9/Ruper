@@ -1,4 +1,3 @@
-import useCheckoutSubmit from "@hooks/useCheckoutSubmit";
 const PaymentBox = ({
   label,
   value,

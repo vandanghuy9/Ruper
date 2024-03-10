@@ -9,6 +9,7 @@ const ProductCard = ({ product }) => {
     <div className="products-entry clearfix product-wapper">
       <div className="products-thumb">
         <div className="product-lable">
+          {discount > 0 && <div className="onsale">-{discount}%</div>}
           <div className="hot">{product?.productClass}</div>
         </div>
         <div>
@@ -59,7 +60,7 @@ const ProductCard = ({ product }) => {
                   <span>${price}</span>
                 </del>
                 <ins>
-                  <span>${(price * discount) / 100}</span>
+                  <span>${Math.ceil((price * (100 - discount)) / 100)}</span>
                 </ins>
               </>
             ) : (

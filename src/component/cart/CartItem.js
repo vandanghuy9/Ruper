@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import useHandleCart from "@hooks/useHandleCart";
 const CartItem = ({ item }) => {
-  const { quantity, name, image, price, color, size } = item;
+  const { quantity, name, image, price, color, size, productID } = item;
   const { handleDeleteFromCart } = useHandleCart();
   return (
     <>
@@ -13,10 +13,10 @@ const CartItem = ({ item }) => {
         onClick={() => handleDeleteFromCart(item)}>
         <i className="icon_close">X</i>
       </Link>
-      <Link href={"/shop-details"} className="product-image">
+      <Link href={`/product/${productID}`} className="product-image">
         <Image width={600} height={600} src={image} alt="image" />
       </Link>
-      <Link href={"/shop-details"} className="product-name">
+      <Link href={`/product/${productID}`} className="product-name">
         {name}
       </Link>
       <div className="attributes">

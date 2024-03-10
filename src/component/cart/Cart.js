@@ -61,7 +61,7 @@ const Cart = () => {
                     </div>
                   </div>
                   <div className="buttons">
-                    <Link href="/" className="button btn view-cart btn-primary">
+                    <Link href="/cart" className="button btn view-cart btn-primary">
                       View cart
                     </Link>
                     <Link href="/checkout" className="button btn checkout btn-default">

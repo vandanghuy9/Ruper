@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import useCheckoutSubmit from "@hooks/useCheckoutSubmit";
+import { useCheckoutSubmit } from "@context/CheckoutContext";
 import InputText from "@component/form/InputText";
 import Label from "@component/form/Label";
 import Select from "@component/form/Select";
@@ -9,59 +9,7 @@ import { useCart } from "react-use-cart";
 import PaymentBox from "@component/form/PaymentBox";
 import { useState } from "react";
 import ErrorText from "@component/form/ErrorText";
-const countryOption = [
-  { value: "", content: "Select a country / region…" },
-  { value: "AF", content: "Afghanistan" },
-  { value: "AX", content: "Åland Islands" },
-  { value: "AL", content: "Albania" },
-  { value: "DZ", content: "Algeria" },
-  { value: "AS", content: "American Samoa" },
-  { value: "AD", content: "Andorra" },
-];
-const stateOption = [
-  { value: "", content: "Select a state / county…" },
-  { value: "VN", content: "Vinnytsia Oblast" },
-  { value: "VL", content: "Volyn Oblast" },
-  { value: "DP", content: "Dnipropetrovsk Oblast" },
-  { value: "DT", content: "Donetsk Oblast" },
-  { value: "ZT", content: "Zhytomyr Oblast" },
-];
-const shippingOption = [
-  {
-    label: "Free shipping",
-    value: "free_shipping",
-  },
-  {
-    label: "Flat rate",
-    value: "flat_rate",
-  },
-];
-
-const paymentOption = [
-  {
-    label: "Direct bank transfer",
-    value: "bacs",
-    description:
-      "Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.",
-  },
-  {
-    label: "Check payments",
-    value: "cheque",
-    description:
-      "Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.",
-  },
-  {
-    label: "Cash on delivery",
-    value: "cod",
-    description: "Pay with cash upon delivery.",
-  },
-  {
-    label: "PayPal",
-    value: "paypal",
-    description:
-      "Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.",
-  },
-];
+import { countryOption, stateOption, shippingOption, paymentOption } from "@utils/data";
 const Checkout = () => {
   const { register, handleSubmit, errors } = useCheckoutSubmit();
   const { cartTotal } = useCart();

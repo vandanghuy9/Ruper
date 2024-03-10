@@ -7,7 +7,7 @@ import { FaFacebook, FaPinterest, FaTwitter, FaHeart } from "react-icons/fa";
 import { IoIosGitCompare } from "react-icons/io";
 
 const ProductInfo = ({ product }) => {
-  const { price, discount, stocks, description, imageUrl, name } = product;
+  const { price, discount, stocks, description, imageUrl, name, _id } = product;
   let sizes = stocks.map((item) => item.size);
   sizes = sizes.filter((item, index) => sizes.indexOf(item) === index);
   let colors = stocks.map((item) => item.color);
@@ -46,7 +46,7 @@ const ProductInfo = ({ product }) => {
             </del>
           )}
           <ins>
-            <span>${discount > 0 ? (price * discount) / 100 : price}</span>
+            <span>${discount > 0 ? Math.ceil((price * (100 - discount)) / 100) : price}</span>
           </ins>
         </span>
         <div className="rating">

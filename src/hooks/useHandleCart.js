@@ -20,7 +20,18 @@ const useHandleCart = () => {
         quantity: result?.quantity + quantity,
       });
     } else {
-      addItem({ id: productInStock._id, name, image: imageUrl[0], price, color, size }, quantity);
+      addItem(
+        {
+          id: productInStock._id,
+          productID: _id,
+          name,
+          image: imageUrl[0],
+          price: Math.ceil((price * (100 - discount)) / 100),
+          color,
+          size,
+        },
+        quantity
+      );
     }
     toast.success(`${product.name} added to cart successfully`);
     return true;
@@ -29,9 +40,26 @@ const useHandleCart = () => {
     removeItem(product.id);
     toast.success(`${product.name} is removed from cart`);
   };
+
+  const handleUpdateQuantity = (action, id, productQuantity, quantity) => {
+    if (action) {
+      if (action === "INC") {
+        updateItem(id, {
+          quantity: productQuantity + 1,
+        });
+      } else if (action === "DEC") {
+        if (productQuantity > 1) {
+          updateItem(id, {
+            quantity: productQuantity - 1,
+          });
+        }
+      }
+    }
+  };
   return {
     handleAddToCart,
     handleDeleteFromCart,
+    handleUpdateQuantity,
   };
 };
 
