@@ -7,8 +7,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import CartContext from "../context/CartContext";
 import { Barlow_Semi_Condensed } from "next/font/google";
-import { CategoryContext } from "@context/CategoryContext";
+import CookieProvider from "@context/CookieProvider";
 import { CheckoutContext } from "@context/CheckoutContext";
+import { CategoryContext } from "@context/CategoryContext";
+
 export const metadata = {
   title: "Ruper store",
   description: "Welcome to Next.js",
@@ -35,13 +37,15 @@ const RootLayout = ({ children }) => {
           pauseOnHover
           theme="light"
         />
-        <CategoryContext>
-          <CheckoutContext>
-            <CartContext>
-              <Layout>{children}</Layout>
-            </CartContext>
-          </CheckoutContext>
-        </CategoryContext>
+        <CookieProvider>
+          <CategoryContext>
+            <CheckoutContext>
+              <CartContext>
+                <Layout>{children}</Layout>
+              </CartContext>
+            </CheckoutContext>
+          </CategoryContext>
+        </CookieProvider>
       </body>
     </html>
   );

@@ -1,9 +1,7 @@
 import Link from "next/link";
 import FilterBar from "@component/category/FilterBar";
-import SortMenu from "@component/category/SortMenu";
-import ProductListGrid from "@component/category/ProductListGrid";
-import { Suspense } from "react";
-import ProductSkeleton from "@component/skeleton/ProductSkeleton";
+import ProductWithSideBarSection from "@component/category/ProductWithSideBarSection";
+import ProductNoSideBarSection from "@component/category/ProductNoSideBarSection";
 const ShopCategory = ({
   products,
   categoryMenu,
@@ -14,6 +12,8 @@ const ShopCategory = ({
   price,
   heading,
   featureProducts,
+  layout,
+  sidebar,
 }) => {
   return (
     <div id="main-content" className="main-content">
@@ -36,36 +36,54 @@ const ShopCategory = ({
           <div className="section-padding">
             <div className="section-container p-l-r">
               <div className="row">
-                <FilterBar
-                  categoryOption={category}
-                  brandOption={brand}
-                  sizeOption={size}
-                  page={page}
-                  menu={categoryMenu}
-                  priceOption={price}
-                  featureProducts={featureProducts}
-                />
-                <div className="col-xl-9 col-lg-9 col-md-12 col-12">
-                  <div className="products-topbar clearfix">
-                    <div className="products-topbar-left">
-                      <div className="products-count">Showing all {products.length} results</div>
-                    </div>
-                    <div className="products-topbar-right">
-                      <div className="products-sort dropdown">
-                        <span
-                          className="sort-toggle dropdown-toggle"
-                          data-toggle="dropdown"
-                          aria-expanded="true">
-                          Default sorting
-                        </span>
-                        <SortMenu />
-                      </div>
-                    </div>
-                  </div>
-                  <Suspense key={category + page} fallback={<ProductSkeleton />}>
-                    <ProductListGrid showProducts={products} />
-                  </Suspense>
-                </div>
+                {sidebar === "left" && (
+                  <>
+                    <FilterBar
+                      categoryOption={category}
+                      brandOption={brand}
+                      sizeOption={size}
+                      page={page}
+                      menu={categoryMenu}
+                      priceOption={price}
+                      featureProducts={featureProducts}
+                      sidebar={sidebar}
+                    />
+                    <ProductWithSideBarSection
+                      products={products}
+                      category={category}
+                      page={page}
+                      layout={layout}
+                    />
+                  </>
+                )}
+                {sidebar === "right" && (
+                  <>
+                    <ProductWithSideBarSection
+                      products={products}
+                      category={category}
+                      page={page}
+                      layout={layout}
+                    />
+                    <FilterBar
+                      categoryOption={category}
+                      brandOption={brand}
+                      sizeOption={size}
+                      page={page}
+                      menu={categoryMenu}
+                      priceOption={price}
+                      featureProducts={featureProducts}
+                      sidebar={sidebar}
+                    />
+                  </>
+                )}
+                {sidebar === "none" && (
+                  <ProductNoSideBarSection
+                    products={products}
+                    category={category}
+                    page={page}
+                    layout={layout}
+                  />
+                )}
               </div>
             </div>
           </div>

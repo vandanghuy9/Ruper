@@ -21,6 +21,9 @@ const Shop = async ({ params, searchParams }) => {
   const currentPage = searchParams?.currentPage;
   const brand = searchParams?.brand;
   const price = searchParams?.price;
+  const sort = searchParams?.sort;
+  const layout = searchParams?.layout ? searchParams?.layout : "grid";
+  const sidebar = searchParams?.sidebar ? searchParams?.sidebar : "left";
   const currentHeading = menu.find((item) => item.key === category);
   let showProducts = [];
   if (
@@ -28,7 +31,10 @@ const Shop = async ({ params, searchParams }) => {
     size === undefined &&
     currentPage === undefined &&
     brand === undefined &&
-    price === undefined
+    price === undefined &&
+    sort === undefined &&
+    layout === undefined &&
+    sidebar === undefined
   ) {
     showProducts = [...showProducts, ...products];
   } else {
@@ -61,6 +67,13 @@ const Shop = async ({ params, searchParams }) => {
         query = query.concat(`size=${size}`);
       }
     }
+    if (sort) {
+      if (query.length > 0) {
+        query = query.concat(`&sort=${sort}`);
+      } else {
+        query = query.concat(`sort=${sort}`);
+      }
+    }
     showProducts = await getFilterProducts(query);
   }
   const featureProducts = await getFeatureProducts();
@@ -75,6 +88,8 @@ const Shop = async ({ params, searchParams }) => {
       price={price}
       heading={currentHeading ? currentHeading.category : "Bed & Bath"}
       featureProducts={featureProducts}
+      layout={layout}
+      sidebar={sidebar}
     />
   );
 };

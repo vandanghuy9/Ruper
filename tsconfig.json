@@ -33,7 +33,7 @@
         "src/layout/*"
       ],
       "@pages/*": [
-        "src/pages/*"
+        "src/old-pages/*"
       ],
       "@services/*": [
         "src/services/*"

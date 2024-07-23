@@ -13,11 +13,12 @@ const FilterBar = ({
   menu,
   priceOption,
   featureProducts,
+  sidebar,
 }) => {
   const { handleNavigation } = useFilter();
   const [price, setPrice] = useState(0);
   return (
-    <div className="col-xl-3 col-lg-3 col-md-12 col-12 sidebar left-sidebar md-b-50">
+    <div className={`col-xl-3 col-lg-3 col-md-12 col-12 sidebar ${sidebar}-sidebar md-b-50`}>
       <div className="block block-product-cats">
         <div className="block-title">
           <h2>Categories</h2>

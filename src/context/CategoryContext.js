@@ -12,12 +12,18 @@ export const CategoryContext = ({ children }) => {
     const size = searchParams.get("size");
     const brand = searchParams.get("brand");
     const page = searchParams.get("page");
+    const layout = searchParams.get("layout");
+    const sort = searchParams.get("sort");
+    const sidebar = searchParams.get("sidebar");
     const params = new URLSearchParams({
       ...(category && { category }),
       ...(price && { price }),
       ...(size && { size }),
       ...(brand && { brand }),
       ...(page && { page }),
+      ...(layout && { layout }),
+      ...(sort && { sort }),
+      ...(sidebar && { sidebar }),
       ...{ [value.key]: value.value },
     });
     console.log(`${pathname}?${params.toString()}`);

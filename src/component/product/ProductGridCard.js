@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-const ProductCard = ({ product }) => {
+const ProductGridCard = ({ product }) => {
   const { _id, imageUrl, name, price, discount } = product;
   const [index, setIndex] = useState(0);
   return (
@@ -73,4 +73,4 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default ProductGridCard;

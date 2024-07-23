@@ -7408,7 +7408,7 @@ ul.slick-dots li.slick-active button {
   line-height: 34px;
   padding: 0 20px;
 }
-.products-topbar .products-sort .sort-toggle:after {
+/* .products-topbar .products-sort .sort-toggle:after {
   content: "\43";
   font-family: eleganticons;
   font-size: 13px;
@@ -7426,7 +7426,7 @@ ul.slick-dots li.slick-active button {
   transition: all .3s ease;
   transform-origin: 65% 50%;
   color: #000;
-}
+} */
 .products-topbar .products-sort .sort-list {
   min-width: 210px;
   z-index: 9999;
@@ -7441,10 +7441,14 @@ ul.slick-dots li.slick-active button {
   text-transform: capitalize;
   font-weight: 400;
 }
-.products-topbar .products-sort .sort-list li a {
+.products-topbar .products-sort .sort-list li {
   color: #868686;
 }
-.products-topbar .products-sort .sort-list li a:hover {
+.products-topbar .products-sort .sort-list li.active {
+  color: #000;
+}
+
+.products-topbar .products-sort .sort-list li:hover {
   color: #000;
 }
 .products-topbar .layout-toggle {

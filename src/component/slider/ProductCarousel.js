@@ -4,7 +4,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/bundle";
 import { useState } from "react";
-import ProductCard from "../product/Product";
+import ProductGridCard from "../product/ProductGridCard";
 const ProductCarousel = ({ productSet }) => {
   const [products, setProducts] = useState(productSet);
   return (
@@ -15,13 +15,12 @@ const ProductCarousel = ({ productSet }) => {
         loop={true}
         navigation
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
+        className="mySwiper">
         {products?.map((product, index) => (
           <SwiperSlide key={index}>
             <div className="item-product slick-slide">
               <div className="items">
-                <ProductCard key={index} product={product} />
+                <ProductGridCard key={index} product={product} />
               </div>
             </div>
           </SwiperSlide>

@@ -1,7 +1,6 @@
 import { useCart } from "react-use-cart";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
-
+import { successNoti, errorNoti } from "@utils/notification/notification";
 const useHandleCart = () => {
   const { addItem, items, updateItem, totalUniqueItems, removeItem } = useCart();
   const handleAddToCart = (product, quantity, attributes) => {
@@ -9,11 +8,10 @@ const useHandleCart = () => {
     const { color, size } = attributes;
     const productInStock = stocks.find((i) => i.color === color && i.size === size);
     if (!productInStock) {
-      toast.error("This variety is out of stock");
+      errorNoti("This variety is out of stock");
       return false;
     }
     const result = items.find((i) => i.id === productInStock._id);
-    console.log(result);
     if (result) {
       console.log("old product");
       updateItem(result.id, {
@@ -33,12 +31,12 @@ const useHandleCart = () => {
         quantity
       );
     }
-    toast.success(`${product.name} added to cart successfully`);
+    successNoti(`${product.name} added to cart successfully`);
     return true;
   };
   const handleDeleteFromCart = (product) => {
     removeItem(product.id);
-    toast.success(`${product.name} is removed from cart`);
+    successNoti(`${product.name} is removed from cart`);
   };
 
   const handleUpdateQuantity = (action, id, productQuantity, quantity) => {

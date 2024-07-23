@@ -1,52 +1,27 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import dynamic from "next/dynamic";
+import SignIn from "@component/modal/SignIn";
+import Register from "@component/modal/Register";
+import { useAuth } from "@context/UserContext";
+import { sampleProductId } from "@utils/data";
 const Cart = dynamic(() => import("../../component/cart/Cart"), { ssr: false });
 
 const NavBarDesktop = () => {
-  const [isLoginActive, setIsLoginActive] = useState(false);
-  const [isRegisterActive, setIsRegisterActive] = useState(false);
-  const [isFormActive, setIsFormActive] = useState(false);
-  const [signIn, setSignIn] = useState({
-    username: "",
-    password: "",
-    rememberme: 0,
-  });
-  const [register, setRegister] = useState({
-    email: "",
-    password: "",
-  });
-  const handleFormActive = (e) => {
-    e.preventDefault();
-    setIsFormActive(!isFormActive);
-    setIsRegisterActive(false);
-    setIsLoginActive(false);
-  };
-  const handleLoginActive = (e) => {
-    e.preventDefault();
-    setIsRegisterActive(!isRegisterActive);
-    setIsLoginActive(!isLoginActive);
-  };
-  const handleRegisterActive = (e) => {
-    e.preventDefault();
-    setIsLoginActive(!isLoginActive);
-    setIsRegisterActive(!isRegisterActive);
-  };
-  const handleSignInFormChange = (e) => {
-    setSignIn((prevSignIn) => ({
-      ...prevSignIn,
-      [e.target.name]: e.target.value,
-    }));
-  };
-  const handleRegisterFormChange = (e) => {
-    setRegister((prevRegister) => ({
-      ...prevRegister,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  const {
+    isLoginActive,
+    isRegisterActive,
+    isFormActive,
+    handleFormActive,
+    handleLoginActive,
+    handleRegisterActive,
+    isUserLogin,
+    getUserName,
+  } = useAuth();
+  const isLogin = isUserLogin();
+  const userName = getUserName();
   return (
     <div
       className="header-desktop"
@@ -171,37 +146,37 @@ const NavBarDesktop = () => {
                         </div>
                       </li>
                       <li className="level-0 menu-item menu-item-has-children">
-                        <Link href={"/"}>
+                        <Link href={"/shop"}>
                           <span className="menu-item-text">Shop</span>
                         </Link>
                         <ul className="sub-menu">
                           <li className="level-1 menu-item menu-item-has-children">
-                            <Link href={"/"}>
+                            <Link href={"/shop"}>
                               <span className="menu-item-text">Shop - Products</span>
                             </Link>
                             <ul className="sub-menu">
                               <li>
-                                <Link href={"/"}>
+                                <Link href={"/shop?layout=grid&sidebar=left"}>
                                   <span className="menu-item-text">Shop Grid - Left Sidebar</span>
                                 </Link>
                               </li>
                               <li>
-                                <Link href={"/"}>
+                                <Link href={"/shop?layout=list&sidebar=left"}>
                                   <span className="menu-item-text">Shop List - Left Sidebar</span>
                                 </Link>
                               </li>
                               <li>
-                                <Link href={"/"}>
+                                <Link href={"/shop?layout=grid&sidebar=right"}>
                                   <span className="menu-item-text">Shop Grid - Right Sidebar</span>
                                 </Link>
                               </li>
                               <li>
-                                <Link href={"/"}>
+                                <Link href={"/shop?layout=list&sidebar=right"}>
                                   <span className="menu-item-text">Shop List - Right Sidebar</span>
                                 </Link>
                               </li>
                               <li>
-                                <Link href={"/"}>
+                                <Link href={"/shop?layout=grid&sidebar=none"}>
                                   <span className="menu-item-text">Shop Grid - No Sidebar</span>
                                 </Link>
                               </li>
@@ -209,22 +184,22 @@ const NavBarDesktop = () => {
                           </li>{" "}
                           {/*1 */}
                           <li>
-                            <Link href={"/"}>
+                            <Link href={`/product/${sampleProductId}`}>
                               <span className="menu-item-text">Shop Details</span>
                             </Link>
                           </li>
                           <li>
-                            <Link href={"/"}>
+                            <Link href={"/cart"}>
                               <span className="menu-item-text">Shop - Cart</span>
                             </Link>
                           </li>
                           <li>
-                            <Link href={"/"}>
+                            <Link href={"/checkout"}>
                               <span className="menu-item-text">Shop - Checkout</span>
                             </Link>
                           </li>
                           <li>
-                            <Link href={"/"}>
+                            <Link href={"/wishlist"}>
                               <span className="menu-item-text">Shop - Wishlist</span>
                             </Link>
                           </li>
@@ -430,123 +405,36 @@ const NavBarDesktop = () => {
               </div>
               <div className="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 header-right">
                 <div className="header-page-link">
-                  <div className="login-header">
-                    <button className="active-login" onClick={handleFormActive}>
-                      Login
-                    </button>
-                    <div
-                      className={
-                        isFormActive ? "form-login-register active" : "form-login-register"
-                      }>
-                      <div className="box-form-login">
-                        <div className="active-login" onClick={handleFormActive}></div>
-                        <div className="box-content">
-                          <div className={!isRegisterActive ? "form-login active" : "form-login"}>
-                            <form action="submit">
-                              <h2>Sign in</h2>
-                              <div className="content">
-                                <div className="username">
-                                  <input
-                                    type="text"
-                                    required="required"
-                                    className="input-text"
-                                    name="username"
-                                    id="username"
-                                    placeholder="Your name"
-                                    value={signIn.username}
-                                    onChange={handleSignInFormChange}
-                                  />
-                                </div>
-                                <div className="password">
-                                  <input
-                                    className="input-text"
-                                    required="required"
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="Password"
-                                    value={signIn.password}
-                                    onChange={handleSignInFormChange}
-                                  />
-                                </div>
-                                <div className="rememberme-lost">
-                                  <div className="rememberme">
-                                    <input
-                                      name="rememberme"
-                                      type="checkbox"
-                                      id="rememberme"
-                                      value={signIn.rememberme}
-                                      onChange={handleSignInFormChange}
-                                    />
-                                    <label htmlFor="rememberme" className="inline">
-                                      Remember me
-                                    </label>
-                                  </div>
-                                  <div className="lost_password">
-                                    <Link href="forgot-password.html">Lost your password?</Link>
-                                  </div>
-                                </div>
-                                <div className="button-login">
-                                  <input
-                                    type="submit"
-                                    className="button"
-                                    name="login"
-                                    value="Login"
-                                  />
-                                </div>
-                                <div
-                                  className="button-next-reregister"
-                                  onClick={handleRegisterActive}>
-                                  Create An Account
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                          <div
-                            className={isRegisterActive ? "form-register active" : "form-register"}>
-                            <form action="submit" className="register">
-                              <h2>REGISTER</h2>
-                              <div className="content">
-                                <div className="email">
-                                  <input
-                                    type="email"
-                                    className="input-text"
-                                    placeholder="Email"
-                                    name="email"
-                                    id="reg_email"
-                                    value={register.email}
-                                    onChange={handleRegisterFormChange}
-                                  />
-                                </div>
-                                <div className="password">
-                                  <input
-                                    type="password"
-                                    className="input-text"
-                                    placeholder="Password"
-                                    name="password"
-                                    id="reg_password"
-                                    value={register.password}
-                                    onChange={handleRegisterFormChange}
-                                  />
-                                </div>
-                                <div className="button-register">
-                                  <input
-                                    type="submit"
-                                    className="button"
-                                    name="register"
-                                    value="Register"
-                                  />
-                                </div>
-                                <div className="button-next-login" onClick={handleLoginActive}>
-                                  Already has an account
-                                </div>
-                              </div>
-                            </form>
+                  {isLogin ? (
+                    <Link className="lh-1 fw-bold fs-2" href={"/user/dashboard"}>
+                      {userName[0]}
+                    </Link>
+                  ) : (
+                    <div className="login-header">
+                      <button className="active-login" onClick={handleFormActive}>
+                        Login
+                      </button>
+                      <div
+                        className={
+                          isFormActive ? "form-login-register active" : "form-login-register"
+                        }>
+                        <div className="box-form-login">
+                          <div className="active-login" onClick={handleFormActive}></div>
+                          <div className="box-content">
+                            <SignIn
+                              isRegisterActive={isRegisterActive}
+                              handleRegisterActive={handleRegisterActive}
+                              handleFormActive={handleFormActive}
+                            />
+                            <Register
+                              isRegisterActive={isRegisterActive}
+                              handleLoginActive={handleLoginActive}
+                            />
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                   {/* Search */}
                   <div className="search-box">
                     <div className="search-toggle">

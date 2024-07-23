@@ -3,6 +3,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { TfiWallet } from "react-icons/tfi";
 import { MdSupportAgent } from "react-icons/md";
 import { FaTwitter, FaInstagram, FaDribbble, FaBehance } from "react-icons/fa";
+const sampleProductId = "66018b56cd25b4bf5fc20170";
 const slides = [
   {
     image: "/slider/1.jpg",
@@ -39,14 +40,14 @@ const slides = [
 const firstBanner = [
   {
     imageSrc: "/banner/product-cat-1.jpg",
-    link: "/shop",
+    link: "/shop?category=FURNITURE",
     buttonText: "Furniture",
     imgWidth: 571,
     imgHeight: 622,
   },
   {
     imageSrc: "/banner/product-cat-2.jpg",
-    link: "/shop",
+    link: "/shop?category=LIGHTING",
     buttonText: "Lighting",
     imgWidth: 406,
     imgHeight: 304,
@@ -305,4 +306,5 @@ export {
   stateOption,
   shippingOption,
   paymentOption,
+  sampleProductId,
 };
