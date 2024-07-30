@@ -1,7 +1,7 @@
-import ProductServices from "../services/productService";
+import { getShowProduct } from "../services/productService";
 import HomePage from "./home-page";
 const Page = async () => {
-  const products = await ProductServices.getShowProduct();
+  const products = await getShowProduct();
   return <HomePage products={products}></HomePage>;
 };
 

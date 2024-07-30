@@ -1,5 +1,5 @@
 "use server";
-import UserService from "@services/userService";
+import { login, register } from "@services/userService";
 import { cookies } from "next/headers";
 const cookieTimeOut = 0.5;
 export default async function handleLogin(formData) {
@@ -9,7 +9,7 @@ export default async function handleLogin(formData) {
     password: formData.get("password"),
     rememberme: formData.get("rememberme"),
   };
-  const res = await UserService.login({
+  const res = await login({
     username: rawFormData.username,
     password: rawFormData.password,
   });
@@ -23,7 +23,8 @@ export default async function handleLogin(formData) {
       const userEmail = cookieStore.set("userEmail", userInfor?.email);
     }
     const accessToken = cookieStore.set("accessToken", token);
-    return userInfor;
+    const wishlist = userInfor?.wishlist;
+    return { userInfor, wishlist };
   }
 }
 

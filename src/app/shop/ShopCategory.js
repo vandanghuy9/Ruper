@@ -14,6 +14,7 @@ const ShopCategory = ({
   featureProducts,
   layout,
   sidebar,
+  totalPages,
 }) => {
   return (
     <div id="main-content" className="main-content">
@@ -50,9 +51,8 @@ const ShopCategory = ({
                     />
                     <ProductWithSideBarSection
                       products={products}
-                      category={category}
-                      page={page}
                       layout={layout}
+                      totalPages={totalPages}
                     />
                   </>
                 )}
@@ -60,9 +60,8 @@ const ShopCategory = ({
                   <>
                     <ProductWithSideBarSection
                       products={products}
-                      category={category}
-                      page={page}
                       layout={layout}
+                      totalPages={totalPages}
                     />
                     <FilterBar
                       categoryOption={category}
@@ -77,12 +76,7 @@ const ShopCategory = ({
                   </>
                 )}
                 {sidebar === "none" && (
-                  <ProductNoSideBarSection
-                    products={products}
-                    category={category}
-                    page={page}
-                    layout={layout}
-                  />
+                  <ProductNoSideBarSection products={products} layout={layout} />
                 )}
               </div>
             </div>

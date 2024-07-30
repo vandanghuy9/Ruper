@@ -3,16 +3,19 @@ import { useState } from "react";
 import Link from "next/link";
 import handleLogin from "../../authentication/handleAuth";
 import { useAuth } from "@context/UserContext";
+import { useShopProduct } from "@context/ShopProductContext";
 import ErrorText from "@component/form/ErrorText";
 export default function Signin({ isRegisterActive, handleRegisterActive, handleFormActive }) {
   const [error, setError] = useState("");
   const { login, handleLoginError } = useAuth();
+  const { handleSetWishList } = useShopProduct();
   const onLogin = async (formData) => {
-    const userInfor = await handleLogin(formData);
+    const { userInfor, wishlist } = await handleLogin(formData);
     if (userInfor.status === 401) {
       return setError(userInfor.message);
     }
-    return login(userInfor);
+    login(userInfor);
+    return handleSetWishList(wishlist);
   };
   return (
     <div className={!isRegisterActive ? "form-login active" : "form-login"}>

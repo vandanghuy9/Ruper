@@ -17,6 +17,8 @@ export const UserContext = ({ userInfor, children }) => {
   const [isLoginActive, setIsLoginActive] = useState(true);
   const [isRegisterActive, setIsRegisterActive] = useState(false);
   const [isFormActive, setIsFormActive] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialUser);
+
   const handleFormActive = (e) => {
     setIsFormActive(!isFormActive);
     setIsRegisterActive(false);
@@ -32,10 +34,9 @@ export const UserContext = ({ userInfor, children }) => {
     setIsLoginActive(!isLoginActive);
     setIsRegisterActive(!isRegisterActive);
   };
-  const [state, dispatch] = useReducer(reducer, initialUser);
-  const isUserLogin = () => state.userInfor._id !== null;
+  const isUserLogin = () => state?.userInfor?._id !== null;
   const getUserName = () => {
-    return state.userInfor.name;
+    return state?.userInfor?.name;
   };
   const login = (userInfor) => {
     dispatch({ type: "LOGIN", payload: userInfor });

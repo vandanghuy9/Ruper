@@ -4,7 +4,7 @@ import { LayoutToggleMenu } from "@component/category/LayoutToggleMenu";
 import SortMenu from "@component/category/SortMenu";
 import { ProductList } from "@component/category/ProductList";
 import ProductSkeleton from "@component/skeleton/ProductSkeleton";
-const ProductNoSidebarSection = ({ products, category, page, layout }) => {
+const ProductNoSidebarSection = ({ products, layout }) => {
   return (
     <div className="col-xl-12 col-lg-12 col-md-12 col-12">
       <div className="products-topbar clearfix">
@@ -17,7 +17,7 @@ const ProductNoSidebarSection = ({ products, category, page, layout }) => {
         </div>
       </div>
       <div className="tab-content">
-        <Suspense key={category + page} fallback={<ProductSkeleton />}>
+        <Suspense key={layout} fallback={<ProductSkeleton />}>
           {layout === "grid" ? (
             <div className="tab-content">
               <div className="tab-pane fade show active" id="layout-grid" role="tabpanel">
