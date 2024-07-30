@@ -56,7 +56,7 @@ const SortMenu = () => {
           <li
             key={id}
             value={value}
-            className={currentOption.value === value && "active"}
+            className={currentOption.value === value ? "active" : ""}
             onClick={(e) => {
               handleSelect(value);
             }}>

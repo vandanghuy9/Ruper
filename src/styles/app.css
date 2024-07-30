@@ -1269,7 +1269,7 @@ ul.slick-dots li.slick-active button {
   display: inline-block;
   margin: 0 3px;
 }
-.pagination ul li span,
+
 .pagination ul li a {
   display: table-cell;
   padding: 0;
@@ -1288,7 +1288,7 @@ ul.slick-dots li.slick-active button {
   text-transform: uppercase;
 }
 .pagination ul li a:hover,
-.pagination ul li span.current {
+.pagination ul li a.current {
   color: #fff;
   background: #000;
   border-color: #000;
@@ -1302,7 +1302,7 @@ ul.slick-dots li.slick-active button {
 .pagination ul li a.next:hover {
   color: #fff;
 }
-.pagination ul li a.prev:before,
+/* .pagination ul li a.prev:before,
 .pagination ul li a.next:before {
   font-size: 20px;
   font-family: eleganticons;
@@ -1312,7 +1312,7 @@ ul.slick-dots li.slick-active button {
 }
 .pagination ul li a.next:before {
   content: "\35";
-}
+} */
 .back-top {
   width: 40px;
   height: 40px;
@@ -7566,7 +7566,7 @@ ul.slick-dots li.slick-active button {
   vertical-align: top;
 }
 .products-list.grid .product-wapper .products-thumb:before {
-  content: "";
+  /* content: ""; */
   display: block;
   position: absolute;
   left: -150px;
@@ -7705,7 +7705,7 @@ ul.slick-dots li.slick-active button {
   white-space: nowrap;
   margin-top: 0;
   border: 0;
-  color: #fff;
+  color: #000;
   width: 40px;
   height: 40px;
   padding: 0;
@@ -7716,10 +7716,11 @@ ul.slick-dots li.slick-active button {
 .products-list.grid .product-wapper .products-thumb .product-button .product-btn:hover {
   background: #000;
   border-color: #000;
+  color: #fff;
 }
 .products-list.grid .product-wapper .products-thumb .product-button .product-btn:before {
-  content: "\e900";
-  font-family: icomoon;
+  /* content: "\e900";
+  font-family: icomoon; */
   font-size: 16px;
   line-height: 40px;
   color: #000;
@@ -7767,23 +7768,23 @@ ul.slick-dots li.slick-active button {
   color: #fff;
 }
 .products-list.grid .product-wapper .products-thumb .product-button .btn-add-to-cart .product-btn:before {
-  content: "\e901";
+  /* content: "\e901"; */
   top: 0;
   margin: 0;
 }
 .products-list.grid .product-wapper .products-thumb .product-button .btn-add-to-cart .product-btn.loading:before {
-  content: "";
+  /* content: ""; */
   margin-top: 11px;
 }
 .products-list.grid .product-wapper .products-thumb .product-button .btn-add-to-cart .added-to-cart:before {
-  content: "\4e";
-  font-family: ElegantIcons;
+  /* content: "\4e"; */
+  /* font-family: ElegantIcons; */
 }
 .products-list.grid .product-wapper .products-thumb .product-button .btn-compare .product-btn:before {
-  content: "\e90f";
+  /* content: "\e90f"; */
 }
 .products-list.grid .product-wapper .products-thumb .product-button .btn-compare .product-btn.adding:before {
-  content: "";
+  /* content: ""; */
 }
 .products-list.grid .product-wapper .products-thumb .product-button > :after {
   top: -5px;
@@ -7940,8 +7941,8 @@ ul.slick-dots li.slick-active button {
   color: #fff;
 }
 .products-list.grid .product-wapper .btn-add-to-cart a:before {
-  content: "\e901";
-  font-family: icomoon;
+  /* content: "\e901";
+  font-family: icomoon; */
   font-size: 20px;
   line-height: 30px;
   color: #a9a8a8;
@@ -7982,8 +7983,8 @@ ul.slick-dots li.slick-active button {
   display: none;
 }
 .products-list.grid .product-wapper .btn-add-to-cart a.added-to-cart:before {
-  content: "\4e";
-  font-family: ElegantIcons;
+  /* content: "\4e";
+  font-family: ElegantIcons; */
   text-indent: 0;
   text-transform: none;
 }
@@ -8139,7 +8140,7 @@ ul.slick-dots li.slick-active button {
 .products-list.list .product-wapper .products-content .btn-add-to-cart a.loading:before {
   position: relative;
   display: inline-block;
-  content: "";
+  /* content: ""; */
   border: 2px solid #a9a8a8;
   border-top-color: #000;
   width: 18px;
@@ -8160,8 +8161,8 @@ ul.slick-dots li.slick-active button {
   display: none;
 }
 .products-list.list .product-wapper .products-content .btn-add-to-cart a.added-to-cart:before {
-  content: "\4e";
-  font-family: ElegantIcons;
+  /* content: "\4e";
+  font-family: ElegantIcons; */
   margin-right: 5px;
   vertical-align: bottom;
 }
@@ -8625,7 +8626,7 @@ ul.slick-dots li.slick-active button {
 .shop-details .buttons .add-to-cart-wrap .btn-add-to-cart a.loading:before {
   position: relative;
   display: inline-block;
-  content: "";
+  /* content: ""; */
   border: 2px solid #a9a8a8;
   border-top-color: #000;
   width: 18px;
@@ -8646,8 +8647,8 @@ ul.slick-dots li.slick-active button {
   display: none;
 }
 .shop-details .buttons .add-to-cart-wrap .btn-add-to-cart a.added-to-cart:before {
-  content: "\4e";
-  font-family: ElegantIcons;
+  /* content: "\4e";
+  font-family: ElegantIcons; */
   margin-right: 5px;
   vertical-align: bottom;
 }

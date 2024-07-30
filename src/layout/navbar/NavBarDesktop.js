@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
@@ -6,6 +7,7 @@ import dynamic from "next/dynamic";
 import SignIn from "@component/modal/SignIn";
 import Register from "@component/modal/Register";
 import { useAuth } from "@context/UserContext";
+import { useShopProduct } from "@context/ShopProductContext";
 import { sampleProductId } from "@utils/data";
 const Cart = dynamic(() => import("../../component/cart/Cart"), { ssr: false });
 
@@ -20,6 +22,7 @@ const NavBarDesktop = () => {
     isUserLogin,
     getUserName,
   } = useAuth();
+  const { wishlist, handleSetWishList, wishListAdded } = useShopProduct();
   const isLogin = isUserLogin();
   const userName = getUserName();
   return (
@@ -34,7 +37,7 @@ const NavBarDesktop = () => {
               <div className="col-xl-3 col-lg-2 col-md-12 col-sm-12 col-12 header-left">
                 <div className="site-logo">
                   <Link href={"/"}>
-                    <img
+                    <Image
                       width={400}
                       height={79}
                       src="/logo.png"
@@ -445,7 +448,7 @@ const NavBarDesktop = () => {
                   <div className="wishlist-box">
                     <Link href={"/"}>
                       <AiOutlineHeart color="black" size={30} />
-                      <span className="count-wishlist">1</span>
+                      {isLogin && <span className="count-wishlist">{wishlist?.length}</span>}
                     </Link>
                   </div>
                   {/* cart */}

@@ -10,7 +10,8 @@ import { Barlow_Semi_Condensed } from "next/font/google";
 import CookieProvider from "@context/CookieProvider";
 import { CheckoutContext } from "@context/CheckoutContext";
 import { CategoryContext } from "@context/CategoryContext";
-
+import ShopProductContext from "@context/ShopProductContext";
+import { UserContext } from "@context/UserContext";
 export const metadata = {
   title: "Ruper store",
   description: "Welcome to Next.js",
@@ -37,15 +38,17 @@ const RootLayout = ({ children }) => {
           pauseOnHover
           theme="light"
         />
-        <CookieProvider>
-          <CategoryContext>
-            <CheckoutContext>
-              <CartContext>
-                <Layout>{children}</Layout>
-              </CartContext>
-            </CheckoutContext>
-          </CategoryContext>
-        </CookieProvider>
+        <ShopProductContext>
+          <CookieProvider>
+            <CategoryContext>
+              <CheckoutContext>
+                <CartContext>
+                  <Layout>{children}</Layout>
+                </CartContext>
+              </CheckoutContext>
+            </CategoryContext>
+          </CookieProvider>
+        </ShopProductContext>
       </body>
     </html>
   );

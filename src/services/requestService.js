@@ -3,7 +3,6 @@ import "server-only";
 import dotenv from "dotenv";
 import axios from "axios";
 dotenv.config();
-
 // export async function bearerAuth() {
 //   const COOKIES = cookies();
 //   const token = COOKIES.has("accessToken") ? COOKIES.get("accessToken").value : "";
@@ -16,7 +15,7 @@ export const sendGetRequest = async (url, config) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      authorization: config?.token,
+      authorization: config?.token && `Bearer ${config?.token}`,
     },
   });
   const result = await instance
@@ -35,7 +34,7 @@ export const sendPostRequest = async (url, body, headers = null) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      authorization: headers?.token,
+      authorization: headers?.token && `Bearer ${headers?.token}`,
     },
   });
   const result = await instance.post(url, body).then((res) => res.data);

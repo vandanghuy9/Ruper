@@ -2,9 +2,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { IoBagOutline, IoHeartOutline, IoShuffleOutline, IoSearchOutline } from "react-icons/io5";
+import { useShopProduct } from "@context/ShopProductContext";
+import { useAuth } from "@context/UserContext";
 const ProductGridCard = ({ product }) => {
   const { _id, imageUrl, name, price, discount } = product;
   const [index, setIndex] = useState(0);
+  const { wishListAdded, handleAddToWishList } = useShopProduct();
+  const { isUserLogin, handleLoginActive, handleFormActive } = useAuth();
+  const onAddToWishList = (product) => {
+    if (isUserLogin() === false) {
+      return handleFormActive();
+    }
+    handleAddToWishList(_id);
+  };
   return (
     <div className="products-entry clearfix product-wapper">
       <div className="products-thumb">
@@ -27,21 +38,34 @@ const ProductGridCard = ({ product }) => {
         </div>
         <div className="product-button">
           <div className="btn-add-to-cart" data-title="Add to cart">
-            <div className="product-btn button">Add to cart</div>
+            <button type="button" className="product-btn button">
+              <IoBagOutline size={20} />
+              Add to cart
+            </button>
           </div>
-          <div className="btn-wishlist" data-title="Wishlist">
-            <button type="button" className="product-btn">
+          <div
+            className={`btn-wishlist ${wishListAdded === true ? "added" : ""}`}
+            data-title="Wishlist">
+            <button
+              type="button"
+              className="product-btn"
+              onClick={() => {
+                onAddToWishList(product);
+              }}>
+              <IoHeartOutline size={20} />
               Add to wishlist
             </button>
           </div>
           <div className="btn-compare" data-title="Compare">
             <button type="button" className="product-btn">
+              <IoShuffleOutline size={20} />
               Compare
             </button>
           </div>
           <span className="product-quickview" data-title="Quick View">
             <div className="quickview quickview-button">
               <button type="button" className="product-btn">
+                <IoSearchOutline size={20} />
                 Quick View
               </button>
             </div>
