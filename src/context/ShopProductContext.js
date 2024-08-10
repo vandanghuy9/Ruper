@@ -1,20 +1,39 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect, use } from "react";
-import { addToWishList, fetchUserWishList } from "@services/userService";
+import { addToWishList, removeFromWishList } from "@services/userService";
 import { successNoti, errorNoti } from "@utils/notification/notification";
 import { useAuth } from "./UserContext";
 const Context = createContext();
 const ShopProductContext = ({ children }) => {
-  const [wishlist, setWishList] = useState([]);
+  const [wishList, setWishList] = useState([]);
+  const [comparePopUpActive, setComparePopUpActive] = useState(false);
   const [toggle, setToggle] = useState([]);
   const [wishListAdded, setWishListAdded] = useState(false);
+  const [currentCompareProduct, setCurrentCompareProduct] = useState("");
+  const [quickViewPopUpActive, setQuickViewPopUpActive] = useState(false);
+  const [currentQuickViewProduct, setCurrentQuickViewProduct] = useState("");
   const handleAddToWishList = async (productId) => {
     addToWishList(productId).then((res) => {
       successNoti(res?.message);
-      setWishListAdded(true);
+      setWishListAdded((prevWishListAdded) => !prevWishListAdded);
       setToggle(true);
     });
   };
+  const handleRemoveFromWishList = async (productId) => {
+    removeFromWishList(productId).then((res) => {
+      successNoti(res?.message);
+      setWishListAdded((prevWishListAdded) => !prevWishListAdded);
+    });
+  };
+  const handleCloseComparePopUp = () => {
+    setComparePopUpActive((prevComparePopUpActive) => !prevComparePopUpActive);
+  };
+
+  const handleOpenComparePopUp = (productId) => {
+    setCurrentCompareProduct(productId);
+    setComparePopUpActive((prevComparePopUpActive) => !prevComparePopUpActive);
+  };
+
   const handleCloseWishList = () => {
     return setToggle((prevToggle) => !prevToggle);
   };
@@ -22,6 +41,20 @@ const ShopProductContext = ({ children }) => {
   const handleSetWishList = (wishlist) => {
     setWishList(wishlist);
   };
+
+  const getProductInWishList = (productId) => {
+    return wishList.find((item) => item.product._id === productId) !== undefined;
+  };
+
+  const handleOpenQuickViewPopUp = (productId) => {
+    setCurrentQuickViewProduct(productId);
+    setQuickViewPopUpActive((prevQuickViewPopUpActive) => !prevQuickViewPopUpActive);
+  };
+
+  const handleCloseQuickViewPopUp = () => {
+    setQuickViewPopUpActive((prevQuickViewPopUpActive) => !prevQuickViewPopUpActive);
+  };
+
   return (
     <Context.Provider
       value={{
@@ -29,8 +62,18 @@ const ShopProductContext = ({ children }) => {
         handleAddToWishList,
         wishListAdded,
         handleCloseWishList,
-        wishlist,
+        wishList,
         handleSetWishList,
+        handleRemoveFromWishList,
+        getProductInWishList,
+        handleCloseComparePopUp,
+        handleOpenComparePopUp,
+        handleOpenQuickViewPopUp,
+        handleCloseQuickViewPopUp,
+        currentCompareProduct,
+        currentQuickViewProduct,
+        comparePopUpActive,
+        quickViewPopUpActive,
       }}>
       {children}
     </Context.Provider>

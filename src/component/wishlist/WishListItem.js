@@ -1,19 +1,26 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useShopProduct } from "@context/ShopProductContext";
 const WishListItem = ({ product }) => {
-  console.log(product);
   const { _id, imageUrl, name, price, discount } = product.product;
   const date = product.date;
   const productDetailURL = `/product/${_id}`;
+  const { handleRemoveFromWishList } = useShopProduct();
   return (
     <>
       <tr className="wishlist-item">
         <td className="wishlist-item-remove">
-          <span></span>
+          <span
+            type="button"
+            onClick={() => {
+              handleRemoveFromWishList(_id);
+            }}>
+            x
+          </span>
         </td>
         <td className="wishlist-item-image">
-          <Link href="shop-details.html">
+          <Link href={`/product/${_id}`}>
             <Image width="600" height="600" src={imageUrl[0]} alt="product" />
           </Link>
         </td>

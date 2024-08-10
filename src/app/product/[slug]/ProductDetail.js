@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import ProductInfo from "../../../component/product/ProductInfo";
-import ProductTab from "../../../component/product-tab/ProductTab";
+import ProductInfo from "@component/product/ProductInfo";
+import ProductTab from "@component/product-tab/ProductTab";
 import ProductCarousel from "@component/slider/ProductCarousel";
 const ProductDetail = ({ product, relatedProducts }) => {
   return (
@@ -22,6 +22,7 @@ const ProductDetail = ({ product, relatedProducts }) => {
               </div>
             </div>
           </div>
+
           <div id="content" className="site-content" role="main">
             <div className="shop-details zoom">
               <div className="product-top-info">

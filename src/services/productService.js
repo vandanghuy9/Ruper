@@ -1,24 +1,6 @@
 "use server";
+import "server-only";
 import { sendGetRequest } from "./requestService";
-// const ProductServices = {
-//   getShowProduct() {
-//     return sendGetRequest("/products/show");
-//   },
-//   getProductById(id) {
-//     return sendGetRequest(`/products/${id}`);
-//   },
-//   getRelatedProducts(id) {
-//     return sendGetRequest(`/products/related/${id}`);
-//   },
-//   getProductsByCategory(query) {
-//     return sendGetRequest(`/products/filter?${query}`);
-//   },
-
-//   getFeatureProducts() {
-//     return sendGetRequest(`/products/feature`);
-//   },
-// };
-
 const getShowProduct = async () => {
   return sendGetRequest("/products/show");
 };
@@ -36,7 +18,10 @@ const getProductsByCategory = async (query) => {
 const getFeatureProducts = async () => {
   return sendGetRequest(`/products/feature`);
 };
-// export default ProductServices;
+
+const getCompareProducts = async (product) => {
+  return sendGetRequest(`/products/compare?product=${product}`);
+};
 
 export {
   getShowProduct,
@@ -44,4 +29,5 @@ export {
   getRelatedProducts,
   getProductsByCategory,
   getFeatureProducts,
+  getCompareProducts,
 };

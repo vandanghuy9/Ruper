@@ -30,9 +30,9 @@ const Slider = () => {
         modules={[Autoplay, Pagination]}
         className="mySwiper">
         {slides.map((slide, index) => (
-          <div className="item-product slick-slide">
+          <div className="item-product slick-slide" key={slide.title}>
             <div className="items">
-              <SwiperSlide key={index}>
+              <SwiperSlide>
                 <div className="item-content">
                   <div className="content-image">
                     <Image width={1920} height={1080} src={slide.image} alt="Image Slider"></Image>

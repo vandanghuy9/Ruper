@@ -1062,13 +1062,13 @@ ul.slick-dots li.slick-active button {
   font-size: 12px;
 }
 .star-rating:before {
-  content: "\e904\e904\e904\e904\e904";
-  color: #e1e1e1;
+  /* content: "\e904\e904\e904\e904\e904";
+  color: #e1e1e1; 
   float: left;
   top: 0;
   left: 0;
   position: absolute;
-  letter-spacing: 6px;
+  letter-spacing: 6px;*/
 }
 .star-rating span {
   overflow: hidden;
@@ -1079,11 +1079,11 @@ ul.slick-dots li.slick-active button {
   padding-top: 1.5em;
 }
 .star-rating span:before {
-  content: "\e904\e904\e904\e904\e904";
+  /* content: "\e904\e904\e904\e904\e904"; */
   top: 0;
   position: absolute;
   left: 0;
-  color: #fcad02;
+  /* color: #fcad02; */
   letter-spacing: 6px;
 }
 .quantity {
@@ -2144,14 +2144,15 @@ ul.slick-dots li.slick-active button {
   margin-left: 19px;
   vertical-align: middle;
 }
-.site-header .header-page-link .login-header > a {
+.site-header .header-page-link .login-header > button {
   position: relative;
   top: 0;
   text-transform: uppercase;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
-  padding-right: 40px;
+  padding-right: 20px;
   letter-spacing: 2px;
+  background-color: transparent;
 }
 .site-header.color-white .header-page-link .login-header > a {
   color: #fff;
@@ -2221,13 +2222,13 @@ ul.slick-dots li.slick-active button {
   cursor: pointer;
   width: 28px;
   height: 28px;
-  border-radius: 50%;
+  border-radius: 50%; 
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border: 1px solid #e5e5e5;
-  background: #fff;
+  background: #fff; 
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   border-bottom-color: transparent;
@@ -2532,6 +2533,7 @@ ul.slick-dots li.slick-active button {
 }
 .site-header .header-page-link .mini-cart .cart-icon {
   position: relative;
+  background-color: transparent;
 }
 .site-header.color-white .header-page-link .mini-cart .cart-icon {
   color: #fff;
@@ -3161,6 +3163,7 @@ ul.slick-dots li.slick-active button {
   top: 0;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
+  background-color: transparent;
 }
 .site-header .header-page-link .wishlist-box:hover {
   color: #000;
@@ -3168,6 +3171,10 @@ ul.slick-dots li.slick-active button {
 }
 .site-header.color-white .header-page-link .wishlist-box > a {
   color: #fff;
+  background-color: transparent;
+}
+.wishlist-button {
+  background-color: transparent !important;
 }
 .site-header .header-page-link .wishlist-box .count-wishlist {
   position: absolute;
@@ -6406,13 +6413,15 @@ ul.slick-dots li.slick-active button {
   line-height: 16px;
   text-align: center;
   cursor: pointer;
+  outline-color: none;
+  font-size: large;
+}
+.wishlist-items .wishlist-item .wishlist-item-remove span:hover {
+  color: #cc6055;
 }
 .wishlist-items .wishlist-item .wishlist-item-remove span:before {
   display: inline-block;
-  content: '\e9ea';
   font-size: 16px;
-  font-family: 'feather';
-  speak: none;
   font-style: normal;
   font-weight: 400;
   font-variant: normal;
@@ -6433,7 +6442,7 @@ ul.slick-dots li.slick-active button {
   font-size: 16px;
 }
 .wishlist-items .wishlist-item-remove span:before {
-  content: "\ea02" !important;
+  content: "" !important;
 }
 .wishlist-items .wishlist-item .wishlist-item-image {
   width: 100px;
@@ -6588,7 +6597,6 @@ ul.slick-dots li.slick-active button {
   line-height: 35px;
   -webkit-transition: all .1s ease;
   transition: all .1s ease;
-  content: "\e977";
   font-family: feather;
   margin: 0;
   position: relative;
@@ -6745,8 +6753,6 @@ ul.slick-dots li.slick-active button {
   text-decoration: unset !important;
 }
 .wishlist-popup .wishlist-popup-inner .wishlist-popup-content .wishlist-popup-content-bot .wishlist-continue:after {
-  font-family: eleganticons;
-  content: "\24";
   display: inline-block;
   font-size: 18px;
   position: relative;
@@ -7148,9 +7154,9 @@ ul.slick-dots li.slick-active button {
 .single-product .quickview-single-info .star-rating {
   display: inline-block;
   margin-right: 10px;
-  width: 85px;
   font-size: 13px;
   margin-bottom: 0;
+  letter-spacing: 4.8px;
 }
 .quickview-container .quickview-single-info .star-rating:before, 
 .quickview-container .quickview-single-info .star-rating span:before, 
@@ -7240,32 +7246,34 @@ ul.slick-dots li.slick-active button {
   top: 0;
   right: 0;
   background: transparent;
-  line-height: 24px;
+  /* line-height: 24px; */
   border: none;
   width: 38px;
   height: 46px;
+  font-size: 30px;
 }
 .quickview-container .quickview-single-info .quantity button.plus:before, 
 .single-product .quickview-single-info .quantity button.plus:before {
-  content: "\4c";
+  /* content: "\4c"; 
   position: relative;
-  top: 4px;
+  top: 4px; */
 }
 .quickview-container .quickview-single-info .quantity button.minus, 
 .single-product .quickview-single-info .quantity button.minus {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 6px;
   border: none;
   width: 38px;
-  height: 46px;
+  height: 45px;
   background: transparent;
+  font-size:40px;
 }
 .quickview-container .quickview-single-info .quantity button.minus:before, 
 .single-product .quickview-single-info .quantity button.minus:before {
-  content: "\4b";
+  /* content: "\4b"; 
   position: relative;
-  top: 4px;
+  top: 4px;*/
 }
 .quickview-container .quickview-single-info .quantity button:focus, 
 .quickview-container .quickview-single-info .quantity button:hover, 
@@ -8053,14 +8061,15 @@ ul.slick-dots li.slick-active button {
 .products-list.list .product-wapper .products-thumb .product-quickview:hover {
   background: #000;
 }
-.products-list.list .product-wapper .products-thumb .product-quickview a {
+.products-list.list .product-wapper .products-thumb .product-quickview button {
   font-size: 0;
   width: 42px;
   height: 42px;
   display: inline-block;
   box-shadow: 0 5px 15px rgba(0,0,0,.05);
+  background-color: transparent;
 }
-.products-list.list .product-wapper .products-thumb .product-quickview a i {
+.products-list.list .product-wapper .products-thumb .product-quickview button i {
   font-size: 16px;
   color: #000;
   line-height: 42px;
@@ -8085,7 +8094,7 @@ ul.slick-dots li.slick-active button {
   -o-border-radius: 50%;
 }
 .products-list.list .product-wapper .products-thumb .product-quickview:hover .loading:before, 
-.products-list.list .product-wapper .products-thumb .product-quickview:hover > a > i {
+.products-list.list .product-wapper .products-thumb .product-quickview:hover > button {
   color: #fff;
 }
 .products-list.list .product-wapper .products-thumb .product-quickview .loading:hover:before {
@@ -8185,6 +8194,7 @@ ul.slick-dots li.slick-active button {
 .products-list.list .product-wapper .products-content .btn-wishlist .product-btn:hover {
   cursor: pointer;
   background: #000;
+  color: #fff;
 }
 /* .products-list.list .product-wapper .products-content .btn-wishlist .product-btn:before {
   content: "\f08a";
@@ -8263,6 +8273,7 @@ ul.slick-dots li.slick-active button {
 .products-list.list .product-wapper .products-content .btn-compare .product-btn:hover {
   background: #000;
   border-color: #000;
+  color: #fff;
 }
 .products-list.list .product-wapper .products-content .btn-compare .product-btn:hover:before {
   color: #fff;
@@ -8427,7 +8438,6 @@ ul.slick-dots li.slick-active button {
 }
 .shop-details .variations .label:after {
   position: relative;
-  content: ":";
   top: 0;
   right: 0;
   display: inline-block;
@@ -8452,8 +8462,8 @@ ul.slick-dots li.slick-active button {
   display: none;
 }
 .shop-details .variations .attributes ul.text li input[type='radio']:checked + label {
-  border: 1px solid #000;
-  color: #000;
+  border: 1px solid #000 !important;
+  color: #000 !important;
 }
 .shop-details .variations .attributes ul.text li label {
   width: 28px;
@@ -8709,7 +8719,6 @@ ul.slick-dots li.slick-active button {
 }
 .shop-details .buttons .btn-wishlist .product-btn .icon,
 .shop-details .buttons .btn-compare .product-btn .icon {
-  font-family: icomoon;
   font-size: 16px;
   width: 40px;
   height: 40px;
@@ -10336,9 +10345,9 @@ ul.slick-dots li.slick-active button {
 10. Footer
 ====================================================================*/
 #site-footer {
-  border-top: 1px solid #E5E5E5;
-  padding-top: 70px;
-  margin-top: 70px;
+  border-top: 1px solid #E5E5E5  !important;
+  padding-top: 70px ;
+  margin-top: 70px  !important;
   color: #868686;
 }
 #site-footer.m-t-0,
@@ -10561,4 +10570,13 @@ ul.slick-dots li.slick-active button {
   color: #868686;
   margin: 0 ;
   margin-top: 0;
+}
+
+.Toastify__toast-container {
+z-index: 200000;
+}
+
+.checked {
+  border: 1px solid #000 !important;
+  color: #000 !important;
 }

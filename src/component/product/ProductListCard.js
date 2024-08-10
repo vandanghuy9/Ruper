@@ -2,8 +2,29 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  IoBagOutline,
+  IoHeartOutline,
+  IoShuffleOutline,
+  IoSearchOutline,
+  IoHeart,
+} from "react-icons/io5";
+import { useShopProduct } from "@context/ShopProductContext";
+import { useAuth } from "@context/UserContext";
+
 export const ProductListCard = ({ product }) => {
   const { _id, imageUrl, name, price, discount, comment, description } = product;
+  const [index, setIndex] = useState(0);
+  const { wishListAdded, handleAddToWishList, getProductInWishList, handleRemoveFromWishList } =
+    useShopProduct();
+  const { isUserLogin, handleFormActive } = useAuth();
+  const isProductInWishlist = getProductInWishList(_id);
+  const onAddToWishList = (product) => {
+    if (isUserLogin() === false) {
+      return handleFormActive();
+    }
+    handleAddToWishList(_id);
+  };
   return (
     <div className="products-entry clearfix product-wapper">
       <div className="row">
@@ -32,9 +53,10 @@ export const ProductListCard = ({ product }) => {
               </Link>
             </div>
             <span className="product-quickview" data-title="Quick View">
-              <Link href="#" className="quickview quickview-button">
-                Quick View <i className="icon-search"></i>
-              </Link>
+              <button type="button" title="Quick view" className="quickview quickview-button">
+                Quick View
+                <IoSearchOutline size={20} />
+              </button>
             </span>
           </div>
         </div>
@@ -70,11 +92,36 @@ export const ProductListCard = ({ product }) => {
                   Add to cart
                 </Link>
               </div>
-              <div className="btn-wishlist" data-title="Wishlist">
-                <button className="product-btn">Add to wishlist</button>
+              <div
+                className={`btn-wishlist ${wishListAdded === true ? "added" : ""}`}
+                data-title="Wishlist">
+                {isProductInWishlist ? (
+                  <button
+                    type="button"
+                    className="product-btn"
+                    onClick={() => {
+                      handleRemoveFromWishList(_id);
+                    }}>
+                    <IoHeart size={20} />
+                    Remove from wishlist
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="product-btn"
+                    onClick={() => {
+                      onAddToWishList(product);
+                    }}>
+                    <IoHeartOutline size={20} />
+                    Add to wishlist
+                  </button>
+                )}
               </div>
               <div className="btn-compare" data-title="Compare">
-                <button className="product-btn">Compare</button>
+                <button type="button" className="product-btn">
+                  <IoShuffleOutline size={20} />
+                  Compare
+                </button>
               </div>
             </div>
             <div className="product-description">{description}</div>
