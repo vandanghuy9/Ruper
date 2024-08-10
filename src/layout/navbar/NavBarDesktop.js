@@ -21,10 +21,12 @@ const NavBarDesktop = () => {
     handleRegisterActive,
     isUserLogin,
     getUserName,
+    getUserId,
   } = useAuth();
-  const { wishlist, handleSetWishList, wishListAdded } = useShopProduct();
+  const { wishList, handleSetWishList, wishListAdded } = useShopProduct();
   const isLogin = isUserLogin();
   const userName = getUserName();
+  const useId = getUserId();
   return (
     <div
       className="header-desktop"
@@ -414,7 +416,7 @@ const NavBarDesktop = () => {
                     </Link>
                   ) : (
                     <div className="login-header">
-                      <button className="active-login" onClick={handleFormActive}>
+                      <button type="button" className="active-login" onClick={handleFormActive}>
                         Login
                       </button>
                       <div
@@ -446,10 +448,20 @@ const NavBarDesktop = () => {
                   </div>
                   {/* Wishlist */}
                   <div className="wishlist-box">
-                    <Link href={"/"}>
-                      <AiOutlineHeart color="black" size={30} />
-                      {isLogin && <span className="count-wishlist">{wishlist?.length}</span>}
-                    </Link>
+                    {!isLogin ? (
+                      <button
+                        type="button"
+                        title="wishlist"
+                        className="wishlist-button"
+                        onClick={handleFormActive}>
+                        <AiOutlineHeart color="black" size={30} />
+                      </button>
+                    ) : (
+                      <Link href={`/wishlist/${useId}`}>
+                        <AiOutlineHeart color="black" size={30} />
+                        <span className="count-wishlist">{wishList?.length}</span>
+                      </Link>
+                    )}
                   </div>
                   {/* cart */}
                   <div className="ruper-topcart dropdown light">

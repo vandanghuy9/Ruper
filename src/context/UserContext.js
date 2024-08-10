@@ -38,6 +38,10 @@ export const UserContext = ({ userInfor, children }) => {
   const getUserName = () => {
     return state?.userInfor?.name;
   };
+  const getUserId = () => {
+    return state?.userInfor?._id;
+  };
+
   const login = (userInfor) => {
     dispatch({ type: "LOGIN", payload: userInfor });
     successNoti("Login successfully");
@@ -58,6 +62,7 @@ export const UserContext = ({ userInfor, children }) => {
         getUserName,
         login,
         handleLoginError,
+        getUserId,
         isLoginActive,
         isRegisterActive,
         isFormActive,

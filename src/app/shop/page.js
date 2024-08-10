@@ -14,7 +14,7 @@ const getFilterProducts = async (query) => {
   return await getProductsByCategory(query);
 };
 const Shop = async ({ params, searchParams }) => {
-  const PAGE_LIMIT = 7;
+  const PAGE_LIMIT = 6;
   let products = await getProducts();
   const categoryMenu = getCategoryQuantity(menu, products);
   const category = searchParams?.category;

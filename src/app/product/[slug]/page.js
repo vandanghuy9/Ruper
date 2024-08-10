@@ -4,6 +4,7 @@ import {
   getProductById,
   getRelatedProducts,
 } from "../../../services/productService";
+import { title } from "process";
 const Product = async ({ params }) => {
   const product = await getProduct(params.slug);
   const relatedProducts = await getRelatedProduct(params.slug);
@@ -12,6 +13,12 @@ const Product = async ({ params }) => {
 
 export default Product;
 
+export const generateMetadata = async ({ params }) => {
+  const product = await getProduct(params.slug);
+  return {
+    title: product.name,
+  };
+};
 export const generateStaticParams = async () => {
   const products = await getShowProduct();
   return products.map((product) => ({

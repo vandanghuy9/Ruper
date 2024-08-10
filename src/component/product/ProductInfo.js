@@ -1,13 +1,23 @@
+"use client";
 import { AiFillStar } from "react-icons/ai";
 import { useState } from "react";
 import useHandleCart from "../../hooks/useHandleCart";
 import ProductImage from "./ProductImage";
 import Link from "next/link";
-import { FaFacebook, FaPinterest, FaTwitter, FaHeart } from "react-icons/fa";
-import { IoIosGitCompare } from "react-icons/io";
-
+import { FaFacebook, FaPinterest, FaTwitter } from "react-icons/fa";
+import { IoHeartOutline, IoShuffleOutline, IoHeart } from "react-icons/io5";
+import { useShopProduct } from "@context/ShopProductContext";
+import { useAuth } from "@context/UserContext";
 const ProductInfo = ({ product }) => {
+  const {
+    handleAddToWishList,
+    getProductInWishList,
+    handleRemoveFromWishList,
+    handleOpenComparePopUp,
+  } = useShopProduct();
+  const { isUserLogin, handleFormActive } = useAuth();
   const { price, discount, stocks, description, imageUrl, name, _id } = product;
+  const isProductInWishlist = getProductInWishList(_id);
   let sizes = stocks.map((item) => item.size);
   sizes = sizes.filter((item, index) => sizes.indexOf(item) === index);
   let colors = stocks.map((item) => item.color);
@@ -28,10 +38,16 @@ const ProductInfo = ({ product }) => {
     setAttributes((prevAttributes) => ({ ...prevAttributes, [e.target.name]: e.target.value }));
   };
   const addToCart = (e) => {
-    console.log(attributes);
     handleAddToCart(product, quantity, attributes);
     setQuantity(1);
   };
+  const onAddToWishList = () => {
+    if (isUserLogin() === false) {
+      return handleFormActive();
+    }
+    handleAddToWishList(_id);
+  };
+
   return (
     <>
       <div className="product-images col-lg-7 col-md-12 col-12">
@@ -134,17 +150,40 @@ const ProductInfo = ({ product }) => {
             <button className="product-btn">Buy It Now</button>
           </div>
           <div className="btn-wishlist" data-title="Wishlist">
-            <button className="product-btn">
-              <span className="icon">
-                <FaHeart size={20} />
-              </span>
-              Add to wishlist
-            </button>
+            {isProductInWishlist ? (
+              <button
+                type="button"
+                className="product-btn"
+                onClick={() => {
+                  handleRemoveFromWishList(_id);
+                }}>
+                <span className="icon">
+                  <IoHeart size={20} />
+                </span>
+                Remove from wishlist
+              </button>
+            ) : (
+              <button
+                className="product-btn"
+                type="button"
+                onClick={() => {
+                  onAddToWishList();
+                }}>
+                <span className="icon">
+                  <IoHeartOutline size={20} />
+                </span>
+                Add to wishlist
+              </button>
+            )}
           </div>
           <div className="btn-compare" data-title="Compare">
-            <button className="product-btn">
+            <button
+              className="product-btn"
+              onClick={(e) => {
+                handleOpenComparePopUp(product._id);
+              }}>
               <span className="icon">
-                <IoIosGitCompare size={20} />
+                <IoShuffleOutline size={20} />
               </span>
               Compare
             </button>
