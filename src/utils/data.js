@@ -4,6 +4,295 @@ import { TfiWallet } from "react-icons/tfi";
 import { MdSupportAgent } from "react-icons/md";
 import { FaTwitter, FaInstagram, FaDribbble, FaBehance } from "react-icons/fa";
 const sampleProductId = "66018b56cd25b4bf5fc20170";
+const homeCategoryMenu = {
+  id: "HOME",
+  text: "Home",
+  path: "/",
+  child: [
+    {
+      id: "HOME/FURNITURE_1",
+      text: "Furniture 1",
+      child: [
+        {
+          id: "HOME/FURNITURE_1/CATEGORY",
+          text: "Home Categories",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_1/CLEAN",
+          text: "Home Clean",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_1/COLLECTION",
+          text: "Home Collection",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_1/GRID",
+          text: "Home Grid",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_1/MINIMAL",
+          text: "Home Minimal",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_1/MODERN",
+          text: "Home Modern",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_1/STYLISH",
+          text: "Home Stylish",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_1/UNIQUE",
+          text: "Home Unique",
+          path: "/",
+        },
+      ],
+    },
+    {
+      id: "HOME/FURNITURE_2",
+      text: "Furniture 2",
+      child: [
+        {
+          id: "HOME/FURNITURE_2/SPLIT",
+          text: "Home Split",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_2/GOTHIC",
+          text: "Home Gothic",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_2/LUXURY",
+          text: "Home Luxury",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_2/SCANDINAVIAN",
+          text: "Home Scandinavian",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_2/MID_CENTURY",
+          text: "Home Mid-Century",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_2/RETRO",
+          text: "Home Retro",
+          path: "/",
+        },
+        {
+          id: "HOME/FURNITURE_2/CODE_BLOCK",
+          text: "Home Color Block",
+          path: "/",
+        },
+      ],
+    },
+  ],
+};
+
+const shopCategoryMenu = {
+  id: "SHOP",
+  text: "Shop",
+  path: "/shop",
+  isPublic: true,
+  child: [
+    {
+      id: "SHOP/PRODUCT",
+      text: "Shop - Products",
+      path: "/shop",
+      isPublic: true,
+      child: [
+        {
+          id: "SHOP/PRODUCT/GRID_LEFT",
+          text: "Shop Grid - Left Sidebar",
+          isPublic: true,
+          path: "/shop?layout=grid&sidebar=left",
+        },
+        {
+          id: "SHOP/PRODUCT/LIST_LEFT",
+          text: "Shop List - Left Sidebar",
+          path: "/shop?layout=list&sidebar=left",
+          isPublic: true,
+        },
+        {
+          id: "SHOP/PRODUCT/GRID_RIGHT",
+          text: "Shop Grid - Right Sidebar",
+          path: "/shop?layout=grid&sidebar=right",
+          isPublic: true,
+        },
+        {
+          id: "SHOP/PRODUCT/LIST_RIGHT",
+          text: "Shop List - Right Sidebar",
+          path: "/shop?layout=list&sidebar=right",
+          isPublic: true,
+        },
+        {
+          id: "SHOP/PRODUCT/GRID_NONE",
+          text: "Shop Grid - No Sidebar",
+          path: "/shop?layout=grid&sidebar=none",
+          isPublic: true,
+        },
+      ],
+    },
+    {
+      id: "SHOP/DETAILS",
+      text: "Shop Details",
+      path: `/product/${sampleProductId}`,
+      isPublic: true,
+    },
+    {
+      id: "SHOP/CART",
+      text: "Shop - Cart",
+      path: `/cart`,
+      isPublic: true,
+    },
+    {
+      id: "SHOP/CHECKOUT",
+      text: "Shop - Checkout",
+      path: `/checkout`,
+      isPublic: false,
+    },
+    {
+      id: "SHOP/WISHLIST",
+      text: "Shop - Wishlist",
+      path: `/wishlist`,
+      isPublic: false,
+    },
+  ],
+};
+
+const blogCategoryMenu = {
+  id: "BLOG",
+  text: "Blog",
+  path: "/shop",
+  isPublic: true,
+  child: [
+    {
+      id: "BLOG/CATEGORY",
+      text: "Blog Category",
+      path: "",
+      isPublic: true,
+      child: [
+        {
+          id: "BLOG/GRID_LEFT",
+          text: "Blog Grid - Left Sidebar",
+          path: "/blog?layout=grid&sidebar=left",
+          isPublic: true,
+        },
+        {
+          id: "BLOG/GRID_RIGHT",
+          text: "Blog Grid - Right Sidebar",
+          path: "/blog?layout=grid&sidebar=right",
+          isPublic: true,
+        },
+        {
+          id: "BLOG/LIST_LEFT",
+          text: "Blog List - Left Sidebar",
+          path: "/blog?layout=list&sidebar=left",
+          isPublic: true,
+        },
+        {
+          id: "BLOG/LIST_RIGHT",
+          text: "Blog List - Right Sidebar",
+          path: "/blog?layout=list&sidebar=right",
+          isPublic: true,
+        },
+        {
+          id: "BLOG/GRID_NONE",
+          text: "Blog Grid - No Sidebar",
+          path: "/shop?layout=grid&sidebar=none",
+          isPublic: true,
+        },
+      ],
+    },
+    {
+      id: "BLOG/DETAIL",
+      text: "Blog Details",
+      path: "",
+      isPublic: true,
+      child: [
+        {
+          id: "BLOG_DETAILS/LEFT",
+          text: "Blog Details - Left Sidebar",
+          path: "/blog?sidebar=left",
+          isPublic: true,
+        },
+        {
+          id: "BLOG_DETAILS/RIGHT",
+          text: "Blog Details - Right Sidebar",
+          path: "/blog?sidebar=right",
+          isPublic: true,
+        },
+        {
+          id: "BLOG_DETAILS/NONE",
+          text: "Blog Details - No Sidebar",
+          path: "/blog?&sidebar=none",
+          isPublic: true,
+        },
+      ],
+    },
+  ],
+};
+const pageMenu = {
+  id: "PAGE",
+  text: "Pages",
+  path: "/",
+  isPublic: true,
+  child: [
+    {
+      id: "PAGE/LOGIN",
+      text: "Login / Register",
+      path: "/login",
+      isPublic: true,
+    },
+    {
+      id: "PAGE/FORGOT_PASSWORD",
+      text: "Forgot Password",
+      path: `/forgot-password`,
+      isPublic: true,
+    },
+    {
+      id: "PAGE/MY_ACCOUNT",
+      text: "My Account",
+      path: `/my-account`,
+      isPublic: false,
+    },
+    {
+      id: "PAGE/ABOUT_US",
+      text: "About Us",
+      path: `/about-us`,
+      isPublic: true,
+    },
+    {
+      id: "PAGE/CONTACT",
+      text: "Contact",
+      path: `/contact`,
+      isPublic: true,
+    },
+    {
+      id: "PAGE/FAQ",
+      text: "FAQ",
+      path: `/faq`,
+      isPublic: true,
+    },
+    {
+      id: "PAGE/404",
+      text: "Page 404",
+      path: `/page-404`,
+      isPublic: true,
+    },
+  ],
+};
+
 const slides = [
   {
     image: "/slider/1.jpg",
@@ -307,4 +596,8 @@ export {
   shippingOption,
   paymentOption,
   sampleProductId,
+  homeCategoryMenu,
+  shopCategoryMenu,
+  blogCategoryMenu,
+  pageMenu,
 };

@@ -1,5 +1,4 @@
 "use client";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
@@ -8,7 +7,13 @@ import SignIn from "@component/modal/SignIn";
 import Register from "@component/modal/Register";
 import { useAuth } from "@context/UserContext";
 import { useShopProduct } from "@context/ShopProductContext";
-import { sampleProductId } from "@utils/data";
+import {
+  sampleProductId,
+  homeCategoryMenu,
+  shopCategoryMenu,
+  blogCategoryMenu,
+  pageMenu,
+} from "@utils/data";
 const Cart = dynamic(() => import("../../component/cart/Cart"), { ssr: false });
 
 const NavBarDesktop = () => {
@@ -53,234 +58,106 @@ const NavBarDesktop = () => {
                   <nav id="main-navigation">
                     <ul id="menu-main-menu" className="menu">
                       <li className="level-0 menu-item menu-item-has-children mega-menu current-menu-item">
-                        <Link href={"/"}>
-                          <span className="menu-item-text">Home</span>
+                        <Link href={homeCategoryMenu.path}>
+                          <span className="menu-item-text">{homeCategoryMenu.text}</span>
                         </Link>
                         <div className="sub-menu">
                           <div className="row">
-                            <div className="col-md-6">
-                              <div className="menu-section">
-                                <h2 className="sub-menu-title">Furniture 1</h2>
-                                <ul className="menu-list">
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Categories</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Clean</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Collection</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Grid</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Minimal</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Modern</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Stylish</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Unique</span>
-                                    </Link>
-                                  </li>
-                                </ul>
+                            {homeCategoryMenu.child.map((section) => (
+                              <div className="col-md-6" key={section.id}>
+                                <div className="menu-section">
+                                  <h2 className="sub-menu-title">{section.text}</h2>
+                                  <ul className="menu-list">
+                                    {section.child &&
+                                      section.child.map((item) => (
+                                        <li key={item.id}>
+                                          <Link href={item.path}>
+                                            <span className="menu-item-text">{item.text}</span>
+                                          </Link>
+                                        </li>
+                                      ))}
+                                  </ul>
+                                </div>
                               </div>
-                            </div>
-                            <div className="col-md-6">
-                              <div className="menu-section">
-                                <h2 className="sub-menu-title">Furniture 2</h2>
-                                <ul className="menu-list">
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Split</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Gothic</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Luxury</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Scandinavian</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Mid-Century</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Retro</span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href={"/"}>
-                                      <span className="menu-item-text">Home Color Block</span>
-                                    </Link>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
+                            ))}
                           </div>
                         </div>
                       </li>
-                      <li className="level-0 menu-item menu-item-has-children">
-                        <Link href={"/shop"}>
-                          <span className="menu-item-text">Shop</span>
+                      <li
+                        className="level-0 menu-item menu-item-has-children"
+                        key={shopCategoryMenu.id}>
+                        <Link href={shopCategoryMenu.path}>
+                          <span className="menu-item-text">{shopCategoryMenu.text}</span>
                         </Link>
                         <ul className="sub-menu">
-                          <li className="level-1 menu-item menu-item-has-children">
-                            <Link href={"/shop"}>
-                              <span className="menu-item-text">Shop - Products</span>
-                            </Link>
-                            <ul className="sub-menu">
-                              <li>
-                                <Link href={"/shop?layout=grid&sidebar=left"}>
-                                  <span className="menu-item-text">Shop Grid - Left Sidebar</span>
+                          {shopCategoryMenu.child.map((section) =>
+                            section.child ? (
+                              <li
+                                className="level-1 menu-item menu-item-has-children"
+                                key={section.id}>
+                                <Link href={section.path}>
+                                  <span className="menu-item-text">{section.text}</span>
+                                </Link>
+                                <ul className="sub-menu">
+                                  {section.child.map((item) =>
+                                    item.isPublic || isLogin ? (
+                                      <li key={item.id}>
+                                        <Link
+                                          href={
+                                            item.id === "SHOP/WISHLIST"
+                                              ? `${item.path}/${useId}`
+                                              : item.path
+                                          }>
+                                          <span className="menu-item-text">{item.text}</span>
+                                        </Link>
+                                      </li>
+                                    ) : (
+                                      <li>
+                                        <Link href={"#"} onClick={handleFormActive}>
+                                          <span className="menu-item-text">{item.text}</span>
+                                        </Link>
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </li>
+                            ) : section.isPublic || isLogin ? (
+                              <li key={section.id}>
+                                <Link href={section.path}>
+                                  <span className="menu-item-text">{section.text}</span>
                                 </Link>
                               </li>
+                            ) : (
                               <li>
-                                <Link href={"/shop?layout=list&sidebar=left"}>
-                                  <span className="menu-item-text">Shop List - Left Sidebar</span>
+                                <Link href={"#"} onClick={handleFormActive}>
+                                  <span className="menu-item-text">{section.text}</span>
                                 </Link>
                               </li>
-                              <li>
-                                <Link href={"/shop?layout=grid&sidebar=right"}>
-                                  <span className="menu-item-text">Shop Grid - Right Sidebar</span>
-                                </Link>
-                              </li>
-                              <li>
-                                <Link href={"/shop?layout=list&sidebar=right"}>
-                                  <span className="menu-item-text">Shop List - Right Sidebar</span>
-                                </Link>
-                              </li>
-                              <li>
-                                <Link href={"/shop?layout=grid&sidebar=none"}>
-                                  <span className="menu-item-text">Shop Grid - No Sidebar</span>
-                                </Link>
-                              </li>
-                            </ul>
-                          </li>{" "}
-                          {/*1 */}
-                          <li>
-                            <Link href={`/product/${sampleProductId}`}>
-                              <span className="menu-item-text">Shop Details</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href={"/cart"}>
-                              <span className="menu-item-text">Shop - Cart</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href={"/checkout"}>
-                              <span className="menu-item-text">Shop - Checkout</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href={"/wishlist"}>
-                              <span className="menu-item-text">Shop - Wishlist</span>
-                            </Link>
-                          </li>
+                            )
+                          )}
                         </ul>
                       </li>
                       <li className="level-0 menu-item menu-item-has-children mega-menu mega-menu-fullwidth align-center">
-                        <Link href={"/"}>
-                          <span className="menu-item-text">Blog</span>
+                        <Link href={blogCategoryMenu.path}>
+                          <span className="menu-item-text">{blogCategoryMenu.text}</span>
                         </Link>
                         <div className="sub-menu">
                           <div className="row">
                             <div className="col-md-5">
-                              <div className="menu-section">
-                                <h2 className="sub-menu-title">Blog Category</h2>
-                                <ul className="menu-list">
-                                  <li>
-                                    <Link href="blog-grid-left.html">
-                                      <span className="menu-item-text">
-                                        Blog Grid - Left Sidebar
-                                      </span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href="blog-grid-right.html">
-                                      <span className="menu-item-text">
-                                        Blog Grid - Right Sidebar
-                                      </span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href="blog-list-left.html">
-                                      <span className="menu-item-text">
-                                        Blog List - Left Sidebar
-                                      </span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href="blog-list-right.html">
-                                      <span className="menu-item-text">
-                                        Blog List - Right Sidebar
-                                      </span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href="blog-grid-fullwidth.html">
-                                      <span className="menu-item-text">Blog Grid - No Sidebar</span>
-                                    </Link>
-                                  </li>
-                                </ul>
-                              </div>
-                              <div className="menu-section">
-                                <h2 className="sub-menu-title">Blog Details</h2>
-                                <ul className="menu-list">
-                                  <li>
-                                    <Link href="blog-details-left.html">
-                                      <span className="menu-item-text">
-                                        Blog Details - Left Sidebar
-                                      </span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href="blog-details-right.html">
-                                      <span className="menu-item-text">
-                                        Blog Details - Right Sidebar
-                                      </span>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link href="blog-details-fullwidth.html">
-                                      <span className="menu-item-text">
-                                        Blog Details - No Sidebar
-                                      </span>
-                                    </Link>
-                                  </li>
-                                </ul>
-                              </div>
+                              {blogCategoryMenu.child.map((section) => (
+                                <div className="menu-section">
+                                  <h2 className="sub-menu-title">Blog Category</h2>
+                                  <ul className="menu-list">
+                                    {section.child.map((item) => (
+                                      <li key={item.id}>
+                                        <Link href={item.path}>
+                                          <span className="menu-item-text">{item.text}</span>
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
                             </div>
                             <div className="col-md-7">
                               <div className="menu-section">
@@ -288,7 +165,7 @@ const NavBarDesktop = () => {
                                 <div className="block block-posts recent-posts p-t-5">
                                   <ul className="posts-list">
                                     <li className="post-item">
-                                      <Link href="blog-details-right.html" className="post-image">
+                                      <Link href="/" className="post-image">
                                         <Image
                                           src="/blog/1.jpg"
                                           width={560}
@@ -309,7 +186,7 @@ const NavBarDesktop = () => {
                                       </div>
                                     </li>
                                     <li className="post-item">
-                                      <Link href="blog-details-right.html" className="post-image">
+                                      <Link href="/" className="post-image">
                                         <Image
                                           src="/blog/2.jpg"
                                           width={560}
@@ -330,7 +207,7 @@ const NavBarDesktop = () => {
                                       </div>
                                     </li>
                                     <li className="post-item">
-                                      <Link href="blog-details-right.html" className="post-image">
+                                      <Link href="/" className="post-image">
                                         <Image
                                           src="/blog/3.jpg"
                                           width={560}
@@ -358,45 +235,25 @@ const NavBarDesktop = () => {
                         </div>
                       </li>
                       <li className="level-0 menu-item menu-item-has-children ">
-                        <Link href={"/"}>
-                          <span className="menu-item-text">Pages</span>
+                        <Link href={pageMenu.path}>
+                          <span className="menu-item-text">{pageMenu.text}</span>
                         </Link>
                         <ul className="sub-menu">
-                          <li>
-                            <Link href="page-login.html">
-                              <span className="menu-item-text">Login / Register</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="page-forgot-password.html">
-                              <span className="menu-item-text">Forgot Password</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="page-my-account.html">
-                              <span className="menu-item-text">My Account</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="page-about.html">
-                              <span className="menu-item-text">About Us</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="page-contact.html">
-                              <span className="menu-item-text">Contact</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="page-faq.html">
-                              <span className="menu-item-text">FAQ</span>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="page-404.html">
-                              <span className="menu-item-text">Page 404</span>
-                            </Link>
-                          </li>
+                          {pageMenu.child.map((item) =>
+                            item.isPublic || isLogin ? (
+                              <li key={item.id}>
+                                <Link href={item.path}>
+                                  <span className="menu-item-text">{item.text}</span>
+                                </Link>
+                              </li>
+                            ) : (
+                              <li key={item.id}>
+                                <Link href={"#"} onClick={handleFormActive}>
+                                  <span className="menu-item-text">{item.text}</span>
+                                </Link>
+                              </li>
+                            )
+                          )}
                         </ul>
                       </li>
                       <li className="level-0 menu-item ">
