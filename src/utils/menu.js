@@ -11,3 +11,9 @@ export const getCategoryQuantity = (menu, products) => {
 
   return [...menu];
 };
+
+export function formatDate(isoString) {
+  const date = new Date(isoString);
+  const options = { month: "long", day: "numeric", year: "numeric" };
+  return date.toLocaleDateString("en-US", options);
+}

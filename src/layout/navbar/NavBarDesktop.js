@@ -7,16 +7,11 @@ import SignIn from "@component/modal/SignIn";
 import Register from "@component/modal/Register";
 import { useAuth } from "@context/UserContext";
 import { useShopProduct } from "@context/ShopProductContext";
-import {
-  sampleProductId,
-  homeCategoryMenu,
-  shopCategoryMenu,
-  blogCategoryMenu,
-  pageMenu,
-} from "@utils/data";
+import NavbarBlogItem from "@component/blog/NavbarBlogItem";
+import { homeCategoryMenu, shopCategoryMenu, blogCategoryMenu, pageMenu } from "@utils/data";
 const Cart = dynamic(() => import("../../component/cart/Cart"), { ssr: false });
 
-const NavBarDesktop = () => {
+const NavBarDesktop = ({ blogList }) => {
   const {
     isLoginActive,
     isRegisterActive,
@@ -123,7 +118,12 @@ const NavBarDesktop = () => {
                               </li>
                             ) : section.isPublic || isLogin ? (
                               <li key={section.id}>
-                                <Link href={section.path}>
+                                <Link
+                                  href={
+                                    section.id === "SHOP/WISHLIST"
+                                      ? `${section.path}/${useId}`
+                                      : section.path
+                                  }>
                                   <span className="menu-item-text">{section.text}</span>
                                 </Link>
                               </li>
@@ -164,7 +164,10 @@ const NavBarDesktop = () => {
                                 <h2 className="sub-menu-title">Recent Posts</h2>
                                 <div className="block block-posts recent-posts p-t-5">
                                   <ul className="posts-list">
-                                    <li className="post-item">
+                                    {blogList?.map((item) => (
+                                      <NavbarBlogItem key={item._id} blog={item} />
+                                    ))}
+                                    {/* <li className="post-item">
                                       <Link href="/" className="post-image">
                                         <Image
                                           src="/blog/1.jpg"
@@ -226,7 +229,7 @@ const NavBarDesktop = () => {
                                           <span className="post-comment">1 Comment</span>
                                         </div>
                                       </div>
-                                    </li>
+                                    </li> */}
                                   </ul>
                                 </div>
                               </div>

@@ -1362,6 +1362,7 @@ ul.slick-dots li.slick-active button {
 .sidebar .block:last-child {
   margin-bottom: 0;
 }
+
 .sidebar .block .block-title h2 {
   font-weight: 500;
   font-size: 18px;
@@ -6175,15 +6176,15 @@ ul.slick-dots li.slick-active button {
   display: block;
   margin-bottom: 10px;
 }
-.block-post-cats ul li a {
+.block-post-cats ul li span {
   color: #868686;
   font-weight: 400;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.block-post-cats ul li.current a,
-.block-post-cats ul li a:hover {
+.block-post-cats ul li.current span,
+.block-post-cats ul li span:hover {
   color: #000;
 }
 .block-post-cats ul li .count {
@@ -6252,10 +6253,10 @@ ul.slick-dots li.slick-active button {
   background: #000;
   border-color: #000;
 }
-.block-post-tags ul li a {
+.block-post-tags ul li span{
   color: #868686;
 }
-.block-post-tags ul li:hover a {
+.block-post-tags ul li:hover span {
   color: #fff;
 }
 
@@ -10579,4 +10580,16 @@ z-index: 200000;
 .checked {
   border: 1px solid #000 !important;
   color: #000 !important;
+}
+
+.button-clear-filter{
+  background: transparent;
+  padding: 0 10.2px 0 10.2px;
+  border: 1px solid #e5e5e5;
+}
+
+.button-clear-filter:hover{
+  background: #000;
+  border-color: #000;
+  color: #fff;
 }

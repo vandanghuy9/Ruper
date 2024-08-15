@@ -4,6 +4,59 @@ import { TfiWallet } from "react-icons/tfi";
 import { MdSupportAgent } from "react-icons/md";
 import { FaTwitter, FaInstagram, FaDribbble, FaBehance } from "react-icons/fa";
 const sampleProductId = "66018b56cd25b4bf5fc20170";
+const blogTags = [
+  {
+    _id: "accessories",
+  },
+  {
+    _id: "home decor",
+  },
+  {
+    _id: "living room",
+  },
+  {
+    _id: "bedroom",
+  },
+  {
+    _id: "small space",
+  },
+  {
+    _id: "desk",
+  },
+  {
+    _id: "dining",
+  },
+  {
+    _id: "minimal",
+  },
+  {
+    _id: "office",
+  },
+  {
+    _id: "simple",
+  },
+  {
+    _id: "modern",
+  },
+  {
+    _id: "outdoor",
+  },
+  {
+    _id: "kitchen",
+  },
+  {
+    _id: "organization",
+  },
+  {
+    _id: "relaxation",
+  },
+  {
+    _id: "furniture",
+  },
+  {
+    _id: "lifestyle",
+  },
+];
 const homeCategoryMenu = {
   id: "HOME",
   text: "Home",
@@ -173,13 +226,13 @@ const shopCategoryMenu = {
 const blogCategoryMenu = {
   id: "BLOG",
   text: "Blog",
-  path: "/shop",
+  path: "/blog",
   isPublic: true,
   child: [
     {
       id: "BLOG/CATEGORY",
       text: "Blog Category",
-      path: "",
+      path: "/blog",
       isPublic: true,
       child: [
         {
@@ -600,4 +653,5 @@ export {
   shopCategoryMenu,
   blogCategoryMenu,
   pageMenu,
+  blogTags,
 };

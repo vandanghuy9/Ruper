@@ -207,7 +207,7 @@ const QuickViewPopUp = () => {
                             size="4"
                             placeholder=""
                             inputmode="numeric"
-                            autocomplete="off"
+                            autoComplete="off"
                             onChange={(e) => setQuantity(e.target.value)}
                           />
                           <button
