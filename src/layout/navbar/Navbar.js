@@ -1,12 +1,12 @@
-"use client";
 import NavBarDesktop from "./NavBarDesktop";
 import NavBarMobile from "./NavBarMobile";
-
-const Navbar = () => {
+import { getShowBlog } from "@services/blogService";
+const Navbar = async () => {
+  const sampleBlog = await getShowBlog();
   return (
     <>
       <NavBarMobile />
-      <NavBarDesktop />
+      <NavBarDesktop blogList={sampleBlog} />
     </>
   );
 };
