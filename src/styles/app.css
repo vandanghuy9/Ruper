@@ -6259,7 +6259,13 @@ ul.slick-dots li.slick-active button {
 .block-post-tags ul li:hover span {
   color: #fff;
 }
-
+.block-post-tags ul li.current {
+  background: #000;
+  border-color: #000;
+}
+.block-post-tags ul li.current span {
+  color: #fff;
+}
 /**
  * 5.22. Block Contact Map
  */
@@ -9653,7 +9659,7 @@ ul.slick-dots li.slick-active button {
   background: #dedede;
 }
 .post-details .post-content blockquote {
-  font-weight: 500;
+  font-weight: 540;
   margin: 30px 0;
   padding: 0 0 0 50px;
   color: #666;
@@ -9666,6 +9672,9 @@ ul.slick-dots li.slick-active button {
   font-size: 23px;
   color: #dadada;
   margin-bottom: 20px;
+}
+.post-details .post-content blockquote p {
+  font-style: italic;
 }
 .post-details .post-content blockquote h2 {
   font-size: 13px;
@@ -9704,6 +9713,7 @@ ul.slick-dots li.slick-active button {
   padding: 0 20px;
   background: transparent;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 .post-details .post-content-entry .tags-links a:hover {
   background: #000;

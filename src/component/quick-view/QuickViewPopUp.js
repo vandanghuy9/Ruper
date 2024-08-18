@@ -206,7 +206,7 @@ const QuickViewPopUp = () => {
                             title="Qty"
                             size="4"
                             placeholder=""
-                            inputmode="numeric"
+                            inputMode="numeric"
                             autoComplete="off"
                             onChange={(e) => setQuantity(e.target.value)}
                           />
