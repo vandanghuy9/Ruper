@@ -4,10 +4,8 @@ import Link from "next/link";
 import SearchInput from "./SearchInput";
 import CategoryList from "./CategoryList";
 import NavbarBlogItem from "./NavbarBlogItem";
-import { blogTags } from "@utils/data";
-import { useFilter } from "@context/CategoryContext";
+import TagList from "./TagList";
 const FilterBar = ({ categoryList, recentPosts }) => {
-  const { handleNavigation } = useFilter();
   return (
     <div className="col-xl-3 col-lg-3 col-md-12 col-12 sidebar left-sidebar md-b-50">
       <SearchInput />
@@ -64,18 +62,7 @@ const FilterBar = ({ categoryList, recentPosts }) => {
         </div>
         <div className="block-content">
           <div className="post-tags-list">
-            <ul>
-              {blogTags.map(({ _id }) => (
-                <li key={_id}>
-                  <span
-                    onClick={(e) => {
-                      handleNavigation({ key: "tag", value: _id.replaceAll(" ", "_") });
-                    }}>
-                    {_id}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <TagList />
           </div>
         </div>
       </div>

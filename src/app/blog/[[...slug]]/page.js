@@ -1,13 +1,23 @@
 import BlogCategory from "./BlogCategory";
 import BlogDetail from "./BlogDetail";
-import { getShowBlog, getBlogByCategory, getAllBlogCategory } from "@services/blogService";
+import {
+  getShowBlog,
+  getBlogByCategory,
+  getAllBlogCategory,
+  getBlogById,
+} from "@services/blogService";
+const getBlog = async (slug) => {
+  return getBlogById(slug);
+};
 const Blog = async ({ params, searchParams }) => {
   const slug = params.slug;
+  const categoryList = await getAllBlogCategory();
+  const recentPosts = await getShowBlog();
+  const sidebar = searchParams?.sidebar ? searchParams?.sidebar : "left";
   if (slug === undefined) {
     let PAGE_LIMIT = 6;
     const category = searchParams?.category;
     const layout = searchParams?.layout ? searchParams?.layout : "grid";
-    const sidebar = searchParams?.sidebar ? searchParams?.sidebar : "left";
     const page = searchParams?.page ? searchParams?.page : 1;
     const searchQuery = searchParams?.query;
     const tags = searchParams?.tag;
@@ -23,7 +33,7 @@ const Blog = async ({ params, searchParams }) => {
     }
     if (tags) {
       if (typeof tags === "string") {
-        const formattedTag = tags.includes("_") ? tags.replaceAll("_", " ") : tag;
+        const formattedTag = tags.includes("_") ? tags.replaceAll("_", " ") : tags;
         query = query.concat(`tag=${formattedTag}&`);
       } else {
         query = query.concat(`tag=`);
@@ -39,10 +49,9 @@ const Blog = async ({ params, searchParams }) => {
     }
     query = query.concat(`page=${page}&limit=${PAGE_LIMIT}`);
     const res = await getBlogByCategory(query);
-    const categoryList = await getAllBlogCategory();
-    const recentPosts = await getShowBlog();
     return (
       <BlogCategory
+        sidebar={sidebar}
         blogList={res.blog}
         totalPages={res.totalPages}
         categoryList={categoryList}
@@ -50,7 +59,15 @@ const Blog = async ({ params, searchParams }) => {
       />
     );
   }
-  return <BlogDetail />;
+  const blog = await getBlog(slug);
+  return (
+    <BlogDetail
+      blog={blog}
+      categoryList={categoryList}
+      recentPosts={recentPosts}
+      sidebar={sidebar}
+    />
+  );
 };
 
 export default Blog;
