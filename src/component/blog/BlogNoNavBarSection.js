@@ -1,12 +1,12 @@
+import React from "react";
 import BlogListGrid from "./BlogListGrid";
 import { LayoutToggleMenu } from "@component/category/LayoutToggleMenu";
 import Pagination from "@component/category/Pagination";
 import BlogList from "./BlogList";
-const BlogWithNavbarSection = ({ blogList, totalPages, layout }) => {
-  // const searchParams = useSearchParams();
-  // const layout = searchParams.has("layout") ? searchParams.get("layout") : "grid";
+
+const BlogNoNavBarSection = ({ blogList, totalPages, layout }) => {
   return (
-    <div className="col-xl-9 col-lg-9 col-md-12 col-12">
+    <div className="col-xl-12 col-lg-12 col-md-12 col-12">
       <div className="products-topbar clearfix">
         <div className="products-topbar-right">
           <LayoutToggleMenu />
@@ -24,4 +24,4 @@ const BlogWithNavbarSection = ({ blogList, totalPages, layout }) => {
   );
 };
 
-export default BlogWithNavbarSection;
+export default BlogNoNavBarSection;

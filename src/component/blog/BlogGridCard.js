@@ -1,15 +1,17 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@utils/menu";
+import { useFilter } from "@context/CategoryContext";
 const BlogGridCard = ({ blog }) => {
   const { _id, category, title, imageUrl, createdAt, comment } = blog;
   const formattedDate = formatDate(createdAt);
-
+  const { sidebar } = useFilter();
   return (
     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6">
       <div className="post-entry clearfix post-wapper">
         <div className="post-image">
-          <Link href={`/blog/${_id}`}>
+          <Link href={`/blog/${_id}?sidebar=${sidebar}`}>
             <Image src={imageUrl[0]} alt="thumbnail" width={337} height={220} />
           </Link>
         </div>

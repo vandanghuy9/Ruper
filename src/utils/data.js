@@ -262,7 +262,7 @@ const blogCategoryMenu = {
         {
           id: "BLOG/GRID_NONE",
           text: "Blog Grid - No Sidebar",
-          path: "/shop?layout=grid&sidebar=none",
+          path: "/blog?layout=grid&sidebar=none",
           isPublic: true,
         },
       ],
@@ -288,7 +288,7 @@ const blogCategoryMenu = {
         {
           id: "BLOG_DETAILS/NONE",
           text: "Blog Details - No Sidebar",
-          path: "/blog?&sidebar=none",
+          path: "/blog?sidebar=none",
           isPublic: true,
         },
       ],
@@ -633,6 +633,26 @@ const paymentOption = [
   },
 ];
 
+const testimonial = [
+  {
+    id: 0,
+    content: `” Wonderful communication and your company even sent a generous amount of samples to me, making my decision to spend money on an internet item easy. Thank you. Product quality is perfect. “`,
+    img: "/testimonial/1.jpg",
+    name: "Robert Smith",
+  },
+  {
+    id: 1,
+    content: `” Wonderful communication and your company even sent a generous amount of samples to me, making my decision to spend money on an internet item easy. Thank you. Product quality is perfect. “`,
+    img: "/testimonial/2.jpg",
+    name: "Saitama One",
+  },
+  {
+    id: 2,
+    content: `” Wonderful communication and your company even sent a generous amount of samples to me, making my decision to spend money on an internet item easy. Thank you. Product quality is perfect. “`,
+    img: "/testimonial/3.jpg",
+    name: "Sara Colinton",
+  },
+];
 export {
   slides,
   firstBanner,
@@ -654,4 +674,5 @@ export {
   blogCategoryMenu,
   pageMenu,
   blogTags,
+  testimonial,
 };
