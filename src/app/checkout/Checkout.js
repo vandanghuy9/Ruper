@@ -1,21 +1,73 @@
 "use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useCheckoutSubmit } from "@context/CheckoutContext";
-import InputText from "@component/form/InputText";
-import Label from "@component/form/Label";
-import Select from "@component/form/Select";
+import { useAuth } from "@context/UserContext";
 import Cart from "@component/cart/checkout/Cart";
 import { useCart } from "react-use-cart";
 import PaymentBox from "@component/form/PaymentBox";
-import { useState } from "react";
-import ErrorText from "@component/form/ErrorText";
-import { countryOption, stateOption, shippingOption, paymentOption } from "@utils/data";
+import { useRouter } from "next/navigation";
+import { shippingOption, paymentOption } from "@utils/data";
+import Billing from "@component/checkout/Billing";
+import { saveOrder } from "@services/orderService";
+import { successNoti, errorNoti } from "@utils/notification/notification";
+import { revalidatePath } from "next/cache";
 const Checkout = () => {
-  const { register, handleSubmit, errors } = useCheckoutSubmit();
-  const { cartTotal } = useCart();
+  const router = useRouter();
+  const { register, handleSubmit, isShippingSelected } = useCheckoutSubmit();
+  const { cartTotal, items, emptyCart } = useCart();
   const [selectedPayment, setSelectedPayment] = useState("");
-  const onSubmit = (data) => {
-    console.log(data);
+  const { isUserLogin } = useAuth();
+  useEffect(() => {
+    const isLogin = isUserLogin();
+    if (!isLogin) {
+      router.push("/login");
+    }
+  }, []);
+  const onSubmit = async (data) => {
+    try {
+      saveOrder({
+        cart: items,
+        isShippingSelected,
+        userInfo: {
+          billingAddress: {
+            firstName: data.billing_first_name,
+            lastName: data.billing_last_name,
+            companyName: data.billing_companyName,
+            country: data.billing_country,
+            address: data.billing_address,
+            apartment: data.billing_apartment,
+            city: data.billing_city,
+            state: data.billing_state,
+            zipCode: data.billing_zipCode,
+            contact: data.billing_zipCode,
+            email: data.billing_email,
+          },
+          shippingAddress: {
+            firstName: data.shipping_first_name,
+            lastName: data.shipping_last_name,
+            companyName: data.shipping_companyName,
+            country: data.shipping_country,
+            address: data.shipping_address,
+            apartment: data.shipping_apartment,
+            city: data.shipping_city,
+            state: data.shipping_state,
+            zipCode: data.shipping_zipCode,
+            contact: data.shipping_contact,
+            email: data.shipping_email,
+          },
+        },
+        subTotal: cartTotal,
+        orderNote: data.orderNote,
+        shippingOption: data.shippingOption,
+        paymentMethod: data.paymentMethod,
+      }).then((res) => {
+        emptyCart();
+        successNoti(res?.message);
+      });
+    } catch (error) {
+      errorNoti("Error saving order");
+    }
   };
   return (
     <>
@@ -30,7 +82,7 @@ const Checkout = () => {
                 <Link href="/">Home</Link>
                 <span className="delimiter"></span>
                 <Link href="/">Shop</Link>
-                <span className="delimiter"></span>Shopping Cart
+                <span className="delimiter"></span>Checkout
               </div>
             </div>
           </div>
@@ -38,167 +90,13 @@ const Checkout = () => {
             <div className="section-padding">
               <div className="section-container p-l-r">
                 <div className="shop-checkout">
-                  <form name="checkout" className="checkout" onSubmit={handleSubmit(onSubmit)}>
+                  <form
+                    name="checkout"
+                    className="checkout"
+                    onSubmit={handleSubmit(onSubmit)}
+                  >
                     <div className="row">
-                      <div className="col-xl-8 col-lg-7 col-md-12 col-12">
-                        <div className="customer-details">
-                          <div className="billing-fields">
-                            <h3>Billing details</h3>
-                            <div className="billing-fields-wrapper">
-                              <p className="form-row form-row-first validate-required">
-                                <InputText
-                                  id="billing_first_name"
-                                  register={register}
-                                  name="billing_first_name"
-                                  placeholder=""
-                                  label="First name"
-                                  required={true}
-                                  errors={errors}
-                                />
-                                <ErrorText error={errors.billing_first_name} />
-                              </p>
-                              <p className="form-row form-row-last validate-required">
-                                <InputText
-                                  id="billing_last_name"
-                                  register={register}
-                                  name="billing_last_name"
-                                  placeholder=""
-                                  label="Last name"
-                                  required={true}
-                                />
-                                <ErrorText error={errors.billing_last_name} />
-                              </p>
-                              <p className="form-row form-row-wide">
-                                <InputText
-                                  id="billing_company"
-                                  register={register}
-                                  name="billing_company"
-                                  placeholder=""
-                                  label="Company name"
-                                  required={false}
-                                />
-                              </p>
-                              <p className="form-row form-row-wide validate-required">
-                                <Label
-                                  htmlFor="billing_country"
-                                  content={"Country / Region"}
-                                  required={true}
-                                />
-                                <span className="input-wrapper">
-                                  <Select
-                                    className={"country-select custom-select"}
-                                    name={"billing_country"}
-                                    register={register}
-                                    options={countryOption}
-                                  />
-                                  <ErrorText error={errors.billing_country} />
-                                </span>
-                              </p>
-                              <p className="form-row address-field validate-required form-row-wide">
-                                <InputText
-                                  id="billing_address_1"
-                                  register={register}
-                                  name="billing_address_1"
-                                  placeholder="Street address"
-                                  label="Street address "
-                                  required={true}
-                                />
-                                <ErrorText error={errors.billing_address_1} />
-                              </p>
-                              <p className="form-row address-field form-row-wide">
-                                <InputText
-                                  id="billing_address_2"
-                                  register={register}
-                                  name="billing_address_2"
-                                  placeholder="Apartment, suite, unit, etc"
-                                  label="Apartment, suite, unit, etc.&nbsp; "
-                                  required={false}
-                                />
-                              </p>
-                              <p className="form-row address-field validate-required form-row-wide">
-                                <InputText
-                                  id="billing_city"
-                                  register={register}
-                                  name="billing_city"
-                                  placeholder=""
-                                  label="Town / City"
-                                  required={false}
-                                />
-                              </p>
-                              <p className="form-row address-field validate-required validate-state form-row-wide">
-                                <Label
-                                  htmlFor="billing_state"
-                                  content={"State / County"}
-                                  required={true}
-                                />
-                                <span className="input-wrapper">
-                                  <Select
-                                    options={stateOption}
-                                    name={"billing_state"}
-                                    register={register}
-                                    className={"state-select custom-select"}
-                                  />
-                                  <ErrorText error={errors.billing_state} />
-                                </span>
-                              </p>
-                              <p className="form-row address-field validate-required validate-postcode form-row-wide">
-                                <InputText
-                                  id={"billing_postcode"}
-                                  register={register}
-                                  name={"billing_postcode"}
-                                  placeholder={""}
-                                  label={"Postcode / ZIP"}
-                                  required={true}
-                                />
-                                <ErrorText error={errors.billing_postcode} />
-                              </p>
-                              <p className="form-row form-row-wide validate-required validate-phone">
-                                <InputText
-                                  id={"billing_phone"}
-                                  register={register}
-                                  name={"billing_phone"}
-                                  placeholder={""}
-                                  label={"Phone"}
-                                  required={true}
-                                  type="tel"
-                                />
-                                <ErrorText error={errors.billing_phone} />
-                              </p>
-                              <p className="form-row form-row-wide validate-required validate-email">
-                                <InputText
-                                  id={"billing_email"}
-                                  register={register}
-                                  name={"billing_email"}
-                                  placeholder={""}
-                                  label={"Email address"}
-                                  required={true}
-                                  type="email"
-                                />
-                                <ErrorText error={errors.billing_email} />
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="additional-fields">
-                          <p className="form-row notes">
-                            <Label
-                              htmlFor="order_comments"
-                              content={"Order notes"}
-                              required={false}
-                            />
-                            <span className="input-wrapper">
-                              <textarea
-                                name="order_comments"
-                                className="input-text"
-                                id="order_comments"
-                                placeholder="Notes about your order, e.g. special notes for delivery."
-                                cols="5"
-                                rows="2"
-                                {...register("order_comments")}></textarea>
-                            </span>
-                          </p>
-                        </div>
-                      </div>
+                      <Billing />
                       <div className="col-xl-4 col-lg-5 col-md-12 col-12">
                         <div className="checkout-review-order">
                           <div className="checkout-review-order-table">
@@ -219,13 +117,15 @@ const Checkout = () => {
                                     <li key={i}>
                                       <input
                                         type="radio"
-                                        name="shipping_method"
+                                        name="shippingOption"
                                         id={item.value}
                                         className="shipping_method"
-                                        {...register("shipping_method")}
+                                        {...register("shippingOption")}
                                         value={item.value}
                                       />
-                                      <label htmlFor={item.value}>{item.label}</label>
+                                      <label htmlFor={item.value}>
+                                        {item.label}
+                                      </label>
                                     </li>
                                   ))}
                                 </ul>
@@ -242,16 +142,18 @@ const Checkout = () => {
                           </div>
                           <div id="payment" className="checkout-payment">
                             <ul className="payment-methods methods custom-radio">
-                              {paymentOption.map(({ label, value, description }, i) => (
-                                <PaymentBox
-                                  label={label}
-                                  value={value}
-                                  description={description}
-                                  selectedPayment={selectedPayment}
-                                  setSelectedPayment={setSelectedPayment}
-                                  register={register}
-                                />
-                              ))}
+                              {paymentOption.map(
+                                ({ label, value, description }, i) => (
+                                  <PaymentBox
+                                    label={label}
+                                    value={value}
+                                    description={description}
+                                    selectedPayment={selectedPayment}
+                                    setSelectedPayment={setSelectedPayment}
+                                    register={register}
+                                  />
+                                )
+                              )}
                             </ul>
                             <div className="form-row place-order">
                               <div className="terms-and-conditions-wrapper">
@@ -260,7 +162,8 @@ const Checkout = () => {
                               <button
                                 type="submit"
                                 className="button alt"
-                                name="checkout_place_order">
+                                name="checkout_place_order"
+                              >
                                 Place order
                               </button>
                             </div>

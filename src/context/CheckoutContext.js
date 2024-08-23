@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState, createContext, useContext } from "react";
 const Context = createContext(null);
 export const CheckoutContext = ({ children }) => {
+  const [isShippingSelected, setIsShippingSelected] = useState(false);
   const {
     register,
     handleSubmit,
@@ -14,18 +15,29 @@ export const CheckoutContext = ({ children }) => {
     defaultValues: {
       billing_first_name: "",
       billing_last_name: "",
-      billing_company: "",
+      billing_companyName: "",
       billing_country: "",
-      billing_address_1: "",
-      billing_address_2: "",
+      billing_address: "",
+      billing_apartment: "",
       billing_city: "",
       billing_state: "",
-      billing_postcode: "",
-      billing_phone: "",
+      billing_zipCode: "",
+      billing_contact: "",
       billing_email: "",
-      order_comments: "",
-      shipping_method: "",
-      payment_method: "",
+      shipping_first_name: "",
+      shipping_last_name: "",
+      shipping_companyName: "",
+      shipping_country: "",
+      shipping_address: "",
+      shipping_apartment: "",
+      shipping_city: "",
+      shipping_state: "",
+      shipping_zipCode: "",
+      shipping_contact: "",
+      shipping_email: "",
+      orderNote: "",
+      shippingOption: "",
+      paymentMethod: "",
     },
   });
   const handlePaymentMethod = () => {
@@ -50,7 +62,10 @@ export const CheckoutContext = ({ children }) => {
         errors,
         setPaymentMethod,
         control,
-      }}>
+        isShippingSelected,
+        setIsShippingSelected,
+      }}
+    >
       {children}
     </Context.Provider>
   );

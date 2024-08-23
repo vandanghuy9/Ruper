@@ -3,7 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "react-use-cart";
 import useHandleCart from "@hooks/useHandleCart";
+import { useRouter } from "next/navigation";
 const Cart = () => {
+  const router = useRouter();
   const { items, cartTotal, totalUniqueItems } = useCart();
   const { handleUpdateQuantity, handleDeleteFromCart } = useHandleCart();
   return (
@@ -21,7 +23,17 @@ const Cart = () => {
           </thead>
           <tbody>
             {items.map(
-              ({ id, productID, name, price, image, color, size, itemTotal, quantity }) => (
+              ({
+                id,
+                productID,
+                name,
+                price,
+                image,
+                color,
+                size,
+                itemTotal,
+                quantity,
+              }) => (
                 <tr key={id}>
                   <td className="product-thumbnail">
                     <Link href={`/product/${productID}`}>
@@ -45,7 +57,8 @@ const Cart = () => {
                         className="minus"
                         onClick={(e) => {
                           handleUpdateQuantity("DEC", id, quantity);
-                        }}>
+                        }}
+                      >
                         -
                       </button>
                       <input
@@ -61,13 +74,15 @@ const Cart = () => {
                         placeholder=""
                         inputmode="numeric"
                         autocomplete="off"
-                        onChange={(e) => {}}></input>
+                        onChange={(e) => {}}
+                      ></input>
                       <button
                         type="button"
                         className="plus"
                         onClick={(e) => {
                           handleUpdateQuantity("INC", id, quantity);
-                        }}>
+                        }}
+                      >
                         +
                       </button>
                     </div>
@@ -80,7 +95,8 @@ const Cart = () => {
                       type="button"
                       title="Delete item"
                       onClick={(e) => handleDeleteFromCart({ id, name })}
-                      className="remove">
+                      className="remove"
+                    >
                       ×
                     </button>
                   </td>
@@ -97,20 +113,27 @@ const Cart = () => {
                       className="input-text"
                       id="coupon-code"
                       value=""
-                      placeholder="Coupon code"></input>
+                      placeholder="Coupon code"
+                    ></input>
                     <button
                       type="submit"
                       name="apply_coupon"
                       className="button"
-                      value="Apply coupon">
+                      value="Apply coupon"
+                    >
                       Apply coupon
                     </button>
                   </div>
-                  <Link href="/shop">
-                    <button type="button" name="update_cart" className="button" value="Update cart">
-                      Continue Shopping
-                    </button>
-                  </Link>
+                  <button
+                    type="button"
+                    name="update_cart"
+                    className="button"
+                    onClick={() => {
+                      router.push("/shop");
+                    }}
+                  >
+                    Continue Shopping
+                  </button>
                 </div>
               </td>
             </tr>

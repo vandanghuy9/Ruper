@@ -56,21 +56,31 @@ const ProductGridCard = ({ product }) => {
           </div>
           <div className="product-button">
             <div className="btn-add-to-cart" data-title="Add to cart">
-              <button type="button" className="product-btn button">
+              <button
+                type="button"
+                className="product-btn button"
+                onClick={(e) => {
+                  handleOpenQuickViewPopUp(_id);
+                }}
+              >
                 <IoBagOutline size={20} />
                 Add to cart
               </button>
             </div>
             <div
-              className={`btn-wishlist ${wishListAdded === true ? "added" : ""}`}
-              data-title={"Wishlist"}>
+              className={`btn-wishlist ${
+                wishListAdded === true ? "added" : ""
+              }`}
+              data-title={"Wishlist"}
+            >
               {isProductInWishlist ? (
                 <button
                   type="button"
                   className="product-btn"
                   onClick={() => {
                     handleRemoveFromWishList(_id);
-                  }}>
+                  }}
+                >
                   <IoHeart size={20} />
                   Remove from wishlist
                 </button>
@@ -80,7 +90,8 @@ const ProductGridCard = ({ product }) => {
                   className="product-btn"
                   onClick={() => {
                     onAddToWishList(product);
-                  }}>
+                  }}
+                >
                   <IoHeartOutline size={20} />
                   Add to wishlist
                 </button>
@@ -92,7 +103,8 @@ const ProductGridCard = ({ product }) => {
                 className="product-btn"
                 onClick={(e) => {
                   handleOpenComparePopUp(_id);
-                }}>
+                }}
+              >
                 <IoShuffleOutline size={20} />
                 Compare
               </button>
@@ -104,7 +116,8 @@ const ProductGridCard = ({ product }) => {
                   className="product-btn"
                   onClick={(e) => {
                     handleOpenQuickViewPopUp(_id);
-                  }}>
+                  }}
+                >
                   <IoSearchOutline size={20} />
                   Quick View
                 </button>

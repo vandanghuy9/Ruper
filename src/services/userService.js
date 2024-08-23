@@ -71,7 +71,39 @@ async function sendUserQuestion(formData) {
 
   return userMessage.name;
 }
+async function getUserAddress() {
+  const cookieStore = cookies();
+  const token = cookieStore.has("accessToken")
+    ? cookieStore.get("accessToken").value
+    : null;
+  return sendGetRequest("/user/address", { token });
+}
 
+async function updateUserInfo(formData) {
+  const cookieStore = cookies();
+  const token = cookieStore.has("accessToken")
+    ? cookieStore.get("accessToken").value
+    : null;
+  const userMessage = {
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+    displayName: formData.get("name"),
+    email: formData.get("email"),
+    password: formData.get("password_current"),
+    newPassword: formData.get("password_1"),
+    confirmPassword: formData.get("password_2"),
+  };
+
+  return sendPostRequest("/user/update", userMessage, { token }).catch(
+    (error) => {
+      if (error.response && error.response.status === 401) {
+        return { status: 401, message: error.response.data.message };
+      } else {
+        console.error("Error sending data:", error);
+      }
+    }
+  );
+}
 export {
   login,
   register,
@@ -79,4 +111,6 @@ export {
   fetchUserWishList,
   removeFromWishList,
   sendUserQuestion,
+  getUserAddress,
+  updateUserInfo,
 };

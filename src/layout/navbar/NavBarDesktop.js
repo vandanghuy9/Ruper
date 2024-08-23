@@ -14,9 +14,10 @@ import {
   blogCategoryMenu,
   pageMenu,
 } from "@utils/data";
+import { usePathname } from "next/navigation";
 const Cart = dynamic(() => import("../../component/cart/Cart"), { ssr: false });
 
-const NavBarDesktop = ({ blogList }) => {
+const NavBarDesktop = ({ blogList, sampleProduct }) => {
   const {
     isLoginActive,
     isRegisterActive,
@@ -28,6 +29,9 @@ const NavBarDesktop = ({ blogList }) => {
     getUserName,
     getUserId,
   } = useAuth();
+  const pathname = usePathname();
+  console.log(pathname);
+  console.log(["/shop", "/cart", "/checkout", "/wishlist"].indexOf(pathname));
   const { wishList, handleSetWishList, wishListAdded } = useShopProduct();
   const isLogin = isUserLogin();
   const userName = getUserName();
@@ -57,7 +61,11 @@ const NavBarDesktop = ({ blogList }) => {
                 <div className="site-navigation">
                   <nav id="main-navigation">
                     <ul id="menu-main-menu" className="menu">
-                      <li className="level-0 menu-item menu-item-has-children mega-menu current-menu-item">
+                      <li
+                        className={`level-0 menu-item menu-item-has-children mega-menu ${
+                          pathname === "/" && "current-menu-item"
+                        }`}
+                      >
                         <Link href={homeCategoryMenu.path}>
                           <span className="menu-item-text">
                             {homeCategoryMenu.text}
@@ -90,8 +98,14 @@ const NavBarDesktop = ({ blogList }) => {
                         </div>
                       </li>
                       <li
-                        className="level-0 menu-item menu-item-has-children"
-                        key={shopCategoryMenu.id}
+                        className={`level-0 menu-item menu-item-has-children ${
+                          ["/shop", "/cart", "/checkout", "/wishlist"].indexOf(
+                            pathname
+                          ) !== -1 && "current-menu-item"
+                        } ${
+                          pathname.indexOf("/product") !== -1 &&
+                          "current-menu-item"
+                        }`}
                       >
                         <Link href={shopCategoryMenu.path}>
                           <span className="menu-item-text">
@@ -147,7 +161,9 @@ const NavBarDesktop = ({ blogList }) => {
                                   href={
                                     section.id === "SHOP/WISHLIST"
                                       ? `${section.path}/${useId}`
-                                      : section.path
+                                      : section.id === "SHOP/DETAILS"
+                                      ? `${section.path}/${sampleProduct._id}`
+                                      : `${section.path}`
                                   }
                                 >
                                   <span className="menu-item-text">
@@ -167,7 +183,12 @@ const NavBarDesktop = ({ blogList }) => {
                           )}
                         </ul>
                       </li>
-                      <li className="level-0 menu-item menu-item-has-children mega-menu mega-menu-fullwidth align-center">
+                      <li
+                        className={`level-0 menu-item menu-item-has-children mega-menu mega-menu-fullwidth align-center ${
+                          pathname.indexOf(blogCategoryMenu.path) !== -1 &&
+                          "current-menu-item"
+                        }`}
+                      >
                         <Link href={blogCategoryMenu.path}>
                           <span className="menu-item-text">
                             {blogCategoryMenu.text}
@@ -215,69 +236,6 @@ const NavBarDesktop = ({ blogList }) => {
                                         blog={item}
                                       />
                                     ))}
-                                    {/* <li className="post-item">
-                                      <Link href="/" className="post-image">
-                                        <Image
-                                          src="/blog/1.jpg"
-                                          width={560}
-                                          height={90}
-                                          alt="Blog 1"
-                                        />
-                                      </Link>
-                                      <div className="post-content">
-                                        <h2 className="post-title">
-                                          <Link href="blog-details-right.html">
-                                            Easy Fixes For Home Decor
-                                          </Link>
-                                        </h2>
-                                        <div className="post-time">
-                                          <span className="post-date">May 30, 2022</span>
-                                          <span className="post-comment">4 Comments</span>
-                                        </div>
-                                      </div>
-                                    </li>
-                                    <li className="post-item">
-                                      <Link href="/" className="post-image">
-                                        <Image
-                                          src="/blog/2.jpg"
-                                          width={560}
-                                          height={90}
-                                          alt="Blog 1"
-                                        />
-                                      </Link>
-                                      <div className="post-content">
-                                        <h2 className="post-title">
-                                          <Link href="blog-details-right.html">
-                                            How To Make Your Home A Showplace
-                                          </Link>
-                                        </h2>
-                                        <div className="post-time">
-                                          <span className="post-date">Aug 24, 2022</span>
-                                          <span className="post-comment">2 Comments</span>
-                                        </div>
-                                      </div>
-                                    </li>
-                                    <li className="post-item">
-                                      <Link href="/" className="post-image">
-                                        <Image
-                                          src="/blog/3.jpg"
-                                          width={560}
-                                          height={90}
-                                          alt="Blog 1"
-                                        />
-                                      </Link>
-                                      <div className="post-content">
-                                        <h2 className="post-title">
-                                          <Link href="blog-details-right.html">
-                                            Stunning Furniture With Aesthetic Appeal
-                                          </Link>
-                                        </h2>
-                                        <div className="post-time">
-                                          <span className="post-date">Dec 06, 2022</span>
-                                          <span className="post-comment">1 Comment</span>
-                                        </div>
-                                      </div>
-                                    </li> */}
                                   </ul>
                                 </div>
                               </div>
@@ -285,7 +243,18 @@ const NavBarDesktop = ({ blogList }) => {
                           </div>
                         </div>
                       </li>
-                      <li className="level-0 menu-item menu-item-has-children ">
+                      <li
+                        className={`level-0 menu-item menu-item-has-children ${
+                          [
+                            "/login",
+                            "/forgot-password",
+                            "/user/dashboard",
+                            "/about-us",
+                            "/faq",
+                            "/page-404",
+                          ].indexOf(pathname) !== -1 && "current-menu-item"
+                        }`}
+                      >
                         <Link href={pageMenu.path}>
                           <span className="menu-item-text">
                             {pageMenu.text}
@@ -313,8 +282,12 @@ const NavBarDesktop = ({ blogList }) => {
                           )}
                         </ul>
                       </li>
-                      <li className="level-0 menu-item ">
-                        <Link href={"/"}>
+                      <li
+                        className={`level-0 menu-item ${
+                          pathname === "/contact" && "current-menu-item"
+                        }`}
+                      >
+                        <Link href={"/contact"}>
                           <span className="menu-item-text">Contact</span>
                         </Link>
                       </li>

@@ -22,6 +22,15 @@ const ProductInfo = ({ product }) => {
   sizes = sizes.filter((item, index) => sizes.indexOf(item) === index);
   let colors = stocks.map((item) => item.color);
   colors = colors.filter((item, index) => colors.indexOf(item) === index);
+  let rating = 0;
+  let nonRating = 0;
+  if (product.comment.length > 0) {
+    for (let i = 0; i < product.comment.length; i++) {
+      rating += product.comment[i].rating;
+    }
+    rating = Math.ceil(rating / product?.comment?.length);
+    nonRating = 5 - rating;
+  }
   const [quantity, setQuantity] = useState(1);
   const [attributes, setAttributes] = useState({ size: null, color: null });
   const { handleAddToCart } = useHandleCart();
@@ -35,7 +44,10 @@ const ProductInfo = ({ product }) => {
     }
   };
   const handleAttributes = (e) => {
-    setAttributes((prevAttributes) => ({ ...prevAttributes, [e.target.name]: e.target.value }));
+    setAttributes((prevAttributes) => ({
+      ...prevAttributes,
+      [e.target.name]: e.target.value,
+    }));
   };
   const addToCart = (e) => {
     handleAddToCart(product, quantity, attributes);
@@ -62,16 +74,24 @@ const ProductInfo = ({ product }) => {
             </del>
           )}
           <ins>
-            <span>${discount > 0 ? Math.ceil((price * (100 - discount)) / 100) : price}</span>
+            <span>
+              $
+              {discount > 0
+                ? Math.ceil((price * (100 - discount)) / 100)
+                : price}
+            </span>
           </ins>
         </span>
         <div className="rating">
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
+          {[...Array(rating)].map((item) => (
+            <AiFillStar key={item} size={20} color="#fcad02" />
+          ))}
+          {[...Array(nonRating)].map((item) => (
+            <AiFillStar key={item} size={20} />
+          ))}
           <div className="review-count">
-            3 <span>reviews</span>
+            {product.comment.length}
+            <span>{product.comment.length > 1 ? " reviews" : " review"}</span>
           </div>
         </div>
         <div className="description">
@@ -129,7 +149,8 @@ const ProductInfo = ({ product }) => {
                 className="plus fs-2 fw-bold"
                 onClick={(e) => {
                   handleQuantity("INC");
-                }}>
+                }}
+              >
                 +
               </button>
               <span className="ps-5 pe-5 my-3 fs-2 fw-normal">{quantity}</span>
@@ -138,11 +159,16 @@ const ProductInfo = ({ product }) => {
                 className="minus fs-2 fw-bold"
                 onClick={(e) => {
                   handleQuantity("DEC");
-                }}>
+                }}
+              >
                 -
               </button>
             </div>
-            <button className="btn-add-to-cart button" type="button" onClick={addToCart}>
+            <button
+              className="btn-add-to-cart button"
+              type="button"
+              onClick={addToCart}
+            >
               Add to cart
             </button>
           </div>
@@ -156,7 +182,8 @@ const ProductInfo = ({ product }) => {
                 className="product-btn"
                 onClick={() => {
                   handleRemoveFromWishList(_id);
-                }}>
+                }}
+              >
                 <span className="icon">
                   <IoHeart size={20} />
                 </span>
@@ -168,7 +195,8 @@ const ProductInfo = ({ product }) => {
                 type="button"
                 onClick={() => {
                   onAddToWishList();
-                }}>
+                }}
+              >
                 <span className="icon">
                   <IoHeartOutline size={20} />
                 </span>
@@ -181,7 +209,8 @@ const ProductInfo = ({ product }) => {
               className="product-btn"
               onClick={(e) => {
                 handleOpenComparePopUp(product._id);
-              }}>
+              }}
+            >
               <span className="icon">
                 <IoShuffleOutline size={20} />
               </span>

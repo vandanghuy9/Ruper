@@ -1,3 +1,4 @@
+"use client";
 const PaymentBox = ({
   label,
   value,
@@ -12,10 +13,10 @@ const PaymentBox = ({
         <input
           type="radio"
           className="input-radio"
-          name="payment_method"
+          name="paymentMethod"
           value={value}
           id={value}
-          {...register("payment_method")}
+          {...register("paymentMethod")}
           onClick={() => setSelectedPayment(value)}
         />
         <label htmlFor={value}>{label}</label>
