@@ -1,17 +1,34 @@
-name: Merge any release branch to main
 on:
   push:
     branches:
-      - '*'
+      - main
 jobs:
-  merge-branch:
+  merge-branches:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
-
-      - name: Merge staging -> main
-        uses: devmasx/merge-branch@main
-        with:
-          type: now
-          target_branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Fetch all branches
+        run: git fetch --all
+      - name: Merge branches into main
+        run: |
+          BRANCHES=$(git branch -r | grep -v '\->' | grep -v 'main' | sed 's/origin\///')
+          for branch in $BRANCHES; do
+            CURRENT_BRANCH=$(git branch --show-current)
+            if [ "$CURRENT_BRANCH" != "main" ]; then
+              git checkout main
+            fi
+            git pull origin main
+            if git merge --no-ff --allow-unrelated-histories origin/$branch -m "Merge branch '$branch' into main"; then
+              echo "Merge successful for branch $branch. Deleting branch $branch..."
+              git push origin --delete $branch
+              git push origin main
+            else
+              echo "Merge conflict or error occurred for branch $branch. Skipping..."
+              git merge --abort
+            fi
+          done
