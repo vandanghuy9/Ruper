@@ -1,0 +1,17 @@
+name: Merge any release branch to main
+on:
+  push:
+    branches:
+      - '*'
+jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Merge staging -> main
+        uses: devmasx/merge-branch@main
+        with:
+          type: now
+          target_branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
