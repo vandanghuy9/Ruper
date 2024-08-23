@@ -1,19 +1,75 @@
 import FilterBar from "@component/blog/FilterBar";
 import BlogWithNavbarSection from "@component/blog/BlogWithNavbarSection";
-const BlogCategory = ({ blogList, totalPages, categoryList, recentPosts, sidebar }) => {
+import BlogNoNavBarSection from "@component/blog/BlogNoNavBarSection";
+import Link from "next/link";
+
+const BlogCategory = ({
+  blogList,
+  totalPages,
+  categoryList,
+  recentPosts,
+  sidebar,
+  layout,
+  category,
+}) => {
   return (
-    <div className="row">
-      {sidebar === "left" ? (
-        <>
-          <FilterBar categoryList={categoryList} recentPosts={recentPosts} />
-          <BlogWithNavbarSection blogList={blogList} totalPages={totalPages} />
-        </>
-      ) : (
-        <>
-          <BlogWithNavbarSection blogList={blogList} totalPages={totalPages} />
-          <FilterBar categoryList={categoryList} recentPosts={recentPosts} />
-        </>
-      )}
+    <div id="main-content" className="main-content">
+      <div id="primary" className="content-area">
+        <div id="title" className="page-title">
+          <div className="section-container">
+            <div className="content-title-heading">
+              <h1 className="text-title-heading">{category}</h1>
+            </div>
+            <div className="breadcrumbs">
+              <Link href="/">Home</Link>
+              <span className="delimiter"></span>
+              <Link href={`/blog`}>{category}</Link>
+            </div>
+          </div>
+        </div>
+        <div id="content" class="site-content" role="main">
+          <div class="section-padding">
+            <div class="section-container p-l-r">
+              <div className="row">
+                {sidebar === "left" ? (
+                  <>
+                    <FilterBar
+                      categoryList={categoryList}
+                      recentPosts={recentPosts}
+                    />
+                    <BlogWithNavbarSection
+                      blogList={blogList}
+                      totalPages={totalPages}
+                      layout={layout}
+                    />
+                  </>
+                ) : sidebar === "right" ? (
+                  <>
+                    <BlogWithNavbarSection
+                      blogList={blogList}
+                      totalPages={totalPages}
+                      layout={layout}
+                    />
+                    <FilterBar
+                      categoryList={categoryList}
+                      recentPosts={recentPosts}
+                      layout={layout}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <BlogNoNavBarSection
+                      blogList={blogList}
+                      totalPages={totalPages}
+                      layout={layout}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

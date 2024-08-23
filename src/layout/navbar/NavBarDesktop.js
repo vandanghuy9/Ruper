@@ -8,7 +8,12 @@ import Register from "@component/modal/Register";
 import { useAuth } from "@context/UserContext";
 import { useShopProduct } from "@context/ShopProductContext";
 import NavbarBlogItem from "@component/blog/NavbarBlogItem";
-import { homeCategoryMenu, shopCategoryMenu, blogCategoryMenu, pageMenu } from "@utils/data";
+import {
+  homeCategoryMenu,
+  shopCategoryMenu,
+  blogCategoryMenu,
+  pageMenu,
+} from "@utils/data";
 const Cart = dynamic(() => import("../../component/cart/Cart"), { ssr: false });
 
 const NavBarDesktop = ({ blogList }) => {
@@ -54,20 +59,26 @@ const NavBarDesktop = ({ blogList }) => {
                     <ul id="menu-main-menu" className="menu">
                       <li className="level-0 menu-item menu-item-has-children mega-menu current-menu-item">
                         <Link href={homeCategoryMenu.path}>
-                          <span className="menu-item-text">{homeCategoryMenu.text}</span>
+                          <span className="menu-item-text">
+                            {homeCategoryMenu.text}
+                          </span>
                         </Link>
                         <div className="sub-menu">
                           <div className="row">
                             {homeCategoryMenu.child.map((section) => (
                               <div className="col-md-6" key={section.id}>
                                 <div className="menu-section">
-                                  <h2 className="sub-menu-title">{section.text}</h2>
+                                  <h2 className="sub-menu-title">
+                                    {section.text}
+                                  </h2>
                                   <ul className="menu-list">
                                     {section.child &&
                                       section.child.map((item) => (
                                         <li key={item.id}>
                                           <Link href={item.path}>
-                                            <span className="menu-item-text">{item.text}</span>
+                                            <span className="menu-item-text">
+                                              {item.text}
+                                            </span>
                                           </Link>
                                         </li>
                                       ))}
@@ -80,18 +91,24 @@ const NavBarDesktop = ({ blogList }) => {
                       </li>
                       <li
                         className="level-0 menu-item menu-item-has-children"
-                        key={shopCategoryMenu.id}>
+                        key={shopCategoryMenu.id}
+                      >
                         <Link href={shopCategoryMenu.path}>
-                          <span className="menu-item-text">{shopCategoryMenu.text}</span>
+                          <span className="menu-item-text">
+                            {shopCategoryMenu.text}
+                          </span>
                         </Link>
                         <ul className="sub-menu">
                           {shopCategoryMenu.child.map((section) =>
                             section.child ? (
                               <li
                                 className="level-1 menu-item menu-item-has-children"
-                                key={section.id}>
+                                key={section.id}
+                              >
                                 <Link href={section.path}>
-                                  <span className="menu-item-text">{section.text}</span>
+                                  <span className="menu-item-text">
+                                    {section.text}
+                                  </span>
                                 </Link>
                                 <ul className="sub-menu">
                                   {section.child.map((item) =>
@@ -102,14 +119,22 @@ const NavBarDesktop = ({ blogList }) => {
                                             item.id === "SHOP/WISHLIST"
                                               ? `${item.path}/${useId}`
                                               : item.path
-                                          }>
-                                          <span className="menu-item-text">{item.text}</span>
+                                          }
+                                        >
+                                          <span className="menu-item-text">
+                                            {item.text}
+                                          </span>
                                         </Link>
                                       </li>
                                     ) : (
                                       <li>
-                                        <Link href={"#"} onClick={handleFormActive}>
-                                          <span className="menu-item-text">{item.text}</span>
+                                        <Link
+                                          href={"#"}
+                                          onClick={handleFormActive}
+                                        >
+                                          <span className="menu-item-text">
+                                            {item.text}
+                                          </span>
                                         </Link>
                                       </li>
                                     )
@@ -123,14 +148,19 @@ const NavBarDesktop = ({ blogList }) => {
                                     section.id === "SHOP/WISHLIST"
                                       ? `${section.path}/${useId}`
                                       : section.path
-                                  }>
-                                  <span className="menu-item-text">{section.text}</span>
+                                  }
+                                >
+                                  <span className="menu-item-text">
+                                    {section.text}
+                                  </span>
                                 </Link>
                               </li>
                             ) : (
                               <li>
                                 <Link href={"#"} onClick={handleFormActive}>
-                                  <span className="menu-item-text">{section.text}</span>
+                                  <span className="menu-item-text">
+                                    {section.text}
+                                  </span>
                                 </Link>
                               </li>
                             )
@@ -139,19 +169,34 @@ const NavBarDesktop = ({ blogList }) => {
                       </li>
                       <li className="level-0 menu-item menu-item-has-children mega-menu mega-menu-fullwidth align-center">
                         <Link href={blogCategoryMenu.path}>
-                          <span className="menu-item-text">{blogCategoryMenu.text}</span>
+                          <span className="menu-item-text">
+                            {blogCategoryMenu.text}
+                          </span>
                         </Link>
                         <div className="sub-menu">
                           <div className="row">
                             <div className="col-md-5">
                               {blogCategoryMenu.child.map((section) => (
                                 <div className="menu-section">
-                                  <h2 className="sub-menu-title">Blog Category</h2>
+                                  <h2 className="sub-menu-title">
+                                    {section.text}
+                                  </h2>
                                   <ul className="menu-list">
                                     {section.child.map((item) => (
                                       <li key={item.id}>
-                                        <Link href={item.path}>
-                                          <span className="menu-item-text">{item.text}</span>
+                                        <Link
+                                          href={
+                                            section.id === "BLOG/DETAIL"
+                                              ? item.path.replace(
+                                                  "?",
+                                                  `/${blogList?.at(0)?._id}?`
+                                                )
+                                              : item.path
+                                          }
+                                        >
+                                          <span className="menu-item-text">
+                                            {item.text}
+                                          </span>
                                         </Link>
                                       </li>
                                     ))}
@@ -165,7 +210,10 @@ const NavBarDesktop = ({ blogList }) => {
                                 <div className="block block-posts recent-posts p-t-5">
                                   <ul className="posts-list">
                                     {blogList?.map((item) => (
-                                      <NavbarBlogItem key={item._id} blog={item} />
+                                      <NavbarBlogItem
+                                        key={item._id}
+                                        blog={item}
+                                      />
                                     ))}
                                     {/* <li className="post-item">
                                       <Link href="/" className="post-image">
@@ -239,20 +287,26 @@ const NavBarDesktop = ({ blogList }) => {
                       </li>
                       <li className="level-0 menu-item menu-item-has-children ">
                         <Link href={pageMenu.path}>
-                          <span className="menu-item-text">{pageMenu.text}</span>
+                          <span className="menu-item-text">
+                            {pageMenu.text}
+                          </span>
                         </Link>
                         <ul className="sub-menu">
                           {pageMenu.child.map((item) =>
                             item.isPublic || isLogin ? (
                               <li key={item.id}>
                                 <Link href={item.path}>
-                                  <span className="menu-item-text">{item.text}</span>
+                                  <span className="menu-item-text">
+                                    {item.text}
+                                  </span>
                                 </Link>
                               </li>
                             ) : (
                               <li key={item.id}>
                                 <Link href={"#"} onClick={handleFormActive}>
-                                  <span className="menu-item-text">{item.text}</span>
+                                  <span className="menu-item-text">
+                                    {item.text}
+                                  </span>
                                 </Link>
                               </li>
                             )
@@ -271,20 +325,33 @@ const NavBarDesktop = ({ blogList }) => {
               <div className="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 header-right">
                 <div className="header-page-link">
                   {isLogin ? (
-                    <Link className="lh-1 fw-bold fs-2" href={"/user/dashboard"}>
+                    <Link
+                      className="lh-1 fw-bold fs-2"
+                      href={"/user/dashboard"}
+                    >
                       {userName[0]}
                     </Link>
                   ) : (
                     <div className="login-header">
-                      <button type="button" className="active-login" onClick={handleFormActive}>
+                      <button
+                        type="button"
+                        className="active-login"
+                        onClick={handleFormActive}
+                      >
                         Login
                       </button>
                       <div
                         className={
-                          isFormActive ? "form-login-register active" : "form-login-register"
-                        }>
+                          isFormActive
+                            ? "form-login-register active"
+                            : "form-login-register"
+                        }
+                      >
                         <div className="box-form-login">
-                          <div className="active-login" onClick={handleFormActive}></div>
+                          <div
+                            className="active-login"
+                            onClick={handleFormActive}
+                          ></div>
                           <div className="box-content">
                             <SignIn
                               isRegisterActive={isRegisterActive}
@@ -313,13 +380,16 @@ const NavBarDesktop = ({ blogList }) => {
                         type="button"
                         title="wishlist"
                         className="wishlist-button"
-                        onClick={handleFormActive}>
+                        onClick={handleFormActive}
+                      >
                         <AiOutlineHeart color="black" size={30} />
                       </button>
                     ) : (
                       <Link href={`/wishlist/${useId}`}>
                         <AiOutlineHeart color="black" size={30} />
-                        <span className="count-wishlist">{wishList?.length}</span>
+                        <span className="count-wishlist">
+                          {wishList?.length}
+                        </span>
                       </Link>
                     )}
                   </div>

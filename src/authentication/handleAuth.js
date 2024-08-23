@@ -35,3 +35,10 @@ export const handleRegister = async (formData) => {
   };
   console.log(rawFormData);
 };
+
+export const handleForgotPassword = async (formData) => {
+  const rawFormData = {
+    userLogin: formData.get("user_login"),
+  };
+  return rawFormData;
+};

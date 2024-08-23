@@ -76,7 +76,10 @@ const ShopCategory = ({
                   </>
                 )}
                 {sidebar === "none" && (
-                  <ProductNoSideBarSection products={products} layout={layout} />
+                  <ProductNoSideBarSection
+                    products={products}
+                    layout={layout}
+                  />
                 )}
               </div>
             </div>

@@ -9941,13 +9941,10 @@ ul.slick-dots li.slick-active button {
 }
 .page-login-register .box-form-login h2:before {
   font-size: 21px;
-  content: "\e90c";
-  font-family: wpbingofont;
   display: inline-block;
   margin-right: 10px;
 }
-.page-login-register .box-form-login h2:after {
-  content: "";
+.page-login-register .box-form-login h2 span {
   width: 132px;
   height: 2px;
   background: #000;
@@ -9956,7 +9953,6 @@ ul.slick-dots li.slick-active button {
   left: calc(50% - 66px);
 }
 .page-login-register .box-form-login h2.register:before {
-  content: "\e915";
 }
 .page-login-register .box-form-login .box-content {
   padding: 0 90px;
@@ -10339,8 +10335,6 @@ ul.slick-dots li.slick-active button {
 }
 .page-404 .content-page-404 .button:after {
   display: inline-block;
-  content: "\24";
-  font-family: eleganticons;
   font-size: 20px;
   line-height: 1;
   position: relative;
