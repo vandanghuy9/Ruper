@@ -58,7 +58,7 @@ const blogTags = [
   },
 ];
 const homeCategoryMenu = {
-  id: "HOME",
+  id: "/",
   text: "Home",
   path: "/",
   child: [
@@ -199,7 +199,7 @@ const shopCategoryMenu = {
     {
       id: "SHOP/DETAILS",
       text: "Shop Details",
-      path: `/product/${sampleProductId}`,
+      path: `/product`,
       isPublic: true,
     },
     {
@@ -316,7 +316,7 @@ const pageMenu = {
     {
       id: "PAGE/MY_ACCOUNT",
       text: "My Account",
-      path: `/my-account`,
+      path: `/user/dashboard`,
       isPublic: false,
     },
     {

@@ -1,6 +1,6 @@
 "use server";
 import "server-only";
-import { sendGetRequest } from "./requestService";
+import { sendGetRequest, sendPostRequest } from "./requestService";
 const getShowProduct = async () => {
   return sendGetRequest("/products/show");
 };
@@ -23,6 +23,10 @@ const getCompareProducts = async (product) => {
   return sendGetRequest(`/products/compare?product=${product}`);
 };
 
+const saveProductReviews = async (body) => {
+  return sendPostRequest("/products/reviews", body);
+};
+
 export {
   getShowProduct,
   getProductById,
@@ -30,4 +34,5 @@ export {
   getProductsByCategory,
   getFeatureProducts,
   getCompareProducts,
+  saveProductReviews,
 };

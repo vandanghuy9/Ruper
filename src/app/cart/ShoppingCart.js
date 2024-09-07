@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Cart from "@component/cart/shopping-cart/Cart";
 import { useCart } from "react-use-cart";
@@ -8,9 +9,15 @@ import EmptyCart from "@component/cart/EmptyCart";
 const ShoppingCart = () => {
   const { cartTotal, isEmpty } = useCart();
   const { register } = useCheckoutSubmit();
+  const [isCartReady, setIsCartReady] = useState(false);
+  useEffect(() => {
+    if (isEmpty !== undefined) {
+      setIsCartReady(true);
+    }
+  }, [isEmpty]);
   return (
     <>
-      {!isEmpty ? (
+      {isCartReady && (
         <div className="shop-cart">
           <div className="row">
             <div className="col-xl-8 col-lg-12 col-md-12 col-12">
@@ -65,9 +72,8 @@ const ShoppingCart = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <EmptyCart />
       )}
+      {!isCartReady && <EmptyCart />}
     </>
   );
 };

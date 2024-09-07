@@ -11,11 +11,12 @@ const ProductCarousel = ({ productSet }) => {
     <>
       <Swiper
         spaceBetween={30}
-        slidesPerView={3}
+        slidesPerView={4}
         loop={true}
         navigation
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper">
+        className="mySwiper"
+      >
         {products?.map((product, index) => (
           <SwiperSlide key={index}>
             <div className="item-product slick-slide">

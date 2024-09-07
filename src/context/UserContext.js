@@ -1,8 +1,11 @@
 "use client";
 import { createContext, useReducer, useContext, useState } from "react";
 import { successNoti, errorNoti } from "@utils/notification/notification";
+import { useSearchParams, useRouter } from "next/navigation";
 export const Context = createContext();
 export const UserContext = ({ userInfor, children }) => {
+  const query = useSearchParams();
+  const router = useRouter();
   const initialUser = {
     userInfor: userInfor,
     shippingOption: "hello",
@@ -24,8 +27,7 @@ export const UserContext = ({ userInfor, children }) => {
     setIsRegisterActive(false);
     setIsLoginActive(false);
   };
-  const handleLoginActive = (e) => {
-    e.preventDefault();
+  const handleLoginActive = () => {
     setIsRegisterActive(!isRegisterActive);
     setIsLoginActive(!isLoginActive);
   };
@@ -45,6 +47,10 @@ export const UserContext = ({ userInfor, children }) => {
   const login = (userInfor) => {
     dispatch({ type: "LOGIN", payload: userInfor });
     successNoti("Login successfully");
+    const redirect = query.get("redirect");
+    console.log(redirect);
+
+    router.push(`${redirect ? redirect : "/"}`);
     handleFormActive();
   };
   const handleLoginError = (error) => {
@@ -66,7 +72,8 @@ export const UserContext = ({ userInfor, children }) => {
         isLoginActive,
         isRegisterActive,
         isFormActive,
-      }}>
+      }}
+    >
       {children}
     </Context.Provider>
   );
