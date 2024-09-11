@@ -5,12 +5,17 @@ import handleLogin from "../../authentication/handleAuth";
 import { useAuth } from "@context/UserContext";
 import { useShopProduct } from "@context/ShopProductContext";
 import ErrorText from "@component/form/ErrorText";
-export default function Signin({ isRegisterActive, handleRegisterActive, handleFormActive }) {
+export default function Signin({
+  isRegisterActive,
+  handleRegisterActive,
+  handleFormActive,
+}) {
   const [error, setError] = useState("");
   const { login, handleLoginError } = useAuth();
   const { handleSetWishList } = useShopProduct();
   const onLogin = async (formData) => {
     const { userInfor, wishlist } = await handleLogin(formData);
+    console.log(userInfor);
     if (userInfor.status === 401) {
       return setError(userInfor.message);
     }
@@ -29,7 +34,7 @@ export default function Signin({ isRegisterActive, handleRegisterActive, handleF
               className="input-text"
               name="username"
               id="username"
-              placeholder="Your name"
+              placeholder="Your name or email"
             />
           </div>
           <div className="password">
@@ -45,7 +50,12 @@ export default function Signin({ isRegisterActive, handleRegisterActive, handleF
           {error !== "" && <ErrorText error={error !== ""} message={error} />}
           <div className="rememberme-lost">
             <div className="rememberme">
-              <input name="rememberme" type="checkbox" id="rememberme" value={true} />
+              <input
+                name="rememberme"
+                type="checkbox"
+                id="rememberme"
+                value={true}
+              />
               <label htmlFor="rememberme" className="inline">
                 Remember me
               </label>
@@ -55,9 +65,17 @@ export default function Signin({ isRegisterActive, handleRegisterActive, handleF
             </div>
           </div>
           <div className="button-login">
-            <input type="submit" className="button" name="login" value="Login" />
+            <input
+              type="submit"
+              className="button"
+              name="login"
+              value="Login"
+            />
           </div>
-          <div className="button-next-reregister" onClick={handleRegisterActive}>
+          <div
+            className="button-next-reregister"
+            onClick={handleRegisterActive}
+          >
             Create An Account
           </div>
         </div>

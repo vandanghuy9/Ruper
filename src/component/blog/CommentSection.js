@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { formatDate } from "@utils/menu";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 const CommentSection = ({ blogId, comment }) => {

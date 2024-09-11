@@ -2,6 +2,8 @@
 import { createContext, useReducer, useContext, useState } from "react";
 import { successNoti, errorNoti } from "@utils/notification/notification";
 import { useSearchParams, useRouter } from "next/navigation";
+import { handleLogout } from "../authentication/handleAuth";
+
 export const Context = createContext();
 export const UserContext = ({ userInfor, children }) => {
   const query = useSearchParams();
@@ -13,6 +15,9 @@ export const UserContext = ({ userInfor, children }) => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "LOGIN": {
+        return { ...state, userInfor: action.payload };
+      }
+      case "LOGOUT": {
         return { ...state, userInfor: action.payload };
       }
     }
@@ -48,10 +53,26 @@ export const UserContext = ({ userInfor, children }) => {
     dispatch({ type: "LOGIN", payload: userInfor });
     successNoti("Login successfully");
     const redirect = query.get("redirect");
-    console.log(redirect);
-
     router.push(`${redirect ? redirect : "/"}`);
     handleFormActive();
+  };
+
+  const register = (message) => {
+    successNoti(message);
+    router.push("/");
+  };
+  const verifyEmail = (res) => {
+    successNoti(res);
+    handleFormActive();
+  };
+  const logout = () => {
+    handleLogout();
+    dispatch({
+      type: "LOGOUT",
+      payload: { _id: null, name: null, email: null },
+    });
+    successNoti("Logout successfully");
+    return router.push("/");
   };
   const handleLoginError = (error) => {
     errorNoti(error);
@@ -72,6 +93,9 @@ export const UserContext = ({ userInfor, children }) => {
         isLoginActive,
         isRegisterActive,
         isFormActive,
+        logout,
+        register,
+        verifyEmail,
       }}
     >
       {children}

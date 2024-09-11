@@ -1,9 +1,15 @@
 "use client";
 import React from "react";
-import { handleForgotPassword } from "../../authentication/handleAuth";
+import { handleForgotPassword } from "../../../authentication/handleAuth";
+import { errorNoti, successNoti } from "@utils/notification/notification";
 const ForgotPassword = () => {
   const onSubmit = async (formData) => {
-    const res = await handleForgotPassword(formData);
+    try {
+      const res = await handleForgotPassword(formData);
+      successNoti(res.message);
+    } catch (e) {
+      errorNoti(e.message);
+    }
   };
   return (
     <div className="page-forget-password">

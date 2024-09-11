@@ -14,8 +14,16 @@ async function login(body) {
   });
 }
 
-async function register(body) {
-  console.log(body);
+async function verifyEmail(body) {
+  return sendPostRequest("/user/verify", body).catch((e) => {
+    throw e;
+  });
+}
+
+async function register(token) {
+  return sendPostRequest("/user/register", { token }).catch((error) => {
+    console.log(error.response.data.message);
+  });
 }
 
 async function addToWishList(productId) {
@@ -104,13 +112,28 @@ async function updateUserInfo(formData) {
     }
   );
 }
+async function forgotPassword(userLogin) {
+  return sendPostRequest("/user/forgot-password", userLogin).catch((e) => {
+    throw e.response.data.message;
+  });
+}
+
+async function recoverPassword(userRecover) {
+  return sendPostRequest("/user/recover", userRecover).catch((e) => {
+    throw e.response.data.message;
+  });
+}
+
 export {
   login,
-  register,
+  verifyEmail,
   addToWishList,
   fetchUserWishList,
   removeFromWishList,
   sendUserQuestion,
   getUserAddress,
   updateUserInfo,
+  register,
+  forgotPassword,
+  recoverPassword,
 };
