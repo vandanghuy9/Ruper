@@ -6,7 +6,7 @@ import { AiFillStar } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import Comment from "./Comment";
 import { saveProductReviews } from "@services/productService";
-import { successNoti } from "@utils/notification/notification";
+import { errorNoti, successNoti } from "@utils/notification/notification";
 const tabs = [
   {
     id: 0,
@@ -41,12 +41,20 @@ const ProductTab = ({ product }) => {
     },
   });
   const onSubmit = async (data) => {
-    const res = await saveProductReviews({
+    if (rating === 0) {
+      return errorNoti("Please give this product a rating");
+    }
+    saveProductReviews({
       productId: product._id,
       ...data,
       rating,
-    });
-    successNoti(res.message);
+    })
+      .then((res) => {
+        successNoti(res.message);
+      })
+      .catch((error) => {
+        errorNoti(error.response.data.message);
+      });
   };
   return (
     <div className="product-tabs">
@@ -134,8 +142,8 @@ const ProductTab = ({ product }) => {
                         <p className="comment-notes">
                           <span id="email-notes">
                             Your email address will not be published.
-                          </span>{" "}
-                          Required fields are marked{" "}
+                          </span>
+                          Required fields are marked
                           <span className="required">*</span>
                         </p>
                         <div className="comment-form-rating">

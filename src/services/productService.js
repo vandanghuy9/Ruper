@@ -1,6 +1,7 @@
 "use server";
 import "server-only";
 import { sendGetRequest, sendPostRequest } from "./requestService";
+import { revalidatePath } from "next/cache";
 const getShowProduct = async () => {
   return sendGetRequest("/products/show");
 };
@@ -24,7 +25,9 @@ const getCompareProducts = async (product) => {
 };
 
 const saveProductReviews = async (body) => {
-  return sendPostRequest("/products/reviews", body);
+  const res = await sendPostRequest("/products/reviews", body);
+  revalidatePath(`/product/${body.productId}`, "page");
+  return res;
 };
 
 export {

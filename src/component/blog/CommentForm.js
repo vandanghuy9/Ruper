@@ -1,11 +1,20 @@
 "use client";
 import React from "react";
 import { handleSubmitComment } from "../../lib/action";
-import { successNoti } from "@utils/notification/notification";
-import { revalidatePath } from "next/cache";
+import { errorNoti, successNoti } from "@utils/notification/notification";
+import { saveBlogComment } from "@services/blogService";
 
 const CommentForm = ({ blogId }) => {
-  const handleSubmit = handleSubmitComment.bind(null, blogId);
+  const handleSubmit = async (formData) => {
+    const data = await handleSubmitComment(formData);
+    try {
+      saveBlogComment({ ...data, _id: blogId }).then((res) => {
+        successNoti(res.message);
+      });
+    } catch (e) {
+      errorNoti(e.response.data.message);
+    }
+  };
 
   return (
     <div className="comment-form">
@@ -23,7 +32,8 @@ const CommentForm = ({ blogId }) => {
             rows="8"
             placeholder="Comment"
             className="form-control"
-            name="comment"></textarea>
+            name="comment"
+          ></textarea>
         </div>
         <div className="form-group col-md-6 col-sm-6">
           <input

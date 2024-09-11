@@ -1,5 +1,11 @@
 "use server";
-import { login, register } from "@services/userService";
+import {
+  login,
+  verifyEmail,
+  register,
+  forgotPassword,
+  recoverPassword,
+} from "@services/userService";
 import { cookies } from "next/headers";
 const cookieTimeOut = 0.5;
 export default async function handleLogin(formData) {
@@ -9,14 +15,17 @@ export default async function handleLogin(formData) {
     password: formData.get("password"),
     rememberme: formData.get("rememberme"),
   };
-  const res = await login({
-    username: rawFormData.username,
-    password: rawFormData.password,
-  });
-  if (res.status && res.status === 401) {
-    return res;
+  const body = {};
+  if (rawFormData.username?.indexOf("@") !== -1) {
+    body.email = rawFormData.username;
   } else {
+    body.username = rawFormData.username;
+  }
+  body.password = rawFormData.password;
+  try {
+    const res = await login(body);
     const { token, ...userInfor } = res;
+    console.log(res);
     if (rawFormData.rememberme) {
       const userId = cookieStore.set("userId", userInfor?._id);
       const userName = cookieStore.set("userName", userInfor?.name);
@@ -25,20 +34,74 @@ export default async function handleLogin(formData) {
     const accessToken = cookieStore.set("accessToken", token);
     const wishlist = userInfor?.wishlist;
     return { userInfor, wishlist };
+  } catch (e) {
+    console.log(e.response.data.message);
   }
 }
 
-export const handleRegister = async (formData) => {
+export const handleVerifyEmail = async (formData) => {
   const rawFormData = {
     email: formData.get("email"),
     password: formData.get("password"),
   };
-  console.log(rawFormData);
+  try {
+    const res = await verifyEmail(rawFormData);
+    console.log("Handle auth:" + res);
+    return res;
+  } catch (e) {
+    console.log("handle auth false: " + e.response.data.message);
+    throw e.response.data.message;
+  }
+};
+
+export const handleRegister = async (token) => {
+  try {
+    const res = await register(token);
+    return res;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const handleForgotPassword = async (formData) => {
+  try {
+    const rawFormData = {
+      userLogin: formData.get("user_login"),
+    };
+    const res = await forgotPassword({ userLogin: rawFormData.userLogin });
+    return res;
+  } catch (error) {
+    throw error.response.data.message;
+  }
+};
+
+export const handleLogout = async () => {
+  const cookieStore = cookies();
+  cookieStore.delete("accessToken");
+  if (cookieStore.has("userId")) {
+    cookieStore.delete("userId");
+  }
+  if (cookieStore.has("userName")) {
+    cookieStore.delete("userName");
+  }
+  if (cookieStore.has("userEmail")) {
+    cookieStore.delete("userEmail");
+  }
+};
+export const handleRecoverPassword = async (formData, token) => {
   const rawFormData = {
-    userLogin: formData.get("user_login"),
+    newPassword: formData.get("new_password"),
+    confirmPassword: formData.get("confirm_password"),
   };
-  return rawFormData;
+  if (rawFormData.newPassword !== rawFormData.confirmPassword) {
+    return {
+      status: false,
+      message: "New Password and Confirm Password do not match !",
+    };
+  }
+  return {
+    newPassword: rawFormData.newPassword,
+    confirmPassword: rawFormData.confirmPassword,
+    status: true,
+  };
 };
