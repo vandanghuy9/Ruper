@@ -114,7 +114,7 @@ async function updateUserInfo(formData) {
 }
 async function forgotPassword(userLogin) {
   return sendPostRequest("/user/forgot-password", userLogin).catch((e) => {
-    throw e.response.data.message;
+    throw e;
   });
 }
 

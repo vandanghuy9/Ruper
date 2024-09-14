@@ -13,7 +13,7 @@ import {
 import { useShopProduct } from "@context/ShopProductContext";
 import { useAuth } from "@context/UserContext";
 import ComparePopUp from "@component/compare/ComparePopUp";
-const ProductGridCard = ({ product }) => {
+const ProductGridCard = ({ product, homepage }) => {
   const { _id, imageUrl, name, price, discount } = product;
   const [index, setIndex] = useState(0);
   // const [comparePopUpActive, setComparePopUpActive] = useState(false);
@@ -55,18 +55,20 @@ const ProductGridCard = ({ product }) => {
             </Link>
           </div>
           <div className="product-button">
-            <div className="btn-add-to-cart" data-title="Add to cart">
-              <button
-                type="button"
-                className="product-btn button"
-                onClick={(e) => {
-                  handleOpenQuickViewPopUp(_id);
-                }}
-              >
-                <IoBagOutline size={20} />
-                Add to cart
-              </button>
-            </div>
+            {!homepage && (
+              <div className="btn-add-to-cart" data-title="Add to cart">
+                <button
+                  type="button"
+                  className="product-btn button"
+                  onClick={(e) => {
+                    handleOpenQuickViewPopUp(_id);
+                  }}
+                >
+                  <IoBagOutline size={20} />
+                  Add to cart
+                </button>
+              </div>
+            )}
             <div
               className={`btn-wishlist ${
                 wishListAdded === true ? "added" : ""
@@ -126,7 +128,7 @@ const ProductGridCard = ({ product }) => {
           </div>
         </div>
         <div className="products-content">
-          <div className="contents text-center">
+          <div className={`contenst ${!homepage && "text-center"}`}>
             <h3 className="product-title">
               <Link href={`/product/${_id}`}>{name}</Link>
             </h3>
@@ -144,6 +146,24 @@ const ProductGridCard = ({ product }) => {
                 <>${price}</>
               )}
             </span>
+            {homepage && (
+              <div className="btn-add-to-cart">
+                <div data-title="Add to cart">
+                  <button
+                    type="button"
+                    className="button"
+                    onClick={(e) => {
+                      handleOpenQuickViewPopUp(_id);
+                    }}
+                  >
+                    <span className="icon">
+                      <IoBagOutline size={25} />
+                    </span>
+                    Add to cart
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -7,7 +7,10 @@ const Navbar = async () => {
   const sampleProduct = await getShowProduct();
   return (
     <>
-      <NavBarMobile />
+      <NavBarMobile
+        blogList={sampleBlog}
+        sampleProduct={sampleProduct?.at(0)}
+      />
       <NavBarDesktop
         blogList={sampleBlog}
         sampleProduct={sampleProduct?.at(0)}

@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/bundle";
 import { useState } from "react";
 import ProductGridCard from "../product/ProductGridCard";
-const ProductCarousel = ({ productSet }) => {
+const ProductCarousel = ({ productSet, homepage = false }) => {
   const [products, setProducts] = useState(productSet);
   return (
     <>
@@ -21,7 +21,11 @@ const ProductCarousel = ({ productSet }) => {
           <SwiperSlide key={index}>
             <div className="item-product slick-slide">
               <div className="items">
-                <ProductGridCard key={index} product={product} />
+                <ProductGridCard
+                  key={index}
+                  product={product}
+                  homepage={homepage}
+                />
               </div>
             </div>
           </SwiperSlide>

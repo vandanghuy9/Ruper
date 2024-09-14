@@ -1,13 +1,22 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect, use } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  use,
+} from "react";
 import { addToWishList, removeFromWishList } from "@services/userService";
 import { successNoti, errorNoti } from "@utils/notification/notification";
 import { useAuth } from "./UserContext";
+import { useRouter } from "next/navigation";
 const Context = createContext();
 const ShopProductContext = ({ children }) => {
+  const router = useRouter();
   const [wishList, setWishList] = useState([]);
   const [comparePopUpActive, setComparePopUpActive] = useState(false);
   const [toggle, setToggle] = useState([]);
+  const [searchPopUpActive, setSearchPopUpActive] = useState(false);
   const [wishListAdded, setWishListAdded] = useState(false);
   const [currentCompareProduct, setCurrentCompareProduct] = useState("");
   const [quickViewPopUpActive, setQuickViewPopUpActive] = useState(false);
@@ -34,6 +43,13 @@ const ShopProductContext = ({ children }) => {
     setComparePopUpActive((prevComparePopUpActive) => !prevComparePopUpActive);
   };
 
+  const handleToggleSearchPopUp = () =>
+    setSearchPopUpActive((prevSearchPopUpActive) => !prevSearchPopUpActive);
+
+  const handleClickSuggestList = (href) => {
+    handleToggleSearchPopUp();
+    return router.push(href);
+  };
   const handleCloseWishList = () => {
     return setToggle((prevToggle) => !prevToggle);
   };
@@ -43,16 +59,22 @@ const ShopProductContext = ({ children }) => {
   };
 
   const getProductInWishList = (productId) => {
-    return wishList.find((item) => item.product._id === productId) !== undefined;
+    return (
+      wishList.find((item) => item.product._id === productId) !== undefined
+    );
   };
 
   const handleOpenQuickViewPopUp = (productId) => {
     setCurrentQuickViewProduct(productId);
-    setQuickViewPopUpActive((prevQuickViewPopUpActive) => !prevQuickViewPopUpActive);
+    setQuickViewPopUpActive(
+      (prevQuickViewPopUpActive) => !prevQuickViewPopUpActive
+    );
   };
 
   const handleCloseQuickViewPopUp = () => {
-    setQuickViewPopUpActive((prevQuickViewPopUpActive) => !prevQuickViewPopUpActive);
+    setQuickViewPopUpActive(
+      (prevQuickViewPopUpActive) => !prevQuickViewPopUpActive
+    );
   };
 
   return (
@@ -74,7 +96,11 @@ const ShopProductContext = ({ children }) => {
         currentQuickViewProduct,
         comparePopUpActive,
         quickViewPopUpActive,
-      }}>
+        handleToggleSearchPopUp,
+        searchPopUpActive,
+        handleClickSuggestList,
+      }}
+    >
       {children}
     </Context.Provider>
   );

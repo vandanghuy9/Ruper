@@ -16,6 +16,10 @@ const getProductsByCategory = async (query) => {
   return sendGetRequest(`/products/filter?${query}`);
 };
 
+const getSearchResult = async (query) => {
+  return sendGetRequest(`/products/search?${query}`);
+};
+
 const getFeatureProducts = async () => {
   return sendGetRequest(`/products/feature`);
 };
@@ -38,4 +42,5 @@ export {
   getFeatureProducts,
   getCompareProducts,
   saveProductReviews,
+  getSearchResult,
 };

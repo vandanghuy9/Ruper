@@ -3,6 +3,7 @@ import Footer from "./footer/Footer";
 import WishListPopUp from "@component/wishlist/WishListPopUp";
 import ComparePopUp from "@component/compare/ComparePopUp";
 import QuickViewPopUp from "@component/quick-view/QuickViewPopUp";
+import SearchPopUp from "@component/search/SearchPopUp";
 const Layout = ({ children }) => {
   return (
     <>
@@ -15,6 +16,7 @@ const Layout = ({ children }) => {
           <Footer />
         </footer>
       </div>
+      <SearchPopUp />
       <WishListPopUp />
       <ComparePopUp />
       <QuickViewPopUp />
