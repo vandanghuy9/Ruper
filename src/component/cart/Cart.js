@@ -1,7 +1,7 @@
 "use client";
 import CartItem from "./CartItem";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineShopping } from "react-icons/ai";
 import { useCart } from "react-use-cart";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
@@ -11,7 +11,6 @@ const Cart = () => {
   const { items, cartTotal, totalUniqueItems } = useCart();
   const router = useRouter();
   const pathname = usePathname();
-
   const { handleFormActive, isUserLogin } = useAuth();
   const handleViewCart = (e) => {
     router.push("/cart");
@@ -39,14 +38,18 @@ const Cart = () => {
         }
       >
         <button
-          className="dropdown-toggle cart-icon"
+          className="dropdown-toggle cart-icon bg-transparent"
           type="button"
           onClick={(e) => {
             setShowCart(true);
           }}
         >
-          <AiOutlineShopping size={30} color="black" />
-          <span className="cart-count">{totalUniqueItems}</span>
+          <div className="icons-cart">
+            <span className="icon">
+              <AiOutlineShopping size={30} color="black" />
+            </span>
+            <span className="cart-count">{totalUniqueItems}</span>
+          </div>
         </button>
         {showCart && (
           <>
@@ -60,9 +63,9 @@ const Cart = () => {
                   <ul className="cart-list">
                     <li className="empty">
                       <span>No products in the cart.</span>
-                      <a className="go-shop" href="/">
+                      <Link className="go-shop" href="/shop">
                         GO TO SHOP
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>

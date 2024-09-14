@@ -2,11 +2,15 @@ import { useCart } from "react-use-cart";
 import { toast } from "react-toastify";
 import { successNoti, errorNoti } from "@utils/notification/notification";
 const useHandleCart = () => {
-  const { addItem, items, updateItem, totalUniqueItems, removeItem } = useCart();
+  const { addItem, items, updateItem, totalUniqueItems, removeItem } =
+    useCart();
   const handleAddToCart = (product, quantity, attributes) => {
     const { _id, name, imageUrl, discount, price, stocks } = product;
+    console.log(_id);
     const { color, size } = attributes;
-    const productInStock = stocks.find((i) => i.color === color && i.size === size);
+    const productInStock = stocks.find(
+      (i) => i.color === color && i.size === size
+    );
     if (!productInStock) {
       errorNoti("This variety is out of stock");
       return false;

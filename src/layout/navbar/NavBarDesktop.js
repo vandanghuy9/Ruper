@@ -1,8 +1,11 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
-import dynamic from "next/dynamic";
+import {
+  AiOutlineSearch,
+  AiOutlineHeart,
+  AiOutlineShopping,
+} from "react-icons/ai";
 import SignIn from "@component/modal/SignIn";
 import Register from "@component/modal/Register";
 import { useAuth } from "@context/UserContext";
@@ -15,8 +18,17 @@ import {
   pageMenu,
 } from "@utils/data";
 import { usePathname } from "next/navigation";
-const Cart = dynamic(() => import("../../component/cart/Cart"), { ssr: false });
-
+import dynamic from "next/dynamic";
+const Cart = dynamic(() => import("@component/cart/Cart"), {
+  ssr: false,
+  loading: () => (
+    <div className="icons-cart">
+      <span className="icon">
+        <AiOutlineShopping size={30} />
+      </span>
+    </div>
+  ),
+});
 const NavBarDesktop = ({ blogList, sampleProduct }) => {
   const {
     isLoginActive,
@@ -30,12 +42,10 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
     getUserId,
   } = useAuth();
   const pathname = usePathname();
-  console.log(pathname);
-  console.log(["/shop", "/cart", "/checkout", "/wishlist"].indexOf(pathname));
-  const { wishList, handleSetWishList, wishListAdded } = useShopProduct();
+  const { wishList, handleToggleSearchPopUp } = useShopProduct();
   const isLogin = isUserLogin();
   const userName = getUserName();
-  const useId = getUserId();
+  const userId = getUserId();
   return (
     <div
       className="header-desktop"
@@ -131,7 +141,7 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
                                         <Link
                                           href={
                                             item.id === "SHOP/WISHLIST"
-                                              ? `${item.path}/${useId}`
+                                              ? `${item.path}/${userId}`
                                               : item.path
                                           }
                                         >
@@ -160,7 +170,7 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
                                 <Link
                                   href={
                                     section.id === "SHOP/WISHLIST"
-                                      ? `${section.path}/${useId}`
+                                      ? `${section.path}/${userId}`
                                       : section.id === "SHOP/DETAILS"
                                       ? `${section.path}/${sampleProduct._id}`
                                       : `${section.path}`
@@ -341,7 +351,7 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
                     </div>
                   )}
                   {/* Search */}
-                  <div className="search-box">
+                  <div className="search-box" onClick={handleToggleSearchPopUp}>
                     <div className="search-toggle">
                       <AiOutlineSearch />
                     </div>
@@ -358,7 +368,7 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
                         <AiOutlineHeart color="black" size={30} />
                       </button>
                     ) : (
-                      <Link href={`/wishlist/${useId}`}>
+                      <Link href={`/wishlist/${userId}`}>
                         <AiOutlineHeart color="black" size={30} />
                         <span className="count-wishlist">
                           {wishList?.length}

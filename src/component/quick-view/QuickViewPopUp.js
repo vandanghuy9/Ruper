@@ -12,8 +12,11 @@ import useHandleCart from "@hooks/useHandleCart";
 import { AiFillStar } from "react-icons/ai";
 const QuickViewPopUp = () => {
   const [product, setProduct] = useState({});
-  const { quickViewPopUpActive, handleCloseQuickViewPopUp, currentQuickViewProduct } =
-    useShopProduct();
+  const {
+    quickViewPopUpActive,
+    handleCloseQuickViewPopUp,
+    currentQuickViewProduct,
+  } = useShopProduct();
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -57,7 +60,12 @@ const QuickViewPopUp = () => {
     <div className={`quickview-popup ${quickViewPopUpActive ? "active" : ""}`}>
       <div id="quickview-container">
         <div className="quickview-container">
-          <Link href="#" className="quickview-close" onClick={handleCloseQuickViewPopUp}></Link>
+          <Link
+            href="#"
+            className="quickview-close"
+            onClick={handleCloseQuickViewPopUp}
+            scroll={false}
+          ></Link>
           <div className="quickview-notices-wrapper"></div>
           <div className="product single-product product-type-simple">
             <div className="product-detail">
@@ -77,14 +85,19 @@ const QuickViewPopUp = () => {
                                   clickable: true,
                                 }}
                                 modules={[Pagination, Navigation]}
-                                className="mySwiper">
+                                className="mySwiper"
+                              >
                                 {product?.imageUrl?.map((item) => (
-                                  <div className="img-thumbnail slick-slide" key={item}>
+                                  <div
+                                    className="img-thumbnail slick-slide"
+                                    key={item}
+                                  >
                                     <SwiperSlide>
                                       <Link
                                         href={`/product/${product._id}`}
                                         className="image-scroll"
-                                        title="">
+                                        title=""
+                                      >
                                         <Image
                                           width="900"
                                           height="900"
@@ -105,7 +118,9 @@ const QuickViewPopUp = () => {
                 </div>
                 <div className="quickview-single-info">
                   <div className="product-content-detail entry-summary">
-                    <h1 className="product-title entry-title">Chair Oak Matt Lacquered</h1>
+                    <h1 className="product-title entry-title">
+                      Chair Oak Matt Lacquered
+                    </h1>
                     <div className="price-single">
                       <div className="price">
                         {product.discount ? (
@@ -115,7 +130,11 @@ const QuickViewPopUp = () => {
                             </del>
                             <ins>
                               <span>
-                                ${Math.ceil((product.price * (100 - product.discount)) / 100)}
+                                $
+                                {Math.ceil(
+                                  (product.price * (100 - product.discount)) /
+                                    100
+                                )}
                               </span>
                             </ins>
                           </>
@@ -125,7 +144,11 @@ const QuickViewPopUp = () => {
                       </div>
                     </div>
                     <div className="product-rating">
-                      <div className="star-rating" role="img" aria-label="Rated 4.00 out of 5">
+                      <div
+                        className="star-rating"
+                        role="img"
+                        aria-label="Rated 4.00 out of 5"
+                      >
                         <AiFillStar color="#fcad02" />
                         <AiFillStar color="#fcad02" />
                         <AiFillStar color="#fcad02" />
@@ -174,7 +197,10 @@ const QuickViewPopUp = () => {
                                         id={color}
                                         onChange={handleColor}
                                       />
-                                      <label className={color} htmlFor={color}></label>
+                                      <label
+                                        className={color}
+                                        htmlFor={color}
+                                      ></label>
                                     </li>
                                   ))}
                                 </ul>
@@ -192,7 +218,8 @@ const QuickViewPopUp = () => {
                             className="plus"
                             onClick={(e) => {
                               handleQuantity("INC");
-                            }}>
+                            }}
+                          >
                             +
                           </button>
                           <input
@@ -215,14 +242,16 @@ const QuickViewPopUp = () => {
                             className="minus"
                             onClick={(e) => {
                               handleQuantity("DEC");
-                            }}>
+                            }}
+                          >
                             -
                           </button>
                         </div>
                         <button
                           type="button"
                           onClick={addToCart}
-                          className="single-add-to-cart-button button alt">
+                          className="single-add-to-cart-button button alt"
+                        >
                           Add to cart
                         </button>
                       </div>

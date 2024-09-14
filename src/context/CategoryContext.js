@@ -47,7 +47,7 @@ export const CategoryContext = ({ children }) => {
   };
 
   const clearFilter = () => {
-    router.push(`${pathname}`);
+    return router.push(`${pathname}`);
   };
   return (
     <Context.Provider

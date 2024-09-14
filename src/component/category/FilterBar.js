@@ -15,20 +15,40 @@ const FilterBar = ({
   featureProducts,
   sidebar,
 }) => {
-  const { handleNavigation } = useFilter();
+  const { handleNavigation, clearFilter } = useFilter();
   const [price, setPrice] = useState(0);
   return (
-    <div className={`col-xl-3 col-lg-3 col-md-12 col-12 sidebar ${sidebar}-sidebar md-b-50`}>
+    <div
+      className={`col-xl-3 col-lg-3 col-md-12 col-12 sidebar ${sidebar}-sidebar md-b-50`}
+    >
       <div className="block block-product-cats">
-        <div className="block-title">
-          <h2>Categories</h2>
+        <div className="block-title row">
+          <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+            <h2>Categories</h2>
+          </div>
+          <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+            <button
+              className="button button-clear-filter"
+              type="button"
+              onClick={clearFilter}
+            >
+              Clear all filters
+            </button>
+          </div>
         </div>
         <div className="block-content">
           <div className="product-cats-list">
             <ul>
               {menu.map(({ category, count, key }, i) => (
-                <li key={i} className={category === categoryOption ? "current" : ""}>
-                  <span onClick={(e) => handleNavigation({ key: "category", value: key })}>
+                <li
+                  key={i}
+                  className={category === categoryOption ? "current" : ""}
+                >
+                  <span
+                    onClick={(e) =>
+                      handleNavigation({ key: "category", value: key })
+                    }
+                  >
                     {category}
                     <span className="count">{count}</span>
                   </span>
@@ -60,7 +80,9 @@ const FilterBar = ({
                   title="Price"
                   defaultValue={priceOption}
                   onChange={(e) => setPrice(e.target.value)}
-                  onBlur={(e) => handleNavigation({ key: "price", value: price })}
+                  onBlur={(e) =>
+                    handleNavigation({ key: "price", value: price })
+                  }
                 />
                 <span className="price-limit">100</span>
               </div>
@@ -81,7 +103,8 @@ const FilterBar = ({
               <li
                 key={item}
                 className={item === sizeOption ? "current" : ""}
-                onClick={() => handleNavigation({ key: "size", value: item })}>
+                onClick={() => handleNavigation({ key: "size", value: item })}
+              >
                 <span>{item}</span>
               </li>
             ))}
@@ -98,7 +121,11 @@ const FilterBar = ({
           <ul className="filter-items image">
             {brand.map(({ src, title }, i) => (
               <li key={i} className={title === brandOption ? "current" : ""}>
-                <span onClick={(e) => handleNavigation({ key: "brand", value: title })}>
+                <span
+                  onClick={(e) =>
+                    handleNavigation({ key: "brand", value: title })
+                  }
+                >
                   <span>
                     <Image src={src} alt={title} width={75} height={85}></Image>
                   </span>

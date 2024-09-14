@@ -33,7 +33,10 @@ const HomePage = ({ products }) => {
                     <div className="block-content">
                       <div className="content-product-list slick-wrap">
                         <div className="slick-sliders products-list grid">
-                          <ProductCarousel productSet={products} />
+                          <ProductCarousel
+                            productSet={products}
+                            homepage={true}
+                          />
                         </div>
                       </div>
                     </div>

@@ -27,14 +27,20 @@ const SearchInput = () => {
             type="button"
             onClick={(e) => {
               clearFilter();
-            }}>
-            Clear all filter
+            }}
+          >
+            Clear all filters
           </button>
         </div>
       </div>
       <div className="block-content">
         <form className="search-from" onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" {...register("searchQuery")} className="s" placeholder="Search..." />
+          <input
+            type="text"
+            {...register("searchQuery")}
+            className="s"
+            placeholder="Search..."
+          />
           <button className="btn" type="submit">
             <IoSearchOutline size={20} />
           </button>
