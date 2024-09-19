@@ -4,12 +4,18 @@ import Image from "next/image";
 import { useCart } from "react-use-cart";
 import useHandleCart from "@hooks/useHandleCart";
 import { useRouter } from "next/navigation";
+import { useCheckoutSubmit } from "@context/CheckoutContext";
 const Cart = () => {
   const router = useRouter();
-  const { items, cartTotal, totalUniqueItems } = useCart();
+  const { items } = useCart();
   const { handleUpdateQuantity, handleDeleteFromCart } = useHandleCart();
+  const { couponRef, checkCouponInfo } = useCheckoutSubmit();
+  const onUseCoupon = (e) => {
+    e.preventDefault();
+    checkCouponInfo();
+  };
   return (
-    <form className="cart-form">
+    <form onSubmit={onUseCoupon} className="cart-form">
       <div className="table-responsive">
         <table className="cart-items table" cellSpacing={0}>
           <thead>
@@ -112,7 +118,7 @@ const Cart = () => {
                       name="coupon_code"
                       className="input-text"
                       id="coupon-code"
-                      value=""
+                      ref={couponRef}
                       placeholder="Coupon code"
                     ></input>
                     <button

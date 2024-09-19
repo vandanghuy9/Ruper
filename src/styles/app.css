@@ -1823,8 +1823,6 @@ ul.slick-dots li.slick-active button {
   background: #fff;
 }
 .site-navigation ul > li.level-0.menu-item-has-children > a:after {
-  content: "\e92e";
-  font-family: feather;
   font-size: 14px;
   display: inline-block;
   vertical-align: middle;
@@ -1910,8 +1908,6 @@ ul.slick-dots li.slick-active button {
   position: relative;
 }
 .site-navigation ul > li.level-0 ul.sub-menu li.menu-item-has-children > a:after {
-  content: "\e930";
-  font-family: feather;
   font-size: 14px;
   position: absolute;
   right: 0;
@@ -2343,14 +2339,18 @@ ul.slick-dots li.slick-active button {
   position: relative;
 }
 .form-login-register .box-form-login .rememberme-lost .rememberme input {
-  display: none;
+  /* display: none; */
+    width: 15px;
+  height: 15px;
+  line-height: 15px;
+  border-radius: 50%;
 }
 .form-login-register .box-form-login .rememberme-lost .inline {
   color: #000;
   font-weight: 500;
   cursor: pointer;
 }
-.form-login-register .box-form-login .rememberme-lost .inline:before {
+/* .form-login-register .box-form-login .rememberme-lost .inline:before {
   width: 16px;
   height: 16px;
   content: "";
@@ -2386,7 +2386,7 @@ ul.slick-dots li.slick-active button {
   z-index: 1;
   -webkit-transform: scale(0);
   transform: scale(0);
-}
+} */
 .form-login-register .box-form-login .rememberme-lost .rememberme input:checked+label:after {
   -webkit-transform: scale(1);
   transform: scale(1);
@@ -3826,8 +3826,6 @@ ul.slick-dots li.slick-active button {
 }
 .block-banners .block-widget-banner.layout-1 .button:after {
   position: relative;
-  content: "\e90a";
-  font-family: icomoon;
   font-size: 20px;
   right: 0;
   top: 3px;
@@ -10755,22 +10753,31 @@ z-index: 200000;
   padding: 10px 0;
 }
 
- /* .mm-panel {
-  -webkit-transform: translate(100%);
-  transform: translate(100%);
-  -webkit-transform: translate3d(100%,0,0);
-  transform: translate3d(100%,0,0);
-  -webkit-transition: -webkit-transform .4s ease;
-  transition: -webkit-transform .4s ease;
-  transition: transform .4s ease;
-  transition: transform .4s ease,-webkit-transform .4s ease;
-  -webkit-transform-origin: top left;
-  transform-origin: top left;
-} */
-  /*
-.mm-panel.mm-opened {
-  -webkit-transform: translate(0);
-  transform: translate(0);
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-} */
+.coupon-button {
+  padding: 0 6px;
+  background: #000;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  line-height: 40px;
+  cursor: pointer;
+  letter-spacing: .1em;
+  font-weight: 500;
+  border: 1px solid #000;
+}
+.coupon-button:hover {
+  opacity: 0.8;
+}
+.invoice .invoice-total{
+    font-size: 18px;
+  color: #000;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+}

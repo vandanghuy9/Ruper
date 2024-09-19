@@ -39,17 +39,17 @@ const RootLayout = ({ children }) => {
           theme="light"
         />
         <QueryContext>
-          <ShopProductContext>
-            <CookieProvider>
-              <CategoryContext>
-                <CheckoutContext>
-                  <CartContext>
+          <CartContext>
+            <ShopProductContext>
+              <CookieProvider>
+                <CategoryContext>
+                  <CheckoutContext>
                     <Layout>{children}</Layout>
-                  </CartContext>
-                </CheckoutContext>
-              </CategoryContext>
-            </CookieProvider>
-          </ShopProductContext>
+                  </CheckoutContext>
+                </CategoryContext>
+              </CookieProvider>
+            </ShopProductContext>
+          </CartContext>
         </QueryContext>
       </body>
     </html>

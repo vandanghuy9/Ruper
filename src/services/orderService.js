@@ -13,11 +13,7 @@ const saveOrder = async (body) => {
     revalidatePath("/user/orders", "page");
     return res;
   } catch (error) {
-    if (error.response && error.response.status === 401) {
-      return { status: 401, message: error.response.data.message };
-    } else {
-      console.error("Error sending data:", error);
-    }
+    throw error.response.data.message;
   }
 };
 
@@ -29,4 +25,12 @@ async function getUserOrder() {
   return sendGetRequest("/order/", { token });
 }
 
-export { saveOrder, getUserOrder };
+async function getUserOrderById(id) {
+  const cookieStore = cookies();
+  const token = cookieStore.has("accessToken")
+    ? cookieStore.get("accessToken").value
+    : null;
+  return sendGetRequest("/order/" + id, { token });
+}
+
+export { saveOrder, getUserOrder, getUserOrderById };

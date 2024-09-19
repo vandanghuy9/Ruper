@@ -54,7 +54,9 @@ export const UserContext = ({ userInfor, children }) => {
     successNoti("Login successfully");
     const redirect = query.get("redirect");
     router.push(`${redirect ? redirect : "/"}`);
-    handleFormActive();
+    if (isFormActive) {
+      handleFormActive();
+    }
   };
 
   const register = (message) => {

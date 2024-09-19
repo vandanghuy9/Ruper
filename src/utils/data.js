@@ -405,8 +405,8 @@ const firstBanner = [
     imageSrc: "/banner/product-cat-4.jpg",
     link: "/shop",
     buttonText: "Accessories",
-    imgWidth: 406,
-    imgHeight: 304,
+    imgWidth: 812,
+    imgHeight: 608,
   },
 ];
 
@@ -451,7 +451,7 @@ const products = [
 const secondBanner = [
   {
     imageSrc: "/banner/banner-1.jpg",
-    link: "/shop-grid-left.html",
+    link: "/shop",
     bannerTitle: "Let the adventure begin.",
     desc: "Sed lectus. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus",
     buttonText: "SHOP NOW",
@@ -460,7 +460,7 @@ const secondBanner = [
   },
   {
     imageSrc: "/banner/banner-2.jpg",
-    link: "/shop-grid-left.html",
+    link: "/shop",
     bannerTitle: "UP TO 20% OFF",
     desc: "Don't miss savings on bedroom, living",
     buttonText: "",
@@ -596,14 +596,16 @@ const stateOption = [
   { value: "DT", content: "Donetsk Oblast" },
   { value: "ZT", content: "Zhytomyr Oblast" },
 ];
-const shippingOption = [
+const shippingOptions = [
   {
     label: "Free shipping",
     value: "free_shipping",
+    fee: 0,
   },
   {
     label: "Flat rate",
     value: "flat_rate",
+    fee: 20,
   },
 ];
 
@@ -666,7 +668,7 @@ export {
   size,
   countryOption,
   stateOption,
-  shippingOption,
+  shippingOptions,
   paymentOption,
   sampleProductId,
   homeCategoryMenu,

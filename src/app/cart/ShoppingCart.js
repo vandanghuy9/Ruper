@@ -4,11 +4,20 @@ import Link from "next/link";
 import Cart from "@component/cart/shopping-cart/Cart";
 import { useCart } from "react-use-cart";
 import { useCheckoutSubmit } from "@context/CheckoutContext";
-import { shippingOption } from "@utils/data";
 import EmptyCart from "@component/cart/EmptyCart";
+import ShippingOption from "@component/checkout/ShippingOption";
 const ShoppingCart = () => {
   const { cartTotal, isEmpty } = useCart();
-  const { register } = useCheckoutSubmit();
+  const {
+    register,
+    discountValue,
+    couponCode,
+    couponValue,
+    discountType,
+    shippingFee,
+    setShippingFee,
+  } = useCheckoutSubmit();
+  console.log(discountValue);
   const [isCartReady, setIsCartReady] = useState(false);
   useEffect(() => {
     if (isEmpty !== undefined) {
@@ -33,33 +42,43 @@ const ShoppingCart = () => {
                       <span>${cartTotal}.00</span>
                     </div>
                   </div>
-                  <div className="shipping-totals">
-                    <div className="title">Shipping</div>
+                  <ShippingOption>
+                    <p className="shipping-desc">
+                      Shipping options will be updated during checkout.
+                    </p>
+                  </ShippingOption>
+                  {couponCode && (
+                    <div className="order-total">
+                      <div className="title">Coupon</div>
+                      <div>
+                        <span>{couponCode}</span>
+                      </div>
+                    </div>
+                  )}
+                  <div className="order-total">
+                    <div className="title">Discount</div>
                     <div>
-                      <ul className="shipping-methods custom-radio">
-                        {shippingOption.map((item) => (
-                          <li>
-                            <input
-                              type="radio"
-                              name="shipping_method"
-                              id={item.value}
-                              className="shipping_method"
-                              {...register("shipping_method")}
-                              value={item.value}
-                            />
-                            <label htmlFor={item.value}>{item.label}</label>
-                          </li>
-                        ))}
-                      </ul>
-                      <p className="shipping-desc">
-                        Shipping options will be updated during checkout.
-                      </p>
+                      <span>
+                        {discountType === "percentage"
+                          ? `${couponValue}%`
+                          : `$${couponValue}`}
+                      </span>
                     </div>
                   </div>
                   <div className="order-total">
                     <div className="title">Total</div>
                     <div>
-                      <span>${cartTotal}.00</span>
+                      <span>
+                        {discountValue === 0
+                          ? `$${cartTotal + shippingFee}`
+                          : `$${
+                              discountType === "percentage"
+                                ? cartTotal +
+                                  shippingFee -
+                                  cartTotal * discountValue
+                                : cartTotal + shippingFee - discountValue
+                            }`}
+                      </span>
                     </div>
                   </div>
                 </div>

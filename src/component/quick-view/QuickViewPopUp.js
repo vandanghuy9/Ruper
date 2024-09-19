@@ -119,7 +119,7 @@ const QuickViewPopUp = () => {
                 <div className="quickview-single-info">
                   <div className="product-content-detail entry-summary">
                     <h1 className="product-title entry-title">
-                      Chair Oak Matt Lacquered
+                      {product.name}
                     </h1>
                     <div className="price-single">
                       <div className="price">
@@ -155,7 +155,11 @@ const QuickViewPopUp = () => {
                         <AiFillStar color="#fcad02" />
                       </div>
                       <Link href="#" className="review-link">
-                        (<span className="count">1</span> customer review)
+                        (
+                        <span className="count">
+                          {product?.comment?.length}
+                        </span>{" "}
+                        customer review)
                       </Link>
                     </div>
                     <div className="description">

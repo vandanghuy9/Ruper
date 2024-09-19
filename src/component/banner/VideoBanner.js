@@ -70,7 +70,7 @@ const VideoBanner = () => {
                     aspect. The way we utilise PET Technology, emphasizes this
                     vision.
                   </div>
-                  <WhiteButton href={"/"} buttonText={"OUR STORIES"} />
+                  <WhiteButton href={"/about-us"} buttonText={"OUR STORIES"} />
                 </div>
               </div>
             </div>
