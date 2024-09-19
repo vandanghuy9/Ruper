@@ -1,9 +1,21 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useRef } from "react";
+import { getCouponByCode } from "@services/couponService";
+import { errorNoti, successNoti } from "@utils/notification/notification";
+import { useCart } from "react-use-cart";
 const Context = createContext(null);
 export const CheckoutContext = ({ children }) => {
   const [isShippingSelected, setIsShippingSelected] = useState(false);
+  const [discountValue, setDiscountValue] = useState(0);
+  const [discountType, setDiscountType] = useState(0);
+  const [couponValue, setCouponValue] = useState(0);
+  const [minimumAmount, setMinimumAmount] = useState(0);
+  const [shippingFee, setShippingFee] = useState(0);
+  const [shippingOption, setShippingOption] = useState(0);
+  const couponRef = useRef("");
+  const { cartTotal } = useCart();
+  const [couponCode, setCouponCode] = useState("");
   const {
     register,
     handleSubmit,
@@ -46,10 +58,60 @@ export const CheckoutContext = ({ children }) => {
   };
   const getPaymentMethod = () => {
     // console.log(payment);
-    return getValues("payment_method");
+    return getValues("paymentMethod");
   };
   const setPaymentMethod = (value) => {
-    setValue("payment_method", value);
+    setValue("paymentMethod", value);
+  };
+  const handleUpdateTotalPrice = (type, value, minimumAmount) => {
+    if (cartTotal < minimumAmount) {
+      return {
+        status: false,
+        message: `The total order must be more than ${minimumAmount}$`,
+      };
+    }
+    if (type === "percentage") {
+      return { status: true, value: value * 0.01 };
+    }
+    return { status: true, value: value };
+  };
+
+  const checkCouponInfo = () => {
+    getCouponByCode(couponRef.current?.value)
+      .then((res) => {
+        const { code, minimumAmount } = res;
+        const { type, value } = res?.discountType;
+        const discountValue = handleUpdateTotalPrice(
+          type,
+          value,
+          minimumAmount
+        );
+        if (!discountValue.status) {
+          return errorNoti(discountValue.message);
+        }
+        setDiscountType(type);
+        setCouponValue(value);
+        setMinimumAmount(minimumAmount);
+        setDiscountValue(discountValue.value);
+        setCouponCode(code);
+        successNoti(
+          `Used ${code} for ${
+            type === "percentage" ? `${value}%` : `${value}$`
+          } discount`
+        );
+      })
+      .catch((err) => {
+        errorNoti(err.message);
+      });
+  };
+
+  const handleSaveOrder = () => {
+    setDiscountType("");
+    setCouponCode("");
+    setDiscountValue(0);
+    setCouponValue(0);
+    setMinimumAmount(0);
+    setShippingFee(0);
   };
   return (
     <Context.Provider
@@ -64,6 +126,18 @@ export const CheckoutContext = ({ children }) => {
         control,
         isShippingSelected,
         setIsShippingSelected,
+        shippingFee,
+        setShippingFee,
+        shippingOption,
+        setShippingOption,
+        couponRef,
+        checkCouponInfo,
+        couponCode,
+        couponValue,
+        discountType,
+        discountValue,
+        minimumAmount,
+        handleSaveOrder,
       }}
     >
       {children}

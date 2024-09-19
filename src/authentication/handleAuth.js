@@ -105,3 +105,8 @@ export const handleRecoverPassword = async (formData, token) => {
     status: true,
   };
 };
+
+export const isUserLogin = async () => {
+  const cookieStore = cookies();
+  return cookieStore.has("accessToken");
+};

@@ -27,7 +27,10 @@ const OrderHistory = (orders) => {
                     {cart.length > 1 ? "items" : "item"}
                   </td>
                   <td>
-                    <Link href="#" className="btn-small d-block">
+                    <Link
+                      href={`/user/orders/${_id}`}
+                      className="btn-small d-block"
+                    >
                       View
                     </Link>
                   </td>

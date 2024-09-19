@@ -7,24 +7,38 @@ import Cart from "@component/cart/checkout/Cart";
 import { useCart } from "react-use-cart";
 import PaymentBox from "@component/form/PaymentBox";
 import { useRouter } from "next/navigation";
-import { shippingOption, paymentOption } from "@utils/data";
+import { paymentOption } from "@utils/data";
 import Billing from "@component/checkout/Billing";
 import { saveOrder } from "@services/orderService";
 import { successNoti, errorNoti } from "@utils/notification/notification";
-import { revalidatePath } from "next/cache";
+import ShippingOption from "@component/checkout/ShippingOption";
 const Checkout = () => {
   const router = useRouter();
-  const { register, handleSubmit, isShippingSelected } = useCheckoutSubmit();
+  const {
+    register,
+    handleSubmit,
+    isShippingSelected,
+    discountValue,
+    couponCode,
+    couponValue,
+    discountType,
+    shippingFee,
+    shippingOption,
+    couponRef,
+    checkCouponInfo,
+    handleSaveOrder,
+  } = useCheckoutSubmit();
   const { cartTotal, items, emptyCart } = useCart();
   const [selectedPayment, setSelectedPayment] = useState("");
   const { isUserLogin } = useAuth();
   useEffect(() => {
     const isLogin = isUserLogin();
     if (!isLogin) {
-      router.push("/login");
+      router.push("/login?redirect=/checkout");
     }
   }, []);
   const onSubmit = async (data) => {
+    console.log(data);
     try {
       saveOrder({
         cart: items,
@@ -57,14 +71,25 @@ const Checkout = () => {
             email: data.shipping_email,
           },
         },
-        subTotal: cartTotal,
+        subTotal:
+          discountValue === 0
+            ? cartTotal
+            : discountType === "percentage"
+            ? cartTotal - cartTotal * discountValue
+            : cartTotal - discountValue,
         orderNote: data.orderNote,
-        shippingOption: data.shippingOption,
+        shippingOption,
         paymentMethod: data.paymentMethod,
-      }).then((res) => {
-        emptyCart();
-        successNoti(res?.message);
-      });
+      })
+        .then((res) => {
+          console.log(res);
+          successNoti(res?.message);
+          emptyCart();
+          handleSaveOrder();
+        })
+        .catch((e) => {
+          errorNoti(e.message);
+        });
     } catch (error) {
       errorNoti("Error saving order");
     }
@@ -109,33 +134,70 @@ const Checkout = () => {
                                 <span>${cartTotal}.00</span>
                               </div>
                             </div>
+                            <ShippingOption />
                             <div className="shipping-totals shipping">
-                              <h2>Shipping</h2>
-                              <div>
-                                <ul className="shipping-methods custom-radio">
-                                  {shippingOption.map((item, i) => (
-                                    <li key={i}>
-                                      <input
-                                        type="radio"
-                                        name="shippingOption"
-                                        id={item.value}
-                                        className="shipping_method"
-                                        {...register("shippingOption")}
-                                        value={item.value}
-                                      />
-                                      <label htmlFor={item.value}>
-                                        {item.label}
-                                      </label>
-                                    </li>
-                                  ))}
-                                </ul>
+                              <div className="coupon">
+                                <input
+                                  type="text"
+                                  name="coupon_code"
+                                  className="input-text"
+                                  id="coupon-code"
+                                  ref={couponRef}
+                                  placeholder="Coupon code"
+                                ></input>
+                                <button
+                                  type="button"
+                                  name="apply_coupon"
+                                  className="coupon-button"
+                                  value="Apply coupon"
+                                  onClick={() => {
+                                    checkCouponInfo();
+                                  }}
+                                >
+                                  Apply coupon
+                                </button>
+                              </div>
+                            </div>
+
+                            {couponCode && (
+                              <div className="order-total">
+                                <h2>Coupon</h2>
+                                <div className="total-price">
+                                  <strong>
+                                    <span>{couponCode}</span>
+                                  </strong>
+                                </div>
+                              </div>
+                            )}
+                            <div className="order-total">
+                              <h2>Discount</h2>
+                              <div className="total-price">
+                                <strong>
+                                  {discountType === "percentage"
+                                    ? `${couponValue}%`
+                                    : `$${couponValue}`}
+                                </strong>
                               </div>
                             </div>
                             <div className="order-total">
                               <h2>Total</h2>
                               <div className="total-price">
                                 <strong>
-                                  <span>$480.00</span>
+                                  <span>
+                                    ${" "}
+                                    {discountValue === 0
+                                      ? `${cartTotal + shippingFee}`
+                                      : `${
+                                          discountType === "percentage"
+                                            ? cartTotal +
+                                              shippingFee -
+                                              cartTotal * discountValue
+                                            : cartTotal +
+                                              shippingFee -
+                                              discountValue
+                                        }`}
+                                    .00
+                                  </span>
                                 </strong>
                               </div>
                             </div>

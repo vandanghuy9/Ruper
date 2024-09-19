@@ -50,12 +50,7 @@ export default function Signin({
           {error !== "" && <ErrorText error={error !== ""} message={error} />}
           <div className="rememberme-lost">
             <div className="rememberme">
-              <input
-                name="rememberme"
-                type="checkbox"
-                id="rememberme"
-                value={true}
-              />
+              <input name="rememberme" type="checkbox" id="rememberme" />
               <label htmlFor="rememberme" className="inline">
                 Remember me
               </label>
