@@ -74,7 +74,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_1/CLEAN",
           text: "Home Clean",
-          path: "/",
+          path: "/?type=CLEAN",
         },
         {
           id: "HOME/FURNITURE_1/COLLECTION",
@@ -378,7 +378,38 @@ const slides = [
     },
   },
 ];
-
+const cleanPageslides = [
+  {
+    image: "/slider/4.jpg",
+    title: "Outdoor Chair",
+    subtitle: "SALE UP TO 30% OFF",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/5.jpg",
+    title: "Accessories",
+    subtitle: "SALE UP TO 30% OFF",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/6.jpg",
+    title: "Kitchen Sale",
+    subtitle: "SALE UP TO 30% OFF",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
 const firstBanner = [
   {
     imageSrc: "/banner/product-cat-1.jpg",
@@ -655,6 +686,23 @@ const testimonial = [
     name: "Sara Colinton",
   },
 ];
+const cleanPageFirstBanner = [
+  {
+    image: "/banner/banner-3.jpg",
+    link: "/shop?category=FURNITURE",
+    title: "new arivals.",
+  },
+  {
+    image: "/banner/banner-4.jpg",
+    link: "/shop?category=LIGHTING",
+    title: "trending.",
+  },
+  {
+    image: "/banner/banner-5.jpg",
+    link: "/shop",
+    title: "staffpick.",
+  },
+];
 export {
   slides,
   firstBanner,
@@ -677,4 +725,6 @@ export {
   pageMenu,
   blogTags,
   testimonial,
+  cleanPageslides,
+  cleanPageFirstBanner,
 };

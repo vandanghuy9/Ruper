@@ -8,12 +8,6 @@ import "swiper/css";
 import "swiper/css/bundle";
 import WhiteButton from "../button/WhiteButton";
 const Slider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const handleSlideChange = (newSlide) => {
-    setCurrentSlide(newSlide);
-  };
-
   return (
     <>
       <Swiper

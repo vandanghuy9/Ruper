@@ -8,9 +8,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <div id="page" className="hfeed page-wrapper">
-        <header id="site-header" className="site-header header-v1">
-          <Navbar />
-        </header>
+        <Navbar />
         <main className="site-main">{children}</main>
         <footer id="site-footer" className="site-footer background">
           <Footer />

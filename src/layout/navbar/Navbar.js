@@ -6,16 +6,10 @@ const Navbar = async () => {
   const sampleBlog = await getShowBlog();
   const sampleProduct = await getShowProduct();
   return (
-    <>
-      <NavBarMobile
-        blogList={sampleBlog}
-        sampleProduct={sampleProduct?.at(0)}
-      />
-      <NavBarDesktop
-        blogList={sampleBlog}
-        sampleProduct={sampleProduct?.at(0)}
-      />
-    </>
+    <header id="site-header" className="site-header">
+      <NavBarMobile blogList={sampleBlog} sampleProduct={sampleProduct?.at(0)} />
+      <NavBarDesktop blogList={sampleBlog} sampleProduct={sampleProduct?.at(0)} />
+    </header>
   );
 };
 
