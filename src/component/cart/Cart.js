@@ -31,32 +31,23 @@ const Cart = () => {
   return (
     <>
       <div
-        className={
-          showCart
-            ? "dropdown mini-cart top-cart show"
-            : "dropdown mini-cart top-cart"
-        }
-      >
+        className={showCart ? "dropdown mini-cart top-cart show" : "dropdown mini-cart top-cart"}>
         <button
           className="dropdown-toggle cart-icon bg-transparent"
           type="button"
           onClick={(e) => {
             setShowCart(true);
-          }}
-        >
+          }}>
           <div className="icons-cart">
             <span className="icon">
-              <AiOutlineShopping size={30} color="black" />
+              <AiOutlineShopping size={25} color="black" />
             </span>
             <span className="cart-count">{totalUniqueItems}</span>
           </div>
         </button>
         {showCart && (
           <>
-            <div
-              className="remove-cart-shadow"
-              onClick={(e) => setShowCart(false)}
-            ></div>
+            <div className="remove-cart-shadow" onClick={(e) => setShowCart(false)}></div>
             <div className="dropdown-menu cart-popup show">
               {items.length === 0 && (
                 <div className="cart-empty-wrap">
@@ -87,8 +78,7 @@ const Cart = () => {
                   </div>
                   <div className="free-ship">
                     <div className="title-ship">
-                      Buy <strong>$400</strong> more to enjoy{" "}
-                      <strong>FREE Shipping</strong>
+                      Buy <strong>$400</strong> more to enjoy <strong>FREE Shipping</strong>
                     </div>
                     <div className="total-percent">
                       <div className="percent" style={{ width: "20%" }}></div>
@@ -98,15 +88,13 @@ const Cart = () => {
                     <button
                       type="button"
                       onClick={handleViewCart}
-                      className="button btn view-cart btn-primary"
-                    >
+                      className="button btn view-cart btn-primary">
                       View cart
                     </button>
                     <button
                       type="button"
                       onClick={handleCheckout}
-                      className="button btn checkout btn-default"
-                    >
+                      className="button btn checkout btn-default">
                       Check out
                     </button>
                   </div>

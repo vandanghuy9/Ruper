@@ -55,16 +55,11 @@ const NavBarMobile = ({ blogList, sampleProduct }) => {
                   >
                     <RxHamburgerMenu size={30} />
                   </button>
-                  <div
-                    className={`site-mobile-navigation mm-wrapper ${
-                      show ? "active" : ""
-                    }`}
-                  >
+                  <div className={`site-mobile-navigation mm-wrapper ${show ? "active" : ""}`}>
                     <span
                       id="remove-megamenu"
                       className="remove-megamenu icon-remove"
-                      onClick={handleShow}
-                    >
+                      onClick={handleShow}>
                       Close
                       <span className="icon">
                         <AiOutlineClose size={20} />
@@ -72,34 +67,19 @@ const NavBarMobile = ({ blogList, sampleProduct }) => {
                     </span>
                     <nav
                       id="mobile-main-menu"
-                      className="mm-menu position-absolute start-0 end-0 bottom-0"
-                    >
+                      className="mm-menu position-absolute start-0 end-0 bottom-0">
                       <div className="mm-panels position-absolute start-0 end-0 bottom-0 top-0">
-                        {tabIndex === 0 && (
-                          <MainSection setTabIndex={setTabIndex} />
-                        )}
-                        {tabIndex === 1 && (
-                          <HomeSection setTabIndex={setTabIndex} />
-                        )}
+                        {tabIndex === 0 && <MainSection setTabIndex={setTabIndex} />}
+                        {tabIndex === 1 && <HomeSection setTabIndex={setTabIndex} />}
                         {tabIndex === 2 && (
-                          <ShopSection
-                            setTabIndex={setTabIndex}
-                            sampleProduct={sampleProduct}
-                          />
+                          <ShopSection setTabIndex={setTabIndex} sampleProduct={sampleProduct} />
                         )}
-                        {tabIndex === 3 && (
-                          <ShopProductSection setTabIndex={setTabIndex} />
-                        )}
+                        {tabIndex === 3 && <ShopProductSection setTabIndex={setTabIndex} />}
 
                         {tabIndex === 4 && (
-                          <BlogSection
-                            setTabIndex={setTabIndex}
-                            blogList={blogList}
-                          />
+                          <BlogSection setTabIndex={setTabIndex} blogList={blogList} />
                         )}
-                        {tabIndex === 5 && (
-                          <PageSection setTabIndex={setTabIndex} />
-                        )}
+                        {tabIndex === 5 && <PageSection setTabIndex={setTabIndex} />}
                       </div>
                     </nav>
                   </div>
@@ -122,16 +102,10 @@ const NavBarMobile = ({ blogList, sampleProduct }) => {
                   <div className="login-header">
                     <div
                       className={
-                        isFormActive
-                          ? "form-login-register active"
-                          : "form-login-register"
-                      }
-                    >
+                        isFormActive ? "form-login-register active" : "form-login-register"
+                      }>
                       <div className="box-form-login">
-                        <div
-                          className="active-login"
-                          onClick={handleFormActive}
-                        ></div>
+                        <div className="active-login" onClick={handleFormActive}></div>
                         <div className="box-content">
                           <SignIn
                             isRegisterActive={isRegisterActive}

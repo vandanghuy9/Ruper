@@ -1,8 +1,15 @@
 import { getShowProduct } from "../services/productService";
 import HomePage from "./home-page";
-const Page = async () => {
+import { CleanHomePage } from "@component/home";
+const Page = async ({ params, searchParams }) => {
+  const type = searchParams?.type;
   const products = await getShowProduct();
-  return <HomePage products={products}></HomePage>;
+  if (!type) {
+    return <HomePage products={products}></HomePage>;
+  }
+  if (type === "CLEAN") {
+    return <CleanHomePage products={products} />;
+  }
 };
 
 export default Page;

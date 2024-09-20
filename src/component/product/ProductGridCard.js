@@ -14,6 +14,7 @@ import { useShopProduct } from "@context/ShopProductContext";
 import { useAuth } from "@context/UserContext";
 import ComparePopUp from "@component/compare/ComparePopUp";
 const ProductGridCard = ({ product, homepage }) => {
+  console.log(product);
   const { _id, imageUrl, name, price, discount } = product;
   const [index, setIndex] = useState(0);
   // const [comparePopUpActive, setComparePopUpActive] = useState(false);
@@ -62,27 +63,22 @@ const ProductGridCard = ({ product, homepage }) => {
                   className="product-btn button"
                   onClick={(e) => {
                     handleOpenQuickViewPopUp(_id);
-                  }}
-                >
+                  }}>
                   <IoBagOutline size={20} />
                   Add to cart
                 </button>
               </div>
             )}
             <div
-              className={`btn-wishlist ${
-                wishListAdded === true ? "added" : ""
-              }`}
-              data-title={"Wishlist"}
-            >
+              className={`btn-wishlist ${wishListAdded === true ? "added" : ""}`}
+              data-title={"Wishlist"}>
               {isProductInWishlist ? (
                 <button
                   type="button"
                   className="product-btn"
                   onClick={() => {
                     handleRemoveFromWishList(_id);
-                  }}
-                >
+                  }}>
                   <IoHeart size={20} />
                   Remove from wishlist
                 </button>
@@ -92,8 +88,7 @@ const ProductGridCard = ({ product, homepage }) => {
                   className="product-btn"
                   onClick={() => {
                     onAddToWishList(product);
-                  }}
-                >
+                  }}>
                   <IoHeartOutline size={20} />
                   Add to wishlist
                 </button>
@@ -105,8 +100,7 @@ const ProductGridCard = ({ product, homepage }) => {
                 className="product-btn"
                 onClick={(e) => {
                   handleOpenComparePopUp(_id);
-                }}
-              >
+                }}>
                 <IoShuffleOutline size={20} />
                 Compare
               </button>
@@ -118,8 +112,7 @@ const ProductGridCard = ({ product, homepage }) => {
                   className="product-btn"
                   onClick={(e) => {
                     handleOpenQuickViewPopUp(_id);
-                  }}
-                >
+                  }}>
                   <IoSearchOutline size={20} />
                   Quick View
                 </button>
@@ -154,8 +147,7 @@ const ProductGridCard = ({ product, homepage }) => {
                     className="button"
                     onClick={(e) => {
                       handleOpenQuickViewPopUp(_id);
-                    }}
-                  >
+                    }}>
                     <span className="icon">
                       <IoBagOutline size={25} />
                     </span>
