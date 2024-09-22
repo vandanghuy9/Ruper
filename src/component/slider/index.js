@@ -1,3 +1,16 @@
 import CleanPageSlider from "./CleanPageSlider";
 import Testimonial from "./Testimonial";
-export { CleanPageSlider, Testimonial };
+import CollectionPageSlider from "./CollectionPageSlider";
+import ProductCategorySlider from "./ProductCategorySlider";
+import TestimonialCardCarousel from "./TestimonialCardCarousel";
+import ProductCarousel from "./ProductCarousel";
+import BrandCarousel from "./BrandCarousel";
+export {
+  CleanPageSlider,
+  Testimonial,
+  CollectionPageSlider,
+  ProductCategorySlider,
+  TestimonialCardCarousel,
+  ProductCarousel,
+  BrandCarousel,
+};

@@ -6,7 +6,7 @@ import Link from "next/link";
 import WhiteButton from "@component/button/WhiteButton";
 import { Testimonial } from "@component/slider";
 import FeatureSection from "@component/feature/FeatureSection";
-
+import { cleanPageFirstBanner } from "@utils/data";
 const CleanHomepage = ({ products }) => {
   console.log(products);
   return (

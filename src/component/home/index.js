@@ -1,2 +1,3 @@
 import CleanHomePage from "./CleanHomepage";
-export { CleanHomePage };
+import CollectionHomePage from "./CollectionHomePage";
+export { CleanHomePage, CollectionHomePage };

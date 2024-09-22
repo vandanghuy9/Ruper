@@ -460,12 +460,12 @@
 
 @media (min-width: 1199px) {
   .home .site-header .header-v1,
-  .home .site-header.header-v3 {
+  .home .site-header .header-v3 {
     position: absolute;
     width: 100%;
   }
   .home .site-header .header-v1.relative,
-  .home .site-header.header-v3.relative {
+  .home .site-header .header-v3.relative {
     position: relative;
   }
   .block-countdown .countdown-wrap {
