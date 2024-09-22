@@ -1,3 +1,4 @@
+"use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
@@ -15,17 +16,12 @@ const ProductCarousel = ({ productSet, homepage = false }) => {
         loop={true}
         navigation
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
+        className="mySwiper">
         {products?.map((product, index) => (
           <SwiperSlide key={index}>
             <div className="item-product slick-slide">
               <div className="items">
-                <ProductGridCard
-                  key={index}
-                  product={product}
-                  homepage={homepage}
-                />
+                <ProductGridCard key={index} product={product} homepage={homepage} />
               </div>
             </div>
           </SwiperSlide>

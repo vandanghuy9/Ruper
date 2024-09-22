@@ -79,7 +79,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_1/COLLECTION",
           text: "Home Collection",
-          path: "/",
+          path: "/?type=COLLECTION",
         },
         {
           id: "HOME/FURNITURE_1/GRID",
@@ -410,6 +410,39 @@ const cleanPageslides = [
     },
   },
 ];
+const collectionSlides = [
+  {
+    image: "/slider/8.jpg",
+    title: "Spring",
+    subtitle: "Collection 2022",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/7.jpg",
+    title: "For the",
+    subtitle: "Comfort-Seekers",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/9.jpg",
+    title: "The",
+    subtitle: "Great Outdoors",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
+
 const firstBanner = [
   {
     imageSrc: "/banner/product-cat-1.jpg",
@@ -602,12 +635,12 @@ const brand = [
   { src: "/brand/5.jpg", title: "Red box" },
 ];
 const menu = [
-  { category: "Bed & Bath", count: 0, key: "BED_BATH" },
-  { category: "Furniture", count: 0, key: "FURNITURE" },
-  { category: "Home Décor", count: 0, key: "HOME_DECOR" },
-  { category: "Lighting", count: 0, key: "LIGHTING" },
-  { category: "Office", count: 0, key: "OFFICE" },
-  { category: "Outdoor", count: 0, key: "OUTDOOR" },
+  { category: "Bed & Bath", image: "/product/cat-1.jpg", count: 0, key: "BED_BATH" },
+  { category: "Furniture", image: "/product/cat-2.jpg", count: 0, key: "FURNITURE" },
+  { category: "Home Décor", image: "/product/cat-3.jpg", count: 0, key: "HOME_DECOR" },
+  { category: "Lighting", image: "/product/cat-4.jpg", count: 0, key: "LIGHTING" },
+  { category: "Office", image: "/product/cat-5.jpg", count: 0, key: "OFFICE" },
+  { category: "Outdoor", image: "/product/cat-6.jpg", count: 0, key: "OUTDOOR" },
 ];
 const size = ["L", "M", "S"];
 const countryOption = [
@@ -669,21 +702,31 @@ const paymentOption = [
 const testimonial = [
   {
     id: 0,
+    title: "Amazing piece of history",
     content: `” Wonderful communication and your company even sent a generous amount of samples to me, making my decision to spend money on an internet item easy. Thank you. Product quality is perfect. “`,
     img: "/testimonial/1.jpg",
     name: "Robert Smith",
   },
   {
     id: 1,
+    title: "Fabulous Grounds",
     content: `” Wonderful communication and your company even sent a generous amount of samples to me, making my decision to spend money on an internet item easy. Thank you. Product quality is perfect. “`,
     img: "/testimonial/2.jpg",
     name: "Saitama One",
   },
   {
     id: 2,
+    title: "I love Almo",
     content: `” Wonderful communication and your company even sent a generous amount of samples to me, making my decision to spend money on an internet item easy. Thank you. Product quality is perfect. “`,
     img: "/testimonial/3.jpg",
     name: "Sara Colinton",
+  },
+  {
+    id: 3,
+    title: "Stunning design",
+    content: `” Wonderful communication and your company even sent a generous amount of samples to me, making my decision to spend money on an internet item easy. Thank you. Product quality is perfect. “`,
+    img: "/testimonial/4.jpg",
+    name: "Shetty Jamie",
   },
 ];
 const cleanPageFirstBanner = [
@@ -691,18 +734,105 @@ const cleanPageFirstBanner = [
     image: "/banner/banner-3.jpg",
     link: "/shop?category=FURNITURE",
     title: "new arivals.",
+    img: {
+      width: 568,
+      height: 607,
+    },
   },
   {
     image: "/banner/banner-4.jpg",
     link: "/shop?category=LIGHTING",
     title: "trending.",
+    img: {
+      width: 568,
+      height: 607,
+    },
   },
   {
     image: "/banner/banner-5.jpg",
     link: "/shop",
     title: "staffpick.",
+    img: {
+      width: 568,
+      height: 607,
+    },
   },
 ];
+const collectionPageFirstBanner = [
+  {
+    image: "/banner/banner-6.jpg",
+    link: "/shop?category=FURNITURE",
+    title: "Outdoor With a Touch of Class.",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 496,
+      height: 577,
+    },
+  },
+  {
+    image: "/banner/banner-7.jpg",
+    link: "/shop?category=LIGHTING",
+    title: "A Beautiful, Restful Bedroom",
+    description: "Make you bedroom your inner sanctuary.",
+    img: {
+      width: 496,
+      height: 577,
+    },
+  },
+  {
+    image: "/banner/banner-8.jpg",
+    link: "/shop",
+    title: "Beautiful Boho Dining",
+    description: "Make your meal times experience an event by styling with a boho look.",
+    img: {
+      width: 496,
+      height: 577,
+    },
+  },
+];
+const productStyleBanner = [
+  {
+    image: "/product/cat-7.jpg",
+    link: "/shop?category=FURNITURE",
+    title: "Mid Century Modern",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 303,
+      height: 366,
+    },
+  },
+  {
+    image: "/product/cat-8.jpg",
+    link: "/shop?category=LIGHTING",
+    title: "French Provincial",
+    description: "Make you bedroom your inner sanctuary.",
+    img: {
+      width: 303,
+      height: 366,
+    },
+  },
+  {
+    image: "/product/cat-9.jpg",
+    link: "/shop",
+    title: "Classic Traditional",
+    description: "Make your meal times experience an event by styling with a boho look.",
+    img: {
+      width: 303,
+      height: 366,
+    },
+  },
+  {
+    image: "/product/cat-10.jpg",
+    link: "/shop",
+    title: "Scandinavian",
+    description: "Make your meal times experience an event by styling with a boho look.",
+    img: {
+      width: 303,
+      height: 366,
+    },
+  },
+];
+
 export {
   slides,
   firstBanner,
@@ -727,4 +857,7 @@ export {
   testimonial,
   cleanPageslides,
   cleanPageFirstBanner,
+  collectionSlides,
+  collectionPageFirstBanner,
+  productStyleBanner,
 };

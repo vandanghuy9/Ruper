@@ -1,6 +1,6 @@
 import React from "react";
-import { cleanPageFirstBanner } from "@utils/data";
 import FirstBannerItem from "./FirstBannerItem";
+import { cleanPageFirstBanner } from "@utils/data";
 const FirstBannerSection = () => {
   return (
     <div className="section-container large">
@@ -8,7 +8,7 @@ const FirstBannerSection = () => {
         <div className="block-widget-wrap small-space">
           <div className="row">
             {cleanPageFirstBanner.map((item) => (
-              <FirstBannerItem key={item.title} item={item} />
+              <FirstBannerItem key={item.title} item={item} layout={"layout-4"} />
             ))}
           </div>
         </div>
