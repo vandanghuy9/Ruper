@@ -64,8 +64,8 @@ const CleanHomepage = ({ products }) => {
                                 <div
                                   className="item-lookbook"
                                   style={{
-                                    height: "30px",
-                                    width: "30px",
+                                    height: 30,
+                                    width: 30,
                                     left: "78.37%",
                                     top: "50%",
                                   }}>

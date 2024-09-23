@@ -84,7 +84,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_1/GRID",
           text: "Home Grid",
-          path: "/",
+          path: "/?type=GRID",
         },
         {
           id: "HOME/FURNITURE_1/MINIMAL",
