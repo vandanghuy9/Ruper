@@ -2,6 +2,7 @@
 import { Logo, NavbarDesktopMenu, HeaderPageLink } from "@component/layout";
 import CleanNavbarDesktop from "../clean/CleanNavbarDesktop";
 import CollectionNavbarDesktop from "../collection/CollectionNavbarDesktop";
+import GridNavbarDesktop from "../grid/GridNavbarDesktop";
 import { useSearchParams } from "next/navigation";
 const NavBarDesktop = ({ blogList, sampleProduct }) => {
   const searchParams = useSearchParams();
@@ -35,6 +36,8 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
     return <CleanNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
   if (homePageType === "COLLECTION")
     return <CollectionNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
+  if (homePageType === "GRID")
+    return <GridNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
 };
 
 export default NavBarDesktop;

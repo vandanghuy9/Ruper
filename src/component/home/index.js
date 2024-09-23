@@ -1,3 +1,4 @@
 import CleanHomePage from "./CleanHomepage";
 import CollectionHomePage from "./CollectionHomePage";
-export { CleanHomePage, CollectionHomePage };
+import GridHomePage from "./GridHomePage";
+export { CleanHomePage, CollectionHomePage, GridHomePage };

@@ -26,25 +26,31 @@ const CollectionPageSlider = () => {
           className="mySwiper">
           {collectionSlides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="item slick-slide">
-                <div className="item-content">
-                  <div className="content-image">
-                    <Image width={1920} height={1080} src={slide.image} alt="Image Slider"></Image>
-                  </div>
-                  <div className="section-padding">
-                    <div className="section-container">
-                      <div className="item-info horizontal-start vertical-middle">
-                        <div className="content">
-                          <h2 className="title-slider">{slide.title}</h2>
-                          <h2 className="title-slider">{slide.subtitle}</h2>
-                          <div className="description-slider">{slide.description}</div>
-                          <WhiteButton href={slide.button.url} buttonText={slide.button.text} />
+              {({ isActive }) => (
+                <div className={`item slick-slide ${isActive ? "slick-current slick-active" : ""}`}>
+                  <div className="item-content">
+                    <div className="content-image">
+                      <Image
+                        width={1920}
+                        height={1080}
+                        src={slide.image}
+                        alt="Image Slider"></Image>
+                    </div>
+                    <div className="section-padding">
+                      <div className="section-container">
+                        <div className="item-info horizontal-start vertical-middle">
+                          <div className="content">
+                            <h2 className="title-slider">{slide.title}</h2>
+                            <h2 className="title-slider">{slide.subtitle}</h2>
+                            <div className="description-slider">{slide.description}</div>
+                            <WhiteButton href={slide.button.url} buttonText={slide.button.text} />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
