@@ -14,7 +14,6 @@ import { useShopProduct } from "@context/ShopProductContext";
 import { useAuth } from "@context/UserContext";
 import ComparePopUp from "@component/compare/ComparePopUp";
 const ProductGridCard = ({ product, homepage }) => {
-  console.log(product);
   const { _id, imageUrl, name, price, discount } = product;
   const [index, setIndex] = useState(0);
   // const [comparePopUpActive, setComparePopUpActive] = useState(false);

@@ -4,10 +4,13 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/bundle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductGridCard from "../product/ProductGridCard";
 const ProductCarousel = ({ productSet, homepage = false }) => {
-  const [products, setProducts] = useState(productSet);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    setProducts(productSet);
+  }, [productSet]);
   return (
     <>
       <Swiper

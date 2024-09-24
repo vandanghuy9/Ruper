@@ -1,7 +1,6 @@
 import { getShowProduct } from "../services/productService";
 import HomePage from "./home-page";
-import { getShowBlog } from "@services/blogService";
-import { CleanHomePage, CollectionHomePage, GridHomePage } from "@component/home";
+import { CleanHomePage, CollectionHomePage, GridHomePage, MinimalHomePage } from "@component/home";
 const Page = async ({ params, searchParams }) => {
   const type = searchParams?.type;
   const products = await getShowProduct();
@@ -13,9 +12,9 @@ const Page = async ({ params, searchParams }) => {
   }
   if (type === "COLLECTION") return <CollectionHomePage products={products} />;
   if (type === "GRID") {
-    const sampleBlog = await getShowBlog();
-    return <GridHomePage products={products} blogList={sampleBlog} />;
+    return <GridHomePage products={products} />;
   }
+  if (type === "MINIMAL") return <MinimalHomePage products={products} />;
 };
 
 export default Page;

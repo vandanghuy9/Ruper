@@ -24,7 +24,7 @@ const Slider = () => {
         modules={[Autoplay, Pagination]}
         className="mySwiper">
         {slides.map((slide, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             {({ isActive }) => (
               <div
                 className={`item-product slick-slide ${

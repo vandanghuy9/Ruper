@@ -89,7 +89,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_1/MINIMAL",
           text: "Home Minimal",
-          path: "/",
+          path: "/?type=MINIMAL",
         },
         {
           id: "HOME/FURNITURE_1/MODERN",
@@ -832,6 +832,57 @@ const productStyleBanner = [
     },
   },
 ];
+const minimalPageSlides = [
+  {
+    image: "/slider/13.jpg",
+    title: "Designed for Life",
+    subtitle: "Made for you.",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/14.jpg",
+    title: "Lighting",
+    subtitle: "Inspiration",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/15.jpg",
+    title: "Chair",
+    subtitle: "Collection",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
+const minimalFirstBanner = [
+  {
+    imageSrc: "/banner/banner-6.jpg",
+    link: "/shop",
+    title: "For your personal",
+    subtitle: "collection",
+    description: "Save up to $500 on outdoor packages",
+    imgWidth: 496,
+    imgHeight: 577,
+  },
+  {
+    imageSrc: "/banner/banner-7.jpg",
+    link: "/shop",
+    title: "Always by your side",
+    description: "Make you bedroom your inner sanctuary.",
+    imgWidth: 496,
+    imgHeight: 577,
+  },
+];
 
 export {
   slides,
@@ -860,4 +911,6 @@ export {
   collectionSlides,
   collectionPageFirstBanner,
   productStyleBanner,
+  minimalPageSlides,
+  minimalFirstBanner,
 };

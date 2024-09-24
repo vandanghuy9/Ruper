@@ -6,7 +6,7 @@ import ProductItemLookBook from "../product/ProductItemLookbook";
 import Image from "next/image";
 import Link from "next/link";
 import FeatureSectionLayoutTwo from "@component/feature/FeatureSectionLayoutTwo";
-const GridHomePage = ({ products, blogList }) => {
+const GridHomePage = ({ products }) => {
   return (
     <div id="site-main" className="site-main">
       <div id="main-content" className="main-content">
