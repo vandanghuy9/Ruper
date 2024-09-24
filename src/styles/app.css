@@ -3392,13 +3392,14 @@ ul.slick-dots li.slick-active button {
   top: 17%;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 99;
 }
 .block-sliders .slider-bg-image .image-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 99;
 }
 .block-sliders .slick-dots {
   padding: 0px 90px 60px 0px;
@@ -5797,7 +5798,7 @@ ul.slick-dots li.slick-active button {
   vertical-align: top;
   overflow: hidden;
 }
-.block-instagram a.instagram:after,
+.block-instagram a.instagram .icon,
 .block-instagram a.instagram:before {
   position: absolute;
   left: 0;
@@ -5814,10 +5815,8 @@ ul.slick-dots li.slick-active button {
   background-color: rgba(37, 37, 37, 0.45);
   z-index: 1;
 }
-.block-instagram a.instagram:after {
-  content: "\f16d";
+.block-instagram a.instagram .icon {
   color: #fff;
-  font-family: FontAwesome;
   font-size: 30px;
   font-weight: 400;
   top: calc(50% - 13px);
@@ -5825,7 +5824,7 @@ ul.slick-dots li.slick-active button {
   line-height: 100%;
   z-index: 2;
 }
-.block-instagram a.instagram:hover:after,
+.block-instagram a.instagram:hover .icon,
 .block-instagram a.instagram:hover:before {
   opacity: 1;
   visibility: visible;

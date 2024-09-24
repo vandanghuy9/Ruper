@@ -73,7 +73,7 @@ const NavbarDesktopMenu = ({ blogList, sampleProduct }) => {
                             </Link>
                           </li>
                         ) : (
-                          <li>
+                          <li key={item.id}>
                             <Link href={"#"} onClick={handleFormActive}>
                               <span className="menu-item-text">{item.text}</span>
                             </Link>
@@ -96,7 +96,7 @@ const NavbarDesktopMenu = ({ blogList, sampleProduct }) => {
                     </Link>
                   </li>
                 ) : (
-                  <li>
+                  <li key={section.id}>
                     <Link href={"#"} onClick={handleFormActive}>
                       <span className="menu-item-text">{section.text}</span>
                     </Link>
@@ -117,7 +117,7 @@ const NavbarDesktopMenu = ({ blogList, sampleProduct }) => {
               <div className="row">
                 <div className="col-md-5">
                   {blogCategoryMenu.child.map((section) => (
-                    <div className="menu-section">
+                    <div className="menu-section" key={section.id}>
                       <h2 className="sub-menu-title">{section.text}</h2>
                       <ul className="menu-list">
                         {section.child.map((item) => (

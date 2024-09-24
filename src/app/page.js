@@ -1,6 +1,12 @@
 import { getShowProduct } from "../services/productService";
 import HomePage from "./home-page";
-import { CleanHomePage, CollectionHomePage, GridHomePage, MinimalHomePage } from "@component/home";
+import {
+  CleanHomePage,
+  CollectionHomePage,
+  GridHomePage,
+  MinimalHomePage,
+  ModernHomepage,
+} from "@component/home";
 const Page = async ({ params, searchParams }) => {
   const type = searchParams?.type;
   const products = await getShowProduct();
@@ -15,6 +21,7 @@ const Page = async ({ params, searchParams }) => {
     return <GridHomePage products={products} />;
   }
   if (type === "MINIMAL") return <MinimalHomePage products={products} />;
+  if (type === "MODERN") return <ModernHomepage products={products} />;
 };
 
 export default Page;

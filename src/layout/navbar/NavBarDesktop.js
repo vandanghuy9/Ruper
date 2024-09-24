@@ -1,13 +1,20 @@
 "use client";
+import { useEffect } from "react";
 import { Logo, NavbarDesktopMenu, HeaderPageLink } from "@component/layout";
 import CleanNavbarDesktop from "../clean/CleanNavbarDesktop";
 import CollectionNavbarDesktop from "../collection/CollectionNavbarDesktop";
 import GridNavbarDesktop from "../grid/GridNavbarDesktop";
 import { useSearchParams } from "next/navigation";
+import { useShopProduct } from "@context/ShopProductContext";
 const NavBarDesktop = ({ blogList, sampleProduct }) => {
+  const { setBlogList } = useShopProduct();
+  useEffect(() => {
+    setBlogList(blogList);
+  }, [blogList]);
+
   const searchParams = useSearchParams();
   const homePageType = searchParams.get("type");
-  if (!homePageType)
+  if (!homePageType || homePageType === "MODERN")
     return (
       <div className="header-v1">
         <div className="header-desktop">

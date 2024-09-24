@@ -8,6 +8,10 @@ import GridNewsLetterBlock from "./home-grid/GridNewsLetterBlock";
 import MinimalFirstBannerSection from "./home-minimal/MinimalFirstBannerSection";
 import LookbookSection from "./home-minimal/LookbookSection";
 import MinimalNewsLetterBlock from "./home-minimal/MinimalNewsLetterBlock";
+import ModernFirstBannerSection from "./home-modern/ModernFirstBannerSection";
+import ModernFeatureSection from "./home-modern/ModernFeatureSection";
+import ModernSecondBannerSection from "./home-modern/ModernSecondBannerSection";
+import InstagramSection from "./home-modern/InstagramSection";
 export {
   CleanFirstBannerSection,
   CollectionFirstBannerSection,
@@ -19,4 +23,8 @@ export {
   MinimalFirstBannerSection,
   LookbookSection,
   MinimalNewsLetterBlock,
+  ModernFirstBannerSection,
+  ModernFeatureSection,
+  ModernSecondBannerSection,
+  InstagramSection,
 };

@@ -8,7 +8,7 @@ const NavbarBlogItem = ({ blog }) => {
   const formattedDate = formatDate(createdAt);
 
   return (
-    <li className="post-item">
+    <li className="post-item" key={_id}>
       <Link href={`/blog/${_id}`}>
         <Image src={imageUrl[0]} alt="thumbnail" width={90} height={60} />
       </Link>

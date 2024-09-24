@@ -12,7 +12,7 @@ const GridNavbarDesktop = ({ blogList, sampleProduct }) => {
       <div className="header-desktop">
         <div className="header-wrapper">
           <div className="section-padding">
-            <div className="section-container">
+            <div className="section-container p-l-r">
               <div className="row">
                 <div className="col-xl-3 col-lg-2 col-md-12 col-sm-12 col-12 header-left">
                   <Logo />

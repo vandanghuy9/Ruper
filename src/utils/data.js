@@ -94,7 +94,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_1/MODERN",
           text: "Home Modern",
-          path: "/",
+          path: "/?type=MODERN",
         },
         {
           id: "HOME/FURNITURE_1/STYLISH",
@@ -883,6 +883,90 @@ const minimalFirstBanner = [
     imgHeight: 577,
   },
 ];
+const modernPageSlides = [
+  {
+    image: "/slider/16.jpg",
+    title: "Outline Studio Sofa",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/17.jpg",
+    title: "Black Friday",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/18.jpg",
+    title: "Spring Collection",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
+
+const modernFirstBanner = [
+  {
+    imageSrc: "/banner/banner-11.jpg",
+    link: "/shop?category=FURNITURE",
+    buttonText: "Furniture",
+    imgWidth: 571,
+    imgHeight: 622,
+  },
+  {
+    imageSrc: "/banner/banner-12.jpg",
+    link: "/shop?category=LIGHTING",
+    buttonText: "Lighting",
+    imgWidth: 406,
+    imgHeight: 304,
+  },
+  {
+    imageSrc: "/banner/banner-13.jpg",
+    link: "/shop",
+    buttonText: "Modern",
+    imgWidth: 406,
+    imgHeight: 304,
+  },
+  {
+    imageSrc: "/banner/banner-14.jpg",
+    link: "/shop",
+    buttonText: "Accessories",
+    imgWidth: 812,
+    imgHeight: 608,
+  },
+];
+
+const modernSecondBanner = [
+  {
+    image: "/banner/banner-15.jpg",
+    title: "Sink into Luxe",
+    link: "/shop",
+    description: "Statement-making, while keeping a low profile.",
+  },
+  {
+    image: "/banner/banner-16.jpg",
+    title: "Sitting Pretty",
+    link: "/shop",
+    description: "There’s always room for one more guest.",
+  },
+  {
+    image: "/banner/banner-17.jpg",
+    title: "Modern Curves",
+    link: "/shop",
+    description: "A curvaceous approach that covers all the bases.",
+  },
+];
 
 export {
   slides,
@@ -913,4 +997,7 @@ export {
   productStyleBanner,
   minimalPageSlides,
   minimalFirstBanner,
+  modernPageSlides,
+  modernFirstBanner,
+  modernSecondBanner,
 };
