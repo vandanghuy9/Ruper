@@ -7,6 +7,7 @@ import ProductCarousel from "./ProductCarousel";
 import BrandCarousel from "./BrandCarousel";
 import GridPageCarousel from "./GridPageCarousel";
 import MinimalCarousel from "./MinimalCarousel";
+import ModernCarousel from "./ModernCarousel";
 export {
   CleanPageSlider,
   Testimonial,
@@ -17,4 +18,5 @@ export {
   BrandCarousel,
   GridPageCarousel,
   MinimalCarousel,
+  ModernCarousel,
 };
