@@ -99,7 +99,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_1/STYLISH",
           text: "Home Stylish",
-          path: "/",
+          path: "/?type=STYLISH",
         },
         {
           id: "HOME/FURNITURE_1/UNIQUE",
@@ -967,6 +967,138 @@ const modernSecondBanner = [
     description: "A curvaceous approach that covers all the bases.",
   },
 ];
+const stylishSlides = [
+  {
+    image: "/slider/19.jpg",
+    title: "Light Collection",
+    subtitle: "Collection 2022",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/20.jpg",
+    title: "Chair Collection",
+    subtitle: "Comfort-Seekers",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/21.jpg",
+    title: "Spring Sale",
+    subtitle: "Great Outdoors",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
+
+const stylishProductStyleBanner = [
+  {
+    image: "/product/cat-11.jpg",
+    link: "/shop",
+    title: "Chair",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 407,
+      height: 553,
+    },
+  },
+  {
+    image: "/product/cat-12.jpg",
+    link: "/shop",
+    title: "Lighting",
+    description: "Make you bedroom your inner sanctuary.",
+    img: {
+      width: 407,
+      height: 249,
+    },
+  },
+  {
+    image: "/product/cat-13.jpg",
+    link: "/shop",
+    title: "Storage",
+    description: "Make your meal times experience an event by styling with a boho look.",
+    img: {
+      width: 407,
+      height: 249,
+    },
+  },
+  {
+    image: "/product/cat-14.jpg",
+    link: "/shop",
+    title: "Chair",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 407,
+      height: 553,
+    },
+  },
+];
+const stylishBannerSlides = [
+  {
+    imageSrc: "/banner/banner-18.jpg",
+    link: "/shop",
+    title: "From bottle to chair",
+    subtitle: "collection",
+    description:
+      "In our design and production processes, we are always looking at where environmental thinking and economic",
+    imgWidth: 1080,
+    imgHeight: 584,
+  },
+  {
+    imageSrc: "/banner/banner-19.jpg",
+    link: "/shop",
+    title: "Fall collection from hightower",
+    description:
+      "In our design and production processes, we are always looking at where environmental thinking and economic",
+    imgWidth: 1080,
+    imgHeight: 584,
+  },
+  {
+    imageSrc: "/banner/banner-20.jpg",
+    link: "/shop",
+    title: "Armchair with armrests",
+    description:
+      "In our design and production processes, we are always looking at where environmental thinking and economic",
+    imgWidth: 1080,
+    imgHeight: 584,
+  },
+];
+const stylishInstaSlides = [
+  {
+    id: 0,
+    imageSrc: "/banner/instagram-6.jpg",
+    href: "https://www.instagram.com/vandanghuy9/",
+  },
+  {
+    id: 1,
+    imageSrc: "/banner/instagram-7.jpg",
+    href: "https://www.instagram.com/vandanghuy9/",
+  },
+  {
+    id: 2,
+    imageSrc: "/banner/instagram-8.jpg",
+    href: "https://www.instagram.com/vandanghuy9/",
+  },
+  {
+    id: 3,
+    imageSrc: "/banner/instagram-9.jpg",
+    href: "https://www.instagram.com/vandanghuy9/",
+  },
+  {
+    id: 4,
+    imageSrc: "/banner/instagram-10.jpg",
+    href: "https://www.instagram.com/vandanghuy9/",
+  },
+];
 
 export {
   slides,
@@ -1000,4 +1132,8 @@ export {
   modernPageSlides,
   modernFirstBanner,
   modernSecondBanner,
+  stylishSlides,
+  stylishProductStyleBanner,
+  stylishBannerSlides,
+  stylishInstaSlides,
 };

@@ -12,6 +12,9 @@ import ModernFirstBannerSection from "./home-modern/ModernFirstBannerSection";
 import ModernFeatureSection from "./home-modern/ModernFeatureSection";
 import ModernSecondBannerSection from "./home-modern/ModernSecondBannerSection";
 import InstagramSection from "./home-modern/InstagramSection";
+import CategoryBannerItem from "./CategoryBannerItem";
+import StylishProductCategoryBanner from "./home-stylish/ProductCategoryBanner";
+import StylishBannerSlider from "./home-stylish/BannerSlider";
 export {
   CleanFirstBannerSection,
   CollectionFirstBannerSection,
@@ -27,4 +30,7 @@ export {
   ModernFeatureSection,
   ModernSecondBannerSection,
   InstagramSection,
+  CategoryBannerItem,
+  StylishProductCategoryBanner,
+  StylishBannerSlider,
 };

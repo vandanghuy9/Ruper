@@ -6,12 +6,7 @@ const BannerItem = ({ link, imageSrc, imgWidth, imgHeight, children }) => {
       <div className="banner-wrapper banners">
         <div className="banner-image">
           <Link href={link}>
-            <Image
-              src={imageSrc}
-              width={imgWidth}
-              height={imgHeight}
-              alt="Banner Image"
-            />
+            <Image src={imageSrc} width={imgWidth} height={imgHeight} alt="Banner Image" />
           </Link>
         </div>
         <div className="banner-wrapper-infor">
