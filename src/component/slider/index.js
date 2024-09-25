@@ -8,6 +8,8 @@ import BrandCarousel from "./BrandCarousel";
 import GridPageCarousel from "./GridPageCarousel";
 import MinimalCarousel from "./MinimalCarousel";
 import ModernCarousel from "./ModernCarousel";
+import StylishPageCarousel from "./StylishPageCarousel";
+import StylishInstagramCarousel from "./StylishInstagramCarousel";
 export {
   CleanPageSlider,
   Testimonial,
@@ -19,4 +21,6 @@ export {
   GridPageCarousel,
   MinimalCarousel,
   ModernCarousel,
+  StylishPageCarousel,
+  StylishInstagramCarousel,
 };

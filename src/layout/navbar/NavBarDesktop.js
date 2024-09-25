@@ -41,7 +41,7 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
 
   if (homePageType === "CLEAN")
     return <CleanNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
-  if (homePageType === "COLLECTION")
+  if (homePageType === "COLLECTION" || homePageType === "STYLISH")
     return <CollectionNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
   if (homePageType === "GRID" || homePageType === "MINIMAL")
     return <GridNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
