@@ -104,7 +104,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_1/UNIQUE",
           text: "Home Unique",
-          path: "/",
+          path: "/?type=UNIQUE",
         },
       ],
     },
@@ -1099,6 +1099,38 @@ const stylishInstaSlides = [
     href: "https://www.instagram.com/vandanghuy9/",
   },
 ];
+const uniquePageSlides = [
+  {
+    image: "/slider/22.jpg",
+    title: "Outline Studio Sofa",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/23.jpg",
+    title: "Black Friday",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/24.jpg",
+    title: "Spring Collection",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
 
 export {
   slides,
@@ -1136,4 +1168,5 @@ export {
   stylishProductStyleBanner,
   stylishBannerSlides,
   stylishInstaSlides,
+  uniquePageSlides,
 };

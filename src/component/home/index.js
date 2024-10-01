@@ -4,6 +4,7 @@ import GridHomePage from "./GridHomePage";
 import MinimalHomePage from "./MinimalHomepage";
 import ModernHomepage from "./ModernHomepage";
 import StylishHomepage from "./StylishHomepage";
+import UniqueHomepage from "./UniqueHomepage";
 export {
   CleanHomePage,
   CollectionHomePage,
@@ -11,4 +12,5 @@ export {
   MinimalHomePage,
   ModernHomepage,
   StylishHomepage,
+  UniqueHomepage,
 };

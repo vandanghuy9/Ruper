@@ -15,6 +15,8 @@ import InstagramSection from "./home-modern/InstagramSection";
 import CategoryBannerItem from "./CategoryBannerItem";
 import StylishProductCategoryBanner from "./home-stylish/ProductCategoryBanner";
 import StylishBannerSlider from "./home-stylish/BannerSlider";
+import UniqueCountdownSection from "./home-unique/CountdownSection";
+import UniqueNewsLetterBlock from "./home-unique/UniqueNewsLetterBlock";
 export {
   CleanFirstBannerSection,
   CollectionFirstBannerSection,
@@ -33,4 +35,6 @@ export {
   CategoryBannerItem,
   StylishProductCategoryBanner,
   StylishBannerSlider,
+  UniqueCountdownSection,
+  UniqueNewsLetterBlock,
 };

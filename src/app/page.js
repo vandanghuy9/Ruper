@@ -7,6 +7,7 @@ import {
   MinimalHomePage,
   ModernHomepage,
   StylishHomepage,
+  UniqueHomepage,
 } from "@component/home";
 const Page = async ({ params, searchParams }) => {
   const type = searchParams?.type;
@@ -24,6 +25,7 @@ const Page = async ({ params, searchParams }) => {
   if (type === "MINIMAL") return <MinimalHomePage products={products} />;
   if (type === "MODERN") return <ModernHomepage products={products} />;
   if (type === "STYLISH") return <StylishHomepage products={products} />;
+  if (type === "UNIQUE") return <UniqueHomepage products={products} />;
 };
 
 export default Page;
