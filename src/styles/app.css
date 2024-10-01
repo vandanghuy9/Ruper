@@ -464,7 +464,7 @@ input:-webkit-autofill {
   background-color: #f1eee8;
 }
 .section.newsletter-background {
-  background-image: url(/banner/newsletter-1.jpg);
+  background-image: url(/banner/newsletter-bg.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
