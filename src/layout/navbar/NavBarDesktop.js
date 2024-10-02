@@ -21,7 +21,7 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
         <div className="header-desktop">
           <div className="header-wrapper">
             <div className="section-padding">
-              <div className="section-container">
+              <div className={`section-container`}>
                 <div className="row">
                   <div className="col-xl-3 col-lg-2 col-md-12 col-sm-12 col-12 header-left">
                     <Logo />
@@ -44,7 +44,7 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
     return <CleanNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
   if (homePageType === "COLLECTION" || homePageType === "STYLISH")
     return <CollectionNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
-  if (homePageType === "GRID" || homePageType === "MINIMAL")
+  if (homePageType === "GRID" || homePageType === "MINIMAL" || homePageType === "SPLIT")
     return <GridNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
   if (homePageType === "UNIQUE")
     return <UniqueNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;

@@ -9,7 +9,7 @@ const ProductCategoryCard = ({ item }) => {
       <div className="item-product-cat-content">
         <Link href={`/shop?category=${key}`}>
           <div className="item-image">
-            <Image width={258} height={258} src={image} alt={category} />
+            <Image width={260} height={260} src={image} alt={category} />
           </div>
         </Link>
         <div className="product-cat-content-info">

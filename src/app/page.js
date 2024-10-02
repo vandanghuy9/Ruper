@@ -8,6 +8,7 @@ import {
   ModernHomepage,
   StylishHomepage,
   UniqueHomepage,
+  SplitHomepage,
 } from "@component/home";
 const Page = async ({ params, searchParams }) => {
   const type = searchParams?.type;
@@ -26,6 +27,7 @@ const Page = async ({ params, searchParams }) => {
   if (type === "MODERN") return <ModernHomepage products={products} />;
   if (type === "STYLISH") return <StylishHomepage products={products} />;
   if (type === "UNIQUE") return <UniqueHomepage products={products} />;
+  if (type === "SPLIT") return <SplitHomepage products={products} />;
 };
 
 export default Page;
