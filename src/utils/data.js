@@ -115,7 +115,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_2/SPLIT",
           text: "Home Split",
-          path: "/",
+          path: "/?type=SPLIT",
         },
         {
           id: "HOME/FURNITURE_2/GOTHIC",
@@ -1131,6 +1131,38 @@ const uniquePageSlides = [
     },
   },
 ];
+const splitPageSlides = [
+  {
+    image: "/slider/25.jpg",
+    title: "It's Our",
+    subtitle: "Anniversary!",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/26.jpg",
+    title: "Made",
+    subtitle: "for laze-ins",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/27.jpg",
+    title: "For the",
+    subtitle: "Comfort-Seekers",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
 
 export {
   slides,
@@ -1169,4 +1201,5 @@ export {
   stylishBannerSlides,
   stylishInstaSlides,
   uniquePageSlides,
+  splitPageSlides,
 };

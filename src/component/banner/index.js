@@ -17,6 +17,7 @@ import StylishProductCategoryBanner from "./home-stylish/ProductCategoryBanner";
 import StylishBannerSlider from "./home-stylish/BannerSlider";
 import UniqueCountdownSection from "./home-unique/CountdownSection";
 import UniqueNewsLetterBlock from "./home-unique/UniqueNewsLetterBlock";
+import SplitBlogSection from "./home-split/SplitBlogSection";
 export {
   CleanFirstBannerSection,
   CollectionFirstBannerSection,
@@ -37,4 +38,5 @@ export {
   StylishBannerSlider,
   UniqueCountdownSection,
   UniqueNewsLetterBlock,
+  SplitBlogSection,
 };
