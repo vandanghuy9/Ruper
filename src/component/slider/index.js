@@ -13,6 +13,7 @@ import StylishInstagramCarousel from "./StylishInstagramCarousel";
 import UniquePageCarousel from "./UniquePageCarousel";
 import UniqueProductCarousel from "./UniqueProductCarousel";
 import SplitCarousel from "./SplitCarousel";
+import GothicCarousel from "./GothicCarousel";
 export {
   CleanPageSlider,
   Testimonial,
@@ -29,4 +30,5 @@ export {
   UniquePageCarousel,
   UniqueProductCarousel,
   SplitCarousel,
+  GothicCarousel,
 };

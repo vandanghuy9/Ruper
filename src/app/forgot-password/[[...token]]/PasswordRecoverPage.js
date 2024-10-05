@@ -2,8 +2,8 @@ import React from "react";
 import PasswordRecover from "@component/login-register/PasswordRecover";
 const PasswordRecoverPage = ({ token }) => {
   return (
-    <div class="page-login-register">
-      <div class="row">
+    <div className="page-login-register">
+      <div className="row">
         <PasswordRecover token={token} />
       </div>
     </div>
