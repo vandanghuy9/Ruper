@@ -20,9 +20,9 @@ const BlogDetail = ({ blog, categoryList, recentPosts, sidebar }) => {
             </div>
           </div>
         </div>
-        <div id="content" class="site-content" role="main">
-          <div class="section-padding">
-            <div class="section-container p-l-r">
+        <div id="content" className="site-content" role="main">
+          <div className="section-padding">
+            <div className="section-container p-l-r">
               <div className="row">
                 {sidebar === "left" ? (
                   <>

@@ -9,6 +9,7 @@ import {
   StylishHomepage,
   UniqueHomepage,
   SplitHomepage,
+  GothicHomepage,
 } from "@component/home";
 const Page = async ({ params, searchParams }) => {
   const type = searchParams?.type;
@@ -28,6 +29,7 @@ const Page = async ({ params, searchParams }) => {
   if (type === "STYLISH") return <StylishHomepage products={products} />;
   if (type === "UNIQUE") return <UniqueHomepage products={products} />;
   if (type === "SPLIT") return <SplitHomepage products={products} />;
+  if (type === "GOTHIC") return <GothicHomepage products={products} />;
 };
 
 export default Page;

@@ -18,6 +18,9 @@ import StylishBannerSlider from "./home-stylish/BannerSlider";
 import UniqueCountdownSection from "./home-unique/CountdownSection";
 import UniqueNewsLetterBlock from "./home-unique/UniqueNewsLetterBlock";
 import SplitBlogSection from "./home-split/SplitBlogSection";
+import GothicFirstBanner from "./home-gothic/GothicFirstBanner";
+import GothicLookbook from "./home-gothic/GothicLookbook";
+import GothicCategoryBanner from "./home-gothic/GothicCategoryBanner";
 export {
   CleanFirstBannerSection,
   CollectionFirstBannerSection,
@@ -39,4 +42,7 @@ export {
   UniqueCountdownSection,
   UniqueNewsLetterBlock,
   SplitBlogSection,
+  GothicFirstBanner,
+  GothicLookbook,
+  GothicCategoryBanner,
 };

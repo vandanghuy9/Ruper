@@ -6,7 +6,7 @@ const WishList = () => {
   const { wishList } = useShopProduct();
   return (
     <div className="shop-wishlist">
-      <table class="wishlist-items">
+      <table className="wishlist-items">
         <tbody style={{ marginBottom: 5 }}>
           {wishList?.map((item) => (
             <WishListItem key={item.product._id} product={item} />

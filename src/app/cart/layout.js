@@ -16,9 +16,9 @@ export default function CartLayout({ children }) {
             </div>
           </div>
         </div>
-        <div id="content" class="site-content" role="main">
-          <div class="section-padding">
-            <div class="section-container p-l-r">{children}</div>
+        <div id="content" className="site-content" role="main">
+          <div className="section-padding">
+            <div className="section-container p-l-r">{children}</div>
           </div>
         </div>
       </div>

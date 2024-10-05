@@ -120,7 +120,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_2/GOTHIC",
           text: "Home Gothic",
-          path: "/",
+          path: "/?type=GOTHIC",
         },
         {
           id: "HOME/FURNITURE_2/LUXURY",
@@ -1163,6 +1163,113 @@ const splitPageSlides = [
     },
   },
 ];
+const gothicPageSlides = [
+  {
+    image: "/slider/28.jpg",
+    title: "Easy Living",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Hot stuff, new stuff, fun stuff, soon to be your stuff?",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/29.jpg",
+    title: "Home Furniture",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/30.jpg",
+    title: "Spring Collection",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
+const gothicPageFirstBanner = [
+  {
+    image: "/banner/product-cat-5.jpg",
+    link: "/shop?category=FURNITURE",
+    title: "Sofa.",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 496,
+      height: 577,
+    },
+  },
+  {
+    image: "/banner/product-cat-6.jpg",
+    link: "/shop?category=LIGHTING",
+    title: "Chair.",
+    description: "Make you bedroom your inner sanctuary.",
+    img: {
+      width: 496,
+      height: 577,
+    },
+  },
+  {
+    image: "/banner/product-cat-7.jpg",
+    link: "/shop",
+    title: "Lounge.",
+    description: "Make your meal times experience an event by styling with a boho look.",
+    img: {
+      width: 496,
+      height: 577,
+    },
+  },
+];
+
+const gothicProductCategoryBanner = [
+  {
+    image: "/product/cat-15.jpg",
+    link: "/shop",
+    title: "Boucle",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 331,
+      height: 421,
+    },
+  },
+  {
+    image: "/product/cat-16.jpg",
+    link: "/shop",
+    title: "Rattan",
+    description: "Make you bedroom your inner sanctuary.",
+    img: {
+      width: 331,
+      height: 421,
+    },
+  },
+  {
+    image: "/product/cat-17.jpg",
+    link: "/shop",
+    title: "Cue The Curves",
+    description: "Make your meal times experience an event by styling with a boho look.",
+    img: {
+      width: 331,
+      height: 421,
+    },
+  },
+  {
+    image: "/product/cat-18.jpg",
+    link: "/shop",
+    title: "Small space solutions",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 331,
+      height: 421,
+    },
+  },
+];
 
 export {
   slides,
@@ -1202,4 +1309,7 @@ export {
   stylishInstaSlides,
   uniquePageSlides,
   splitPageSlides,
+  gothicPageSlides,
+  gothicPageFirstBanner,
+  gothicProductCategoryBanner,
 };
