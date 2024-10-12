@@ -23,6 +23,8 @@ import GothicLookbook from "./home-gothic/GothicLookbook";
 import GothicCategoryBanner from "./home-gothic/GothicCategoryBanner";
 import LuxuryProductCategoryBanner from "./home-luxury/LuxuryProductCategoryBanner";
 import LuxurySecondBanner from "./home-luxury/LuxurySecondBanner";
+import ScandinavianCategoryBanner from "./home-scandinavian/ScandinavianCategoryBanner";
+import ScandinavianSecondBanner from "./home-scandinavian/ScandinavianSecondBanner";
 export {
   CleanFirstBannerSection,
   CollectionFirstBannerSection,
@@ -49,4 +51,6 @@ export {
   GothicCategoryBanner,
   LuxuryProductCategoryBanner,
   LuxurySecondBanner,
+  ScandinavianCategoryBanner,
+  ScandinavianSecondBanner,
 };

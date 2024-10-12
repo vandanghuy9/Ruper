@@ -2675,9 +2675,7 @@ ul.slick-dots li.slick-active button {
   font-size: 18px;
   color: #000;
 }
-.mini-cart .cart-popup .cart-list li.empty:before {
-  content: "\e914";
-  font-family: wpbingofont;
+.mini-cart .cart-popup .cart-list li.empty .icon {
   position: absolute;
   top: 0;
   font-size: 50px;
@@ -4712,7 +4710,7 @@ ul.slick-dots li.slick-active button {
   padding: 0px 15px 0px 15px;
   z-index: 3;
 }
-.block-product-cats.layout-6 .cat-item .cat-title a {
+.block-product-cats.layout-6 .cat-item .cat-title .title {
   font-size: 30px;
   font-weight: 300;
   fill: #ffffff;
@@ -4722,12 +4720,12 @@ ul.slick-dots li.slick-active button {
   opacity: 0;
   visibility: hidden;
 }
-.block-product-cats.layout-6 .cat-item:hover .cat-title a,
+.block-product-cats.layout-6 .cat-item:hover .cat-title .title,
 .block-product-cats.layout-6 .cat-item:hover .cat-image:before {
   opacity: 1;
   visibility: visible;
 }
-.block-product-cats.layout-6 .cat-item .cat-title a:before {
+.block-product-cats.layout-6 .cat-item .cat-title .title:before {
   position: absolute;
   content: "";
   bottom: 0;
