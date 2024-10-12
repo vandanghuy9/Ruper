@@ -42,7 +42,10 @@ const HeaderPageLink = () => {
         </Link>
       ) : (
         <div className="login-header">
-          <button type="button" className="active-login" onClick={handleFormActive}>
+          <button
+            type="button"
+            className={`active-login ${homePageType === "SCANDINAVIAN" ? "text-white" : ""}`}
+            onClick={handleFormActive}>
             Login
           </button>
           <div className={isFormActive ? "form-login-register active" : "form-login-register"}>
@@ -64,13 +67,15 @@ const HeaderPageLink = () => {
         </div>
       )}
       {/* Search */}
-      <div
-        className={`search-box ${homePageType === "LUXURY" ? "hidden-lg" : ""}`}
-        onClick={handleToggleSearchPopUp}>
-        <div className="search-toggle">
-          <AiOutlineSearch size={25} />
+      {homePageType !== "SCANDINAVIAN" && (
+        <div
+          className={`search-box ${homePageType === "LUXURY" ? "hidden-lg" : ""}`}
+          onClick={handleToggleSearchPopUp}>
+          <div className="search-toggle">
+            <AiOutlineSearch size={25} />
+          </div>
         </div>
-      </div>
+      )}
       {/* Wishlist */}
       <div className="wishlist-box">
         {!isLogin ? (
@@ -79,11 +84,11 @@ const HeaderPageLink = () => {
             title="wishlist"
             className="wishlist-button"
             onClick={handleFormActive}>
-            <AiOutlineHeart color="black" size={25} />
+            <AiOutlineHeart color={homePageType === "SCANDINAVIAN" ? "white" : "black"} size={25} />
           </button>
         ) : (
           <Link href={`/wishlist/${userId}`}>
-            <AiOutlineHeart color="black" size={25} />
+            <AiOutlineHeart color={homePageType === "SCANDINAVIAN" ? "white" : "black"} size={25} />
             <span className="count-wishlist">{wishList?.length}</span>
           </Link>
         )}

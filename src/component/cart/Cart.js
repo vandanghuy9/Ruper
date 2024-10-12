@@ -12,6 +12,8 @@ const Cart = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { handleFormActive, isUserLogin } = useAuth();
+  const searchParams = useSearchParams();
+  const homePageType = searchParams.get("type");
   const handleViewCart = (e) => {
     router.push("/cart");
     setShowCart((prevShowCart) => !prevShowCart);
@@ -40,7 +42,10 @@ const Cart = () => {
           }}>
           <div className="icons-cart">
             <span className="icon">
-              <AiOutlineShopping size={25} color="black" />
+              <AiOutlineShopping
+                size={25}
+                color={homePageType === "SCANDINAVIAN" ? "white" : "black"}
+              />
             </span>
             <span className="cart-count">{totalUniqueItems}</span>
           </div>
@@ -49,10 +54,11 @@ const Cart = () => {
           <>
             <div className="remove-cart-shadow" onClick={(e) => setShowCart(false)}></div>
             <div className="dropdown-menu cart-popup show">
-              {items.length === 0 && (
+              {items.length === 0 ? (
                 <div className="cart-empty-wrap">
                   <ul className="cart-list">
                     <li className="empty">
+                      <AiOutlineShopping size={60} color={"black"} className="icon" />
                       <span>No products in the cart.</span>
                       <Link className="go-shop" href="/shop">
                         GO TO SHOP
@@ -60,8 +66,7 @@ const Cart = () => {
                     </li>
                   </ul>
                 </div>
-              )}
-              {items.length > 0 && (
+              ) : (
                 <div className="cart-list-wrap">
                   <ul className="cart-list ">
                     {items.map((item) => (

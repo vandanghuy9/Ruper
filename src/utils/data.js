@@ -130,7 +130,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_2/SCANDINAVIAN",
           text: "Home Scandinavian",
-          path: "/",
+          path: "/?type=SCANDINAVIAN",
         },
         {
           id: "HOME/FURNITURE_2/MID_CENTURY",
@@ -1374,6 +1374,122 @@ const luxurySecondBanner = [
     imgHeight: 400,
   },
 ];
+const scandinavianPageSlides = [
+  {
+    image: "/slider/31.jpg",
+    title: "Easy Living",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Hot stuff, new stuff, fun stuff, soon to be your stuff?",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/32.jpg",
+    title: "Home Furniture",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/33.jpg",
+    title: "Spring Collection",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
+const scandinavianProductCategoryBanner = [
+  {
+    image: "/product/cat-27.jpg",
+    link: "/shop",
+    title: "Furniture",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 469,
+      height: 475,
+    },
+  },
+  {
+    image: "/product/cat-28.jpg",
+    link: "/shop",
+    title: "Lighting",
+    description: "Make you bedroom your inner sanctuary.",
+    img: {
+      width: 469,
+      height: 475,
+    },
+  },
+  {
+    image: "/product/cat-29.jpg",
+    link: "/shop",
+    title: "Modern",
+    description: "Make your meal times experience an event by styling with a boho look.",
+    img: {
+      width: 469,
+      height: 475,
+    },
+  },
+  {
+    image: "/product/cat-30.jpg",
+    link: "/shop",
+    title: "Bed & Bath",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 469,
+      height: 475,
+    },
+  },
+];
+const scandinavianPageSecondBanner = [
+  {
+    image: "/banner/banner-25.jpg",
+    link: "/shop?category=HOME_DECOR",
+    title: "Furniture",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 961,
+      height: 590,
+    },
+  },
+  {
+    image: "/banner/banner-26.jpg",
+    link: "/shop?category=HOME_DECOR",
+    title: "Decor",
+    description: "Make you bedroom your inner sanctuary.",
+    img: {
+      width: 961,
+      height: 590,
+    },
+  },
+  {
+    image: "/banner/banner-27.jpg",
+    link: "/shop?category=LIGHTING",
+    title: "Lighting",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 961,
+      height: 590,
+    },
+  },
+  {
+    image: "/banner/banner-28.jpg",
+    link: "/shop?category=BED_BATH",
+    title: "Kitchen & Bath",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 961,
+      height: 590,
+    },
+  },
+];
 
 export {
   slides,
@@ -1419,4 +1535,7 @@ export {
   luxuryProductCategoryBanner,
   luxurySlides,
   luxurySecondBanner,
+  scandinavianPageSlides,
+  scandinavianProductCategoryBanner,
+  scandinavianPageSecondBanner,
 };

@@ -7,6 +7,7 @@ import GridNavbarDesktop from "../grid/GridNavbarDesktop";
 import UniqueNavbarDesktop from "../unique/UniqueNavbarDesktop";
 import GothicNavbarDesktop from "../gothic/GothicNavbarDesktop";
 import LuxuryNavbarDesktop from "../luxury/LuxuryNavbarDesktop";
+import ScandinavianNavbarDesktop from "../scandinavian/ScandinavianNavbarDesktop";
 import { useSearchParams } from "next/navigation";
 import { useShopProduct } from "@context/ShopProductContext";
 const NavBarDesktop = ({ blogList, sampleProduct }) => {
@@ -30,6 +31,8 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
     return <UniqueNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
   if (homePageType === "LUXURY")
     return <LuxuryNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
+  if (homePageType === "SCANDINAVIAN")
+    return <ScandinavianNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
 };
 
 export default NavBarDesktop;

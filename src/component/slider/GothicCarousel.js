@@ -1,16 +1,22 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { gothicPageSlides } from "@utils/data";
+import { gothicPageSlides, scandinavianPageSlides } from "@utils/data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/bundle";
 import WhiteButton from "../button/WhiteButton";
-
+import useGetParams from "@hooks/useGetParams";
 const GothicCarousel = () => {
+  const homePageType = useGetParams("type");
+  console.log(homePageType);
+  const data = [...(homePageType === "SCANDINAVIAN" ? scandinavianPageSlides : gothicPageSlides)];
   return (
-    <div className="block block-sliders layout-10 color-white nav-center">
+    <div
+      className={`block block-sliders ${
+        homePageType === "SCANDINAVIAN" ? "layout-12 auto-height" : "layout-10"
+      } color-white nav-center`}>
       <div className="slick-sliders">
         <Swiper
           spaceBetween={30}
@@ -25,7 +31,7 @@ const GothicCarousel = () => {
           }}
           modules={[Autoplay, Pagination]}
           className="mySwiper">
-          {gothicPageSlides.map((slide, index) => (
+          {data.map((slide, index) => (
             <SwiperSlide key={index}>
               {({ isActive }) => (
                 <div
