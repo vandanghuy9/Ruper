@@ -7,6 +7,7 @@ import StylishHomepage from "./StylishHomepage";
 import UniqueHomepage from "./UniqueHomepage";
 import SplitHomepage from "./SplitHomepage";
 import GothicHomepage from "./GothicHomepage";
+import LuxuryHomepage from "./LuxuryHomepage";
 export {
   CleanHomePage,
   CollectionHomePage,
@@ -17,4 +18,5 @@ export {
   UniqueHomepage,
   SplitHomepage,
   GothicHomepage,
+  LuxuryHomepage,
 };

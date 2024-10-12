@@ -21,6 +21,8 @@ import SplitBlogSection from "./home-split/SplitBlogSection";
 import GothicFirstBanner from "./home-gothic/GothicFirstBanner";
 import GothicLookbook from "./home-gothic/GothicLookbook";
 import GothicCategoryBanner from "./home-gothic/GothicCategoryBanner";
+import LuxuryProductCategoryBanner from "./home-luxury/LuxuryProductCategoryBanner";
+import LuxurySecondBanner from "./home-luxury/LuxurySecondBanner";
 export {
   CleanFirstBannerSection,
   CollectionFirstBannerSection,
@@ -45,4 +47,6 @@ export {
   GothicFirstBanner,
   GothicLookbook,
   GothicCategoryBanner,
+  LuxuryProductCategoryBanner,
+  LuxurySecondBanner,
 };

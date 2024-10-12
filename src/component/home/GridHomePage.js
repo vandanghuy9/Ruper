@@ -135,7 +135,9 @@ const GridHomePage = ({ products }) => {
                 </div>
               </div>
             </section>
-            <GridNewsLetterBlock />
+            <div id="site-footer" className="section-padding">
+              <GridNewsLetterBlock />
+            </div>
           </div>
         </div>
       </div>

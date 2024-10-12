@@ -125,7 +125,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_2/LUXURY",
           text: "Home Luxury",
-          path: "/",
+          path: "/?type=LUXURY",
         },
         {
           id: "HOME/FURNITURE_2/SCANDINAVIAN",
@@ -1270,6 +1270,110 @@ const gothicProductCategoryBanner = [
     },
   },
 ];
+const luxuryProductCategoryBanner = [
+  {
+    image: "/product/cat-19.jpg",
+    link: "/shop",
+    title: "Chair",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 330,
+      height: 330,
+    },
+  },
+  {
+    image: "/product/cat-20.jpg",
+    link: "/shop",
+    title: "Lighting",
+    description: "Make you bedroom your inner sanctuary.",
+    img: {
+      width: 330,
+      height: 330,
+    },
+  },
+  {
+    image: "/product/cat-21.jpg",
+    link: "/shop",
+    title: "Storage",
+    description: "Make your meal times experience an event by styling with a boho look.",
+    img: {
+      width: 330,
+      height: 330,
+    },
+  },
+  {
+    image: "/product/cat-22.jpg",
+    link: "/shop",
+    title: "Chair",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 330,
+      height: 330,
+    },
+  },
+];
+const luxurySlides = [
+  {
+    image: "/product/cat-23.jpg",
+    title: "Accessories",
+    subtitle: "Collection 2022",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/product/cat-24.jpg",
+    title: "Industrial",
+    subtitle: "Comfort-Seekers",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/product/cat-25.jpg",
+    title: "Modern",
+    subtitle: "Great Outdoors",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/product/cat-26.jpg",
+    title: "Scandinavian",
+    subtitle: "Great Outdoors",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
+const luxurySecondBanner = [
+  {
+    imageSrc: "/banner/banner-23.jpg",
+    link: "/shop",
+    title: "For your personal",
+    subtitle: "collection",
+    description: "Save up to $500 on outdoor packages",
+    imgWidth: 691,
+    imgHeight: 400,
+  },
+  {
+    imageSrc: "/banner/banner-24.jpg",
+    link: "/shop",
+    title: "Furniture for",
+    subtitle: "the whole family",
+    description: "Make you bedroom your inner sanctuary.",
+    imgWidth: 691,
+    imgHeight: 400,
+  },
+];
 
 export {
   slides,
@@ -1312,4 +1416,7 @@ export {
   gothicPageSlides,
   gothicPageFirstBanner,
   gothicProductCategoryBanner,
+  luxuryProductCategoryBanner,
+  luxurySlides,
+  luxurySecondBanner,
 };

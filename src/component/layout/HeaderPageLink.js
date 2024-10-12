@@ -5,7 +5,7 @@ import SignIn from "@component/modal/SignIn";
 import Register from "@component/modal/Register";
 import { AiOutlineSearch, AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
 import { useShopProduct } from "@context/ShopProductContext";
-
+import { useSearchParams } from "next/navigation";
 const Cart = dynamic(() => import("@component/cart/Cart"), {
   ssr: false,
   loading: () => (
@@ -30,6 +30,8 @@ const HeaderPageLink = () => {
   const isLogin = isUserLogin();
   const userName = getUserName();
   const userId = getUserId();
+  const searchParams = useSearchParams();
+  const homePageType = searchParams.get("type");
   const { wishList, handleToggleSearchPopUp } = useShopProduct();
 
   return (
@@ -62,7 +64,9 @@ const HeaderPageLink = () => {
         </div>
       )}
       {/* Search */}
-      <div className="search-box" onClick={handleToggleSearchPopUp}>
+      <div
+        className={`search-box ${homePageType === "LUXURY" ? "hidden-lg" : ""}`}
+        onClick={handleToggleSearchPopUp}>
         <div className="search-toggle">
           <AiOutlineSearch size={25} />
         </div>

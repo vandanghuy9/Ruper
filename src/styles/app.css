@@ -3042,8 +3042,8 @@ ul.slick-dots li.slick-active button {
   background: rgba(0, 0, 0, 0.75);
 }
 .site-header .header-search-form .search-from #search-submit i {
-  font-size: 18px;
-  line-height: 46px;
+  /* font-size: 18px;
+  line-height: 46px; */
 }
 .search-overlay {
   position: fixed;
@@ -5944,7 +5944,7 @@ ul.slick-dots li.slick-active button {
  * 5.16. Block Parallax
  */
 .block-parallax {
-  background-image: url(/banner/banner-bg.jpg);
+  background-image: url(/banner/parallax.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
