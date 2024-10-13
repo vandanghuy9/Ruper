@@ -15,6 +15,7 @@ import UniqueProductCarousel from "./UniqueProductCarousel";
 import SplitCarousel from "./SplitCarousel";
 import GothicCarousel from "./GothicCarousel";
 import LuxuryCarousel from "./LuxuryCarousel";
+import MidCenturyCarousel from "./MidCenturyCarousel";
 export {
   CleanPageSlider,
   Testimonial,
@@ -33,4 +34,5 @@ export {
   SplitCarousel,
   GothicCarousel,
   LuxuryCarousel,
+  MidCenturyCarousel,
 };

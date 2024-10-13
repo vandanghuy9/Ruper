@@ -25,7 +25,12 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
     return <CleanNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
   if (homePageType === "COLLECTION" || homePageType === "STYLISH")
     return <CollectionNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
-  if (homePageType === "GRID" || homePageType === "MINIMAL" || homePageType === "SPLIT")
+  if (
+    homePageType === "GRID" ||
+    homePageType === "MINIMAL" ||
+    homePageType === "SPLIT" ||
+    homePageType === "MID_CENTURY"
+  )
     return <GridNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
   if (homePageType === "UNIQUE")
     return <UniqueNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;

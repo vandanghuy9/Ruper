@@ -1,9 +1,11 @@
-'use client'
+"use client";
 import Image from "next/image";
 import { footer } from "../../utils/data";
 import Link from "next/link";
 import { useState } from "react";
 import FooterBottom from "./FooterBottom";
+import { FaRegEnvelope } from "react-icons/fa";
+
 const Footer = () => {
   const defaultInfor = {
     email: "",
@@ -24,12 +26,7 @@ const Footer = () => {
               <div className="row">
                 <div className="col-lg-3 col-md-6">
                   <div className="block block-image">
-                    <Image
-                      width={100}
-                      height={20}
-                      src={"/logo.png"}
-                      alt="logo"
-                    />
+                    <Image width={100} height={20} src={"/logo.png"} alt="logo" />
                   </div>
                 </div>
                 {footer.map((item, index) => (
@@ -53,8 +50,8 @@ const Footer = () => {
                     <h2 className="block-title">Newsletter</h2>
                     <div className="block-content">
                       <div className="newsletter-text">
-                        Enter your email below to be the first to know about new
-                        collections and product launches.
+                        Enter your email below to be the first to know about new collections and
+                        product launches.
                       </div>
                       <form action="" method="post" className="newsletter-form">
                         <input
@@ -66,6 +63,7 @@ const Footer = () => {
                           onChange={handleChange}
                         />
                         <span className="btn-submit">
+                          <FaRegEnvelope className="icon" />
                           <input type="submit" value="Subscribe" />
                         </span>
                       </form>
@@ -73,12 +71,7 @@ const Footer = () => {
                   </div>
 
                   <div className="block block-image">
-                    <Image
-                      width={400}
-                      height={79}
-                      src={"/payments.png"}
-                      alt="payment"
-                    />
+                    <Image width={400} height={79} src={"/payments.png"} alt="payment" />
                   </div>
                 </div>
               </div>
