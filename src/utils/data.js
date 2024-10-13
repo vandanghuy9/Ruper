@@ -140,7 +140,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_2/RETRO",
           text: "Home Retro",
-          path: "/",
+          path: "/?type=RETRO",
         },
         {
           id: "HOME/FURNITURE_2/CODE_BLOCK",
@@ -1522,6 +1522,64 @@ const midCenturySlides = [
     },
   },
 ];
+const retroFirstBanner = [
+  {
+    imageSrc: "/banner/banner-29.jpg",
+    link: "/shop?category=FURNITURE",
+    buttonText: "Furniture Sale",
+    imgWidth: 960,
+    imgHeight: 790,
+  },
+  {
+    imageSrc: "/banner/banner-30.jpg",
+    link: "/shop?category=HOME_DECOR",
+    buttonText: "Decoration",
+    imgWidth: 960,
+    imgHeight: 790,
+  },
+];
+const retroProductStyleBanner = [
+  {
+    image: "/product/cat-31.jpg",
+    link: "/shop",
+    title: "Chair",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 407,
+      height: 553,
+    },
+  },
+  {
+    image: "/product/cat-32.jpg",
+    link: "/shop",
+    title: "Storage",
+    description: "Make you bedroom your inner sanctuary.",
+    img: {
+      width: 407,
+      height: 249,
+    },
+  },
+  {
+    image: "/product/cat-33.jpg",
+    link: "/shop",
+    title: "Lighting",
+    description: "Make your meal times experience an event by styling with a boho look.",
+    img: {
+      width: 407,
+      height: 249,
+    },
+  },
+  {
+    image: "/product/cat-34.jpg",
+    link: "/shop",
+    title: "Home Office",
+    description: "Style any outdoor area with some careful study and sound decisions.",
+    img: {
+      width: 407,
+      height: 553,
+    },
+  },
+];
 
 export {
   slides,
@@ -1571,4 +1629,6 @@ export {
   scandinavianProductCategoryBanner,
   scandinavianPageSecondBanner,
   midCenturySlides,
+  retroFirstBanner,
+  retroProductStyleBanner,
 };
