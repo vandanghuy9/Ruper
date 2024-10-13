@@ -145,7 +145,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_2/CODE_BLOCK",
           text: "Home Color Block",
-          path: "/",
+          path: "/?type=COLOR_BLOCK",
         },
       ],
     },
@@ -1580,6 +1580,58 @@ const retroProductStyleBanner = [
     },
   },
 ];
+const colorBlockPageSlides = [
+  {
+    image: "/slider/37.jpg",
+    title: "Spring Collection",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Hot stuff, new stuff, fun stuff, soon to be your stuff?",
+    button: {
+      text: "Shop Collection",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/38.jpg",
+    title: "Summer Sale",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "Shop Collection",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/39.jpg",
+    title: "New Arrivals",
+    subtitle: "20%OFF.END MONDAY",
+    description: "Save up to $500 on outdoor packages",
+    button: {
+      text: "Shop Collection",
+      url: "/shop",
+    },
+  },
+];
+const colorBlockCategoryBanner = [
+  {
+    image: "/banner/banner-31.jpg",
+    title: "Sink into Luxe",
+    link: "/shop",
+    description: "Statement-making, while keeping a low profile.",
+  },
+  {
+    image: "/banner/banner-32.jpg",
+    title: "Sitting Pretty",
+    link: "/shop",
+    description: "There’s always room for one more guest.",
+  },
+  {
+    image: "/banner/banner-33.jpg",
+    title: "Modern Curves",
+    link: "/shop",
+    description: "A curvaceous approach that covers all the bases.",
+  },
+];
 
 export {
   slides,
@@ -1631,4 +1683,6 @@ export {
   midCenturySlides,
   retroFirstBanner,
   retroProductStyleBanner,
+  colorBlockPageSlides,
+  colorBlockCategoryBanner,
 };

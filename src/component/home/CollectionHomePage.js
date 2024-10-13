@@ -7,7 +7,6 @@ import {
   ProductCategoryBanner,
   ProductStyleBanner,
 } from "@component/banner";
-import { collectionPageFirstBanner } from "@utils/data";
 import NewsLetterBlock from "@component/banner/home-collection/NewsLetterBlock";
 import { ProductCarousel, TestimonialCardCarousel, BrandCarousel } from "@component/slider";
 const CollectionHomePage = ({ products }) => {

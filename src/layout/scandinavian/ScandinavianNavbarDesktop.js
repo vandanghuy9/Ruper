@@ -1,8 +1,11 @@
 import { Logo, NavbarDesktopMenu, HeaderPageLink, SearchBox } from "@component/layout";
 
-const ScandinavianNavbarDesktop = ({ blogList, sampleProduct }) => {
+const ScandinavianNavbarDesktop = ({ blogList, sampleProduct, homePageType }) => {
   return (
-    <div className="site-header header-v4 color-white bg-black">
+    <div
+      className={`site-header header-v4 ${
+        homePageType === "SCANDINAVIAN" ? "color-white bg-black" : ""
+      }`}>
       <div className="header-desktop">
         <div className="header-top">
           <div className="section-padding">
@@ -24,7 +27,10 @@ const ScandinavianNavbarDesktop = ({ blogList, sampleProduct }) => {
             </div>
           </div>
         </div>
-        <div className="header-wrapper">
+        <div
+          className={`header-wrapper ${
+            homePageType === "COLOR_BLOCK" ? "color-white bg-black" : ""
+          }`}>
           <div className="section-padding">
             <div className="section-container p-l-r">
               <div className="row">

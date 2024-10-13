@@ -17,3 +17,16 @@ export function formatDate(isoString) {
   const options = { month: "long", day: "numeric", year: "numeric" };
   return date.toLocaleDateString("en-US", options);
 }
+
+export function calcuteRating(comment) {
+  let rating = 0;
+  let nonRating = 5;
+  if (comment.length > 0) {
+    for (let i = 0; i < comment.length; i++) {
+      rating += comment[i].rating;
+    }
+    rating = Math.ceil(rating / comment?.length);
+    nonRating = 5 - rating;
+  }
+  return { rating, nonRating };
+}

@@ -2,19 +2,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  IoBagOutline,
-  IoHeartOutline,
-  IoShuffleOutline,
-  IoSearchOutline,
-  IoHeart,
-} from "react-icons/io5";
+import { IoHeartOutline, IoShuffleOutline, IoSearchOutline, IoHeart } from "react-icons/io5";
 import { useShopProduct } from "@context/ShopProductContext";
 import { useAuth } from "@context/UserContext";
-
+import { AiFillStar } from "react-icons/ai";
+import { calcuteRating } from "@utils/menu";
 export const ProductListCard = ({ product }) => {
   const { _id, imageUrl, name, price, discount, comment, description } = product;
-  const [index, setIndex] = useState(0);
   const { wishListAdded, handleAddToWishList, getProductInWishList, handleRemoveFromWishList } =
     useShopProduct();
   const { isUserLogin, handleFormActive } = useAuth();
@@ -25,6 +19,7 @@ export const ProductListCard = ({ product }) => {
     }
     handleAddToWishList(_id);
   };
+  const { rating, nonRating } = calcuteRating(comment);
   return (
     <div className="products-entry clearfix product-wapper">
       <div className="row">
@@ -80,7 +75,12 @@ export const ProductListCard = ({ product }) => {
               )}
             </span>
             <div className="rating">
-              <div className="star star-5"></div>
+              {[...Array(rating)].map((item) => (
+                <AiFillStar key={item} size={20} color="#fcad02" />
+              ))}
+              {[...Array(nonRating)].map((item) => (
+                <AiFillStar key={item + rating} size={20} />
+              ))}
               <div className="review-count">
                 ({comment?.length}
                 <span> review</span>)

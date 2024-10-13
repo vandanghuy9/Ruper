@@ -30,6 +30,7 @@ import NewsLetterForm from "./NewsLetterForm";
 import RetroFirstBanner from "./home-retro/RetroFirstBanner";
 import RetroProductCategoryBanner from "./home-retro/RetroProductCategoryBanner";
 import RetroSecondBanner from "./home-retro/RetroSecondBanner";
+import ColorBlockLookBook from "./home-color-block/ColorBlockLookBook";
 export {
   CleanFirstBannerSection,
   CollectionFirstBannerSection,
@@ -63,4 +64,5 @@ export {
   RetroFirstBanner,
   RetroProductCategoryBanner,
   RetroSecondBanner,
+  ColorBlockLookBook,
 };

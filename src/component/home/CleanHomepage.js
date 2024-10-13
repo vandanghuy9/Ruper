@@ -6,9 +6,8 @@ import Link from "next/link";
 import WhiteButton from "@component/button/WhiteButton";
 import { Testimonial } from "@component/slider";
 import FeatureSection from "@component/feature/FeatureSection";
-import { cleanPageFirstBanner } from "@utils/data";
+import ProductItemLookbook from "@component/product/ProductItemLookbook";
 const CleanHomepage = ({ products }) => {
-  console.log(products);
   return (
     <div id="site-main" className="site-main">
       <div id="main-content" className="main-content">
@@ -61,108 +60,16 @@ const CleanHomepage = ({ products }) => {
                                   src="/banner/lookbook-1.jpg"
                                   alt="Look Book 1"
                                 />
-                                <div
-                                  className="item-lookbook"
-                                  style={{
-                                    height: 30,
-                                    width: 30,
-                                    left: "78.37%",
-                                    top: "50%",
-                                  }}>
-                                  <span className="number-lookbook">1</span>
-                                  <div className="content-lookbook" style={{ right: 33, top: 10 }}>
-                                    <div className="item-thumb">
-                                      <Link href={`/product/${products[0]?._id}`}>
-                                        <Image
-                                          width={1000}
-                                          height={1000}
-                                          src={products[0]?.imageUrl[0]}
-                                          alt={products[0]?.name}
-                                        />
-                                      </Link>
-                                    </div>
-                                    <div className="content-lookbook-bottom">
-                                      <div className="item-title">
-                                        <Link href={`/product/${products[0]?._id}`}>
-                                          {products[0]?.name}
-                                        </Link>
-                                      </div>
-                                      <span className="price">
-                                        {products[0].discount ? (
-                                          <>
-                                            <del>
-                                              <span>${products[0].price}</span>
-                                            </del>
-                                            <ins>
-                                              <span>
-                                                $
-                                                {Math.ceil(
-                                                  (products[0].price *
-                                                    (100 - products[0].discount)) /
-                                                    100
-                                                )}
-                                              </span>
-                                            </ins>
-                                          </>
-                                        ) : (
-                                          <>${products[0].price}</>
-                                        )}
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div
-                                  className="item-lookbook"
-                                  style={{
-                                    height: 30,
-                                    width: 30,
-                                    left: "34.06%",
-                                    top: "74.22%",
-                                  }}>
-                                  <span className="number-lookbook">1</span>
-                                  <div
-                                    className="content-lookbook"
-                                    style={{ left: 33, bottom: 10 }}>
-                                    <div className="item-thumb">
-                                      <Link href={`/product/${products[1]?._id}`}>
-                                        <Image
-                                          width={1000}
-                                          height={1000}
-                                          src={products[1]?.imageUrl[0]}
-                                          alt={products[1]?.name}
-                                        />
-                                      </Link>
-                                    </div>
-                                    <div className="content-lookbook-bottom">
-                                      <div className="item-title">
-                                        <Link href={`/product/${products[1]?._id}`}>
-                                          {products[1]?.name}
-                                        </Link>
-                                      </div>
-                                      <span className="price">
-                                        {products[1].discount ? (
-                                          <>
-                                            <del>
-                                              <span>${products[1].price}</span>
-                                            </del>
-                                            <ins>
-                                              <span>
-                                                $
-                                                {Math.ceil(
-                                                  (products[1].price *
-                                                    (100 - products[1].discount)) /
-                                                    100
-                                                )}
-                                              </span>
-                                            </ins>
-                                          </>
-                                        ) : (
-                                          <>${products[1].price}</>
-                                        )}
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
+                                <ProductItemLookbook
+                                  product={products[0]}
+                                  containerStyle={{ left: "78.37%", top: "50%" }}
+                                  contentStyle={{ right: 33, top: 10 }}
+                                />
+                                <ProductItemLookbook
+                                  product={products[1]}
+                                  containerStyle={{ left: "34.06%", top: "74.22%" }}
+                                  contentStyle={{ left: 33, bottom: 10 }}
+                                />
                               </div>
                             </div>
                           </div>
