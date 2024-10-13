@@ -1,11 +1,11 @@
 import React from "react";
 import ProductCategorySlider from "../../slider/ProductCategorySlider";
-const ProductCategoryBanner = () => {
+const ProductCategoryBanner = ({ title = "Shop by Department", isRoundBorder = false }) => {
   return (
-    <div className="block block-product-cats slider">
+    <div className={`block block-product-cats slide ${isRoundBorder ? "round-border" : ""}`}>
       <div className="block-widget-wrap">
         <div className="block-title">
-          <h2>Shop by Department</h2>
+          <h2>{title}</h2>
         </div>
         <div className="block-content">
           <div className="product-cats-list slick-wrap">

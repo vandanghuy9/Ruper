@@ -11,6 +11,7 @@ import LuxuryHomepage from "./LuxuryHomepage";
 import ScandinavianHomepage from "./ScandinavianHomepage";
 import MidCenturyHomepage from "./MidCenturyHomepage";
 import RetroHomepage from "./RetroHomepage";
+import ColorBlockHomepage from "./ColorBlockHomepage";
 export {
   CleanHomePage,
   CollectionHomePage,
@@ -25,4 +26,5 @@ export {
   ScandinavianHomepage,
   MidCenturyHomepage,
   RetroHomepage,
+  ColorBlockHomepage,
 };

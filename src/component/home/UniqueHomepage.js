@@ -1,17 +1,6 @@
-import React from "react";
-import {
-  UniquePageCarousel,
-  ProductCarousel,
-  BrandCarousel,
-  Testimonial,
-  StylishInstagramCarousel,
-} from "@component/slider";
+import { UniquePageCarousel, Testimonial, StylishInstagramCarousel } from "@component/slider";
 import UniqueProductCategoryTab from "@component/product-tab/UniqueProductCategoryTab";
-import {
-  UniqueCountdownSection,
-  MinimalNewsLetterBlock,
-  UniqueNewsLetterBlock,
-} from "@component/banner";
+import { UniqueCountdownSection, UniqueNewsLetterBlock } from "@component/banner";
 import BannerItem from "@component/banner/BannerItem";
 import WhiteButton from "@component/button/WhiteButton";
 import FeatureSection from "@component/feature/FeatureSection";

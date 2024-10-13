@@ -7,6 +7,7 @@ import {
   InstagramSection,
 } from "@component/banner";
 import FeatureSection from "@component/feature/FeatureSection";
+import { modernSecondBanner } from "@utils/data";
 
 const ModernHomepage = ({ products }) => {
   return (
@@ -45,7 +46,7 @@ const ModernHomepage = ({ products }) => {
             </section>
             <section className="section section-padding m-b-70">
               <div className="section-container">
-                <ModernSecondBannerSection />
+                <ModernSecondBannerSection data={modernSecondBanner} />
               </div>
             </section>
             <section className="section section-padding top-border p-t-70 m-b-70">

@@ -36,8 +36,14 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
     return <UniqueNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
   if (homePageType === "LUXURY")
     return <LuxuryNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
-  if (homePageType === "SCANDINAVIAN")
-    return <ScandinavianNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
+  if (homePageType === "SCANDINAVIAN" || homePageType === "COLOR_BLOCK")
+    return (
+      <ScandinavianNavbarDesktop
+        blogList={blogList}
+        sampleProduct={sampleProduct}
+        homePageType={homePageType}
+      />
+    );
   if (homePageType === "RETRO")
     return <RetroNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
 };

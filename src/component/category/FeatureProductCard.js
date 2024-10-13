@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AiFillStar } from "react-icons/ai";
-
+import { calcuteRating } from "@utils/menu";
 const FeatureProductCard = ({ product }) => {
-  const { _id, imageUrl, name, price, discount } = product;
+  const { _id, imageUrl, name, price, discount, comment } = product;
+  const { rating, nonRating } = calcuteRating(comment);
+
   return (
     <>
       <Link href={`/product/${_id}`} className="product-image">
@@ -14,11 +16,12 @@ const FeatureProductCard = ({ product }) => {
           <Link href={`/product/${_id}`}>{name}</Link>
         </h2>
         <div className="rating small">
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
+          {[...Array(rating)].map((item) => (
+            <AiFillStar key={item} size={15} color="#fcad02" />
+          ))}
+          {[...Array(nonRating)].map((item) => (
+            <AiFillStar key={item + rating} size={15} />
+          ))}
         </div>
         <span className="price">
           {discount ? (

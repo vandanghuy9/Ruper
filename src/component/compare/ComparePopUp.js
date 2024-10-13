@@ -5,6 +5,7 @@ import Image from "next/image";
 import { getCompareProducts } from "@services/productService";
 import { AiFillStar } from "react-icons/ai";
 import { useShopProduct } from "@context/ShopProductContext";
+import { calcuteRating } from "@utils/menu";
 const ComparePopUp = () => {
   const { comparePopUpActive, handleCloseComparePopUp, currentCompareProduct } = useShopProduct();
   const [products, setProducts] = useState([]);
@@ -18,6 +19,8 @@ const ComparePopUp = () => {
       fetchCompareProducts(currentCompareProduct);
     }
   }, [currentCompareProduct]);
+
+  const productsRating = products.map(({ comment }) => calcuteRating(comment));
   return (
     <div className={`compare-popup ${comparePopUpActive ? "active" : ""}`}>
       <div className="compare-popup-inner">
@@ -66,11 +69,16 @@ const ComparePopUp = () => {
                   </tr>
                   <tr className="tr-rating">
                     <td className="td-label">Rating</td>
-                    {products?.map(({ _id, comment }) => (
-                      <td key={_id}>
+                    {productsRating?.map(({ rating, nonRating }, index) => (
+                      <td key={index}>
                         <div>
                           <span style={{ width: "80%" }}>
-                            <AiFillStar color="#fcad02" />
+                            {[...Array(rating)].map((item) => (
+                              <AiFillStar key={item} size={15} color="#fcad02" />
+                            ))}
+                            {[...Array(nonRating)].map((item) => (
+                              <AiFillStar key={item + rating} size={15} />
+                            ))}
                           </span>
                         </div>
                       </td>

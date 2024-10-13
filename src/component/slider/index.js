@@ -16,6 +16,7 @@ import SplitCarousel from "./SplitCarousel";
 import GothicCarousel from "./GothicCarousel";
 import LuxuryCarousel from "./LuxuryCarousel";
 import MidCenturyCarousel from "./MidCenturyCarousel";
+import ColorBlockCarousel from "./ColorBlockCarousel";
 export {
   CleanPageSlider,
   Testimonial,
@@ -35,4 +36,5 @@ export {
   GothicCarousel,
   LuxuryCarousel,
   MidCenturyCarousel,
+  ColorBlockCarousel,
 };

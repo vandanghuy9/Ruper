@@ -1,17 +1,5 @@
-import {
-  GothicCarousel,
-  ProductCarousel,
-  ProductCategorySlider,
-  Testimonial,
-} from "@component/slider";
-import {
-  ScandinavianCategoryBanner,
-  ModernFeatureSection,
-  ModernSecondBannerSection,
-  BlogSection,
-  InstagramSection,
-  ScandinavianSecondBanner,
-} from "@component/banner";
+import { GothicCarousel, ProductCarousel, Testimonial } from "@component/slider";
+import { ScandinavianCategoryBanner, ScandinavianSecondBanner } from "@component/banner";
 import FeatureSection from "@component/feature/FeatureSection";
 import Link from "next/link";
 const ScandinavianHomepage = ({ products }) => {
