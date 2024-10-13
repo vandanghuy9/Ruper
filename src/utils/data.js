@@ -135,7 +135,7 @@ const homeCategoryMenu = {
         {
           id: "HOME/FURNITURE_2/MID_CENTURY",
           text: "Home Mid-Century",
-          path: "/",
+          path: "/?type=MID_CENTURY",
         },
         {
           id: "HOME/FURNITURE_2/RETRO",
@@ -1490,6 +1490,38 @@ const scandinavianPageSecondBanner = [
     },
   },
 ];
+const midCenturySlides = [
+  {
+    image: "/slider/34.jpg",
+    title: "Spring",
+    subtitle: "Collection 2022",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/35.jpg",
+    title: "For the",
+    subtitle: "Comfort-Seekers",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+  {
+    image: "/slider/36.jpg",
+    title: "The",
+    subtitle: "Great Outdoors",
+    description: "Soft seats that welcome you home",
+    button: {
+      text: "SHOP NOW",
+      url: "/shop",
+    },
+  },
+];
 
 export {
   slides,
@@ -1538,4 +1570,5 @@ export {
   scandinavianPageSlides,
   scandinavianProductCategoryBanner,
   scandinavianPageSecondBanner,
+  midCenturySlides,
 };

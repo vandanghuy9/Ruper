@@ -25,6 +25,8 @@ import LuxuryProductCategoryBanner from "./home-luxury/LuxuryProductCategoryBann
 import LuxurySecondBanner from "./home-luxury/LuxurySecondBanner";
 import ScandinavianCategoryBanner from "./home-scandinavian/ScandinavianCategoryBanner";
 import ScandinavianSecondBanner from "./home-scandinavian/ScandinavianSecondBanner";
+import MidCenturyLookbookSection from "./home-mid-century/LookbookSection";
+import NewsLetterForm from "./NewsLetterForm";
 export {
   CleanFirstBannerSection,
   CollectionFirstBannerSection,
@@ -53,4 +55,6 @@ export {
   LuxurySecondBanner,
   ScandinavianCategoryBanner,
   ScandinavianSecondBanner,
+  MidCenturyLookbookSection,
+  NewsLetterForm,
 };

@@ -5725,10 +5725,8 @@ ul.slick-dots li.slick-active button {
 .block-newsletter.layout-2 .newsletter-form .btn-submit:hover {
   background: transparent;
 }
-.block-newsletter .newsletter-form .btn-submit:before {
+.block-newsletter .newsletter-form .btn-submit .icon {
   position: absolute;
-  content: "\e906";
-  font-family: icomoon;
   font-size: 20px;
   color: #fff;
   top: calc(50% - 10px);

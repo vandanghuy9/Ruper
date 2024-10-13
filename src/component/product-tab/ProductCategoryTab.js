@@ -45,6 +45,11 @@ const ProductCategoryTab = ({ products }) => {
                 <ProductCarousel productSet={filteredProductList} />
               </div>
             </div>
+            <div className="btn-all">
+              <Link className="button-outline" href="/shop">
+                VIEW ALL
+              </Link>
+            </div>
           </div>
         </div>
       </div>
