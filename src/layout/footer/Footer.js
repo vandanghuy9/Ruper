@@ -1,22 +1,9 @@
-"use client";
 import Image from "next/image";
 import { footer } from "../../utils/data";
 import Link from "next/link";
-import { useState } from "react";
 import FooterBottom from "./FooterBottom";
-import { FaRegEnvelope } from "react-icons/fa";
-
+import FooterNewsLetter from "./FooterNewsLetter";
 const Footer = () => {
-  const defaultInfor = {
-    email: "",
-  };
-  const [infor, setInfor] = useState(defaultInfor);
-  const handleChange = (e) => {
-    setInfor((prevInfor) => ({
-      ...prevInfor,
-      [e.target.name]: e.target.value,
-    }));
-  };
   return (
     <>
       <div className="footer">
@@ -46,30 +33,7 @@ const Footer = () => {
                   </div>
                 ))}
                 <div className="col-lg-3 col-md-6">
-                  <div className="block block-newsletter">
-                    <h2 className="block-title">Newsletter</h2>
-                    <div className="block-content">
-                      <div className="newsletter-text">
-                        Enter your email below to be the first to know about new collections and
-                        product launches.
-                      </div>
-                      <form action="" method="post" className="newsletter-form">
-                        <input
-                          type="email"
-                          name="email"
-                          value={infor.email}
-                          size="40"
-                          placeholder="Email address"
-                          onChange={handleChange}
-                        />
-                        <span className="btn-submit">
-                          <FaRegEnvelope className="icon" />
-                          <input type="submit" value="Subscribe" />
-                        </span>
-                      </form>
-                    </div>
-                  </div>
-
+                  <FooterNewsLetter />
                   <div className="block block-image">
                     <Image width={400} height={79} src={"/payments.png"} alt="payment" />
                   </div>

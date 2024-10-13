@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { Logo, NavbarDesktopMenu, HeaderPageLink } from "@component/layout";
+import RetroNavbarDesktop from "../retro/RetroNavbarDesktop";
 import CleanNavbarDesktop from "../clean/CleanNavbarDesktop";
 import CollectionNavbarDesktop from "../collection/CollectionNavbarDesktop";
 import GridNavbarDesktop from "../grid/GridNavbarDesktop";
@@ -38,6 +38,8 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
     return <LuxuryNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
   if (homePageType === "SCANDINAVIAN")
     return <ScandinavianNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
+  if (homePageType === "RETRO")
+    return <RetroNavbarDesktop blogList={blogList} sampleProduct={sampleProduct} />;
 };
 
 export default NavBarDesktop;

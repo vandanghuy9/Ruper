@@ -27,6 +27,9 @@ import ScandinavianCategoryBanner from "./home-scandinavian/ScandinavianCategory
 import ScandinavianSecondBanner from "./home-scandinavian/ScandinavianSecondBanner";
 import MidCenturyLookbookSection from "./home-mid-century/LookbookSection";
 import NewsLetterForm from "./NewsLetterForm";
+import RetroFirstBanner from "./home-retro/RetroFirstBanner";
+import RetroProductCategoryBanner from "./home-retro/RetroProductCategoryBanner";
+import RetroSecondBanner from "./home-retro/RetroSecondBanner";
 export {
   CleanFirstBannerSection,
   CollectionFirstBannerSection,
@@ -57,4 +60,7 @@ export {
   ScandinavianSecondBanner,
   MidCenturyLookbookSection,
   NewsLetterForm,
+  RetroFirstBanner,
+  RetroProductCategoryBanner,
+  RetroSecondBanner,
 };

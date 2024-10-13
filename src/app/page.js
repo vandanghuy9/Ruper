@@ -13,6 +13,7 @@ import {
   LuxuryHomepage,
   ScandinavianHomepage,
   MidCenturyHomepage,
+  RetroHomepage,
 } from "@component/home";
 const Page = async ({ params, searchParams }) => {
   const type = searchParams?.type;
@@ -36,6 +37,7 @@ const Page = async ({ params, searchParams }) => {
   if (type === "LUXURY") return <LuxuryHomepage products={products} />;
   if (type === "SCANDINAVIAN") return <ScandinavianHomepage products={products} />;
   if (type === "MID_CENTURY") return <MidCenturyHomepage products={products} />;
+  if (type === "RETRO") return <RetroHomepage products={products} />;
 };
 
 export default Page;

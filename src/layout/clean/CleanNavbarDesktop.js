@@ -44,7 +44,7 @@ const CleanNavbarDesktop = ({ blogList, sampleProduct }) => {
             </div>
           </div>
         </div>
-        <div className="header-wrapper">
+        <div className="header-wrapper pt-3">
           <div className="section-padding">
             <div className="section-container large p-l-r">
               <div className="row">

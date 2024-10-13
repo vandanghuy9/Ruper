@@ -10,6 +10,7 @@ import GothicHomepage from "./GothicHomepage";
 import LuxuryHomepage from "./LuxuryHomepage";
 import ScandinavianHomepage from "./ScandinavianHomepage";
 import MidCenturyHomepage from "./MidCenturyHomepage";
+import RetroHomepage from "./RetroHomepage";
 export {
   CleanHomePage,
   CollectionHomePage,
@@ -23,4 +24,5 @@ export {
   LuxuryHomepage,
   ScandinavianHomepage,
   MidCenturyHomepage,
+  RetroHomepage,
 };
