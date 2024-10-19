@@ -864,10 +864,10 @@
   #site-footer {
     padding-bottom: 52px;
   }
-  #site-footer.four-columns .column-1,
-  #site-footer.four-columns .column-2,
-  #site-footer.four-columns .column-3,
-  #site-footer.four-columns .column-4 {
+  #site-footer .four-columns .column-1,
+  #site-footer .four-columns .column-2,
+  #site-footer .four-columns .column-3,
+  #site-footer .four-columns .column-4 {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
@@ -1441,14 +1441,14 @@
   #site-footer .footer-bottom .footer-right .block-menu ul li:last-child {
     margin-right: 10px;
   }
-  #site-footer.three-columns .column-left,
-  #site-footer.three-columns .column-center,
-  #site-footer.three-columns .column-right {
+  #site-footer .three-columns .column-left,
+  #site-footer .three-columns .column-center,
+  #site-footer .three-columns .column-right {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
   }
-  #site-footer.three-columns .column-center {
+  #site-footer .three-columns .column-center {
     border-left: none;
     border-right: none;
     text-align: left;
@@ -1456,13 +1456,13 @@
     padding-bottom: 0;
     justify-content: left;
   }
-  #site-footer.three-columns .column-right {
+  #site-footer .three-columns .column-right {
     justify-content: flex-start;
   }
-  #site-footer.four-columns .column-1,
-  #site-footer.four-columns .column-2,
-  #site-footer.four-columns .column-3,
-  #site-footer.four-columns .column-4 {
+  #site-footer .four-columns .column-1,
+  #site-footer .four-columns .column-2,
+  #site-footer .four-columns .column-3,
+  #site-footer .four-columns .column-4 {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;

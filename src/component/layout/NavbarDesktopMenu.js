@@ -8,7 +8,9 @@ import { useAuth } from "@context/UserContext";
 
 const NavbarDesktopMenu = ({ blogList, sampleProduct }) => {
   const pathname = usePathname();
-  const { handleFormActive, isUserLogin } = useAuth();
+  const { handleFormActive, isUserLogin, getUserId } = useAuth();
+  const userId = getUserId();
+
   const isLogin = isUserLogin();
 
   return (
