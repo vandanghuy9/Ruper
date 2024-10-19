@@ -5,17 +5,13 @@ import handleLogin from "../../authentication/handleAuth";
 import { useAuth } from "@context/UserContext";
 import { useShopProduct } from "@context/ShopProductContext";
 import ErrorText from "@component/form/ErrorText";
-export default function Signin({
-  isRegisterActive,
-  handleRegisterActive,
-  handleFormActive,
-}) {
+export default function Signin({ isRegisterActive, handleRegisterActive, handleFormActive }) {
   const [error, setError] = useState("");
   const { login, handleLoginError } = useAuth();
   const { handleSetWishList } = useShopProduct();
   const onLogin = async (formData) => {
     const { userInfor, wishlist } = await handleLogin(formData);
-    console.log(userInfor);
+    console.log("infor" + userInfor);
     if (userInfor.status === 401) {
       return setError(userInfor.message);
     }
@@ -60,17 +56,9 @@ export default function Signin({
             </div>
           </div>
           <div className="button-login">
-            <input
-              type="submit"
-              className="button"
-              name="login"
-              value="Login"
-            />
+            <input type="submit" className="button" name="login" value="Login" />
           </div>
-          <div
-            className="button-next-reregister"
-            onClick={handleRegisterActive}
-          >
+          <div className="button-next-reregister" onClick={handleRegisterActive}>
             Create An Account
           </div>
         </div>

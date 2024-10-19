@@ -6,6 +6,7 @@ import Register from "@component/modal/Register";
 import { AiOutlineSearch, AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
 import { useShopProduct } from "@context/ShopProductContext";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 const Cart = dynamic(() => import("@component/cart/Cart"), {
   ssr: false,
   loading: () => (
@@ -67,15 +68,16 @@ const HeaderPageLink = () => {
         </div>
       )}
       {/* Search */}
-      {homePageType !== "SCANDINAVIAN" && (
-        <div
-          className={`search-box ${homePageType === "LUXURY" ? "hidden-lg" : ""}`}
-          onClick={handleToggleSearchPopUp}>
-          <div className="search-toggle">
-            <AiOutlineSearch size={25} />
+      {homePageType !== "SCANDINAVIAN" ||
+        (homePageType !== "COLOR_BLOCK" && (
+          <div
+            className={`search-box ${homePageType === "LUXURY" ? "hidden-lg" : ""}`}
+            onClick={handleToggleSearchPopUp}>
+            <div className="search-toggle">
+              <AiOutlineSearch size={25} />
+            </div>
           </div>
-        </div>
-      )}
+        ))}
       {/* Wishlist */}
       <div className="wishlist-box">
         {!isLogin ? (

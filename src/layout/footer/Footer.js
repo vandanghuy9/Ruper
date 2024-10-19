@@ -1,11 +1,31 @@
+"use client";
 import Image from "next/image";
-import { footer } from "../../utils/data";
+import { footer } from "@utils/data";
 import Link from "next/link";
 import FooterBottom from "./FooterBottom";
 import FooterNewsLetter from "./FooterNewsLetter";
+import { Fragment } from "react";
+import useGetParams from "@hooks/useGetParams";
+import StylishFooter from "./StylishFooter";
+import UniqueFooter from "./UniqueFooter";
 const Footer = () => {
+  const homePageType = useGetParams("type");
+  if (homePageType === "STYLISH" || homePageType === "RETRO")
+    return (
+      <Fragment>
+        <StylishFooter />
+        <FooterBottom />
+      </Fragment>
+    );
+  if (homePageType === "UNIQUE" || homePageType === "COLOR_BLOCK")
+    return (
+      <Fragment>
+        <UniqueFooter />
+        <FooterBottom />
+      </Fragment>
+    );
   return (
-    <>
+    <Fragment>
       <div className="footer">
         <div className="section-padding">
           <div className="section-container">
@@ -43,10 +63,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="footer-bottom">
-        <FooterBottom />
-      </div>
-    </>
+      <FooterBottom />
+    </Fragment>
   );
 };
 export default Footer;
