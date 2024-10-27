@@ -1,7 +1,5 @@
 "use client";
-import { useState } from "react";
 import { useCheckoutSubmit } from "@context/CheckoutContext";
-import { useCart } from "react-use-cart";
 import InputText from "@component/form/InputText";
 import Label from "@component/form/Label";
 import Select from "@component/form/Select";
@@ -9,9 +7,7 @@ import ErrorText from "@component/form/ErrorText";
 import { countryOption, stateOption } from "@utils/data";
 import ShippingDetail from "./ShippingDetail";
 const Billing = () => {
-  const { register, isShippingSelected, setIsShippingSelected, errors } =
-    useCheckoutSubmit();
-  const { cartTotal } = useCart();
+  const { register, isShippingSelected, setIsShippingSelected, errors } = useCheckoutSubmit();
   return (
     <div className="col-xl-8 col-lg-7 col-md-12 col-12">
       <div className="customer-details">
@@ -53,11 +49,7 @@ const Billing = () => {
               />
             </p>
             <p className="form-row form-row-wide validate-required">
-              <Label
-                htmlFor="billing_country"
-                content={"Country / Region"}
-                required={true}
-              />
+              <Label htmlFor="billing_country" content={"Country / Region"} required={true} />
               <span className="input-wrapper">
                 <Select
                   className={"country-select custom-select"}
@@ -100,11 +92,7 @@ const Billing = () => {
               />
             </p>
             <p className="form-row address-field validate-required validate-state form-row-wide">
-              <Label
-                htmlFor="billing_state"
-                content={"State / County"}
-                required={true}
-              />
+              <Label htmlFor="billing_state" content={"State / County"} required={true} />
               <span className="input-wrapper">
                 <Select
                   options={stateOption}
@@ -162,9 +150,7 @@ const Billing = () => {
               name="ship_to_different_address"
               value={isShippingSelected}
               onChange={(e) =>
-                setIsShippingSelected(
-                  (prevIsShippingSelected) => !prevIsShippingSelected
-                )
+                setIsShippingSelected((prevIsShippingSelected) => !prevIsShippingSelected)
               }
             />
             <span>Ship to a different address?</span>
@@ -183,8 +169,7 @@ const Billing = () => {
               placeholder="Notes about your order, e.g. special notes for delivery."
               cols="5"
               rows="2"
-              {...register("orderNote")}
-            ></textarea>
+              {...register("orderNote")}></textarea>
           </span>
         </p>
       </div>

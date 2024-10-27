@@ -8,7 +8,6 @@ const useSearch = (search) => {
   useEffect(() => {
     let isFetched = false;
     if (search !== "") {
-      console.log("hook" + search);
       setLoading(true);
       const searchQuery = new URLSearchParams({ search });
       getSearchResult(searchQuery.toString()).then((res) => {

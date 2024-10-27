@@ -692,10 +692,9 @@ const paymentOption = [
     description: "Pay with cash upon delivery.",
   },
   {
-    label: "PayPal",
-    value: "paypal",
-    description:
-      "Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.",
+    label: "Card",
+    value: "card",
+    description: "Pay via card; you can pay with your VISA card, or MASTER card",
   },
 ];
 

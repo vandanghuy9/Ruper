@@ -4,8 +4,7 @@ import { shippingOptions } from "@utils/data";
 import { useCheckoutSubmit } from "@context/CheckoutContext";
 
 const ShippingOption = ({ children }) => {
-  const { shippingFee, setShippingFee, shippingOption, setShippingOption } =
-    useCheckoutSubmit();
+  const { shippingFee, setShippingFee, shippingOption, setShippingOption } = useCheckoutSubmit();
 
   return (
     <>
@@ -22,6 +21,7 @@ const ShippingOption = ({ children }) => {
                   className="shipping_method"
                   checked={item.fee === shippingFee}
                   value={item.value}
+                  key={item.label}
                   onChange={(e) => {
                     setShippingFee(item.fee);
                     setShippingOption(item.value);

@@ -25,7 +25,6 @@ export default async function handleLogin(formData) {
   try {
     const res = await login(body);
     const { token, ...userInfor } = res;
-    console.log(res);
     if (rawFormData.rememberme) {
       const userId = cookieStore.set("userId", userInfor?._id);
       const userName = cookieStore.set("userName", userInfor?.name);
