@@ -17,7 +17,6 @@ const ShoppingCart = () => {
     shippingFee,
     setShippingFee,
   } = useCheckoutSubmit();
-  console.log(discountValue);
   const [isCartReady, setIsCartReady] = useState(false);
   useEffect(() => {
     if (isEmpty !== undefined) {

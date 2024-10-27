@@ -12,7 +12,6 @@ const NewsLetterForm = ({ title, description }) => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     successNoti("We will contact you soon");
   };
 

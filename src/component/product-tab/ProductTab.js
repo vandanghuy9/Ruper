@@ -162,7 +162,6 @@ const ProductTab = ({ product }) => {
                                     onMouseEnter={() => setHover(currentRating)}
                                     onMouseLeave={() => setHover(null)}
                                     onClick={() => {
-                                      console.log(currentRating);
                                       setRating(currentRating);
                                     }}
                                   />

@@ -13,7 +13,6 @@ const GridNewsLetterBlock = () => {
     control,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     successNoti("We will contact you soon");
   };
 
@@ -24,14 +23,19 @@ const GridNewsLetterBlock = () => {
           <div className="row">
             <div className="col-md-6">
               <div className="newsletter-title-wrap">
-                <h2 className="newsletter-title">Subscribe to get $50 off* your order</h2>
+                <h2 className="newsletter-title">
+                  Subscribe to get $50 off* your order
+                </h2>
                 <div className="newsletter-text">
                   Sign up for the latest trends, products, and inspiration.
                 </div>
               </div>
             </div>
             <div className="col-md-6">
-              <form onSubmit={handleSubmit(onSubmit)} className="newsletter-form">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="newsletter-form"
+              >
                 <input
                   type="email"
                   name="your-email"

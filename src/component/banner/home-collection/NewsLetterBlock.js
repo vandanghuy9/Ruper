@@ -13,7 +13,6 @@ const NewsLetterBlock = ({ image }) => {
     control,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     successNoti("We will contact you soon");
   };
   return (
@@ -25,7 +24,12 @@ const NewsLetterBlock = ({ image }) => {
               <div className="banner-wrapper banners">
                 <div className="banner-image">
                   <Link href="#">
-                    <Image width={961} height={452} src={image} alt="Banner Image" />
+                    <Image
+                      width={961}
+                      height={452}
+                      src={image}
+                      alt="Banner Image"
+                    />
                   </Link>
                 </div>
               </div>
@@ -34,7 +38,10 @@ const NewsLetterBlock = ({ image }) => {
         </div>
       </div>
       <div className="col-lg-6">
-        <form className="block block-newsletter position-center" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="block block-newsletter position-center"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="newsletter-wrap">
             <div className="sub-title">Join our mailing list!</div>
             <div className="title">Fancy $30* off your first order?</div>

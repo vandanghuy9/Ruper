@@ -11,7 +11,7 @@ export const CheckoutContext = ({ children }) => {
   const [discountType, setDiscountType] = useState(0);
   const [couponValue, setCouponValue] = useState(0);
   const [minimumAmount, setMinimumAmount] = useState(0);
-  const [shippingFee, setShippingFee] = useState(0);
+  const [shippingFee, setShippingFee] = useState(null);
   const [shippingOption, setShippingOption] = useState(0);
   const couponRef = useRef("");
   const { cartTotal } = useCart();
@@ -57,7 +57,6 @@ export const CheckoutContext = ({ children }) => {
     // setPayment(paymentMethod);
   };
   const getPaymentMethod = () => {
-    // console.log(payment);
     return getValues("paymentMethod");
   };
   const setPaymentMethod = (value) => {
@@ -79,7 +78,12 @@ export const CheckoutContext = ({ children }) => {
   const checkCouponInfo = () => {
     getCouponByCode(couponRef.current?.value)
       .then((res) => {
-        const { code, minimumAmount } = res;
+        const { code, minimumAmount, expiryDate } = res;
+        const expired = new Date(expiryDate);
+        const currentDate = new Date();
+        if (expired < currentDate) {
+          return errorNoti("This coupon is expired");
+        }
         const { type, value } = res?.discountType;
         const discountValue = handleUpdateTotalPrice(
           type,

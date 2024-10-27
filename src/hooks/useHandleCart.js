@@ -6,7 +6,6 @@ const useHandleCart = () => {
     useCart();
   const handleAddToCart = (product, quantity, attributes) => {
     const { _id, name, imageUrl, discount, price, stocks } = product;
-    console.log(_id);
     const { color, size } = attributes;
     const productInStock = stocks.find(
       (i) => i.color === color && i.size === size
@@ -17,7 +16,6 @@ const useHandleCart = () => {
     }
     const result = items.find((i) => i.id === productInStock._id);
     if (result) {
-      console.log("old product");
       updateItem(result.id, {
         quantity: result?.quantity + quantity,
       });
