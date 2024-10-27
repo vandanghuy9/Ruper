@@ -21,14 +21,38 @@ const LuxurySearchForm = () => {
             placeholder="What are you looking for?"
             onChange={(e) => setSearch(e.target.value)}
           />
-          {productList.length > 0 && (
-            <div
-              className="result-search-products-content"
-              style={{ display: "block" }}
-            >
-              <div className="result-search-products">
-                hello
-                <ul className="items-search"></ul>
+          {search !== "" && (
+            <div className="result-search-products-content" style={{ display: "block" }}>
+              <div className="result-search-products" style={{ display: "block" }}>
+                <ul className="items-search">
+                  {productList.map(({ _id, name, imageUrl, price, discount }) => (
+                    <li className="item-search" key={_id}>
+                      <Link className="item-image" href={`/product/${_id}`}>
+                        <Image src={imageUrl[0]} alt="product" width={70} height={70} />
+                      </Link>
+                      <div className="item-content">
+                        <Link href={`/product/${_id}`} title="Chair Oak Matt Lacquered">
+                          <span>{name}</span>
+                        </Link>
+                        <div className="price">
+                          $
+                          {discount ? (
+                            <>
+                              <del>
+                                <span>${price}</span>
+                              </del>
+                              <ins>
+                                <span>${Math.ceil((price * (100 - discount)) / 100)}</span>
+                              </ins>
+                            </>
+                          ) : (
+                            <>${price}</>
+                          )}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           )}

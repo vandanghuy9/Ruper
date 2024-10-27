@@ -9,8 +9,14 @@ import { AiFillStar } from "react-icons/ai";
 import { calcuteRating } from "@utils/menu";
 export const ProductListCard = ({ product }) => {
   const { _id, imageUrl, name, price, discount, comment, description } = product;
-  const { wishListAdded, handleAddToWishList, getProductInWishList, handleRemoveFromWishList } =
-    useShopProduct();
+  const {
+    wishListAdded,
+    handleAddToWishList,
+    getProductInWishList,
+    handleRemoveFromWishList,
+    handleOpenQuickViewPopUp,
+    handleOpenComparePopUp,
+  } = useShopProduct();
   const { isUserLogin, handleFormActive } = useAuth();
   const isProductInWishlist = getProductInWishList(_id);
   const onAddToWishList = (product) => {
@@ -48,7 +54,13 @@ export const ProductListCard = ({ product }) => {
               </Link>
             </div>
             <span className="product-quickview" data-title="Quick View">
-              <button type="button" title="Quick view" className="quickview quickview-button">
+              <button
+                type="button"
+                title="Quick view"
+                className="quickview quickview-button"
+                onClick={(e) => {
+                  handleOpenQuickViewPopUp(_id);
+                }}>
                 Quick View
                 <IoSearchOutline size={20} />
               </button>
@@ -88,7 +100,12 @@ export const ProductListCard = ({ product }) => {
             </div>
             <div className="product-button">
               <div className="btn-add-to-cart" data-title="Add to cart">
-                <Link rel="nofollow" href="#" className="product-btn button">
+                <Link
+                  href="#"
+                  className="product-btn button"
+                  onClick={(e) => {
+                    handleOpenQuickViewPopUp(_id);
+                  }}>
                   Add to cart
                 </Link>
               </div>
@@ -118,7 +135,12 @@ export const ProductListCard = ({ product }) => {
                 )}
               </div>
               <div className="btn-compare" data-title="Compare">
-                <button type="button" className="product-btn">
+                <button
+                  type="button"
+                  className="product-btn"
+                  onClick={(e) => {
+                    handleOpenComparePopUp(_id);
+                  }}>
                   <IoShuffleOutline size={20} />
                   Compare
                 </button>

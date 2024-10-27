@@ -7,7 +7,12 @@ import { AiFillStar } from "react-icons/ai";
 import { useShopProduct } from "@context/ShopProductContext";
 import { calcuteRating } from "@utils/menu";
 const ComparePopUp = () => {
-  const { comparePopUpActive, handleCloseComparePopUp, currentCompareProduct } = useShopProduct();
+  const {
+    comparePopUpActive,
+    handleCloseComparePopUp,
+    currentCompareProduct,
+    handleOpenQuickViewPopUp,
+  } = useShopProduct();
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchCompareProducts = (id) => {
@@ -112,7 +117,12 @@ const ComparePopUp = () => {
                     {products?.map(({ _id }) => (
                       <td key={_id}>
                         <div data-title="Add to cart">
-                          <Link href="#" className="button">
+                          <Link
+                            href="#"
+                            className="button"
+                            onClick={(e) => {
+                              handleOpenQuickViewPopUp(_id);
+                            }}>
                             Add to cart
                           </Link>
                         </div>
