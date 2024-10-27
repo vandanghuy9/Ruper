@@ -6,6 +6,8 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { useCart } from "react-use-cart";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@context/UserContext";
+import { FaTruck } from "react-icons/fa";
+
 const Cart = () => {
   const [showCart, setShowCart] = useState(false);
   const { items, cartTotal, totalUniqueItems } = useCart();
@@ -86,7 +88,9 @@ const Cart = () => {
                       Buy <strong>$400</strong> more to enjoy <strong>FREE Shipping</strong>
                     </div>
                     <div className="total-percent">
-                      <div className="percent" style={{ width: "20%" }}></div>
+                      <div className="percent" style={{ width: "20%" }}>
+                        <FaTruck className="icon" />
+                      </div>
                     </div>
                   </div>
                   <div className="buttons">
