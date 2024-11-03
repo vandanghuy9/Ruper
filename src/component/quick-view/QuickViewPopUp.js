@@ -10,8 +10,11 @@ import { useShopProduct } from "@context/ShopProductContext";
 import { getProductById } from "@services/productService";
 import useHandleCart from "@hooks/useHandleCart";
 import { AiFillStar } from "react-icons/ai";
+import { calcuteRating } from "@utils/menu";
 const QuickViewPopUp = () => {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState({
+    comment: [],
+  });
   const {
     quickViewPopUpActive,
     handleCloseQuickViewPopUp,
@@ -20,7 +23,6 @@ const QuickViewPopUp = () => {
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-
   const { handleAddToCart } = useHandleCart();
 
   let sizes = product?.stocks?.map((item) => item.size);
@@ -30,6 +32,7 @@ const QuickViewPopUp = () => {
   useEffect(() => {
     const fetchProduct = (id) => {
       getProductById(id).then((res) => {
+        console.log(res);
         setProduct(res);
       });
     };
@@ -56,6 +59,7 @@ const QuickViewPopUp = () => {
     handleAddToCart(product, quantity, { size, color });
     setQuantity(1);
   };
+  const { rating, nonRating } = calcuteRating(product?.comment);
   return (
     <div className={`quickview-popup ${quickViewPopUpActive ? "active" : ""}`}>
       <div id="quickview-container">
@@ -144,15 +148,15 @@ const QuickViewPopUp = () => {
                       </div>
                     </div>
                     <div className="product-rating">
-                      <div
-                        className="star-rating"
-                        role="img"
-                        aria-label="Rated 4.00 out of 5"
-                      >
-                        <AiFillStar color="#fcad02" />
-                        <AiFillStar color="#fcad02" />
-                        <AiFillStar color="#fcad02" />
-                        <AiFillStar color="#fcad02" />
+                      <div className="star-rating">
+                        {rating > 0 &&
+                          [...Array(rating)].map((item) => (
+                            <AiFillStar key={item} size={15} color="#fcad02" />
+                          ))}
+                        {nonRating &&
+                          [...Array(nonRating)].map((item) => (
+                            <AiFillStar key={item + rating} size={15} />
+                          ))}
                       </div>
                       <Link href="#" className="review-link">
                         (
