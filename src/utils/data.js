@@ -2,6 +2,12 @@ import { RiArrowGoBackLine } from "react-icons/ri";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { TfiWallet } from "react-icons/tfi";
 import { MdSupportAgent } from "react-icons/md";
+import {
+  BoxIcon,
+  FlexiblePaymentIcon,
+  FreeShippingIcon,
+  OnlineSupportIcon,
+} from "@component/feature";
 import { FaTwitter, FaInstagram, FaDribbble, FaBehance } from "react-icons/fa";
 const sampleProductId = "66018b56cd25b4bf5fc20170";
 const blogTags = [
@@ -535,22 +541,22 @@ const secondBanner = [
 
 const featureCardData = [
   {
-    icon: <CiDeliveryTruck />,
+    icon: <FreeShippingIcon />,
     title: "Free Shipping",
     desc: "You will love at great low prices",
   },
   {
-    icon: <TfiWallet />,
+    icon: <FlexiblePaymentIcon />,
     title: "Flexible Payment",
     desc: "Pay with Multiple Credit Cards",
   },
   {
-    icon: <RiArrowGoBackLine />,
+    icon: <BoxIcon />,
     title: "14 Day Returns",
     desc: "Within 30 days for an exchange.",
   },
   {
-    icon: <MdSupportAgent />,
+    icon: <OnlineSupportIcon />,
     title: "Online Support",
     desc: "24 hours a day, 7 days a week",
   },

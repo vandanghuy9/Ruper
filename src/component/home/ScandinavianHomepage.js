@@ -1,6 +1,8 @@
 import { GothicCarousel, ProductCarousel, Testimonial } from "@component/slider";
 import { ScandinavianCategoryBanner, ScandinavianSecondBanner } from "@component/banner";
 import FeatureSection from "@component/feature/FeatureSection";
+import { FaCaretRight } from "react-icons/fa";
+
 import Link from "next/link";
 const ScandinavianHomepage = ({ products }) => {
   return (
@@ -24,6 +26,7 @@ const ScandinavianHomepage = ({ products }) => {
                       <h2>New Arrivals</h2>
                       <div className="title-right">
                         <Link href="/shop">View all new arrivals</Link>
+                        <FaCaretRight />
                       </div>
                     </div>
                     <div className="block-content">
