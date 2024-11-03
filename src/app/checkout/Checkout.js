@@ -47,7 +47,7 @@ const Checkout = () => {
     if (!isLogin) {
       router.push("/login?redirect=/checkout");
     }
-  }, []);
+  }, [router, isUserLogin]);
 
   const onSubmit = async (data) => {
     const stripe = await getStripe();

@@ -7,7 +7,7 @@ const LuxuryNavbarDesktop = ({ blogList, sampleProduct }) => {
   const { setBlogList } = useShopProduct();
   useEffect(() => {
     setBlogList(blogList);
-  }, [blogList]);
+  }, [blogList, setBlogList]);
 
   return (
     <div className="header-v3 relative">

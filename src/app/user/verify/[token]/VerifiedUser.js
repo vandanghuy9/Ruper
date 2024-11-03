@@ -5,7 +5,7 @@ const VerifiedUser = ({ message }) => {
   const { register } = useAuth();
   useEffect(() => {
     register(message);
-  }, [message]);
+  }, [message, register]);
   return <div>Verified account successfully</div>;
 };
 

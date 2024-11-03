@@ -23,32 +23,23 @@ const UniqueProductCarousel = ({ productSet, homepage = false }) => {
       loop={true}
       navigation
       modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper"
-    >
+      className="mySwiper">
       {slidedProductArr.map((arr, index) => (
         <>
           <SwiperSlide key={index}>
             <div className="item-product slick-slide">
-              {arr.slice(0, 2).map((product) => (
-                <div className="items">
-                  <ProductGridCard
-                    key={product._id}
-                    product={product}
-                    homepage={homepage}
-                  />
+              {arr.slice(0, 2).map((product, index) => (
+                <div className="items" key={index}>
+                  <ProductGridCard key={product._id} product={product} homepage={homepage} />
                 </div>
               ))}
             </div>
           </SwiperSlide>
           <SwiperSlide key={index}>
             <div className="item-product slick-slide">
-              {arr.slice(2).map((product) => (
-                <div className="items">
-                  <ProductGridCard
-                    key={product._id}
-                    product={product}
-                    homepage={homepage}
-                  />
+              {arr.slice(2).map((product, index) => (
+                <div className="items" key={index}>
+                  <ProductGridCard key={product._id} product={product} homepage={homepage} />
                 </div>
               ))}
             </div>

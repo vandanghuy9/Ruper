@@ -12,13 +12,12 @@ const Dashboard = () => {
     if (!isLogin) {
       router.push("/");
     }
-  }, [isLogin]);
+  }, [isLogin, router]);
   return (
     <div className="tab-pane fade show active" id="dashboard" role="tabpanel">
       <div className="my-account-dashboard">
         <p>
-          Hello <strong> {userName} </strong> (not <strong> {userName} </strong>
-          ?
+          Hello <strong> {userName} </strong> (not <strong> {userName} </strong>?
           <Link href="#" onClick={logout}>
             Log out
           </Link>
@@ -27,13 +26,8 @@ const Dashboard = () => {
         <p>
           From your account dashboard you can view your
           <Link href="/user/orders"> recent orders</Link>, manage your
-          <Link href="/user/addresses"> shipping and billing addresses</Link>,
-          and
-          <Link href="/user/account">
-            {" "}
-            edit your password and account details
-          </Link>
-          .
+          <Link href="/user/addresses"> shipping and billing addresses</Link>, and
+          <Link href="/user/account"> edit your password and account details</Link>.
         </p>
       </div>
     </div>

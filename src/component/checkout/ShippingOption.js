@@ -12,8 +12,8 @@ const ShippingOption = ({ children }) => {
         <div className="title">Shipping</div>
         <div>
           <ul className="shipping-methods custom-radio">
-            {shippingOptions.map((item) => (
-              <li>
+            {shippingOptions.map((item, index) => (
+              <li key={index}>
                 <input
                   type="radio"
                   name="shippingOption"

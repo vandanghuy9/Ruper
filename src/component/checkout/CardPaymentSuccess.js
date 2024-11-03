@@ -13,7 +13,7 @@ const CardPaymentSuccess = ({ isSuccess = false, message }) => {
       emptyCart();
       handleSaveOrder();
     }
-  }, [isSuccess]);
+  }, [isSuccess, emptyCart, handleSaveOrder]);
   return (
     <div id="main-content" className="main-content">
       <div id="primary" className="content-area">

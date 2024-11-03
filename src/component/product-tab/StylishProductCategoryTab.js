@@ -10,7 +10,7 @@ const StylishProductCategoryTab = ({ products }) => {
       currentCategory === ""
         ? products
         : products?.filter((item) => item.parent === currentCategory),
-    [currentCategory]
+    [currentCategory, products]
   );
   return (
     <div className="block block-products">

@@ -19,9 +19,8 @@ const ProductCategoryTab = ({ products }) => {
       currentCategory === ""
         ? products
         : products?.filter((item) => item.parent === currentCategory),
-    [currentCategory]
+    [currentCategory, products]
   );
-  console.log(filteredProductList);
   return (
     <div className="block block-products">
       <div className="block-widget-wrap">

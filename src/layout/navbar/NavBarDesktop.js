@@ -14,7 +14,7 @@ const NavBarDesktop = ({ blogList, sampleProduct }) => {
   const { setBlogList } = useShopProduct();
   useEffect(() => {
     setBlogList(blogList);
-  }, [blogList]);
+  }, [blogList, setBlogList]);
 
   const searchParams = useSearchParams();
   const homePageType = searchParams.get("type");

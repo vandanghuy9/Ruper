@@ -8,11 +8,7 @@ const BlogSection = ({ setTabIndex, blogList }) => {
   return (
     <div id="mm-4" className={`sub-menu mm-panel mm-hasnavbar`}>
       <div className="mm-navbar">
-        <Link
-          className="mm-btn mm-prev"
-          href={"#"}
-          onClick={(e) => setTabIndex(0)}
-        >
+        <Link className="mm-btn mm-prev" href={"#"} onClick={(e) => setTabIndex(0)}>
           <span className="mm-sronly">
             <FaAngleLeft color="#868686" size={20} />
           </span>
@@ -22,10 +18,9 @@ const BlogSection = ({ setTabIndex, blogList }) => {
       <div className="row px-4 overflow-x-hidden overflow-y-auto">
         <div
           className="col-md-5 position-relative px-3"
-          style={{ minHeight: "1px", width: "100%" }}
-        >
-          {blogCategoryMenu.child.map((section) => (
-            <div className="menu-section">
+          style={{ minHeight: "1px", width: "100%" }}>
+          {blogCategoryMenu.child.map((section, index) => (
+            <div className="menu-section" key={index}>
               <h2 className="sub-menu-title">{section.text}</h2>
               <ul className="menu-list">
                 {section.child &&

@@ -17,6 +17,7 @@ import SignIn from "@component/modal/SignIn";
 import Register from "@component/modal/Register";
 import { useAuth } from "@context/UserContext";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 const Cart = dynamic(() => import("@component/cart/Cart"), {
   ssr: false,
   loading: () => (
@@ -88,7 +89,7 @@ const NavBarMobile = ({ blogList, sampleProduct }) => {
               <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 header-center">
                 <div className="site-logo">
                   <Link href={"/"}>
-                    <img
+                    <Image
                       width={400}
                       height={79}
                       src="/logo.png"

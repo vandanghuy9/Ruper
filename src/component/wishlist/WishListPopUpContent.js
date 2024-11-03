@@ -19,7 +19,7 @@ const WishListPopUpContent = () => {
     if (isLogin && wishListAdded !== undefined) {
       getUserWishList();
     }
-  }, [wishListAdded, isLogin]);
+  }, [wishListAdded, isLogin, handleSetWishList]);
   if (wishList.length === 0) {
     return <></>;
   }

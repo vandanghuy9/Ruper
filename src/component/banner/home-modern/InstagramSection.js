@@ -6,7 +6,7 @@ const InstagramSection = () => {
     <div className="block block-instagram">
       <div className="block-widget-wrap">
         <div className="block-title">
-          <h2>Let's Be Friends!</h2>
+          <h2>Let &apos s Be Friends!</h2>
         </div>
         <div className="block-content">
           <div className="row">

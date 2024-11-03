@@ -41,7 +41,7 @@ const SortMenu = () => {
         content: "Default sorting",
       }));
     }
-  }, [sort]);
+  }, [sort, options]);
   return (
     <div className={open ? "products-sort dropdown show" : "products-sort dropdown"}>
       <span

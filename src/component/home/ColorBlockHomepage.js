@@ -1,23 +1,10 @@
+import { ProductCarousel, ColorBlockCarousel, StylishInstagramCarousel } from "@component/slider";
 import {
-  GothicCarousel,
-  ProductCarousel,
-  ProductCategorySlider,
-  Testimonial,
-  ColorBlockCarousel,
-  StylishInstagramCarousel,
-} from "@component/slider";
-import {
-  ScandinavianCategoryBanner,
-  ModernFeatureSection,
   ModernSecondBannerSection,
-  BlogSection,
-  InstagramSection,
-  ScandinavianSecondBanner,
   ProductCategoryBanner,
   ColorBlockLookBook,
 } from "@component/banner";
 import FeatureSection from "@component/feature/FeatureSection";
-import Link from "next/link";
 import { colorBlockCategoryBanner } from "@utils/data";
 const ColorBlockHomepage = ({ products }) => {
   return (
@@ -30,10 +17,7 @@ const ColorBlockHomepage = ({ products }) => {
             </section>
             <section className="section section-padding m-b-70">
               <div className="section-container">
-                <ProductCategoryBanner
-                  isRoundBorder={true}
-                  title="Our Collection"
-                />
+                <ProductCategoryBanner isRoundBorder={true} title="Our Collection" />
               </div>
             </section>
             <section className="section section-padding background-12 p-t-100 p-b-100 m-b-70">
@@ -51,10 +35,7 @@ const ColorBlockHomepage = ({ products }) => {
                     <div className="block-content">
                       <div className="content-product-list slick-wrap">
                         <div className="slick-sliders products-list grid">
-                          <ProductCarousel
-                            productSet={products}
-                            homepage={true}
-                          />
+                          <ProductCarousel productSet={products} homepage={true} />
                         </div>
                       </div>
                     </div>
@@ -75,7 +56,7 @@ const ColorBlockHomepage = ({ products }) => {
             <section className="section top-border p-t-70 m-b-0">
               <div>
                 <div className="block-title">
-                  <h2>Let's Be Friends!</h2>
+                  <h2>Let &lsquo s Be Friends!</h2>
                 </div>
                 <div className="block-content">
                   <StylishInstagramCarousel />

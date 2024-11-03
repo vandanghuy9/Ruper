@@ -28,12 +28,12 @@ export const generateStaticParams = async () => {
   }));
 };
 
-export const getProduct = async (id) => {
+const getProduct = async (id) => {
   const product = await getProductById(id);
   return product;
 };
 
-export const getRelatedProduct = async (id) => {
+const getRelatedProduct = async (id) => {
   const relatedProducts = await getRelatedProducts(id);
   return relatedProducts;
 };

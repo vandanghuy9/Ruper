@@ -10,7 +10,6 @@ import BannerItem from "../BannerItem";
 const BannerSlider = () => {
   return (
     <div className="block">
-      // {/* <div className="section-column-wrap"> */}
       <div className="block-widget-wrap">
         <div className="slick-wrap">
           <div className="slick-sliders slick-initialized slick-slider">
@@ -59,78 +58,11 @@ const BannerSlider = () => {
                     )}
                   </SwiperSlide>
                 ))}
-                {/* <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide>
-              <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide>{" "}
-              <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide>{" "}
-              <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide>{" "}
-              <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide>{" "}
-              <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide>{" "}
-              <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide>{" "}
-              <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide>{" "}
-              <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide>{" "}
-              <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide>{" "}
-              <SwiperSlide style={{ width: 300, height: 300 }}>
-                <img
-                  style={{ width: "100%" }}
-                  src="https://swiperjs.com/demos/images/nature-9.jpg"
-                />
-              </SwiperSlide> */}
               </Swiper>
             </div>
           </div>
         </div>
       </div>
-      // {/* </div> */}
     </div>
   );
 };

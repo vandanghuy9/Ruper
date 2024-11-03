@@ -3,28 +3,18 @@ import { formatDate } from "@utils/menu";
 import BlogPostMeta from "./BlogPostMeta";
 import { FaFacebook, FaPinterest, FaTwitter } from "react-icons/fa";
 import CommentSection from "./CommentSection";
+import Image from "next/image";
 const BlogDetailSection = ({ blog, sidebar }) => {
-  const {
-    _id,
-    category,
-    title,
-    imageUrl,
-    createdAt,
-    comment,
-    content,
-    tags,
-    previous,
-    next,
-  } = blog;
+  const { _id, category, title, imageUrl, createdAt, comment, content, tags, previous, next } =
+    blog;
   const formattedDate = formatDate(createdAt);
   return (
     <div
       className={`${
         sidebar !== "none" ? "col-xl-9 col-lg-9" : "col-xl-12 col-lg-12"
-      } col-md-12 col-12 md-b-30 blog-details-content`}
-    >
+      } col-md-12 col-12 md-b-30 blog-details-content`}>
       <div className="post-details">
-        <img src={imageUrl[0]} alt="thumbnail" />
+        <Image src={imageUrl[0]} alt="thumbnail" />
         <h2 className="post-title">{title}</h2>
         <BlogPostMeta
           _id={_id}
@@ -35,7 +25,7 @@ const BlogDetailSection = ({ blog, sidebar }) => {
         <div className="post-content clearfix">
           <div dangerouslySetInnerHTML={{ __html: content }}></div>
           <div className="content-img">
-            <img width={1410} height={460} src={imageUrl[1]} alt="thumbnail" />
+            <Image width={1410} height={460} src={imageUrl[1]} alt="thumbnail" />
           </div>
         </div>
         <div className="post-content-entry">
@@ -50,12 +40,7 @@ const BlogDetailSection = ({ blog, sidebar }) => {
           <div className="entry-social-share">
             <label>Share :</label>
             <div className="social-share">
-              <Link
-                href="#"
-                title="Facebook"
-                className="share-facebook"
-                target="_blank"
-              >
+              <Link href="#" title="Facebook" className="share-facebook" target="_blank">
                 <FaFacebook size={20} />
                 Facebook
               </Link>
@@ -73,10 +58,7 @@ const BlogDetailSection = ({ blog, sidebar }) => {
         <div className="prev-next-post">
           {previous && (
             <div className="previous-post">
-              <Link
-                href={`/blog/${previous._id}?sidebar=${sidebar}`}
-                rel="prev"
-              >
+              <Link href={`/blog/${previous._id}?sidebar=${sidebar}`} rel="prev">
                 <div className="hover-extend active">
                   <span>Previous</span>
                 </div>
