@@ -15,7 +15,7 @@ const Product = async ({ params }) => {
 export default Product;
 
 export const generateMetadata = async ({ params }) => {
-  const slug = params.slug;
+  const slug = (await params).slug;
   const product = await getProduct(slug);
   return {
     title: product.name,
