@@ -6,15 +6,17 @@ import {
 } from "../../../services/productService";
 import { title } from "process";
 const Product = async ({ params }) => {
-  const product = await getProduct(params.slug);
-  const relatedProducts = await getRelatedProduct(params.slug);
+  const slug = params.slug;
+  const product = await getProduct(slug);
+  const relatedProducts = await getRelatedProduct(slug);
   return <ProductDetail product={product} relatedProducts={relatedProducts}></ProductDetail>;
 };
 
 export default Product;
 
 export const generateMetadata = async ({ params }) => {
-  const product = await getProduct(params.slug);
+  const slug = params.slug;
+  const product = await getProduct(slug);
   return {
     title: product.name,
   };
