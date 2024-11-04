@@ -173,7 +173,9 @@ const ProductInfo = ({ product }) => {
             </button>
           </div>
           <div className="btn-quick-buy" data-title="Wishlist">
-            <button className="product-btn">Buy It Now</button>
+            <button className="product-btn" onClick={addToCart}>
+              Buy It Now
+            </button>
           </div>
           <div className="btn-wishlist" data-title="Wishlist">
             {isProductInWishlist ? (
