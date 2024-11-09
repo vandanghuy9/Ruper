@@ -1,25 +1,9 @@
 "use client";
-import React, { useState, useEffect, useTransition } from "react";
 import WishListItem from "./WishListItem";
 import { useShopProduct } from "@context/ShopProductContext";
-import { fetchUserWishList } from "@services/userService";
-import { useAuth } from "@context/UserContext";
 import { AiOutlineHeart } from "react-icons/ai";
 const WishListPopUpContent = () => {
-  const { wishListAdded, wishList, handleSetWishList, toggle, handleCloseWishList } =
-    useShopProduct();
-  const { isUserLogin } = useAuth();
-  const isLogin = isUserLogin();
-  useEffect(() => {
-    const getUserWishList = async () => {
-      const res = await fetchUserWishList();
-      handleSetWishList(res);
-    };
-
-    if (isLogin && wishListAdded !== undefined) {
-      getUserWishList();
-    }
-  }, [wishListAdded, isLogin, handleSetWishList]);
+  const { wishList, handleCloseWishList } = useShopProduct();
   if (wishList.length === 0) {
     return <></>;
   }

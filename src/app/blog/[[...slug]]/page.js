@@ -26,25 +26,19 @@ const Blog = async ({ params, searchParams }) => {
     }
     let query = "";
     if (category) {
-      query = query.concat(
-        `category=${category.toLowerCase().replaceAll("_", " ")}&`
-      );
+      query = query.concat(`category=${category.toLowerCase().replaceAll("_", " ")}&`);
     }
     if (searchQuery) {
       query = query.concat(`query=${searchQuery}&`);
     }
     if (tags) {
       if (typeof tags === "string") {
-        const formattedTag = tags.includes("_")
-          ? tags.replaceAll("_", " ")
-          : tags;
+        const formattedTag = tags.includes("_") ? tags.replaceAll("_", " ") : tags;
         query = query.concat(`tag=${formattedTag}&`);
       } else {
         query = query.concat(`tag=`);
         tags.forEach((tag, i) => {
-          const formattedTag = tag.includes("_")
-            ? tag.replaceAll("_", " ")
-            : tag;
+          const formattedTag = tag.includes("_") ? tag.replaceAll("_", " ") : tag;
           query = query.concat(formattedTag);
           if (i < tags.length - 1) {
             query = query.concat(",");
@@ -79,3 +73,16 @@ const Blog = async ({ params, searchParams }) => {
 };
 
 export default Blog;
+
+export const generateMetadata = async ({ params }) => {
+  const slug = (await params).slug;
+  if (slug) {
+    const blog = await getBlog(slug);
+    return {
+      title: blog?.title,
+    };
+  }
+  return {
+    title: "Blog",
+  };
+};

@@ -7,6 +7,7 @@ import { AiOutlineSearch, AiOutlineHeart, AiOutlineShopping } from "react-icons/
 import { useShopProduct } from "@context/ShopProductContext";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Fragment } from "react";
 const Cart = dynamic(() => import("@component/cart/Cart"), {
   ssr: false,
   loading: () => (
@@ -68,16 +69,17 @@ const HeaderPageLink = () => {
         </div>
       )}
       {/* Search */}
-      {homePageType !== "SCANDINAVIAN" ||
-        (homePageType !== "COLOR_BLOCK" && (
-          <div
-            className={`search-box ${homePageType === "LUXURY" ? "hidden-lg" : ""}`}
-            onClick={handleToggleSearchPopUp}>
-            <div className="search-toggle">
-              <AiOutlineSearch size={25} />
-            </div>
+      {homePageType !== "SCANDINAVIAN" || homePageType !== "COLOR_BLOCK" ? (
+        <div
+          className={`search-box ${homePageType === "LUXURY" ? "hidden-lg" : ""}`}
+          onClick={handleToggleSearchPopUp}>
+          <div className="search-toggle">
+            <AiOutlineSearch size={25} />
           </div>
-        ))}
+        </div>
+      ) : (
+        <Fragment></Fragment>
+      )}
       {/* Wishlist */}
       <div className="wishlist-box">
         {!isLogin ? (
@@ -89,7 +91,7 @@ const HeaderPageLink = () => {
             <AiOutlineHeart color={homePageType === "SCANDINAVIAN" ? "white" : "black"} size={25} />
           </button>
         ) : (
-          <Link href={`/wishlist/${userId}`}>
+          <Link href={`/wishlist`}>
             <AiOutlineHeart color={homePageType === "SCANDINAVIAN" ? "white" : "black"} size={25} />
             <span className="count-wishlist">{wishList?.length}</span>
           </Link>

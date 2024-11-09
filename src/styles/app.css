@@ -1504,7 +1504,7 @@ ul.slick-dots li.slick-active button {
 .site-header {
   margin-bottom: 0;
   position: relative;
-  z-index: 999999;
+  z-index: 3;
   background: transparent;
 }
 .site-header.absolute {
@@ -6259,9 +6259,7 @@ ul.slick-dots li.slick-active button {
   list-style: none;
 }
 .block-post-archives ul li:before {
-  content: "\35";
   display: inline-block;
-  font-family: eleganticons;
   font-size: 15px;
   margin-right: 3px;
   position: relative;
@@ -6574,8 +6572,8 @@ ul.slick-dots li.slick-active button {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 99999989;
-  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   font-size: 14px;
   visibility: hidden;
@@ -7250,7 +7248,7 @@ ul.slick-dots li.slick-active button {
   bottom: 0;
   width: 100%;
   height: 100%;
-  z-index: 999999999;
+  z-index: 11;
   display: inline-block;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;

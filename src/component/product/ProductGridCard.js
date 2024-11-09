@@ -16,7 +16,6 @@ import ComparePopUp from "@component/compare/ComparePopUp";
 const ProductGridCard = ({ product, homepage }) => {
   const { _id, imageUrl, name, price, discount } = product;
   const [index, setIndex] = useState(0);
-  // const [comparePopUpActive, setComparePopUpActive] = useState(false);
   const {
     wishListAdded,
     handleAddToWishList,

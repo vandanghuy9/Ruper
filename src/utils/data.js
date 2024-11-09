@@ -1,7 +1,3 @@
-import { RiArrowGoBackLine } from "react-icons/ri";
-import { CiDeliveryTruck } from "react-icons/ci";
-import { TfiWallet } from "react-icons/tfi";
-import { MdSupportAgent } from "react-icons/md";
 import {
   BoxIcon,
   FlexiblePaymentIcon,

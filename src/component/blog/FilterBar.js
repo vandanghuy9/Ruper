@@ -5,7 +5,13 @@ import SearchInput from "./SearchInput";
 import CategoryList from "./CategoryList";
 import NavbarBlogItem from "./NavbarBlogItem";
 import TagList from "./TagList";
+import { FaChevronRight } from "react-icons/fa";
 const FilterBar = ({ categoryList, recentPosts }) => {
+  const items = [
+    { key: 0, title: "May 2021" },
+    { key: 1, title: "April 2021" },
+    { key: 1, title: "August 2020" },
+  ];
   return (
     <div className="col-xl-3 col-lg-3 col-md-12 col-12 sidebar left-sidebar md-b-50">
       <SearchInput />
@@ -36,21 +42,14 @@ const FilterBar = ({ categoryList, recentPosts }) => {
         <div className="block-content">
           <div className="post-archives-list">
             <ul>
-              <li>
-                <Link href={"#"} onClick={() => {}}>
-                  May 2021
-                </Link>
-              </li>
-              <li>
-                <Link href={"#"} onClick={() => {}}>
-                  April 2021
-                </Link>
-              </li>
-              <li>
-                <Link href={"#"} onClick={() => {}}>
-                  August 2020
-                </Link>
-              </li>
+              {items.map(({ key, title }) => (
+                <li key={key}>
+                  <FaChevronRight size={10} />
+                  <Link href={"#"} onClick={() => {}}>
+                    {title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

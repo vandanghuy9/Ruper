@@ -9,21 +9,17 @@ const Comment = ({ comment }) => {
     <li className="review">
       <div className="content-comment-container">
         <div className="comment-container">
-          <Image
-            src="/user.jpg"
-            className="avatar"
-            height="60"
-            width="60"
-            alt="avatar"
-          ></Image>
+          <Image src="/user.jpg" className="avatar" height="60" width="60" alt="avatar"></Image>
           <div className="comment-text">
             <div className="rating small">
-              {[...Array(rating)].map((item) => (
-                <AiFillStar key={item} size={20} color="#fcad02" />
-              ))}
-              {[...Array(nonRating)].map((item) => (
-                <AiFillStar key={item} size={20} />
-              ))}
+              {rating > 0 &&
+                [...Array(rating).keys()].map((item) => (
+                  <AiFillStar key={item} size={20} color="#fcad02" />
+                ))}
+              {nonRating > 0 &&
+                [...Array(nonRating).keys()].map((item) => (
+                  <AiFillStar key={item + rating} size={20} />
+                ))}
             </div>
             <div className="review-author">{author}</div>
             <div className="review-time">January 12, 2022</div>

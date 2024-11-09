@@ -1,7 +1,7 @@
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useShopProduct } from "@context/ShopProductContext";
+import AddToCartButton from "./AddToCartButton";
 const WishListItem = ({ product }) => {
   const { _id, imageUrl, name, price, discount } = product.product;
   const date = product.date;
@@ -47,11 +47,7 @@ const WishListItem = ({ product }) => {
         <td className="wishlist-item-actions">
           <div className="wishlist-item-stock">In stock</div>
           <div className="wishlist-item-add">
-            <div data-title="Add to cart">
-              <Link rel="nofollow" href="#" className="button">
-                Add to cart
-              </Link>
-            </div>
+            <AddToCartButton _id={_id} />
           </div>
         </td>
       </tr>
