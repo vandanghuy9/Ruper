@@ -49,15 +49,15 @@ const RootLayout = ({ children }) => {
         />
         <QueryContext>
           <CartContext>
-            <ShopProductContext>
-              <CookieProvider>
+            <CookieProvider>
+              <ShopProductContext>
                 <CategoryContext>
                   <CheckoutContext>
                     <Layout>{children}</Layout>
                   </CheckoutContext>
                 </CategoryContext>
-              </CookieProvider>
-            </ShopProductContext>
+              </ShopProductContext>
+            </CookieProvider>
           </CartContext>
         </QueryContext>
       </body>

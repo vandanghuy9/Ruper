@@ -4,6 +4,8 @@ import { addToWishList, removeFromWishList } from "@services/userService";
 import { successNoti, errorNoti } from "@utils/notification/notification";
 import { useAuth } from "./UserContext";
 import { useRouter } from "next/navigation";
+import { fetchUserWishList } from "@services/userService";
+
 const Context = createContext();
 const ShopProductContext = ({ children }) => {
   const router = useRouter();
@@ -16,10 +18,25 @@ const ShopProductContext = ({ children }) => {
   const [quickViewPopUpActive, setQuickViewPopUpActive] = useState(false);
   const [currentQuickViewProduct, setCurrentQuickViewProduct] = useState("");
   const [blogList, setBlogList] = useState([]);
+  const { isUserLogin } = useAuth();
+  const isLogin = isUserLogin();
+  useEffect(() => {
+    const getUserWishList = async () => {
+      const res = await fetchUserWishList();
+      setWishList(res);
+      setWishListAdded(false);
+    };
+
+    if (isLogin || wishListAdded) {
+      getUserWishList();
+    }
+  }, [wishListAdded, isLogin, setWishList, setWishListAdded]);
+
   const handleAddToWishList = async (productId) => {
+    setWishListAdded(true);
     addToWishList(productId).then((res) => {
       successNoti(res?.message);
-      setWishListAdded((prevWishListAdded) => !prevWishListAdded);
+      setWishListAdded(false);
       setToggle(true);
     });
   };
@@ -51,6 +68,7 @@ const ShopProductContext = ({ children }) => {
 
   const handleSetWishList = (wishlist) => {
     setWishList(wishlist);
+    setWishListAdded(false);
   };
 
   const getProductInWishList = (productId) => {

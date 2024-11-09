@@ -13,13 +13,12 @@ import { AiFillStar } from "react-icons/ai";
 import { calcuteRating } from "@utils/menu";
 const QuickViewPopUp = () => {
   const [product, setProduct] = useState({
+    _id: "",
     comment: [],
   });
-  const {
-    quickViewPopUpActive,
-    handleCloseQuickViewPopUp,
-    currentQuickViewProduct,
-  } = useShopProduct();
+  const [loading, setLoading] = useState(false);
+  const { quickViewPopUpActive, handleCloseQuickViewPopUp, currentQuickViewProduct } =
+    useShopProduct();
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -31,9 +30,10 @@ const QuickViewPopUp = () => {
   colors = colors?.filter((item, index) => colors.indexOf(item) === index);
   useEffect(() => {
     const fetchProduct = (id) => {
+      setLoading(true);
       getProductById(id).then((res) => {
-        console.log(res);
         setProduct(res);
+        setLoading(false);
       });
     };
     if (currentQuickViewProduct !== "") {
@@ -60,6 +60,28 @@ const QuickViewPopUp = () => {
     setQuantity(1);
   };
   const { rating, nonRating } = calcuteRating(product?.comment);
+  if (loading || currentQuickViewProduct === "") {
+    return (
+      <div className={`quickview-popup ${quickViewPopUpActive ? "active" : ""}`}>
+        <div id="quickview-container">
+          <div className="quickview-container">
+            <Link
+              href="#"
+              className="quickview-close"
+              onClick={handleCloseQuickViewPopUp}
+              scroll={false}></Link>
+            <div className="quickview-notices-wrapper"></div>
+            <div className="product single-product product-type-simple">
+              <div className="product-detail">
+                <div className="row">Loading...</div>
+              </div>
+            </div>
+            <div className="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className={`quickview-popup ${quickViewPopUpActive ? "active" : ""}`}>
       <div id="quickview-container">
@@ -68,8 +90,7 @@ const QuickViewPopUp = () => {
             href="#"
             className="quickview-close"
             onClick={handleCloseQuickViewPopUp}
-            scroll={false}
-          ></Link>
+            scroll={false}></Link>
           <div className="quickview-notices-wrapper"></div>
           <div className="product single-product product-type-simple">
             <div className="product-detail">
@@ -89,19 +110,14 @@ const QuickViewPopUp = () => {
                                   clickable: true,
                                 }}
                                 modules={[Pagination, Navigation]}
-                                className="mySwiper"
-                              >
+                                className="mySwiper">
                                 {product?.imageUrl?.map((item) => (
-                                  <div
-                                    className="img-thumbnail slick-slide"
-                                    key={item}
-                                  >
-                                    <SwiperSlide>
+                                  <div className="img-thumbnail slick-slide" key={item}>
+                                    <SwiperSlide key={item}>
                                       <Link
                                         href={`/product/${product._id}`}
                                         className="image-scroll"
-                                        title=""
-                                      >
+                                        title="">
                                         <Image
                                           width="900"
                                           height="900"
@@ -122,9 +138,7 @@ const QuickViewPopUp = () => {
                 </div>
                 <div className="quickview-single-info">
                   <div className="product-content-detail entry-summary">
-                    <h1 className="product-title entry-title">
-                      {product.name}
-                    </h1>
+                    <h1 className="product-title entry-title">{product.name}</h1>
                     <div className="price-single">
                       <div className="price">
                         {product.discount ? (
@@ -134,11 +148,7 @@ const QuickViewPopUp = () => {
                             </del>
                             <ins>
                               <span>
-                                $
-                                {Math.ceil(
-                                  (product.price * (100 - product.discount)) /
-                                    100
-                                )}
+                                ${Math.ceil((product.price * (100 - product.discount)) / 100)}
                               </span>
                             </ins>
                           </>
@@ -150,20 +160,16 @@ const QuickViewPopUp = () => {
                     <div className="product-rating">
                       <div className="star-rating">
                         {rating > 0 &&
-                          [...Array(rating)].map((item) => (
+                          [...Array(rating).keys()].map((item) => (
                             <AiFillStar key={item} size={15} color="#fcad02" />
                           ))}
-                        {nonRating &&
-                          [...Array(nonRating)].map((item) => (
+                        {nonRating > 0 &&
+                          [...Array(nonRating).keys()].map((item) => (
                             <AiFillStar key={item + rating} size={15} />
                           ))}
                       </div>
                       <Link href="#" className="review-link">
-                        (
-                        <span className="count">
-                          {product?.comment?.length}
-                        </span>{" "}
-                        customer review)
+                        (<span className="count">{product?.comment?.length}</span> customer review)
                       </Link>
                     </div>
                     <div className="description">
@@ -205,10 +211,7 @@ const QuickViewPopUp = () => {
                                         id={color}
                                         onChange={handleColor}
                                       />
-                                      <label
-                                        className={color}
-                                        htmlFor={color}
-                                      ></label>
+                                      <label className={color} htmlFor={color}></label>
                                     </li>
                                   ))}
                                 </ul>
@@ -226,8 +229,7 @@ const QuickViewPopUp = () => {
                             className="plus"
                             onClick={(e) => {
                               handleQuantity("INC");
-                            }}
-                          >
+                            }}>
                             +
                           </button>
                           <input
@@ -250,16 +252,14 @@ const QuickViewPopUp = () => {
                             className="minus"
                             onClick={(e) => {
                               handleQuantity("DEC");
-                            }}
-                          >
+                            }}>
                             -
                           </button>
                         </div>
                         <button
                           type="button"
                           onClick={addToCart}
-                          className="single-add-to-cart-button button alt"
-                        >
+                          className="single-add-to-cart-button button alt">
                           Add to cart
                         </button>
                       </div>

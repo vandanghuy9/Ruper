@@ -2,19 +2,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  IoHeartOutline,
-  IoShuffleOutline,
-  IoSearchOutline,
-  IoHeart,
-} from "react-icons/io5";
+import { IoHeartOutline, IoShuffleOutline, IoSearchOutline, IoHeart } from "react-icons/io5";
 import { useShopProduct } from "@context/ShopProductContext";
 import { useAuth } from "@context/UserContext";
 import { AiFillStar } from "react-icons/ai";
 import { calcuteRating } from "@utils/menu";
 export const ProductListCard = ({ product }) => {
-  const { _id, imageUrl, name, price, discount, comment, description } =
-    product;
+  const { _id, imageUrl, name, price, discount, comment, description } = product;
   const {
     wishListAdded,
     handleAddToWishList,
@@ -66,8 +60,7 @@ export const ProductListCard = ({ product }) => {
                 className="quickview quickview-button"
                 onClick={(e) => {
                   handleOpenQuickViewPopUp(_id);
-                }}
-              >
+                }}>
                 Quick View
                 <IoSearchOutline size={20} />
               </button>
@@ -94,12 +87,14 @@ export const ProductListCard = ({ product }) => {
               )}
             </span>
             <div className="rating">
-              {[...Array(rating)].map((item) => (
-                <AiFillStar key={item} size={20} color="#fcad02" />
-              ))}
-              {[...Array(nonRating)].map((item) => (
-                <AiFillStar key={item + rating} size={20} />
-              ))}
+              {rating > 0 &&
+                [...Array(rating).keys()].map((item) => (
+                  <AiFillStar key={item} size={20} color="#fcad02" />
+                ))}
+              {nonRating > 0 &&
+                [...Array(nonRating).keys()].map((item) => (
+                  <AiFillStar key={item + rating} size={20} />
+                ))}
               <div className="review-count">
                 ({comment?.length}
                 <span> review</span>)
@@ -113,25 +108,20 @@ export const ProductListCard = ({ product }) => {
                   onClick={(e) => {
                     handleOpenQuickViewPopUp(_id);
                   }}
-                  scroll={false}
-                >
+                  scroll={false}>
                   Add to cart
                 </Link>
               </div>
               <div
-                className={`btn-wishlist ${
-                  wishListAdded === true ? "added" : ""
-                }`}
-                data-title="Wishlist"
-              >
+                className={`btn-wishlist ${wishListAdded === true ? "added" : ""}`}
+                data-title="Wishlist">
                 {isProductInWishlist ? (
                   <button
                     type="button"
                     className="product-btn"
                     onClick={() => {
                       handleRemoveFromWishList(_id);
-                    }}
-                  >
+                    }}>
                     <IoHeart size={20} />
                     Remove from wishlist
                   </button>
@@ -141,8 +131,7 @@ export const ProductListCard = ({ product }) => {
                     className="product-btn"
                     onClick={() => {
                       onAddToWishList(product);
-                    }}
-                  >
+                    }}>
                     <IoHeartOutline size={20} />
                     Add to wishlist
                   </button>
@@ -154,8 +143,7 @@ export const ProductListCard = ({ product }) => {
                   className="product-btn"
                   onClick={(e) => {
                     handleOpenComparePopUp(_id);
-                  }}
-                >
+                  }}>
                   <IoShuffleOutline size={20} />
                   Compare
                 </button>

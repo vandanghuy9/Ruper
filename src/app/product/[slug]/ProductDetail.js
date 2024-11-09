@@ -29,7 +29,7 @@ const ProductDetail = ({ product, relatedProducts }) => {
                 <div className="section-padding">
                   <div className="section-container p-l-r">
                     <div className="row">
-                      <ProductInfo product={product} />
+                      <ProductInfo key={product?._id} product={product} />
                     </div>
                   </div>
                 </div>

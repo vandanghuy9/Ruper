@@ -14,7 +14,7 @@ const BlogDetailSection = ({ blog, sidebar }) => {
         sidebar !== "none" ? "col-xl-9 col-lg-9" : "col-xl-12 col-lg-12"
       } col-md-12 col-12 md-b-30 blog-details-content`}>
       <div className="post-details">
-        <Image src={imageUrl[0]} alt="thumbnail" />
+        <Image src={imageUrl[0]} alt="thumbnail" width={1050} height={652} />
         <h2 className="post-title">{title}</h2>
         <BlogPostMeta
           _id={_id}

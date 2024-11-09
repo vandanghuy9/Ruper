@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
 import { sendUserQuestion } from "@services/userService";
+import { successNoti } from "@utils/notification/notification";
 const ContactForm = () => {
   const onSubmit = async (formData) => {
     const res = await sendUserQuestion(formData);
-    console.log(res);
+    successNoti("Thank you. We will contact you soon");
   };
   return (
     <section className="section section-padding contact-background m-b-0">
@@ -13,9 +14,7 @@ const ContactForm = () => {
           <div className="block-widget-wrap">
             <div className="block-title">
               <h2>Send Us Your Questions!</h2>
-              <div className="sub-title">
-                We’ll get back to you within two days.
-              </div>
+              <div className="sub-title">We&apos;ll get back to you within two days.</div>
             </div>
             <div className="block-content">
               <form action={onSubmit} className="contact-form">
@@ -57,8 +56,7 @@ const ContactForm = () => {
                           name="message"
                           cols="40"
                           rows="10"
-                          className="form-control"
-                        ></textarea>
+                          className="form-control"></textarea>
                       </span>
                     </div>
                   </div>

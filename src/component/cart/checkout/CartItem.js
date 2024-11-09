@@ -1,6 +1,6 @@
 import Image from "next/image";
 const CartItem = ({ item }) => {
-  const { image, name, quantity, price } = item;
+  const { image, name, quantity, price, color, size } = item;
   return (
     <div className="cart-item">
       <div className="info-product">
@@ -9,7 +9,11 @@ const CartItem = ({ item }) => {
         </div>
         <div className="product-name">
           {name}
-          <strong className="product-quantity">QTY : {quantity}</strong>
+          <div className="d-flex">
+            <strong className="product-quantity ">QTY : {quantity}</strong>{" "}
+            <strong className="product-quantity px-4">COLOR : {color}</strong>
+            <strong className="product-quantity">SIZE : {size}</strong>
+          </div>
         </div>
       </div>
       <div className="product-total">

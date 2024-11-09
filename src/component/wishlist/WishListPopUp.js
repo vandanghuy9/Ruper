@@ -5,7 +5,7 @@ import WishListPopUpContent from "./WishListPopUpContent";
 import { useShopProduct } from "@context/ShopProductContext";
 import { IoIosArrowRoundForward } from "react-icons/io";
 const WishListPopUp = () => {
-  const { toggle } = useShopProduct();
+  const { toggle, handleCloseWishList } = useShopProduct();
   return (
     <div className={`wishlist-popup ${toggle === true ? "show" : ""}`}>
       <div className="wishlist-popup-inner">
@@ -16,7 +16,11 @@ const WishListPopUp = () => {
               <Link className="wishlist-page" href={"/wishlist"}>
                 Open wishlist page
               </Link>
-              <span className="wishlist-continue" data-url="">
+              <span
+                className="wishlist-continue"
+                onClick={() => {
+                  handleCloseWishList();
+                }}>
                 Continue shopping
                 <IoIosArrowRoundForward size={25} />
               </span>
