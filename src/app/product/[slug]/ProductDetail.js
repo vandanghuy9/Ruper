@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import ProductInfo from "@component/product/ProductInfo";
 import ProductTab from "@component/product-tab/ProductTab";

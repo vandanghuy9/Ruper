@@ -118,8 +118,7 @@ const ProductTab = ({ product }) => {
                   <div id="comments">
                     <h2 className="reviews-title">
                       {product?.comment?.length} {product.comment.length > 1 ? "reviews" : "review"}
-                      for
-                      <span> {product.name}</span>
+                      <span> for {product.name}</span>
                     </h2>
                     <ol className="comment-list">
                       {product?.comment?.map((item, index) => (
