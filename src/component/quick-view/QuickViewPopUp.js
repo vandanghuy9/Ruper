@@ -263,7 +263,9 @@ const QuickViewPopUp = () => {
                           Add to cart
                         </button>
                       </div>
-                      <button className="button quick-buy">Buy It Now</button>
+                      <button className="button quick-buy" onClick={addToCart}>
+                        Buy It Now
+                      </button>
                     </form>
                   </div>
                 </div>

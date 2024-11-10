@@ -19,7 +19,7 @@ const ShippingDetail = () => {
           name="shipping_first_name"
           placeholder=""
           label="First name"
-          required={true}
+          required={"This field is required"}
           errors={errors}
         />
         <ErrorText error={errors.shipping_first_name} />
@@ -31,7 +31,7 @@ const ShippingDetail = () => {
           name="shipping_last_name"
           placeholder=""
           label="Last name"
-          required={true}
+          required={"This field is required"}
         />
         <ErrorText error={errors.shipping_last_name} />
       </div>
@@ -46,17 +46,14 @@ const ShippingDetail = () => {
         />
       </div>
       <div className="form-row form-row-wide address-field validate-required">
-        <Label
-          htmlFor="shipping_country"
-          content={"Country / Region"}
-          required={true}
-        />
+        <Label htmlFor="shipping_country" content={"Country / Region"} required={true} />
         <span className="input-wrapper">
           <Select
             className={"country-select custom-select"}
             name={"shipping_country"}
             register={register}
             options={countryOption}
+            required={"This field is required"}
           />
           <ErrorText error={errors.shipping_country} />
         </span>
@@ -68,7 +65,7 @@ const ShippingDetail = () => {
           name="shipping_address"
           placeholder="Street address"
           label="Street address "
-          required={true}
+          required={"This field is required"}
         />
         <ErrorText error={errors.shipping_address} />
       </div>
@@ -93,17 +90,14 @@ const ShippingDetail = () => {
         />
       </div>
       <div className="form-row address-field validate-required validate-state form-row-wide">
-        <Label
-          htmlFor="shipping_state"
-          content={"State / County"}
-          required={true}
-        />
+        <Label htmlFor="shipping_state" content={"State / County"} required={true} />
         <span className="input-wrapper">
           <Select
             options={stateOption}
             name={"shipping_state"}
             register={register}
             className={"state-select custom-select"}
+            required={"This field is required"}
           />
           <ErrorText error={errors.shipping_state} />
         </span>
@@ -115,7 +109,7 @@ const ShippingDetail = () => {
           name={"shipping_zipCode"}
           placeholder={""}
           label={"Postcode / ZIP"}
-          required={true}
+          required={"This field is required"}
         />
         <ErrorText error={errors.shipping_zipCode} />
       </div>
@@ -126,7 +120,7 @@ const ShippingDetail = () => {
           name={"shipping_contact"}
           placeholder={""}
           label={"Phone"}
-          required={true}
+          required={"This field is required"}
           type="tel"
         />
         <ErrorText error={errors.shipping_contact} />
@@ -138,7 +132,7 @@ const ShippingDetail = () => {
           name={"shipping_email"}
           placeholder={""}
           label={"Email address"}
-          required={true}
+          required={"This field is required"}
           type="email"
         />
         <ErrorText error={errors.shipping_email} />
