@@ -10,7 +10,7 @@ const FilterBar = ({ categoryList, recentPosts }) => {
   const items = [
     { key: 0, title: "May 2021" },
     { key: 1, title: "April 2021" },
-    { key: 1, title: "August 2020" },
+    { key: 2, title: "August 2020" },
   ];
   return (
     <div className="col-xl-3 col-lg-3 col-md-12 col-12 sidebar left-sidebar md-b-50">

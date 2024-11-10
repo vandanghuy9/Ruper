@@ -14,9 +14,9 @@ const BlogDetail = ({ blog, categoryList, recentPosts, sidebar }) => {
             <div className="breadcrumbs">
               <Link href="/">Home</Link>
               <span className="delimiter"></span>
-              <Link href={`/blog/${blog._id}?sidebar=${sidebar}`}>
-                {blog.title}
-              </Link>
+              <Link href="/blog">Blog</Link>
+              <span className="delimiter"></span>
+              <Link href={`/blog/${blog._id}?sidebar=${sidebar}`}>{blog.title}</Link>
             </div>
           </div>
         </div>
@@ -26,19 +26,13 @@ const BlogDetail = ({ blog, categoryList, recentPosts, sidebar }) => {
               <div className="row">
                 {sidebar === "left" ? (
                   <>
-                    <FilterBar
-                      categoryList={categoryList}
-                      recentPosts={recentPosts}
-                    />
+                    <FilterBar categoryList={categoryList} recentPosts={recentPosts} />
                     <BlogDetailSection blog={blog} sidebar={sidebar} />
                   </>
                 ) : sidebar === "right" ? (
                   <>
                     <BlogDetailSection blog={blog} sidebar={sidebar} />
-                    <FilterBar
-                      categoryList={categoryList}
-                      recentPosts={recentPosts}
-                    />
+                    <FilterBar categoryList={categoryList} recentPosts={recentPosts} />
                   </>
                 ) : (
                   <>

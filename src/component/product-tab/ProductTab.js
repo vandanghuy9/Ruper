@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import Comment from "./Comment";
 import { saveProductReviews } from "@services/productService";
 import { errorNoti, successNoti } from "@utils/notification/notification";
+import ErrorText from "@component/form/ErrorText";
 const tabs = [
   {
     id: 0,
@@ -33,7 +34,11 @@ const ProductTab = ({ product }) => {
   sizes = sizes.filter((item, index) => sizes.indexOf(item) === index);
   let colors = stocks.map((item) => item.color);
   colors = colors.filter((item, index) => colors.indexOf(item) === index);
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       author: null,
       email: null,
@@ -141,7 +146,7 @@ const ProductTab = ({ product }) => {
                           <label htmlFor="rating">Your rating</label>
                           <p className="stars">
                             <span>
-                              {[...Array(5)].map((star, i) => {
+                              {[...Array(5).keys()].map((star, i) => {
                                 const currentRating = i + 1;
                                 return (
                                   <AiFillStar
@@ -159,28 +164,37 @@ const ProductTab = ({ product }) => {
                               })}
                             </span>
                           </p>
+                          {rating === 0 && (
+                            <ErrorText
+                              error={rating === 0}
+                              message="Please give this product a rating"
+                            />
+                          )}
                         </div>
                         <p className="comment-form-comment">
                           <textarea
-                            {...register("comment", { required: true })}
+                            {...register("comment", { required: "This field is required" })}
                             placeholder="Your Reviews *"
                             cols="45"
                             rows="8"></textarea>
+                          <ErrorText error={errors.comment} />
                         </p>
                         <div className="content-info-reviews">
                           <p className="comment-form-author">
                             <input
-                              {...register("author", { required: true })}
+                              {...register("author", { required: "This field is required" })}
                               placeholder="Name *"
                               size="30"
                             />
+                            <ErrorText error={errors.author} />
                           </p>
                           <p className="comment-form-email">
                             <input
                               placeholder="Email *"
                               size="30"
-                              {...register("email", { required: true })}
+                              {...register("email", { required: "This field is required" })}
                             />
+                            <ErrorText error={errors.email} />
                           </p>
                           <p className="form-submit">
                             <input

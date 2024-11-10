@@ -22,7 +22,7 @@ const Billing = () => {
                 name="billing_first_name"
                 placeholder=""
                 label="First name"
-                required={true}
+                required={"This field is required"}
                 errors={errors}
               />
               <ErrorText error={errors.billing_first_name} />
@@ -34,7 +34,7 @@ const Billing = () => {
                 name="billing_last_name"
                 placeholder=""
                 label="Last name"
-                required={true}
+                required={"This field is required"}
               />
               <ErrorText error={errors.billing_last_name} />
             </p>
@@ -45,8 +45,9 @@ const Billing = () => {
                 name="billing_companyName"
                 placeholder=""
                 label="Company name"
-                required={false}
+                required={"This field is required"}
               />
+              <ErrorText error={errors.billing_companyName} />
             </p>
             <p className="form-row form-row-wide validate-required">
               <Label htmlFor="billing_country" content={"Country / Region"} required={true} />
@@ -55,6 +56,7 @@ const Billing = () => {
                   className={"country-select custom-select"}
                   name={"billing_country"}
                   register={register}
+                  required={"This field is required"}
                   options={countryOption}
                 />
                 <ErrorText error={errors.billing_country} />
@@ -67,7 +69,7 @@ const Billing = () => {
                 name="billing_address"
                 placeholder="Street address"
                 label="Street address "
-                required={true}
+                required={"This field is required"}
               />
               <ErrorText error={errors.billing_address} />
             </p>
@@ -99,6 +101,7 @@ const Billing = () => {
                   name={"billing_state"}
                   register={register}
                   className={"state-select custom-select"}
+                  required={"This field is required"}
                 />
                 <ErrorText error={errors.billing_state} />
               </span>
@@ -110,7 +113,7 @@ const Billing = () => {
                 name={"billing_zipCode"}
                 placeholder={""}
                 label={"Postcode / ZIP"}
-                required={true}
+                required={"This field is required"}
               />
               <ErrorText error={errors.billing_zipCode} />
             </p>
@@ -121,7 +124,7 @@ const Billing = () => {
                 name={"billing_contact"}
                 placeholder={""}
                 label={"Phone"}
-                required={true}
+                required={"This field is required"}
                 type="tel"
               />
               <ErrorText error={errors.billing_contact} />
@@ -133,7 +136,7 @@ const Billing = () => {
                 name={"billing_email"}
                 placeholder={""}
                 label={"Email address"}
-                required={true}
+                required={"This field is required"}
                 type="email"
               />
               <ErrorText error={errors.billing_email} />

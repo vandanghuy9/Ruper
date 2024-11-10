@@ -26,6 +26,15 @@ const ComparePopUp = () => {
   }, [currentCompareProduct]);
 
   const productsRating = products.map(({ comment }) => calcuteRating(comment));
+  if (products.length === 0) {
+    <div className={`compare-popup ${comparePopUpActive ? "active" : ""}`}>
+      <div className="compare-popup-inner">
+        <div className="compare-table">
+          <div className="compare-table-inner">Loading...</div>
+        </div>
+      </div>
+    </div>;
+  }
   return (
     <div className={`compare-popup ${comparePopUpActive ? "active" : ""}`}>
       <div className="compare-popup-inner">
@@ -78,10 +87,10 @@ const ComparePopUp = () => {
                       <td key={index}>
                         <div>
                           <span style={{ width: "80%" }}>
-                            {[...Array(rating)].map((item) => (
+                            {[...Array(rating).keys()].map((item) => (
                               <AiFillStar key={item} size={15} color="#fcad02" />
                             ))}
-                            {[...Array(nonRating)].map((item) => (
+                            {[...Array(nonRating).keys()].map((item) => (
                               <AiFillStar key={item + rating} size={15} />
                             ))}
                           </span>
