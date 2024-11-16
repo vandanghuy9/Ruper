@@ -6,7 +6,6 @@ import { calcuteRating } from "@utils/menu";
 const FeatureProductCard = ({ product }) => {
   const { _id, imageUrl, name, price, discount, comment } = product;
   const { rating, nonRating } = calcuteRating(comment);
-  console.log(rating, nonRating);
   if (!product) {
     return <div>Loading</div>;
   }
