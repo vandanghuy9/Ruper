@@ -21,21 +21,15 @@ async function verifyEmail(body) {
 }
 
 async function register(token) {
-  return sendPostRequest("/user/register", { token }).catch((error) => {
-    console.log(error.response.data.message);
+  return sendPostRequest("/user/register", { token }).catch((e) => {
+    throw e.response.data.message;
   });
 }
 
 async function addToWishList(productId) {
   const cookieStore = cookies();
-  const token = cookieStore.has("accessToken")
-    ? cookieStore.get("accessToken").value
-    : null;
-  return sendPostRequest(
-    "/wishlist/add",
-    { product: productId },
-    { token }
-  ).catch((error) => {
+  const token = cookieStore.has("accessToken") ? cookieStore.get("accessToken").value : null;
+  return sendPostRequest("/wishlist/add", { product: productId }, { token }).catch((error) => {
     if (error.response && error.response.status === 401) {
       return { status: 401, message: error.response.data.message };
     } else {
@@ -46,22 +40,14 @@ async function addToWishList(productId) {
 
 async function fetchUserWishList() {
   const cookieStore = cookies();
-  const token = cookieStore.has("accessToken")
-    ? cookieStore.get("accessToken").value
-    : null;
+  const token = cookieStore.has("accessToken") ? cookieStore.get("accessToken").value : null;
   return sendGetRequest("/wishlist/", { token });
 }
 
 async function removeFromWishList(productId) {
   const cookieStore = cookies();
-  const token = cookieStore.has("accessToken")
-    ? cookieStore.get("accessToken").value
-    : null;
-  return sendPostRequest(
-    "/wishlist/delete",
-    { product: productId },
-    { token }
-  ).catch((error) => {
+  const token = cookieStore.has("accessToken") ? cookieStore.get("accessToken").value : null;
+  return sendPostRequest("/wishlist/delete", { product: productId }, { token }).catch((error) => {
     if (error.response && error.response.status === 401) {
       return { status: 401, message: error.response.data.message };
     } else {
@@ -81,17 +67,13 @@ async function sendUserQuestion(formData) {
 }
 async function getUserAddress() {
   const cookieStore = cookies();
-  const token = cookieStore.has("accessToken")
-    ? cookieStore.get("accessToken").value
-    : null;
+  const token = cookieStore.has("accessToken") ? cookieStore.get("accessToken").value : null;
   return sendGetRequest("/user/address", { token });
 }
 
 async function updateUserInfo(formData) {
   const cookieStore = cookies();
-  const token = cookieStore.has("accessToken")
-    ? cookieStore.get("accessToken").value
-    : null;
+  const token = cookieStore.has("accessToken") ? cookieStore.get("accessToken").value : null;
   const userMessage = {
     firstName: formData.get("firstName"),
     lastName: formData.get("lastName"),
@@ -102,15 +84,13 @@ async function updateUserInfo(formData) {
     confirmPassword: formData.get("password_2"),
   };
 
-  return sendPostRequest("/user/update", userMessage, { token }).catch(
-    (error) => {
-      if (error.response && error.response.status === 401) {
-        return { status: 401, message: error.response.data.message };
-      } else {
-        console.error("Error sending data:", error);
-      }
+  return sendPostRequest("/user/update", userMessage, { token }).catch((error) => {
+    if (error.response && error.response.status === 401) {
+      return { status: 401, message: error.response.data.message };
+    } else {
+      console.error("Error sending data:", error);
     }
-  );
+  });
 }
 async function forgotPassword(userLogin) {
   return sendPostRequest("/user/forgot-password", userLogin).catch((e) => {

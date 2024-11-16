@@ -10,7 +10,6 @@ import WhiteButton from "../button/WhiteButton";
 import useGetParams from "@hooks/useGetParams";
 const GothicCarousel = () => {
   const homePageType = useGetParams("type");
-  console.log(homePageType);
   const data = [...(homePageType === "SCANDINAVIAN" ? scandinavianPageSlides : gothicPageSlides)];
   return (
     <div

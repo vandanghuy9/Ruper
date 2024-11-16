@@ -2394,13 +2394,13 @@ ul.slick-dots li.slick-active button {
 }
 .form-login-register .box-form-login .rememberme-lost .lost_password {
   font-weight: 500;
-}
-.form-login-register .box-form-login .rememberme-lost .lost_password a {
   display: inline-block;
   position: relative;
+  color: #000;
 }
-.form-login-register .box-form-login .rememberme-lost .lost_password a:before {
-  bottom: 0;
+
+.form-login-register .box-form-login .rememberme-lost .lost_password:before {
+  bottom: 7px;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -2412,7 +2412,7 @@ ul.slick-dots li.slick-active button {
   transition: all 0.3s ease;
   background: #000;
 }
-.form-login-register .box-form-login .rememberme-lost .lost_password a:hover:before {
+.form-login-register .box-form-login .rememberme-lost .lost_password:hover:before {
   background: #000;
   width: 50%;
 }

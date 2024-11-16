@@ -5,13 +5,11 @@ import handleLogin from "../../authentication/handleAuth";
 import { useAuth } from "@context/UserContext";
 import { useShopProduct } from "@context/ShopProductContext";
 import ErrorText from "@component/form/ErrorText";
-export default function Signin({
-  isRegisterActive,
-  handleRegisterActive,
-  handleFormActive,
-}) {
+import { useRouter } from "next/navigation";
+export default function Signin({ isRegisterActive, handleRegisterActive, handleFormActive }) {
   const [error, setError] = useState("");
-  const { login, handleLoginError } = useAuth();
+  const router = useRouter();
+  const { login } = useAuth();
   const { handleSetWishList } = useShopProduct();
   const onLogin = async (formData) => {
     const { userInfor, wishlist } = await handleLogin(formData);
@@ -20,6 +18,10 @@ export default function Signin({
     }
     login(userInfor);
     return handleSetWishList(wishlist);
+  };
+  const handleForgotPassword = () => {
+    handleFormActive();
+    return router.push("/forgot-password");
   };
   return (
     <div className={!isRegisterActive ? "form-login active" : "form-login"}>
@@ -54,22 +56,14 @@ export default function Signin({
                 Remember me
               </label>
             </div>
-            <div className="lost_password">
-              <Link href="/forget-password">Lost your password?</Link>
+            <div className="lost_password" onClick={handleForgotPassword}>
+              Lost your password?
             </div>
           </div>
           <div className="button-login">
-            <input
-              type="submit"
-              className="button"
-              name="login"
-              value="Login"
-            />
+            <input type="submit" className="button" name="login" value="Login" />
           </div>
-          <div
-            className="button-next-reregister"
-            onClick={handleRegisterActive}
-          >
+          <div className="button-next-reregister" onClick={handleRegisterActive}>
             Create An Account
           </div>
         </div>

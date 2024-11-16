@@ -1,12 +1,16 @@
 "use client";
 import { useEffect } from "react";
 import { useAuth } from "@context/UserContext";
-const VerifiedUser = ({ message }) => {
+import { errorNoti } from "@utils/notification/notification";
+const VerifiedUser = ({ message, isRegisterSuccess }) => {
   const { register } = useAuth();
   useEffect(() => {
-    register(message);
-  }, [message, register]);
-  return <div>Verified account successfully</div>;
+    if (isRegisterSuccess) {
+      return register(message);
+    }
+    return errorNoti(message);
+  }, [message, register, isRegisterSuccess]);
+  return <div>{message}</div>;
 };
 
 export default VerifiedUser;

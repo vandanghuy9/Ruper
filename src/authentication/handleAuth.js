@@ -45,10 +45,8 @@ export const handleVerifyEmail = async (formData) => {
   };
   try {
     const res = await verifyEmail(rawFormData);
-    console.log("Handle auth:" + res);
     return res;
   } catch (e) {
-    console.log("handle auth false: " + e.response.data.message);
     throw e.response.data.message;
   }
 };
@@ -58,7 +56,7 @@ export const handleRegister = async (token) => {
     const res = await register(token);
     return res;
   } catch (e) {
-    console.log(e);
+    throw e.response.data.message;
   }
 };
 

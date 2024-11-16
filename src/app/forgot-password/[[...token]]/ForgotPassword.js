@@ -15,17 +15,12 @@ const ForgotPassword = () => {
     <div className="page-forget-password">
       <form action={onSubmit} className="reset-password">
         <p>
-          Lost your password? Please enter your username or email address. You
-          will receive a link to create a new password via email.
+          Lost your password? Please enter your username or email address. You will receive a link
+          to create a new password via email.
         </p>
         <p className="form-row form-row-first">
           <label>Username or email</label>
-          <input
-            className="input-text"
-            type="text"
-            name="user_login"
-            autocomplete="username"
-          />
+          <input className="input-text" type="text" name="user_login" autoComplete="username" />
         </p>
         <div className="clear"></div>
         <p className="form-row">
